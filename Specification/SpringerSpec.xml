@@ -1,0 +1,2548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="tei_odds.rnc" type="application/relax-ng-compact-syntax"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:teix="http://www.tei-c.org/ns/Examples" xmlns:tei="http://www.tei-c.org/ns/1.0"
+    xmlns:olac="http://www.language-archives.org/OLAC/1.0/" xmlns:iso="http://www.iso.org/ns/1.0" xml:lang="en" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Specification in TEI-ODD of the Springer DTD A++ V2.4 format (IFIP subset)</title>
+                <author>Laurent Romary</author>
+            </titleStmt>
+            <editionStmt>
+                <edition>rev4</edition>
+            </editionStmt>
+            <publicationStmt>
+                <authority>Inria</authority>
+                <date>2015-01-01</date>
+                <availability>
+                    <p>CC-BY</p>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <p>...</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <front>
+            <div type="foreword">
+                <head>Foreword</head>
+                <p>...</p>
+            </div>
+        </front>
+        <body>
+            <div xml:id="sec_schema">
+                <schemaSpec ident="SpringerBook" start="Publisher Chapter JobSheet" ns="">
+                    <moduleRef key="tei"/>
+
+                    <elementSpec ident="Publisher">
+                        <desc>groups together all the Springer metadata associated to a book related publication (book or book chapter)</desc>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="PublisherInfo"/>
+                                <rng:ref name="Series"/>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <!-- IFIP Meta-data elements -->
+
+                    <elementSpec ident="IFIPentity">
+                        <desc>groups together all IFIP specific descriptors (TC, SC, etc.)</desc>
+                        <!--<classes>
+                            <memberOf key="att.citing"/>
+                        </classes>
+                        -->
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="TC"/>
+                                    <rng:ref name="WG"/>
+                                    <rng:ref name="SIG"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="TC">
+                        <desc>provides a technical committee number</desc>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="WG">
+                        <desc>provides a working group number</desc>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <!--<attList>
+                            <attDef ident="sameAs">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>-->
+                    </elementSpec>
+
+                    <elementSpec ident="SIG">
+                        <desc>provides a SIG number</desc>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- PublisherInfo and sub-elements -->
+
+                    <elementSpec ident="PublisherInfo">
+                        <desc>basic publisher identification</desc>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="PublisherImprintName"/>
+                                    <rng:ref name="PublisherURL"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PublisherName">
+                        <desc>name of the publisher</desc>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PublisherLocation">
+                        <desc>groups together all the Springer metadata associated to a book related publication (book or book chapter)</desc>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PublisherImprintName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PublisherURL">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- Series -->
+
+                    <elementSpec ident="Series">
+                        <desc>groups together all the Springer metadata associated to a book related publication (book or book chapter)</desc>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="SeriesInfo"/>
+                                <rng:ref name="Book"/>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <!-- Series/SeriesInfo and sub-elements -->
+
+                    <elementSpec ident="SeriesInfo">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="SeriesID"/>
+                                    <rng:ref name="SeriesPrintISSN"/>
+                                    <rng:ref name="SeriesElectronicISSN"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="SeriesAbbreviatedTitle"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="TocLevels">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="SeriesType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="SeriesID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SubSeriesID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+
+                    <elementSpec ident="SeriesPrintISSN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SeriesElectronicISSN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SeriesTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SeriesAbbreviatedTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- Series/Book and sub-elements -->
+
+
+                    <elementSpec ident="Book">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="BookInfo"/>
+                                <rng:optional>
+                                    <rng:ref name="Cover"/>
+                                </rng:optional>
+                                <rng:optional>
+                                    <rng:ref name="BookHeader"/>
+                                </rng:optional>
+                                <rng:choice>
+                                    <rng:ref name="NoBody"/>
+                                    <rng:group>
+                                        <rng:zeroOrMore>
+                                            <rng:ref name="BodyRef"/>
+                                        </rng:zeroOrMore>
+                                        <rng:optional>
+                                            <rng:ref name="BookFrontmatter"/>
+                                        </rng:optional>
+                                        <rng:optional>
+                                            <rng:choice>
+                                                <rng:oneOrMore>
+                                                    <rng:ref name="Part"/>
+                                                </rng:oneOrMore>
+                                                <rng:oneOrMore>
+                                                    <rng:ref name="Chapter"/>
+                                                </rng:oneOrMore>
+                                            </rng:choice>
+                                        </rng:optional>
+                                        <!-- <rng:optional>
+                                            <rng:ref name="BookBackmatter"/>
+                                        </rng:optional>-->
+                                    </rng:group>
+                                    <rng:ref name="BookOnlineFirst"/>
+                                </rng:choice>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookOnlineFirst">
+                        <content>
+                            <rng:choice>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Part"/>
+                                </rng:oneOrMore>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Chapter"/>
+                                </rng:oneOrMore>
+                            </rng:choice>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookInfo">
+                        <classes>
+                            <memberOf key="att.language"/>
+                            <memberOf key="att.numbered"/>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="IFIPentity"/>
+                            </rng:zeroOrMore>
+
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="BookID"/>
+                                    <rng:ref name="BookTitle"/>
+                                    <rng:ref name="BookSubTitle"/>
+                                    <rng:ref name="BookVolumeNumber"/>
+                                    <rng:ref name="BookSequenceNumber"/>
+                                    <rng:ref name="BookDOI"/>
+                                    <rng:ref name="BookTitleID"/>
+                                    <rng:ref name="BookPrintISBN"/>
+                                    <rng:ref name="BookElectronicISBN"/>
+                                    <rng:ref name="BookChapterCount"/>
+                                    <rng:ref name="BookCopyright"/>
+                                    <rng:ref name="BookContext"/>
+                                    <rng:ref name="ConferenceInfo"/>
+                                    <rng:ref name="EditionNumber"/>
+                                    <rng:ref name="BookEdition"/>
+                                    <rng:ref name="PaperInfo"/>
+                                    <rng:ref name="BookSubjectGroup"/>
+                                    <rng:ref name="BookstoreLocation"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="BookProductType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TocLevels">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ContainsESM">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="BookHeader">
+                        <content>
+                            <rng:group>
+                                <rng:ref name="EditorGroup"/>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookEdition">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- Book chapter and sub-elements -->
+
+                    <elementSpec ident="Chapter">
+                        <classes>
+                            <memberOf key="att.language"/>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="ChapterInfo"/>
+                                <rng:ref name="ChapterHeader"/>
+                                <rng:choice>
+                                    <rng:ref name="NoBody"/>
+                                    <rng:ref name="Body"/>
+                                </rng:choice>
+                                <rng:optional>
+                                    <rng:ref name="BodyRef"/>
+                                </rng:optional>
+                                <rng:optional>
+                                    <rng:ref name="ChapterBackmatter"/>
+                                </rng:optional>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterInfo">
+                        <classes>
+                            <memberOf key="att.numbered"/>
+                            <memberOf key="att.OutputMedium"/>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="IFIPentity"/>
+                            </rng:zeroOrMore>
+
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ChapterID"/>
+                                    <rng:ref name="ChapterDOI"/>
+                                    <rng:ref name="ChapterSequenceNumber"/>
+                                    <rng:ref name="ChapterTitle"/>
+                                    <rng:ref name="ChapterSubTitle"/>
+                                    <rng:ref name="ChapterFirstPage"/>
+                                    <rng:ref name="ChapterLastPage"/>
+                                    <rng:ref name="ChapterCopyright"/>
+                                    <rng:ref name="ChapterContext"/>
+                                    <rng:ref name="ChapterHistory"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="ChapterType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TocLevels">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ContainsESM">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- (PageHeaders?, AuthorGroup?, CollaboratorGroup?, TocChapter?, Abstract*, KeywordGroup*, AbbreviationGroup?, ArticleNote*)> -->
+                    <elementSpec ident="ChapterHeader">
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="AuthorGroup"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="Abstract"/>
+                                </rng:zeroOrMore>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="KeywordGroup"/>
+                                </rng:zeroOrMore>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="ArticleNote"/>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <!-- (Heading?, (SimplePara | FormalPara)+)> -->
+                    <elementSpec ident="ArticleNote">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="Heading"/>
+                                </rng:optional>
+                                <rng:oneOrMore>
+                                    <rng:ref name="SimplePara"/>
+                                </rng:oneOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="NoBody">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Body">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="Section1"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BodyRef">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="FileRef">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TargetType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PDFType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="Section1">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Para"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+
+
+
+                    <!-- BookInfo sub-elements -->
+
+                    <elementSpec ident="BookID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookTitle">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookSubTitle">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookVolumeNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookSequenceNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookTitleID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookPrintISBN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookElectronicISBN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookChapterCount">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PaperInfo">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookSubjectGroup">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="BookSubject"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookSubject">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Code">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Priority">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="BookstoreLocation">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- Start of Book Copyright informaiton -->
+
+                    <elementSpec ident="BookCopyright">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="CopyrightHolderName"/>
+                                    <rng:ref name="CopyrightYear"/>
+                                    <rng:ref name="SpringerReferenceLine"/>
+                                    <rng:ref name="SpringerLocationsLine"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CopyrightHolderName">
+                        <content>
+                            <!-- Does not transform into a DTD statement... sigh
+                                <rng:value>IFIP International Federation for Information Processing</rng:value>
+                            -->
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CopyrightYear">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SpringerReferenceLine">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SpringerLocationsLine">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- End of Book Copyright information -->
+
+                    <!-- <!ELEMENT BookContext (SeriesID?, SubSeriesID?, (BookSetID, BookSetTitle)*, VolumePackageID?)>
+ -->
+
+                    <elementSpec ident="BookContext">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="SeriesID"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="SubSeriesID"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="BookSetID"/>
+                                <rng:ref name="BookSetTitle"/>
+                            </rng:zeroOrMore>
+                            <rng:optional>
+                                <rng:ref name="VolumePackageID"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookSetID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookSetTitle">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="VolumePackageID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- Parts in Books -->
+                    <!-- <!ELEMENT Part (PartInfo, PartHeader?, BookFrontmatter?, BodyRef*, SubPart*, Chapter*, BookBackmatter?)>
+<!ATTLIST Part
+	ID ID #REQUIRED
+	OutputMedium %OutputMediumAttrValues; #IMPLIED
+	%DCTMAtts; 
+>
+<!ELEMENT PartHeader (AuthorGroup?, EditorGroup?, CollaboratorGroup?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
+<!ELEMENT PartInfo (PartID, PartNumber?, PartSequenceNumber?, PartTitle, PartSubTitle?, PartChapterCount?, PartContext?)>
+<!ATTLIST PartInfo
+	TocLevels %TocLevelsAttrValues; "0"
+	OutputMedium %OutputMediumAttrValues; #IMPLIED
+>
+<!ELEMENT PartID (#PCDATA)>
+<!ELEMENT PartNumber (#PCDATA)>
+<!ELEMENT PartSequenceNumber (#PCDATA)>
+<!ELEMENT PartTitle (%SimpleTextModel;)*>
+<!ELEMENT PartSubTitle (%SimpleTextModel;)*>
+<!ELEMENT PartChapterCount (#PCDATA)>
+<!ELEMENT PartContext (SeriesID?, SubSeriesID?, (BookSetID, BookSetTitle)*, VolumePackageID?, BookID?, BookTitle?)>
+ -->
+
+                    <elementSpec ident="Part">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="PartInfo"/>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Chapter"/>
+                            </rng:zeroOrMore>
+                            <rng:optional>
+                                <rng:ref name="BookFrontmatter"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+                    <!-- 
+<!ELEMENT PartInfo (PartID, PartNumber?, PartSequenceNumber?, PartTitle, PartSubTitle?, PartChapterCount?, PartContext?)>
+                    -->
+
+                    <elementSpec ident="PartInfo">
+                        <classes>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.PartInfoPart"/>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="TocLevels">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="PartID">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PartNumber">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PartSequenceNumber">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PartTitle">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PartSubTitle">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PartChapterCount">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- 
+                        <!ELEMENT PartContext (SeriesID?, SubSeriesID?, (BookSetID, BookSetTitle)*, VolumePackageID?, BookID?, BookTitle?)>
+ 
+                    <PartContext>
+                        <SeriesID>6102</SeriesID>
+                        <BookID>978-3-662-45937-9</BookID>
+                        <BookTitle>Product Lifecycle Management for a Global Market</BookTitle>
+                    </PartContext> -->
+
+
+
+                    <elementSpec ident="PartContext">
+                        <classes>
+                            <memberOf key="model.PartInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="SeriesID"/>
+                                </rng:optional>
+                                <rng:optional>
+                                    <rng:ref name="SubSeriesID"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="BookSetID"/>
+                                    <rng:ref name="BookSetTitle"/>
+                                </rng:zeroOrMore>
+                                <rng:optional>
+                                    <rng:ref name="VolumePackageID"/>
+                                </rng:optional>
+                                <rng:optional>
+                                    <rng:ref name="BookID"/>
+                                </rng:optional>
+                                <rng:optional>
+                                    <rng:ref name="BookTitle"/>
+                                </rng:optional>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <!-- BookFrontMatter -->
+                    <!-- ....................................................................... -->
+                    <!-- BookFrontmatter / BookBackmatter                                        -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="BookFrontmatter">
+                        <classes>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="BookFrontmatterInfo"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="BookFrontmatterHeader"/>
+                            </rng:optional>
+                            <rng:ref name="NoBody"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookFrontmatterInfo">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="BookFrontmatterDOI"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="BookFrontmatterHeader"/>
+                            </rng:optional>
+                            <rng:ref name="BookFrontmatterFirstPage"/>
+                            <rng:ref name="BookFrontmatterLastPage"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookFrontmatterDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookFrontmatterFirstPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookFrontmatterLastPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookFrontmatterHeader">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="PageHeaders"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+
+                    <!--<!ELEMENT BookFrontmatter (BookFrontmatterInfo?, BookFrontmatterHeader?, (NoBody | BodyRef+ | (BodyFrontmatter, BodyRef*)))>
+                    
+                    <!ELEMENT BookFrontmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
+                    <!ELEMENT BodyFrontmatter ((Frontispiece?, Dedication?, Foreword*, Preface*, ArticleNote*, BookAcknowledgments?, BookNotes?, AbbreviationGroup?, Toc?, Loh*, Loc?) | PDFExtract)>
+                    <!ELEMENT Frontispiece (Figure)>
+                    <!ELEMENT BookNotes (BookNotesTitle, AuthorGroup?, Body)>
+                    <!ELEMENT BookNotesTitle (%SimpleTextModel;)*>
+                    <!ATTLIST BookNotesTitle
+                    Language %LanguageAttrValues; #REQUIRED
+                    >
+                    <!ELEMENT BookAcknowledgments (AcknowledgmentTitle, AuthorGroup?, Body)>
+                    <!ELEMENT AcknowledgmentTitle (%SimpleTextModel;)*>
+                    <!ATTLIST AcknowledgmentTitle
+                    Language %LanguageAttrValues; #REQUIRED
+                    >
+                    <!ELEMENT BookBackmatter (BookBackmatterInfo?, BookBackmatterHeader?, (NoBody | BodyRef+ | (BodyBackmatter, BodyRef*)))>
+                    <!ATTLIST BookBackmatter
+                    OutputMedium %OutputMediumAttrValues; #IMPLIED
+                    >
+                    <!ELEMENT BookBackmatterInfo (BookBackmatterDOI?, BookBackmatterFirstPage, BookBackmatterLastPage)>
+                    <!ELEMENT BookBackmatterDOI (#PCDATA)>
+                    <!ELEMENT BookBackmatterFirstPage (#PCDATA)>
+                    <!ELEMENT BookBackmatterLastPage (#PCDATA)>
+                    <!ELEMENT BookBackmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
+                    <!ELEMENT BodyBackmatter ((Appendix*, Glossary?, Bibliography?, Index*, Colophon?) | PDFExtract)>
+-->
+
+                    <!-- ....................................................................... -->
+                    <!-- Page Headers                                                            -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="PageHeaders">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="OpeningHeader"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="OpeningFigure"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:ref name="RunningTitle"/>
+                            </rng:oneOrMore>
+                            <rng:optional>
+                                <rng:ref name="RunningAuthor"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="OpeningHeader">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="OpeningFigure">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Caption"/>
+                            </rng:zeroOrMore>
+                            <rng:oneOrMore>
+                                <rng:ref name="MediaObject"/>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="Float" usage="req">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Category" usage="req">
+                                <valList>
+                                    <valItem ident="Schema"/>
+                                    <valItem ident="Structure"/>
+                                    <valItem ident="Standard"/>
+                                    <valItem ident="Logo"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+
+                    <elementSpec ident="RunningTitle">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="RunningAuthor">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+
+                    <!-- Description of conferences -->
+
+                    <elementSpec ident="ConferenceInfo">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.ConferenceInfoPart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfSeriesName">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.ConferenceInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfEventAbbreviation">
+                        <classes>
+                            <memberOf key="model.ConferenceInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfNumber">
+                        <classes>
+                            <memberOf key="model.ConferenceInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfEventLocation">
+                        <classes>
+                            <memberOf key="model.ConferenceInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="City"/>
+                                    <rng:ref name="Country"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfEventDate">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfEventDateStart">
+                        <classes>
+                            <memberOf key="model.ConferenceInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ConfEventDateEnd">
+                        <classes>
+                            <memberOf key="model.ConferenceInfoPart"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!--                    <ConferenceInfo>
+                        
+                        <ConfEventLocation>
+                            <City>Yokohama</City>
+                            <Country>Japan</Country>
+                        </ConfEventLocation>
+                        <ConfEventDateStart>
+                            <Year>2014</Year>
+                            <Month>7</Month>
+                            <Day>7</Day>
+                        </ConfEventDateStart>
+                        <ConfEventDateEnd>
+                            <Year>2014</Year>
+                            <Month>7</Month>
+                            <Day>9</Day>
+                        </ConfEventDateEnd>
+                    </ConferenceInfo>-->
+
+                    <!--                    <elementSpec ident="SeriesID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>-->
+
+                    <!-- Journal article elements (for bibliographies) -->
+
+                    <elementSpec ident="JournalTitle">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ArticleTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- ChapterHeader subelements -->
+
+                    <elementSpec ident="AuthorGroup">
+                        <content>
+                            <rng:group>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Author"/>
+                                </rng:oneOrMore>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="Affiliation"/>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Author">
+                        <content>
+                            <rng:group>
+                                <rng:ref name="AuthorName"/>
+                                <rng:optional>
+                                    <rng:ref name="Contact"/>
+                                </rng:optional>
+                            </rng:group>
+                        </content>
+                        <attList>
+                            <attDef ident="AffiliationIDS">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CorrespondingAffiliationID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="AuthorName">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CollaboratorGroup">
+                        <content>
+                            <rng:group>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Collaborator"/>
+                                </rng:oneOrMore>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="Affiliation"/>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Collaborator">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="CollaboratorName"/>
+                                <rng:optional>
+                                    <rng:ref name="Contact"/>
+                                </rng:optional>
+                            </rng:group>
+                        </content>
+                        <attList>
+                            <attDef ident="AffiliationIDS">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CollaboratorName">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Abstract">
+                        <classes>
+                            <memberOf key="att.language"/>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="Heading"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="Para"/>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Para">
+                        <content>
+                            <rng:ref name="macro.FullTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SimplePara">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="KeywordGroup">
+                        <classes>
+                            <memberOf key="att.language"/>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="Heading"/>
+                                </rng:optional>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Keyword"/>
+                                </rng:oneOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Heading">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Keyword">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- EditorGroup and subelements -->
+
+                    <elementSpec ident="EditorGroup">
+                        <content>
+                            <rng:group>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Editor"/>
+                                </rng:oneOrMore>
+                                <rng:oneOrMore>
+                                    <rng:ref name="Affiliation"/>
+                                </rng:oneOrMore>
+                            </rng:group>
+                        </content>
+
+                    </elementSpec>
+
+                    <elementSpec ident="Editor">
+                        <content>
+                            <rng:group>
+                                <rng:ref name="EditorName"/>
+                                <rng:optional>
+                                    <rng:ref name="Contact"/>
+                                </rng:optional>
+                            </rng:group>
+                        </content>
+                        <attList>
+                            <attDef ident="AffiliationIDS">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="EditorName">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="GivenName">
+                        <classes>
+                            <memberOf key="model.NamePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Initials">
+                        <classes>
+                            <memberOf key="model.NamePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="NoInitials">
+                        <classes>
+                            <memberOf key="model.NamePart"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Particle">
+                        <classes>
+                            <memberOf key="model.NamePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="FamilyName">
+                        <classes>
+                            <memberOf key="model.NamePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Suffix">
+                        <classes>
+                            <memberOf key="model.NamePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Contact">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.ContactPart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+
+                    <elementSpec ident="Email">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="URL">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Affiliation">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="OrgDivision"/>
+                                    <rng:ref name="OrgName"/>
+                                    <rng:ref name="OrgAddress"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="OrgDivision">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="OrgName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="OrgAddress">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.ContactPart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Street">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Postbox">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Postcode">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="City">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="State">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Country">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ChapterInfo and sub-elements -->
+
+                    <elementSpec ident="ChapterID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterSequenceNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterSubTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterFirstPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterLastPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterCopyright">
+                        <content>
+                            <rng:group>
+                                <rng:ref name="CopyrightHolderName"/>
+                                <rng:ref name="CopyrightYear"/>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterHistory">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="RegistrationDate"/>
+                                    <rng:ref name="OnlineDate"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="OnlineDate">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="RegistrationDate">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+
+
+                    <elementSpec ident="ChapterContext">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="SeriesID"/>
+                                    <rng:ref name="BookID"/>
+                                    <rng:ref name="BookTitle"/>
+                                    <rng:ref name="PartID"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!-- BacMatter -->
+
+                    <elementSpec ident="ChapterBackmatter">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Acknowledgments"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="Bibliography"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Acknowledgments">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="SimplePara"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Bibliography">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="Heading"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="Citation"/>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Citation">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:optional>
+                                    <rng:ref name="CitationNumber"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="BibUnstructured"/>
+                                        <rng:ref name="BibChapter"/>
+                                        <rng:ref name="BibArticle"/>
+                                        <rng:ref name="BibBook"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CitationNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BibUnstructured">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.simpleText"/>
+                                    <rng:ref name="ExternalRef"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ExternalRef">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.referenceElements"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="RefSource"/>
+                                <rng:oneOrMore>
+                                    <rng:ref name="RefTarget"/>
+                                </rng:oneOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="InternalRef">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.referenceElements"/>
+                        </classes>
+                        <content>
+                            <rng:group>
+                                <rng:ref name="RefSource"/>
+                                <rng:oneOrMore>
+                                    <rng:ref name="RefTarget"/>
+                                </rng:oneOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="RefSource">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="RefTarget">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="TargetType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Address">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="BibChapter">
+                        <content>
+                            <rng:group>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="BibAuthorName"/>
+                                        <rng:ref name="InstitutionalAuthorName"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="Etal"/>
+                                        <rng:ref name="Year"/>
+                                        <rng:ref name="ChapterTitle"/>
+                                        <rng:ref name="ChapterSubTitle"/>
+                                        <rng:ref name="BookTitle"/>
+                                        <rng:ref name="PublisherName"/>
+                                        <rng:ref name="PublisherLocation"/>
+                                        <rng:ref name="SeriesTitle"/>
+                                        <rng:ref name="BibEditorName"/>
+                                        <rng:ref name="ConfEventName"/>
+                                        <rng:ref name="ConfEventLocation"/>
+                                        <rng:ref name="ConfEventDate"/>
+                                        <rng:ref name="NumberInSeries"/>
+                                        <rng:ref name="FirstPage"/>
+                                        <rng:ref name="LastPage"/>
+                                        <rng:ref name="BibComments"/>
+                                        <rng:ref name="Eds"/>
+                                        <rng:ref name="EditionNumber"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BibArticle">
+                        <content>
+                            <rng:group>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="BibAuthorName"/>
+                                        <rng:ref name="InstitutionalAuthorName"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                                <rng:optional>
+                                    <rng:ref name="Etal"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="Year"/>
+                                        <rng:ref name="ArticleTitle"/>
+                                        <rng:ref name="JournalTitle"/>
+                                        <rng:ref name="PublisherName"/>
+                                        <rng:ref name="PublisherLocation"/>
+                                        <rng:ref name="SeriesTitle"/>
+                                        <rng:ref name="BibEditorName"/>
+                                        <rng:ref name="ConfEventName"/>
+                                        <rng:ref name="ConfEventLocation"/>
+                                        <rng:ref name="ConfEventDate"/>
+                                        <rng:ref name="NumberInSeries"/>
+                                        <rng:ref name="FirstPage"/>
+                                        <rng:ref name="LastPage"/>
+                                        <rng:ref name="VolumeID"/>
+                                        <rng:ref name="IssueID"/>
+                                        <rng:ref name="BibComments"/>
+                                        <rng:ref name="Eds"/>
+                                        <rng:ref name="BibArticleDOI"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BibBook">
+                        <content>
+                            <rng:group>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="BibAuthorName"/>
+                                        <rng:ref name="InstitutionalAuthorName"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                                <rng:optional>
+                                    <rng:ref name="Etal"/>
+                                </rng:optional>
+                                <rng:zeroOrMore>
+                                    <rng:choice>
+                                        <rng:ref name="Year"/>
+                                        <rng:ref name="ChapterTitle"/>
+                                        <rng:ref name="ChapterSubTitle"/>
+                                        <rng:ref name="BookTitle"/>
+                                        <rng:ref name="PublisherName"/>
+                                        <rng:ref name="PublisherLocation"/>
+                                        <rng:ref name="SeriesTitle"/>
+                                        <rng:ref name="BibEditorName"/>
+                                        <rng:ref name="ConfEventName"/>
+                                        <rng:ref name="ConfEventLocation"/>
+                                        <rng:ref name="ConfEventDate"/>
+                                        <rng:ref name="NumberInSeries"/>
+                                        <rng:ref name="FirstPage"/>
+                                        <rng:ref name="LastPage"/>
+                                        <rng:ref name="BibComments"/>
+                                        <rng:ref name="Eds"/>
+                                        <rng:ref name="EditionNumber"/>
+                                        <rng:ref name="InstitutionalAuthorName"/>
+                                    </rng:choice>
+                                </rng:zeroOrMore>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+
+                    <elementSpec ident="VolumeID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="IssueID">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="EditionNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BibAuthorName">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="InstitutionalAuthorName">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Etal">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="BibArticleDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BibEditorName">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Year">
+                        <classes>
+                            <memberOf key="model.DatePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Month">
+                        <classes>
+                            <memberOf key="model.DatePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Day">
+                        <classes>
+                            <memberOf key="model.DatePart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <elementSpec ident="ConfEventName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+
+                    <elementSpec ident="NumberInSeries">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="FirstPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="LastPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BibComments">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Eds">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- Captions -->
+
+                    <elementSpec ident="Caption">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="CaptionNumber"/>
+                            </rng:optional>
+                            <rng:ref name="CaptionContent"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CaptionNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CaptionContent">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="SimplePara"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!-- end of Captions -->
+
+                    <!-- New JobSheet element -->
+
+                    <elementSpec ident="JobSheet">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="BookJobSheet"/>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="Version" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ObjectID" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="JobSheetDate" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Supplier" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="BookJobSheet">
+                        <content>
+                            <rng:group>
+                                <rng:ref name="PublisherInfo"/>
+                                <rng:ref name="SeriesInfo"/>
+                                <rng:ref name="SeriesHeader"/>
+                                <rng:ref name="BookInfo"/>
+                                <rng:ref name="EditorGroup"/>
+                                <rng:ref name="ProductionInfo"/>
+                            </rng:group>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SeriesHeader">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="CollaboratorGroup"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="SeriesInformationText"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SeriesInformationText">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Para"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ProductionInfo">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- Definition of attribute classes for the Springer specification -->
+                    <classSpec ident="att.OutputMedium" type="atts">
+                        <attList>
+                            <attDef ident="OutputMedium" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+
+                    <!-- Attribute for giving an identifier to an element -->
+                    <classSpec ident="att.ID" type="atts">
+                        <desc>provides the ID attribute</desc>
+                        <attList>
+                            <attDef ident="ID" usage="opt">
+                                <datatype>
+                                    <data xmlns="http://relaxng.org/ns/structure/1.0" type="ID"/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+                    <!-- Attribute for giving a language to an element -->
+                    <classSpec ident="att.language" type="atts">
+                        <desc>provides the language attribute</desc>
+                        <attList>
+                            <attDef ident="Language" usage="opt">
+                                <desc>characterizes the working language of the content of the element</desc>
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+                    <!-- Attribute for numbering components in a book -->
+                    <classSpec ident="att.numbered" type="atts">
+                        <attList>
+                            <attDef ident="NumberingStyle" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="NumberingDepth" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+
+                    <!-- Attribute for typing elements -->
+                    <classSpec ident="att.Typed" type="atts">
+                        <attList>
+                            <attDef ident="Type" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+
+                    <classSpec ident="att.roled" type="atts">
+                        <attList>
+                            <attDef ident="role">
+                                <desc>A contextual role or relationship for the person, family, corporate body, or geographic location. In linking elements such as <gi>ptr</gi>, information that
+                                    explains to application software the part that a remote resource plays in a link.</desc>
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+
+                    <!-- XLINK attributes -->
+                    <classSpec ident="att.xlink" type="atts">
+                        <desc> Provides the definition of all XLink attributes needed for MLIF.</desc>
+                        <attList>
+                            <attDef ident="label" ns="http://www.w3.org/1999/xlink">
+                                <desc>Labels the resource of locater element.</desc>
+                                <datatype>
+                                    <text xmlns="http://relaxng.org/ns/structure/1.0"/>
+                                </datatype>
+                                <remarks>
+                                    <p>XLink traversal attribute</p>
+                                </remarks>
+                            </attDef>
+                            <attDef ident="href" ns="http://www.w3.org/1999/xlink">
+                                <desc>Supplies the data to find a remote resource.</desc>
+                                <datatype>
+                                    <text xmlns="http://relaxng.org/ns/structure/1.0"/>
+                                </datatype>
+                                <remarks>
+                                    <p>Specifies a document (URI) and an XPointer</p>
+                                </remarks>
+                            </attDef>
+                            <attDef ident="type" ns="http://www.w3.org/1999/xlink">
+                                <desc>Indicates the XLink element type.</desc>
+                                <valList>
+                                    <valItem ident="simple">
+                                        <desc>Creates a simple link.</desc>
+                                    </valItem>
+                                    <valItem ident="extended">
+                                        <desc>Creates an extended link.</desc>
+                                    </valItem>
+                                    <valItem ident="locator">
+                                        <desc>Creates a locater link that points to a resource.</desc>
+                                    </valItem>
+                                    <valItem ident="arc">
+                                        <desc>Creates an arc with multiple resources and various traversal paths.</desc>
+                                    </valItem>
+                                    <valItem ident="resource">
+                                        <desc>Creates a resource link, which indicates a specific resource.</desc>
+                                    </valItem>
+                                    <valItem ident="title">
+                                        <desc>Creates a title link. Such elements are useful for internationalization purposes.</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
+                            <attDef ident="title" ns="http://www.w3.org/1999/xlink">
+                                <desc>Allows a human-readable description.</desc>
+                                <datatype>
+                                    <text xmlns="http://relaxng.org/ns/structure/1.0"/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="from" ns="http://www.w3.org/1999/xlink">
+                                <desc>Identifies the origin resource of an arc.</desc>
+                                <datatype>
+                                    <text xmlns="http://relaxng.org/ns/structure/1.0"/>
+                                </datatype>
+                                <remarks>
+                                    <p>XLink transversal attribute</p>
+                                </remarks>
+                            </attDef>
+                            <attDef ident="to" ns="http://www.w3.org/1999/xlink">
+                                <desc>Identifies the destination resource of an arc.</desc>
+                                <datatype>
+                                    <text xmlns="http://relaxng.org/ns/structure/1.0"/>
+                                </datatype>
+                                <remarks>
+                                    <p>XLink traversal attribute</p>
+                                </remarks>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+                    <!-- Model classes -->
+
+                    <classSpec ident="model.ConferenceInfoPart" type="model"/>
+
+                    <classSpec ident="model.ContactPart" type="model"/>
+
+
+                    <classSpec ident="model.DatePart" type="model"/>
+
+                    <classSpec ident="model.PartInfoPart" type="model"/>
+
+                    <classSpec ident="model.NamePart" type="model"/>
+
+                    <classSpec ident="model.referenceElements" type="model">
+                        <classes>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                    </classSpec>
+
+                    <elementSpec ident="Superscript">
+                        <classes>
+                            <memberOf key="model.verySimpleText"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="Emphasis"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Subscript">
+                        <classes>
+                            <memberOf key="model.verySimpleText"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="Emphasis"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Stack">
+                        <classes>
+                            <memberOf key="model.verySimpleText"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Emphasis">
+                        <classes>
+                            <memberOf key="model.verySimpleText"/>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="FontCategory">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CitationRef">
+                        <classes>
+                            <memberOf key="model.referenceElements"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CitationID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- Classes for text models -->
+
+                    <classSpec ident="model.verySimpleText" type="model">
+                        <classes>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                    </classSpec>
+
+                    <!-- Definition of model.simpleText and direct members -->
+                    <!-- <!ENTITY % SimpleTextModel "%VerySimpleTextModel; | InlineEquation | Literal | IndexTerm | GlossaryTerm | Footnote | Sidebar | InlineMediaObject">
+ -->
+                    <classSpec ident="model.simpleText" type="model">
+                        <classes>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                    </classSpec>
+
+
+                    <elementSpec ident="Literal">
+                        <classes>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="Emphasis"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Footnote">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Para"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Sidebar">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="att.Typed"/>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Para"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+
+                    <!--       
+                    <!ELEMENT Stack (Subscript, Superscript)>
+                    
+                    <!ELEMENT Sidebar (Para+)>
+                    <!ATTLIST Sidebar
+                    Type (Lexicon | Dialog | Number) #IMPLIED
+                    >
+-->
+
+                    <!-- Cover information
+                    <!ELEMENT Cover (CoverInfo, CoverFigure?, BodyRef*)>
+<!ELEMENT CoverInfo (CoverFirstPage, CoverLastPage)>
+<!ELEMENT CoverFirstPage (#PCDATA)>
+<!ELEMENT CoverLastPage (#PCDATA)>
+<!ELEMENT CoverFigure (MediaObject)>
+
+                    -->
+
+                    <elementSpec ident="Cover">
+                        <content>
+                            <rng:ref name="CoverInfo"/>
+                            <rng:optional>
+                                <rng:ref name="CoverFigure"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="BodyRef"/>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="Type">
+                                <valList>
+                                    <valItem ident="TwoPage"/>
+                                    <valItem ident="FourPage"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+
+                    <elementSpec ident="CoverInfo">
+                        <content>
+                            <rng:ref name="CoverFirstPage"/>
+                            <rng:ref name="CoverLastPage"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CoverFirstPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CoverLastPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CoverFigure">
+                        <content>
+                            <rng:ref name="MediaObject"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- <!ENTITY % FullTextModel "%SimpleTextModel; | %ListElements; | %ReferenceElements; | Figure | MediaObject | Table | BlockQuote | Equation | Quiz"> -->
+
+                    <classSpec ident="model.fullText" type="model"/>
+
+                    <elementSpec ident="Figure">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Caption"/>
+                            </rng:zeroOrMore>
+                            <rng:oneOrMore>
+                                <rng:ref name="MediaObject"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="MediaObject">
+                        <classes>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- 
+                    <!ELEMENT Figure (Caption*, MediaObject+)>
+<!ATTLIST Figure
+	ID ID #REQUIRED
+	Float %BooleanAttrValues; #REQUIRED
+	Category (Schema | Structure | Standard | Logo) #REQUIRED
+>
+<!ELEMENT InlineMediaObject ((VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
+<!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
+<!ATTLIST MediaObject
+	ID ID #IMPLIED
+>
+<!ELEMENT VideoObject (Caption*)>
+<!ATTLIST VideoObject
+	FileRef CDATA #REQUIRED
+	VideoID CDATA #IMPLIED
+	%DCTMLinkAtts; 
+>
+<!ELEMENT AudioObject (Caption*)>
+<!ATTLIST AudioObject
+	FileRef CDATA #REQUIRED
+	AudioID CDATA #IMPLIED
+	%DCTMLinkAtts; 
+>
+<!ELEMENT ImageObject (Caption*)>
+<!ATTLIST ImageObject
+	FileRef CDATA #REQUIRED
+	Format (GIF | TIFF | EPS | JPEG | PNG | SVG) #REQUIRED
+	Color (Color | BlackWhite) #REQUIRED
+	Type (Linedraw | Halftone | LinedrawHalftone) #REQUIRED
+	Rendition (Print | HTML | ProofPDF | Preview) #REQUIRED
+	%DCTMLinkAtts; 
+>
+<!ELEMENT DataObject (Caption*)>
+<!ATTLIST DataObject
+	FileRef CDATA #REQUIRED
+	%DCTMLinkAtts; 
+>
+<!ELEMENT TextObject (Para)+>
+<!ELEMENT Cover (CoverInfo, CoverFigure?, BodyRef*)>
+<!ATTLIST Cover
+	Type (TwoPage | FourPage) #IMPLIED
+>
+<!ELEMENT CoverInfo (CoverFirstPage, CoverLastPage)>
+<!ELEMENT AdditionalCoverInfo (AdditionalCoverSequenceNumber?, AdditionalCoverFirstPage, AdditionalCoverLastPage)>
+<!ELEMENT CoverFirstPage (#PCDATA)>
+<!ELEMENT CoverLastPage (#PCDATA)>
+<!ELEMENT AdditionalCoverSequenceNumber (#PCDATA)>
+<!ELEMENT AdditionalCoverFirstPage (#PCDATA)>
+<!ELEMENT AdditionalCoverLastPage (#PCDATA)>
+<!ELEMENT CoverFigure (MediaObject)>-->
+
+                    <!-- Defining Text Macros -->
+
+                    <macroSpec type="pe" ident="macro.SimpleTextModel">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.simpleText"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </macroSpec>
+
+                    <macroSpec type="pe" ident="macro.FullTextModel">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.fullText"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </macroSpec>
+
+                    <macroSpec type="pe" ident="macro.VerySimpleTextModel">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.verySimpleText"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </macroSpec>
+
+
+                </schemaSpec>
+            </div>
+        </body>
+    </text>
+</TEI>

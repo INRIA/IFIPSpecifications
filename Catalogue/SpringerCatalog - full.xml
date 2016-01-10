@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog 
+      PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" 
+      "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
+      
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    
+    <public publicId="-//Springer-Verlag//DTD A++ V2.4//EN" uri="SpringerBook.dtd"/>
+    <!-- Use "system" and "public" mappings when resolving DTDs -->
+    <!--<system 
+        systemId="http://devel.springer.de/A++/V2.4/DTD/A++V2.4.dtd" 
+        uri="SpringerBook.dtd"/> 
+    -->
+    <!-- The "systemSuffix" matches any system ID ending in a specified string -->
+    <!--<systemSuffix 
+        systemIdSuffix="A++V2.4.dtd" 
+        uri="SpringerBook.dtd"/>-->
+        
+</catalog>

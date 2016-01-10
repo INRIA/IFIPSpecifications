@@ -1,0 +1,874 @@
+
+<!--
+DTD generated from ODD source 2016-01-09T18:26:40Z. .CC-BY
+TEI Edition: Version 2.9.1. Last updated on
+	15th October 2015, revision 46ac023
+TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
+
+-->
+
+<!-- start datatypes -->
+
+<!ENTITY % data.certainty '(high|medium|low|unknown)' >
+
+<!ENTITY % data.probability ' CDATA ' >
+
+<!ENTITY % data.numeric ' CDATA' >
+
+<!ENTITY % data.count ' CDATA ' >
+
+<!ENTITY % data.temporal.w3c ' CDATA' >
+
+<!ENTITY % data.duration.w3c ' CDATA ' >
+
+<!ENTITY % data.truthValue ' CDATA ' >
+
+<!ENTITY % data.xTruthValue ' CDATA' >
+
+<!ENTITY % data.language ' CDATA' >
+
+<!ENTITY % data.outputMeasurement ' CDATA ' >
+
+<!ENTITY % data.pointer ' CDATA ' >
+
+<!ENTITY % data.versionNumber ' CDATA ' >
+
+<!ENTITY % data.word ' CDATA ' >
+
+<!ENTITY % data.text ' CDATA ' >
+
+<!ENTITY % data.name ' CDATA ' >
+
+<!ENTITY % data.enumerated '%data.word;' >
+
+<!ENTITY % data.duration.iso ' CDATA ' >
+
+<!-- end datatypes -->
+
+<!-- predeclared classes -->
+
+<!ENTITY % model.placeNamePart ""> 
+<!ENTITY % model.placeNamePart_sequence ""> 
+<!ENTITY % model.placeNamePart_sequenceOptional ""> 
+<!ENTITY % model.placeNamePart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.placeNamePart_sequenceRepeatable ""> 
+<!ENTITY % model.placeStateLike ""> 
+<!ENTITY % model.placeStateLike_sequence ""> 
+<!ENTITY % model.placeStateLike_sequenceOptional ""> 
+<!ENTITY % model.placeStateLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.placeStateLike_sequenceRepeatable ""> 
+<!ENTITY % model.ConferenceInfoPart "ConfSeriesName |ConfEventAbbreviation |ConfNumber |ConfEventLocation |ConfEventDateStart |ConfEventDateEnd"> 
+<!ENTITY % model.ConferenceInfoPart_sequence "ConfSeriesName, ConfEventAbbreviation, ConfNumber, ConfEventLocation, ConfEventDateStart, ConfEventDateEnd"> 
+<!ENTITY % model.ConferenceInfoPart_sequenceOptional "ConfSeriesName?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, ConfEventDateStart?, ConfEventDateEnd?"> 
+<!ENTITY % model.ConferenceInfoPart_sequenceOptionalRepeatable "ConfSeriesName*, ConfEventAbbreviation*, ConfNumber*, ConfEventLocation*, ConfEventDateStart*, ConfEventDateEnd*"> 
+<!ENTITY % model.ConferenceInfoPart_sequenceRepeatable "ConfSeriesName+, ConfEventAbbreviation+, ConfNumber+, ConfEventLocation+, ConfEventDateStart+, ConfEventDateEnd+"> 
+<!ENTITY % model.ContactPart "Email |URL |Street |Postbox |Postcode |City |State |Country"> 
+<!ENTITY % model.ContactPart_sequence "Email, URL, Street, Postbox, Postcode, City, State, Country"> 
+<!ENTITY % model.ContactPart_sequenceOptional "Email?, URL?, Street?, Postbox?, Postcode?, City?, State?, Country?"> 
+<!ENTITY % model.ContactPart_sequenceOptionalRepeatable "Email*, URL*, Street*, Postbox*, Postcode*, City*, State*, Country*"> 
+<!ENTITY % model.ContactPart_sequenceRepeatable "Email+, URL+, Street+, Postbox+, Postcode+, City+, State+, Country+"> 
+<!ENTITY % model.DatePart "Year |Month |Day"> 
+<!ENTITY % model.DatePart_sequence "Year, Month, Day"> 
+<!ENTITY % model.DatePart_sequenceOptional "Year?, Month?, Day?"> 
+<!ENTITY % model.DatePart_sequenceOptionalRepeatable "Year*, Month*, Day*"> 
+<!ENTITY % model.DatePart_sequenceRepeatable "Year+, Month+, Day+"> 
+<!ENTITY % model.PartInfoPart "PartID |PartNumber |PartSequenceNumber |PartTitle |PartSubTitle |PartChapterCount |PartContext"> 
+<!ENTITY % model.PartInfoPart_sequence "PartID, PartNumber, PartSequenceNumber, PartTitle, PartSubTitle, PartChapterCount, PartContext"> 
+<!ENTITY % model.PartInfoPart_sequenceOptional "PartID?, PartNumber?, PartSequenceNumber?, PartTitle?, PartSubTitle?, PartChapterCount?, PartContext?"> 
+<!ENTITY % model.PartInfoPart_sequenceOptionalRepeatable "PartID*, PartNumber*, PartSequenceNumber*, PartTitle*, PartSubTitle*, PartChapterCount*, PartContext*"> 
+<!ENTITY % model.PartInfoPart_sequenceRepeatable "PartID+, PartNumber+, PartSequenceNumber+, PartTitle+, PartSubTitle+, PartChapterCount+, PartContext+"> 
+<!ENTITY % model.NamePart "GivenName |Initials |NoInitials |Particle |FamilyName |Suffix"> 
+<!ENTITY % model.NamePart_sequence "GivenName, Initials, NoInitials, Particle, FamilyName, Suffix"> 
+<!ENTITY % model.NamePart_sequenceOptional "GivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?"> 
+<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*"> 
+<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+"> 
+<!ENTITY % model.referenceElements "ExternalRef |InternalRef |CitationRef"> 
+<!ENTITY % model.referenceElements_sequence "ExternalRef, InternalRef, CitationRef"> 
+<!ENTITY % model.referenceElements_sequenceOptional "ExternalRef?, InternalRef?, CitationRef?"> 
+<!ENTITY % model.referenceElements_sequenceOptionalRepeatable "ExternalRef*, InternalRef*, CitationRef*"> 
+<!ENTITY % model.referenceElements_sequenceRepeatable "ExternalRef+, InternalRef+, CitationRef+"> 
+<!ENTITY % model.verySimpleText "Superscript |Subscript |Stack |Emphasis"> 
+<!ENTITY % model.verySimpleText_sequence "Superscript, Subscript, Stack, Emphasis"> 
+<!ENTITY % model.verySimpleText_sequenceOptional "Superscript?, Subscript?, Stack?, Emphasis?"> 
+<!ENTITY % model.verySimpleText_sequenceOptionalRepeatable "Superscript*, Subscript*, Stack*, Emphasis*"> 
+<!ENTITY % model.verySimpleText_sequenceRepeatable "Superscript+, Subscript+, Stack+, Emphasis+"> 
+<!ENTITY % model.simpleText "%model.verySimpleText; |Literal |Footnote |Sidebar"> 
+<!ENTITY % model.simpleText_sequence "%model.verySimpleText;, Literal, Footnote, Sidebar"> 
+<!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
+<!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
+<!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
+<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, Figure+, MediaObject+"> 
+<!-- end of predeclared classes -->
+
+<!ENTITY % model.nameLike.agent ""> 
+<!ENTITY % model.nameLike.agent_sequence ""> 
+<!ENTITY % model.nameLike.agent_sequenceOptional ""> 
+<!ENTITY % model.nameLike.agent_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.nameLike.agent_sequenceRepeatable ""> 
+<!ENTITY % model.segLike ""> 
+<!ENTITY % model.segLike_sequence ""> 
+<!ENTITY % model.segLike_sequenceOptional ""> 
+<!ENTITY % model.segLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.segLike_sequenceRepeatable ""> 
+<!ENTITY % model.hiLike ""> 
+<!ENTITY % model.hiLike_sequence ""> 
+<!ENTITY % model.hiLike_sequenceOptional ""> 
+<!ENTITY % model.hiLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.hiLike_sequenceRepeatable ""> 
+<!ENTITY % model.emphLike ""> 
+<!ENTITY % model.emphLike_sequence ""> 
+<!ENTITY % model.emphLike_sequenceOptional ""> 
+<!ENTITY % model.emphLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.emphLike_sequenceRepeatable ""> 
+<!ENTITY % model.highlighted ""> 
+<!ENTITY % model.highlighted_sequence ""> 
+<!ENTITY % model.highlighted_sequenceOptional ""> 
+<!ENTITY % model.highlighted_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.highlighted_sequenceRepeatable ""> 
+<!ENTITY % model.dateLike ""> 
+<!ENTITY % model.dateLike_sequence ""> 
+<!ENTITY % model.dateLike_sequenceOptional ""> 
+<!ENTITY % model.dateLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.dateLike_sequenceRepeatable ""> 
+<!ENTITY % model.measureLike ""> 
+<!ENTITY % model.measureLike_sequence ""> 
+<!ENTITY % model.measureLike_sequenceOptional ""> 
+<!ENTITY % model.measureLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.measureLike_sequenceRepeatable ""> 
+<!ENTITY % model.egLike ""> 
+<!ENTITY % model.egLike_sequence ""> 
+<!ENTITY % model.egLike_sequenceOptional ""> 
+<!ENTITY % model.egLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.egLike_sequenceRepeatable ""> 
+<!ENTITY % model.graphicLike ""> 
+<!ENTITY % model.graphicLike_sequence ""> 
+<!ENTITY % model.graphicLike_sequenceOptional ""> 
+<!ENTITY % model.graphicLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.graphicLike_sequenceRepeatable ""> 
+<!ENTITY % model.offsetLike ""> 
+<!ENTITY % model.offsetLike_sequence ""> 
+<!ENTITY % model.offsetLike_sequenceOptional ""> 
+<!ENTITY % model.offsetLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.offsetLike_sequenceRepeatable ""> 
+<!ENTITY % model.pPart.msdesc ""> 
+<!ENTITY % model.pPart.msdesc_sequence ""> 
+<!ENTITY % model.pPart.msdesc_sequenceOptional ""> 
+<!ENTITY % model.pPart.msdesc_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.pPart.msdesc_sequenceRepeatable ""> 
+<!ENTITY % model.pPart.editorial ""> 
+<!ENTITY % model.pPart.editorial_sequence ""> 
+<!ENTITY % model.pPart.editorial_sequenceOptional ""> 
+<!ENTITY % model.pPart.editorial_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.pPart.editorial_sequenceRepeatable ""> 
+<!ENTITY % model.pPart.transcriptional ""> 
+<!ENTITY % model.pPart.transcriptional_sequence ""> 
+<!ENTITY % model.pPart.transcriptional_sequenceOptional ""> 
+<!ENTITY % model.pPart.transcriptional_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.pPart.transcriptional_sequenceRepeatable ""> 
+<!ENTITY % model.pPart.edit ""> 
+<!ENTITY % model.pPart.edit_sequence ""> 
+<!ENTITY % model.pPart.edit_sequenceOptional ""> 
+<!ENTITY % model.pPart.edit_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.pPart.edit_sequenceRepeatable ""> 
+<!ENTITY % model.ptrLike ""> 
+<!ENTITY % model.ptrLike_sequence ""> 
+<!ENTITY % model.ptrLike_sequenceOptional ""> 
+<!ENTITY % model.ptrLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.ptrLike_sequenceRepeatable ""> 
+<!ENTITY % model.lPart ""> 
+<!ENTITY % model.lPart_sequence ""> 
+<!ENTITY % model.lPart_sequenceOptional ""> 
+<!ENTITY % model.lPart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.lPart_sequenceRepeatable ""> 
+<!ENTITY % model.global.meta ""> 
+<!ENTITY % model.global.meta_sequence ""> 
+<!ENTITY % model.global.meta_sequenceOptional ""> 
+<!ENTITY % model.global.meta_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.global.meta_sequenceRepeatable ""> 
+<!ENTITY % model.milestoneLike ""> 
+<!ENTITY % model.milestoneLike_sequence ""> 
+<!ENTITY % model.milestoneLike_sequenceOptional ""> 
+<!ENTITY % model.milestoneLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.milestoneLike_sequenceRepeatable ""> 
+<!ENTITY % model.gLike ""> 
+<!ENTITY % model.gLike_sequence ""> 
+<!ENTITY % model.gLike_sequenceOptional ""> 
+<!ENTITY % model.gLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.gLike_sequenceRepeatable ""> 
+<!ENTITY % model.oddDecl ""> 
+<!ENTITY % model.oddDecl_sequence ""> 
+<!ENTITY % model.oddDecl_sequenceOptional ""> 
+<!ENTITY % model.oddDecl_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.oddDecl_sequenceRepeatable ""> 
+<!ENTITY % model.phrase.xml ""> 
+<!ENTITY % model.phrase.xml_sequence ""> 
+<!ENTITY % model.phrase.xml_sequenceOptional ""> 
+<!ENTITY % model.phrase.xml_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.phrase.xml_sequenceRepeatable ""> 
+<!ENTITY % model.specDescLike ""> 
+<!ENTITY % model.specDescLike_sequence ""> 
+<!ENTITY % model.specDescLike_sequenceOptional ""> 
+<!ENTITY % model.specDescLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.specDescLike_sequenceRepeatable ""> 
+<!ENTITY % model.biblLike ""> 
+<!ENTITY % model.biblLike_sequence ""> 
+<!ENTITY % model.biblLike_sequenceOptional ""> 
+<!ENTITY % model.biblLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.biblLike_sequenceRepeatable ""> 
+<!ENTITY % model.labelLike ""> 
+<!ENTITY % model.labelLike_sequence ""> 
+<!ENTITY % model.labelLike_sequenceOptional ""> 
+<!ENTITY % model.labelLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.labelLike_sequenceRepeatable ""> 
+<!ENTITY % model.listLike ""> 
+<!ENTITY % model.listLike_sequence ""> 
+<!ENTITY % model.listLike_sequenceOptional ""> 
+<!ENTITY % model.listLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.listLike_sequenceRepeatable ""> 
+<!ENTITY % model.noteLike ""> 
+<!ENTITY % model.noteLike_sequence ""> 
+<!ENTITY % model.noteLike_sequenceOptional ""> 
+<!ENTITY % model.noteLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.noteLike_sequenceRepeatable ""> 
+<!ENTITY % model.lLike ""> 
+<!ENTITY % model.lLike_sequence ""> 
+<!ENTITY % model.lLike_sequenceOptional ""> 
+<!ENTITY % model.lLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.lLike_sequenceRepeatable ""> 
+<!ENTITY % model.pLike ""> 
+<!ENTITY % model.pLike_sequence ""> 
+<!ENTITY % model.pLike_sequenceOptional ""> 
+<!ENTITY % model.pLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.pLike_sequenceRepeatable ""> 
+<!ENTITY % model.stageLike ""> 
+<!ENTITY % model.stageLike_sequence ""> 
+<!ENTITY % model.stageLike_sequenceOptional ""> 
+<!ENTITY % model.stageLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.stageLike_sequenceRepeatable ""> 
+<!ENTITY % model.global.edit ""> 
+<!ENTITY % model.global.edit_sequence ""> 
+<!ENTITY % model.global.edit_sequenceOptional ""> 
+<!ENTITY % model.global.edit_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.global.edit_sequenceRepeatable ""> 
+<!ENTITY % model.divPart ""> 
+<!ENTITY % model.divPart_sequence ""> 
+<!ENTITY % model.divPart_sequenceOptional ""> 
+<!ENTITY % model.divPart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.divPart_sequenceRepeatable ""> 
+<!ENTITY % model.placeNamePart ""> 
+<!ENTITY % model.placeNamePart_sequence ""> 
+<!ENTITY % model.placeNamePart_sequenceOptional ""> 
+<!ENTITY % model.placeNamePart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.placeNamePart_sequenceRepeatable ""> 
+<!ENTITY % model.placeStateLike ""> 
+<!ENTITY % model.placeStateLike_sequence ""> 
+<!ENTITY % model.placeStateLike_sequenceOptional ""> 
+<!ENTITY % model.placeStateLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.placeStateLike_sequenceRepeatable ""> 
+<!ENTITY % model.quoteLike ""> 
+<!ENTITY % model.quoteLike_sequence ""> 
+<!ENTITY % model.quoteLike_sequenceOptional ""> 
+<!ENTITY % model.quoteLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.quoteLike_sequenceRepeatable ""> 
+<!ENTITY % model.qLike ""> 
+<!ENTITY % model.qLike_sequence ""> 
+<!ENTITY % model.qLike_sequenceOptional ""> 
+<!ENTITY % model.qLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.qLike_sequenceRepeatable ""> 
+<!ENTITY % model.addressLike ""> 
+<!ENTITY % model.addressLike_sequence ""> 
+<!ENTITY % model.addressLike_sequenceOptional ""> 
+<!ENTITY % model.addressLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.addressLike_sequenceRepeatable ""> 
+<!ENTITY % model.nameLike ""> 
+<!ENTITY % model.nameLike_sequence ""> 
+<!ENTITY % model.nameLike_sequenceOptional ""> 
+<!ENTITY % model.nameLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.nameLike_sequenceRepeatable ""> 
+<!ENTITY % model.global ""> 
+<!ENTITY % model.global_sequence ""> 
+<!ENTITY % model.global_sequenceOptional ""> 
+<!ENTITY % model.global_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.global_sequenceRepeatable ""> 
+<!ENTITY % model.pPart.data ""> 
+<!ENTITY % model.pPart.data_sequence ""> 
+<!ENTITY % model.pPart.data_sequenceOptional ""> 
+<!ENTITY % model.pPart.data_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.pPart.data_sequenceRepeatable ""> 
+<!ENTITY % model.inter ""> 
+<!ENTITY % model.inter_sequence ""> 
+<!ENTITY % model.inter_sequenceOptional ""> 
+<!ENTITY % model.inter_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.inter_sequenceRepeatable ""> 
+<!ENTITY % model.phrase ""> 
+<!ENTITY % model.phrase_sequence ""> 
+<!ENTITY % model.phrase_sequenceOptional ""> 
+<!ENTITY % model.phrase_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.phrase_sequenceRepeatable ""> 
+<!ENTITY % model.limitedPhrase ""> 
+<!ENTITY % model.limitedPhrase_sequence ""> 
+<!ENTITY % model.limitedPhrase_sequenceOptional ""> 
+<!ENTITY % model.limitedPhrase_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.limitedPhrase_sequenceRepeatable ""> 
+<!ENTITY % att.OutputMedium.attribute.OutputMedium '
+OutputMedium CDATA #IMPLIED'>
+<!ENTITY % att.OutputMedium.attributes '
+ %att.OutputMedium.attribute.OutputMedium;'> 
+<!ENTITY % att.ID.attribute.ID '
+ID ID #IMPLIED'>
+<!ENTITY % att.ID.attributes '
+ %att.ID.attribute.ID;'> 
+<!ENTITY % att.language.attribute.Language '
+Language CDATA #IMPLIED'>
+<!ENTITY % att.language.attributes '
+ %att.language.attribute.Language;'> 
+<!ENTITY % att.numbered.attribute.NumberingStyle '
+NumberingStyle CDATA #IMPLIED'>
+
+<!ENTITY % att.numbered.attribute.NumberingDepth '
+NumberingDepth CDATA #IMPLIED'>
+<!ENTITY % att.numbered.attributes '
+ %att.numbered.attribute.NumberingStyle;
+ %att.numbered.attribute.NumberingDepth;'> 
+<!ENTITY % att.Typed.attribute.Type '
+Type CDATA #IMPLIED'>
+<!ENTITY % att.Typed.attributes '
+ %att.Typed.attribute.Type;'> 
+<!ENTITY % model.ConferenceInfoPart "ConfSeriesName |ConfEventAbbreviation |ConfNumber |ConfEventLocation |ConfEventDateStart |ConfEventDateEnd"> 
+<!ENTITY % model.ConferenceInfoPart_sequence "ConfSeriesName, ConfEventAbbreviation, ConfNumber, ConfEventLocation, ConfEventDateStart, ConfEventDateEnd"> 
+<!ENTITY % model.ConferenceInfoPart_sequenceOptional "ConfSeriesName?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, ConfEventDateStart?, ConfEventDateEnd?"> 
+<!ENTITY % model.ConferenceInfoPart_sequenceOptionalRepeatable "ConfSeriesName*, ConfEventAbbreviation*, ConfNumber*, ConfEventLocation*, ConfEventDateStart*, ConfEventDateEnd*"> 
+<!ENTITY % model.ConferenceInfoPart_sequenceRepeatable "ConfSeriesName+, ConfEventAbbreviation+, ConfNumber+, ConfEventLocation+, ConfEventDateStart+, ConfEventDateEnd+"> 
+<!ENTITY % model.ContactPart "Email |URL |Street |Postbox |Postcode |City |State |Country"> 
+<!ENTITY % model.ContactPart_sequence "Email, URL, Street, Postbox, Postcode, City, State, Country"> 
+<!ENTITY % model.ContactPart_sequenceOptional "Email?, URL?, Street?, Postbox?, Postcode?, City?, State?, Country?"> 
+<!ENTITY % model.ContactPart_sequenceOptionalRepeatable "Email*, URL*, Street*, Postbox*, Postcode*, City*, State*, Country*"> 
+<!ENTITY % model.ContactPart_sequenceRepeatable "Email+, URL+, Street+, Postbox+, Postcode+, City+, State+, Country+"> 
+<!ENTITY % model.DatePart "Year |Month |Day"> 
+<!ENTITY % model.DatePart_sequence "Year, Month, Day"> 
+<!ENTITY % model.DatePart_sequenceOptional "Year?, Month?, Day?"> 
+<!ENTITY % model.DatePart_sequenceOptionalRepeatable "Year*, Month*, Day*"> 
+<!ENTITY % model.DatePart_sequenceRepeatable "Year+, Month+, Day+"> 
+<!ENTITY % model.PartInfoPart "PartID |PartNumber |PartSequenceNumber |PartTitle |PartSubTitle |PartChapterCount |PartContext"> 
+<!ENTITY % model.PartInfoPart_sequence "PartID, PartNumber, PartSequenceNumber, PartTitle, PartSubTitle, PartChapterCount, PartContext"> 
+<!ENTITY % model.PartInfoPart_sequenceOptional "PartID?, PartNumber?, PartSequenceNumber?, PartTitle?, PartSubTitle?, PartChapterCount?, PartContext?"> 
+<!ENTITY % model.PartInfoPart_sequenceOptionalRepeatable "PartID*, PartNumber*, PartSequenceNumber*, PartTitle*, PartSubTitle*, PartChapterCount*, PartContext*"> 
+<!ENTITY % model.PartInfoPart_sequenceRepeatable "PartID+, PartNumber+, PartSequenceNumber+, PartTitle+, PartSubTitle+, PartChapterCount+, PartContext+"> 
+<!ENTITY % model.NamePart "GivenName |Initials |NoInitials |Particle |FamilyName |Suffix"> 
+<!ENTITY % model.NamePart_sequence "GivenName, Initials, NoInitials, Particle, FamilyName, Suffix"> 
+<!ENTITY % model.NamePart_sequenceOptional "GivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?"> 
+<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*"> 
+<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+"> 
+<!ENTITY % model.referenceElements "ExternalRef |InternalRef |CitationRef"> 
+<!ENTITY % model.referenceElements_sequence "ExternalRef, InternalRef, CitationRef"> 
+<!ENTITY % model.referenceElements_sequenceOptional "ExternalRef?, InternalRef?, CitationRef?"> 
+<!ENTITY % model.referenceElements_sequenceOptionalRepeatable "ExternalRef*, InternalRef*, CitationRef*"> 
+<!ENTITY % model.referenceElements_sequenceRepeatable "ExternalRef+, InternalRef+, CitationRef+"> 
+<!ENTITY % model.verySimpleText "Superscript |Subscript |Stack |Emphasis"> 
+<!ENTITY % model.verySimpleText_sequence "Superscript, Subscript, Stack, Emphasis"> 
+<!ENTITY % model.verySimpleText_sequenceOptional "Superscript?, Subscript?, Stack?, Emphasis?"> 
+<!ENTITY % model.verySimpleText_sequenceOptionalRepeatable "Superscript*, Subscript*, Stack*, Emphasis*"> 
+<!ENTITY % model.verySimpleText_sequenceRepeatable "Superscript+, Subscript+, Stack+, Emphasis+"> 
+<!ENTITY % model.simpleText "%model.verySimpleText; |Literal |Footnote |Sidebar"> 
+<!ENTITY % model.simpleText_sequence "%model.verySimpleText;, Literal, Footnote, Sidebar"> 
+<!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
+<!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
+<!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
+<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, Figure+, MediaObject+"> 
+<!-- start rest of patterns -->
+
+<!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
+
+<!ENTITY % macro.FullTextModel '(#PCDATA|%model.fullText;)*' >
+
+<!-- end patterns -->
+
+<!-- start elements -->
+
+<!--doc: -->
+<!ELEMENT Abstract (Heading?,Para*)>
+<!ATTLIST Abstract
+ %att.language.attributes;
+ %att.ID.attributes;
+ %att.OutputMedium.attributes; >
+<!--doc: -->
+<!ELEMENT Acknowledgments ((Heading)?,(SimplePara)*)>
+<!--doc: -->
+<!ELEMENT Affiliation (OrgDivision|OrgName|OrgAddress)+>
+<!ATTLIST Affiliation
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT ArticleNote (Heading?,SimplePara+)>
+<!ATTLIST ArticleNote
+ %att.Typed.attributes; >
+<!--doc: -->
+<!ELEMENT ArticleTitle  (#PCDATA)>
+<!ATTLIST ArticleTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Author (AuthorName,Contact?)>
+<!ATTLIST Author
+AffiliationIDS CDATA #IMPLIED
+CorrespondingAffiliationID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT AuthorGroup (Author+,Affiliation*)>
+<!--doc: -->
+<!ELEMENT AuthorName (%model.NamePart;)+>
+<!--doc: -->
+<!ELEMENT BibArticle ((BibAuthorName|InstitutionalAuthorName)*,Etal?,(Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI)*)>
+<!--doc: -->
+<!ELEMENT BibArticleDOI  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BibAuthorName (%model.NamePart;)*>
+<!--doc: -->
+<!ELEMENT BibBook ((BibAuthorName|InstitutionalAuthorName)*,Etal?,(Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName)*)>
+<!--doc: -->
+<!ELEMENT BibChapter ((BibAuthorName|InstitutionalAuthorName)*,(Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber)*)>
+<!--doc: -->
+<!ELEMENT BibComments  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BibEditorName (%model.NamePart;)*>
+<!--doc: -->
+<!ELEMENT BibUnstructured (#PCDATA|%model.simpleText;|ExternalRef)*>
+<!--doc: -->
+<!ELEMENT Bibliography (Heading?,Citation*)>
+<!ATTLIST Bibliography
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT Body (Section1)+>
+<!--doc: -->
+<!ELEMENT BodyRef EMPTY>
+<!ATTLIST BodyRef
+FileRef CDATA #IMPLIED
+TargetType CDATA #IMPLIED
+PDFType CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT Book (BookInfo,Cover?,BookHeader?,(NoBody|(BodyRef*,BookFrontmatter?,(Part+|Chapter+)?)|BookOnlineFirst))>
+<!ATTLIST Book
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT BookChapterCount  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookContext ((SeriesID)?,(SubSeriesID)?,(BookSetID,BookSetTitle)*,(VolumePackageID)?)>
+<!--doc: -->
+<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine)+>
+<!--doc: -->
+<!ELEMENT BookDOI  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookEdition  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookElectronicISBN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookFrontmatter ((BookFrontmatterInfo)?,(BookFrontmatterHeader)?,NoBody)>
+<!ATTLIST BookFrontmatter
+ %att.OutputMedium.attributes; >
+<!--doc: -->
+<!ELEMENT BookFrontmatterDOI  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookFrontmatterFirstPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookFrontmatterHeader (PageHeaders)?>
+<!--doc: -->
+<!ELEMENT BookFrontmatterInfo ((BookFrontmatterDOI)?,(BookFrontmatterHeader)?,BookFrontmatterFirstPage,BookFrontmatterLastPage)>
+<!--doc: -->
+<!ELEMENT BookFrontmatterLastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookHeader (EditorGroup)>
+<!--doc: -->
+<!ELEMENT BookID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation)+)>
+<!ATTLIST BookInfo
+ %att.language.attributes;
+ %att.numbered.attributes;
+ %att.OutputMedium.attributes;
+BookProductType CDATA #IMPLIED
+TocLevels CDATA #IMPLIED
+ContainsESM CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT BookJobSheet (PublisherInfo,SeriesInfo,SeriesHeader,BookInfo,EditorGroup,ProductionInfo)>
+<!--doc: -->
+<!ELEMENT BookOnlineFirst (Part+|Chapter+)>
+<!--doc: -->
+<!ELEMENT BookPrintISBN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookSequenceNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookSetID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookSetTitle  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookSubTitle  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookSubject  (#PCDATA)>
+<!ATTLIST BookSubject
+ %att.Typed.attributes;
+Code CDATA #IMPLIED
+Priority CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT BookSubjectGroup (BookSubject)*>
+<!--doc: -->
+<!ELEMENT BookTitle  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookTitleID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookVolumeNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookstoreLocation  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Caption ((CaptionNumber)?,CaptionContent)>
+<!ATTLIST Caption
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT CaptionContent (SimplePara)+>
+<!--doc: -->
+<!ELEMENT CaptionNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Chapter (ChapterInfo,ChapterHeader,(NoBody|Body),BodyRef?,ChapterBackmatter?)>
+<!ATTLIST Chapter
+ %att.language.attributes;
+ %att.ID.attributes;
+ %att.OutputMedium.attributes; >
+<!--doc: -->
+<!ELEMENT ChapterBackmatter ((Acknowledgments)?,(Bibliography)?)>
+<!--doc: -->
+<!ELEMENT ChapterContext (SeriesID|BookID|BookTitle|PartID)*>
+<!--doc: -->
+<!ELEMENT ChapterCopyright (CopyrightHolderName,CopyrightYear)>
+<!--doc: -->
+<!ELEMENT ChapterDOI  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterFirstPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterHeader (AuthorGroup?,Abstract*,KeywordGroup*,ArticleNote*)>
+<!--doc: -->
+<!ELEMENT ChapterHistory (RegistrationDate|OnlineDate)+>
+<!--doc: -->
+<!ELEMENT ChapterID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterInfo ((IFIPentity)*,(ChapterID|ChapterDOI|ChapterSequenceNumber|ChapterTitle|ChapterSubTitle|ChapterFirstPage|ChapterLastPage|ChapterCopyright|ChapterContext|ChapterHistory)+)>
+<!ATTLIST ChapterInfo
+ %att.numbered.attributes;
+ %att.OutputMedium.attributes;
+ %att.language.attributes;
+ChapterType CDATA #IMPLIED
+TocLevels CDATA #IMPLIED
+ContainsESM CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT ChapterLastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterSequenceNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterSubTitle %macro.SimpleTextModel;>
+<!ATTLIST ChapterSubTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT ChapterTitle %macro.SimpleTextModel;>
+<!ATTLIST ChapterTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Citation (CitationNumber?,(BibUnstructured|BibChapter|BibArticle|BibBook)*)>
+<!ATTLIST Citation
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT CitationNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CitationRef  (#PCDATA)>
+<!ATTLIST CitationRef
+CitationID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT City  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Collaborator (CollaboratorName,Contact?)>
+<!ATTLIST Collaborator
+ %att.Typed.attributes;
+AffiliationIDS CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT CollaboratorGroup (Collaborator+,Affiliation*)>
+<!--doc: -->
+<!ELEMENT CollaboratorName (%model.NamePart;)+>
+<!--doc: -->
+<!ELEMENT ConfEventAbbreviation  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ConfEventDate  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ConfEventDateEnd (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT ConfEventDateStart (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT ConfEventLocation (#PCDATA|City|Country)*>
+<!--doc: -->
+<!ELEMENT ConfEventName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ConfNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ConfSeriesName  (#PCDATA)>
+<!ATTLIST ConfSeriesName
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT ConferenceInfo (%model.ConferenceInfoPart;)+>
+<!--doc: -->
+<!ELEMENT Contact (%model.ContactPart;)+>
+<!--doc: -->
+<!ELEMENT CopyrightHolderName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CopyrightYear  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Country  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Cover (CoverInfo,(CoverFigure)?,(BodyRef)*)>
+<!ATTLIST Cover
+Type CDATA  #IMPLIED >
+<!--doc: -->
+<!ELEMENT CoverFigure (MediaObject)>
+<!--doc: -->
+<!ELEMENT CoverFirstPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CoverInfo (CoverFirstPage,CoverLastPage)>
+<!--doc: -->
+<!ELEMENT CoverLastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Day  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT EditionNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Editor (EditorName,Contact?)>
+<!ATTLIST Editor
+AffiliationIDS CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT EditorGroup (Editor+,Affiliation+)>
+<!--doc: -->
+<!ELEMENT EditorName (%model.NamePart;)*>
+<!--doc: -->
+<!ELEMENT Eds EMPTY>
+<!--doc: -->
+<!ELEMENT Email  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Emphasis  (#PCDATA)>
+<!ATTLIST Emphasis
+ %att.Typed.attributes;
+FontCategory CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT Etal EMPTY>
+<!--doc: -->
+<!ELEMENT ExternalRef (RefSource,RefTarget+)>
+<!ATTLIST ExternalRef
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT FamilyName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Figure ((Caption)*,(MediaObject)+)>
+<!ATTLIST Figure
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT FirstPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Footnote (Para)*>
+<!ATTLIST Footnote
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT GivenName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Heading  (#PCDATA)>
+<!--doc:groups together all IFIP specific descriptors (TC, SC, etc.) -->
+<!ELEMENT IFIPentity (TC|WG|SIG)*>
+<!--doc: -->
+<!ELEMENT Initials  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT InstitutionalAuthorName (%model.NamePart;)*>
+<!--doc: -->
+<!ELEMENT InternalRef (RefSource,RefTarget+)>
+<!ATTLIST InternalRef
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT IssueID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT JobSheet (BookJobSheet)+>
+<!ATTLIST JobSheet
+Version CDATA #IMPLIED
+ObjectID CDATA #IMPLIED
+JobSheetDate CDATA #IMPLIED
+Supplier CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT JournalTitle  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Keyword  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT KeywordGroup (Heading?,Keyword+)>
+<!ATTLIST KeywordGroup
+ %att.language.attributes;
+ %att.OutputMedium.attributes; >
+<!--doc: -->
+<!ELEMENT LastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Literal (#PCDATA|Emphasis)*>
+<!--doc: -->
+<!ELEMENT MediaObject  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Month  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT NoBody  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT NoInitials EMPTY>
+<!--doc: -->
+<!ELEMENT NumberInSeries  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT OnlineDate (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT OpeningFigure ((Caption)*,(MediaObject)+)>
+<!ATTLIST OpeningFigure
+ %att.ID.attributes;
+Float CDATA #REQUIRED
+Category CDATA  #REQUIRED >
+<!--doc: -->
+<!ELEMENT OpeningHeader %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT OrgAddress (%model.ContactPart;)+>
+<!--doc: -->
+<!ELEMENT OrgDivision  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT OrgName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PageHeaders ((OpeningHeader)?,(OpeningFigure)?,(RunningTitle)+,(RunningAuthor)?)>
+<!--doc: -->
+<!ELEMENT PaperInfo  (#PCDATA)>
+<!ATTLIST PaperInfo
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Para %macro.FullTextModel;>
+<!--doc: -->
+<!ELEMENT Part (PartInfo,(Chapter)*,(BookFrontmatter)?)>
+<!ATTLIST Part
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT PartChapterCount  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PartContext (SeriesID?,SubSeriesID?,(BookSetID,BookSetTitle)*,VolumePackageID?,BookID?,BookTitle?)>
+<!--doc: -->
+<!ELEMENT PartID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PartInfo (%model.PartInfoPart;)+>
+<!ATTLIST PartInfo
+ %att.OutputMedium.attributes;
+TocLevels CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT PartNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PartSequenceNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PartSubTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT PartTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT Particle  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Postbox  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Postcode  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ProductionInfo  (#PCDATA)>
+<!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
+<!ELEMENT Publisher (PublisherInfo,Series)>
+<!--doc: -->
+<!ELEMENT PublisherImprintName  (#PCDATA)>
+<!--doc:basic publisher identification -->
+<!ELEMENT PublisherInfo (PublisherName|PublisherLocation|PublisherImprintName|PublisherURL)*>
+<!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
+<!ELEMENT PublisherLocation  (#PCDATA)>
+<!--doc:name of the publisher -->
+<!ELEMENT PublisherName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PublisherURL  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT RefSource %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT RefTarget  (#PCDATA)>
+<!ATTLIST RefTarget
+TargetType CDATA #IMPLIED
+Address CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT RegistrationDate (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT RunningAuthor  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT RunningTitle %macro.SimpleTextModel;>
+<!--doc:provides a SIG number -->
+<!ELEMENT SIG  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Section1 ((Heading)?,(Para)*)>
+<!ATTLIST Section1
+ %att.ID.attributes; >
+<!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
+<!ELEMENT Series (SeriesInfo,Book)>
+<!--doc: -->
+<!ELEMENT SeriesAbbreviatedTitle  (#PCDATA)>
+<!ATTLIST SeriesAbbreviatedTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT SeriesElectronicISSN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SeriesHeader ((CollaboratorGroup)?,(SeriesInformationText)?)>
+<!--doc: -->
+<!ELEMENT SeriesID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SeriesInfo (SeriesID|SeriesPrintISSN|SeriesElectronicISSN|SeriesTitle|SeriesAbbreviatedTitle)+>
+<!ATTLIST SeriesInfo
+ %att.ID.attributes;
+TocLevels CDATA #IMPLIED
+SeriesType CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT SeriesInformationText (Para)*>
+<!--doc: -->
+<!ELEMENT SeriesPrintISSN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SeriesTitle  (#PCDATA)>
+<!ATTLIST SeriesTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Sidebar (Para)*>
+<!ATTLIST Sidebar
+ %att.ID.attributes;
+ %att.Typed.attributes; >
+<!--doc: -->
+<!ELEMENT SimplePara %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT SpringerLocationsLine  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SpringerReferenceLine  (#PCDATA)>
+<!ATTLIST SpringerReferenceLine
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Stack  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT State  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Street  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Subscript (#PCDATA|Emphasis)*>
+<!--doc: -->
+<!ELEMENT Suffix  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Superscript (#PCDATA|Emphasis)*>
+<!--doc:provides a technical committee number -->
+<!ELEMENT TC  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT URL  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT VolumeID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT VolumePackageID  (#PCDATA)>
+<!--doc:provides a working group number -->
+<!ELEMENT WG  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Year  (#PCDATA)>
+<!-- end elements -->
