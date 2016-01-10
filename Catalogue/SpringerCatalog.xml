@@ -5,6 +5,6 @@
       
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     
-    <public publicId="-//Springer-Verlag//DTD A++ V2.4//EN" uri="SpringerBook.dtd"/>
+    <public publicId="-//Springer-Verlag//DTD A++ V2.4//EN" uri="../Schemas/SpringerBook.dtd"/>
         
 </catalog>
