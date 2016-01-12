@@ -62,6 +62,15 @@
                                 </rng:choice>
                             </rng:zeroOrMore>
                         </content>
+                        <attList>
+                            <attDef ident="subline">
+                                <valList>
+                                    <valItem ident="StateOfTheArt"/>
+                                    <valItem ident="Survey"/>
+                                    <valItem ident="Tutorial"/>
+                                </valList>
+                            </attDef>
+                        </attList>
                     </elementSpec>
 
                     <elementSpec ident="TC">

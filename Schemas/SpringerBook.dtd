@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-09T18:26:40Z. .CC-BY
+DTD generated from ODD source 2016-01-12T19:56:05Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -680,6 +680,8 @@ FontCategory CDATA #IMPLIED >
 <!ELEMENT Heading  (#PCDATA)>
 <!--doc:groups together all IFIP specific descriptors (TC, SC, etc.) -->
 <!ELEMENT IFIPentity (TC|WG|SIG)*>
+<!ATTLIST IFIPentity
+subline CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT Initials  (#PCDATA)>
 <!--doc: -->
