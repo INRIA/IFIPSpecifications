@@ -1007,7 +1007,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
 
                     <elementSpec ident="RunningTitle">
                         <content>
@@ -1890,7 +1890,7 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BibArticleDOI">
                         <content>
                             <rng:text/>
@@ -2459,6 +2459,124 @@
                         </classes>
                         <content>
                             <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <classSpec ident="model.ListElements" type="model">
+                        <desc>Réunit les différents éléments qui correspondent à des listes</desc>
+                        <classes>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <remarks>
+                            <p>"OrderedList | UnorderedList | DefinitionList"</p>
+                        </remarks>
+                    </classSpec>
+
+                    <!-- Specification of the list elements -->
+                   
+                    <elementSpec ident="OrderedList">
+                        <classes>
+                            <memberOf key="model.ListElements"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:ref name="ListItem"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!-- <!ATTLIST ListItem
+	Type %ListItemTypeAttrValues; #IMPLIED
+> -->
+                    <elementSpec ident="ListItem">
+                        <content>
+                            <rng:ref name="ItemNumber"/>
+                            <rng:ref name="ItemContent"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ItemNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ItemContent">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="Para"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- <!ELEMENT UnorderedList (Heading?, ItemContent+)> -->
+
+                    <elementSpec ident="UnorderedList">
+                        <classes>
+                            <memberOf key="model.ListElements"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:ref name="ItemContent"/>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="Mark" usage="req">
+                                <valList>
+                                    <valItem ident="Bullet"/>
+                                    <valItem ident="Dash"/>
+                                    <valItem ident="None"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+
+                    <!-- <!ELEMENT DefinitionList (Heading?, DefinitionListEntry+)> -->
+
+                    <elementSpec ident="DefinitionList">
+                        <classes>
+                            <memberOf key="model.ListElements"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:ref name="DefinitionListEntry"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!-- <!ELEMENT DefinitionListEntry (Term, Description)>
+<!ELEMENT Term (%SimpleTextModel;)*>
+<!ELEMENT Description (Para+)> -->
+
+                    <elementSpec ident="DefinitionListEntry">
+                        <content>
+                            <rng:ref name="Term"/>
+                            <rng:ref name="Description"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Term">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Description">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="Para"/>
+                            </rng:oneOrMore>
                         </content>
                     </elementSpec>
 

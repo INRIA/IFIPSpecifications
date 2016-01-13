@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-12T19:56:05Z. .CC-BY
+DTD generated from ODD source 2016-01-13T09:18:02Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -97,11 +97,16 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
 <!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
 <!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
-<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |Figure |MediaObject |%model.ListElements;"> 
+<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, Figure, MediaObject, %model.ListElements;"> 
+<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, Figure?, MediaObject?, %model.ListElements;?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, Figure*, MediaObject*, %model.ListElements;*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, Figure+, MediaObject+, %model.ListElements;+"> 
+<!ENTITY % model.ListElements "OrderedList |UnorderedList |DefinitionList"> 
+<!ENTITY % model.ListElements_sequence "OrderedList, UnorderedList, DefinitionList"> 
+<!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
+<!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
+<!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -378,11 +383,16 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
 <!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
 <!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
-<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |Figure |MediaObject |%model.ListElements;"> 
+<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, Figure, MediaObject, %model.ListElements;"> 
+<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, Figure?, MediaObject?, %model.ListElements;?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, Figure*, MediaObject*, %model.ListElements;*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, Figure+, MediaObject+, %model.ListElements;+"> 
+<!ENTITY % model.ListElements "OrderedList |UnorderedList |DefinitionList"> 
+<!ENTITY % model.ListElements_sequence "OrderedList, UnorderedList, DefinitionList"> 
+<!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
+<!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
+<!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
@@ -638,6 +648,12 @@ Type CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT Day  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT DefinitionList ((Heading)?,(DefinitionListEntry)+)>
+<!--doc: -->
+<!ELEMENT DefinitionListEntry (Term,Description)>
+<!--doc: -->
+<!ELEMENT Description (Para)+>
+<!--doc: -->
 <!ELEMENT EditionNumber  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Editor (EditorName,Contact?)>
@@ -693,6 +709,10 @@ subline CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT IssueID  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT ItemContent (Para)+>
+<!--doc: -->
+<!ELEMENT ItemNumber  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT JobSheet (BookJobSheet)+>
 <!ATTLIST JobSheet
 Version CDATA #IMPLIED
@@ -710,6 +730,8 @@ Supplier CDATA #IMPLIED >
  %att.OutputMedium.attributes; >
 <!--doc: -->
 <!ELEMENT LastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ListItem (ItemNumber,ItemContent)>
 <!--doc: -->
 <!ELEMENT Literal (#PCDATA|Emphasis)*>
 <!--doc: -->
@@ -732,6 +754,8 @@ Float CDATA #REQUIRED
 Category CDATA  #REQUIRED >
 <!--doc: -->
 <!ELEMENT OpeningHeader %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT OrderedList ((Heading)?,(ListItem)+)>
 <!--doc: -->
 <!ELEMENT OrgAddress (%model.ContactPart;)+>
 <!--doc: -->
@@ -864,7 +888,13 @@ SeriesType CDATA #IMPLIED >
 <!--doc:provides a technical committee number -->
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Term %macro.SimpleTextModel;>
+<!--doc: -->
 <!ELEMENT URL  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT UnorderedList ((Heading)?,(ItemContent)+)>
+<!ATTLIST UnorderedList
+Mark CDATA  #REQUIRED >
 <!--doc: -->
 <!ELEMENT VolumeID  (#PCDATA)>
 <!--doc: -->
