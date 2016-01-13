@@ -64,7 +64,7 @@
                         </content>
                         <attList>
                             <attDef ident="subline">
-                                <valList>
+                                <valList type="closed">
                                     <valItem ident="StateOfTheArt"/>
                                     <valItem ident="Survey"/>
                                     <valItem ident="Tutorial"/>
