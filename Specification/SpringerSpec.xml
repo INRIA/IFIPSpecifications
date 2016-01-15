@@ -1260,7 +1260,19 @@
 
                     <elementSpec ident="SimplePara">
                         <content>
-                            <rng:ref name="macro.SimpleTextModel"/>
+                            <!-- <!ELEMENT SimplePara (%SimpleTextModel; | Figure | Table | %ReferenceElements;)*>
+<!ATTLIST SimplePara
+	OutputMedium %OutputMediumAttrValues; #IMPLIED
+	Type %ParaTypeAttrValues; #IMPLIED
+> -->
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.simpleText"/>
+                                    <rng:ref name="Figure"/>
+                                    <rng:ref name="model.referenceElements"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
