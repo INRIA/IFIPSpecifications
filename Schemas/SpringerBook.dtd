@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-15T07:02:11Z. .CC-BY
+DTD generated from ODD source 2016-01-15T07:13:43Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -550,6 +550,8 @@ Priority CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterBackmatter ((Acknowledgments)?,(Bibliography)?)>
 <!--doc: -->
+<!ELEMENT ChapterCategory  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT ChapterContext (SeriesID|BookID|BookTitle|PartID)*>
 <!--doc: -->
 <!ELEMENT ChapterCopyright (CopyrightHolderName,CopyrightYear)>
@@ -564,7 +566,7 @@ Priority CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterID  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT ChapterInfo ((IFIPentity)*,(ChapterID|ChapterDOI|ChapterSequenceNumber|ChapterTitle|ChapterSubTitle|ChapterFirstPage|ChapterLastPage|ChapterCopyright|ChapterContext|ChapterHistory)+)>
+<!ELEMENT ChapterInfo ((IFIPentity)*,(ChapterID|ChapterDOI|ChapterSequenceNumber|ChapterTitle|ChapterSubTitle|ChapterFirstPage|ChapterLastPage|ChapterCopyright|ChapterContext|ChapterHistory|ChapterRelatedObject|ChapterCategory)+)>
 <!ATTLIST ChapterInfo
  %att.numbered.attributes;
  %att.OutputMedium.attributes;
@@ -574,6 +576,10 @@ TocLevels CDATA #IMPLIED
 ContainsESM CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterLastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterRelatedObject (RelatedObjectDOI)>
+<!ATTLIST ChapterRelatedObject
+RelatedObjectType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterSequenceNumber  (#PCDATA)>
 <!--doc: -->
@@ -849,6 +855,8 @@ TargetType CDATA #IMPLIED
 Address CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT RegistrationDate (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT RelatedObjectDOI  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RunningAuthor  (#PCDATA)>
 <!--doc: -->

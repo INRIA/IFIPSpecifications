@@ -405,6 +405,8 @@
                                     <rng:ref name="ChapterCopyright"/>
                                     <rng:ref name="ChapterContext"/>
                                     <rng:ref name="ChapterHistory"/>
+                                    <rng:ref name="ChapterRelatedObject"/>
+                                    <rng:ref name="ChapterCategory"/>
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -1615,6 +1617,36 @@
                                     <rng:ref name="PartID"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+                    
+                    <!-- <!ELEMENT ChapterRelatedObject (RelatedObjectDOI)>
+<!ATTLIST ChapterRelatedObject
+	RelatedObjectType %RelatedObjectTypeAttrValues; #REQUIRED
+> -->
+                    
+                    <elementSpec ident="ChapterRelatedObject">
+                        <content>
+                            <rng:ref name="RelatedObjectDOI"/>
+                        </content>
+                        <attList>
+                            <attDef ident="RelatedObjectType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+                    <elementSpec ident="RelatedObjectDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="ChapterCategory">
+                        <content>
+                            <rng:text/>
                         </content>
                     </elementSpec>
 
