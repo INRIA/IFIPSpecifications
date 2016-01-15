@@ -2071,6 +2071,63 @@
                         </content>
                     </elementSpec>
 
+                    <!-- ....................................................................... -->
+                    <!-- Equations                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="Equation">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="EquationNumber"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:choice/>
+                                <rng:ref name="MediaObject"/>
+                                <rng:ref name="EquationSource"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="EquationNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- <!ELEMENT EquationSource (%EquationSourceModel;)*> -->
+                    <elementSpec ident="EquationSource">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="NOTATION" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="TEX"/>
+                                    <valItem ident="MATHML"/>
+                                    <valItem ident="MATHTYPE"/>
+                                    <valItem ident="XML"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="InlineEquation">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice/>
+                                <rng:ref name="InlineMediaObject"/>
+                                <rng:ref name="EquationSource"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
 
                     <!-- Definition of attribute classes for the Springer specification -->
                     <classSpec ident="att.OutputMedium" type="atts">
@@ -2370,6 +2427,8 @@
                     </elementSpec>
 
 
+
+
                     <!--       
                     <!ELEMENT Stack (Subscript, Superscript)>
                     
@@ -2484,6 +2543,22 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
+                    
+                    <!-- <!ELEMENT InlineMediaObject ((VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
+ -->
+                    
+                    <elementSpec ident="InlineMediaObject">
+                        <classes>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ImageObject"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
 
                     <!--        
 <!ATTLIST ImageObject
@@ -2534,7 +2609,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- Specification of the list elements -->
 
                     <elementSpec ident="OrderedList">

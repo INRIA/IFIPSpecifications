@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-15T06:23:39Z. .CC-BY
+DTD generated from ODD source 2016-01-15T06:42:18Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -92,21 +92,21 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.verySimpleText_sequenceOptional "Superscript?, Subscript?, Stack?, Emphasis?"> 
 <!ENTITY % model.verySimpleText_sequenceOptionalRepeatable "Superscript*, Subscript*, Stack*, Emphasis*"> 
 <!ENTITY % model.verySimpleText_sequenceRepeatable "Superscript+, Subscript+, Stack+, Emphasis+"> 
-<!ENTITY % model.simpleText "%model.verySimpleText; |Literal |Footnote |Sidebar"> 
-<!ENTITY % model.simpleText_sequence "%model.verySimpleText;, Literal, Footnote, Sidebar"> 
-<!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
-<!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
-<!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
+<!ENTITY % model.simpleText "InlineEquation |%model.verySimpleText; |Literal |Footnote |Sidebar |InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequence "InlineEquation, %model.verySimpleText;, Literal, Footnote, Sidebar, InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequenceOptional "InlineEquation?, %model.verySimpleText;?, Literal?, Footnote?, Sidebar?, InlineMediaObject?"> 
+<!ENTITY % model.simpleText_sequenceOptionalRepeatable "InlineEquation*, %model.verySimpleText;*, Literal*, Footnote*, Sidebar*, InlineMediaObject*"> 
+<!ENTITY % model.simpleText_sequenceRepeatable "InlineEquation+, %model.verySimpleText;+, Literal+, Footnote+, Sidebar+, InlineMediaObject+"> 
 <!ENTITY % model.ListElements "OrderedList |UnorderedList |DefinitionList"> 
 <!ENTITY % model.ListElements_sequence "OrderedList, UnorderedList, DefinitionList"> 
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Equation |%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -378,21 +378,21 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.verySimpleText_sequenceOptional "Superscript?, Subscript?, Stack?, Emphasis?"> 
 <!ENTITY % model.verySimpleText_sequenceOptionalRepeatable "Superscript*, Subscript*, Stack*, Emphasis*"> 
 <!ENTITY % model.verySimpleText_sequenceRepeatable "Superscript+, Subscript+, Stack+, Emphasis+"> 
-<!ENTITY % model.simpleText "%model.verySimpleText; |Literal |Footnote |Sidebar"> 
-<!ENTITY % model.simpleText_sequence "%model.verySimpleText;, Literal, Footnote, Sidebar"> 
-<!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
-<!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
-<!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
+<!ENTITY % model.simpleText "InlineEquation |%model.verySimpleText; |Literal |Footnote |Sidebar |InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequence "InlineEquation, %model.verySimpleText;, Literal, Footnote, Sidebar, InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequenceOptional "InlineEquation?, %model.verySimpleText;?, Literal?, Footnote?, Sidebar?, InlineMediaObject?"> 
+<!ENTITY % model.simpleText_sequenceOptionalRepeatable "InlineEquation*, %model.verySimpleText;*, Literal*, Footnote*, Sidebar*, InlineMediaObject*"> 
+<!ENTITY % model.simpleText_sequenceRepeatable "InlineEquation+, %model.verySimpleText;+, Literal+, Footnote+, Sidebar+, InlineMediaObject+"> 
 <!ENTITY % model.ListElements "OrderedList |UnorderedList |DefinitionList"> 
 <!ENTITY % model.ListElements_sequence "OrderedList, UnorderedList, DefinitionList"> 
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Equation |%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
@@ -673,6 +673,16 @@ AffiliationIDS CDATA #IMPLIED >
  %att.Typed.attributes;
 FontCategory CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT Equation ((EquationNumber)?,(MediaObject,EquationSource)+)>
+<!ATTLIST Equation
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT EquationNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT EquationSource  (#PCDATA)>
+<!ATTLIST EquationSource
+NOTATION (TEX|MATHML|MATHTYPE|XML) #REQUIRED >
+<!--doc: -->
 <!ELEMENT Etal EMPTY>
 <!--doc: -->
 <!ELEMENT ExternalRef (RefSource,RefTarget+)>
@@ -708,6 +718,12 @@ Type (Linedraw|Halftone|LinedrawHalftone) #IMPLIED
 Rendition (Print|HTML|ProofPDF|Preview) #IMPLIED >
 <!--doc: -->
 <!ELEMENT Initials  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT InlineEquation (InlineMediaObject,EquationSource)+>
+<!ATTLIST InlineEquation
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT InlineMediaObject (ImageObject)+>
 <!--doc: -->
 <!ELEMENT InstitutionalAuthorName (%model.NamePart;)*>
 <!--doc: -->
