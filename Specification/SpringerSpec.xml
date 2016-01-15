@@ -1289,7 +1289,7 @@
 
                     <elementSpec ident="Keyword">
                         <content>
-                            <rng:text/>
+                            <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
 

@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-15T06:12:55Z. .CC-BY
+DTD generated from ODD source 2016-01-15T06:20:30Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -730,7 +730,7 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT JournalTitle  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT Keyword  (#PCDATA)>
+<!ELEMENT Keyword %macro.SimpleTextModel;>
 <!--doc: -->
 <!ELEMENT KeywordGroup (Heading?,Keyword+)>
 <!ATTLIST KeywordGroup
