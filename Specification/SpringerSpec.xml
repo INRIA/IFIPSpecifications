@@ -2104,7 +2104,7 @@
                             <rng:text/>
                         </content>
                         <attList>
-                            <attDef ident="NOTATION" usage="req">
+                            <attDef ident="NOTATION">
                                 <valList type="closed">
                                     <valItem ident="TEX"/>
                                     <valItem ident="MATHML"/>
