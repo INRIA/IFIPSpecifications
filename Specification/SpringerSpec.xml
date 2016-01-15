@@ -2433,7 +2433,7 @@
                             <rng:ref name="MediaObject"/>
                         </content>
                     </elementSpec>
-                    
+
                     <classSpec ident="model.ListElements" type="model">
                         <desc>Réunit les différents éléments qui correspondent à des listes</desc>
                         <classes>
@@ -2443,7 +2443,7 @@
                             <p>"OrderedList | UnorderedList | DefinitionList"</p>
                         </remarks>
                     </classSpec>
-                    
+
 
                     <!-- <!ENTITY % FullTextModel "%SimpleTextModel; | %ListElements; | %ReferenceElements; | Figure | MediaObject | Table | BlockQuote | Equation | Quiz"> -->
 
@@ -2464,18 +2464,79 @@
                         </content>
                     </elementSpec>
 
+                    <!-- <!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
+<!ATTLIST MediaObject
+	ID ID #IMPLIED
+> -->
+
                     <elementSpec ident="MediaObject">
                         <classes>
                             <memberOf key="model.fullText"/>
                         </classes>
                         <content>
-                            <rng:text/>
+                            <rng:optional>
+                                <rng:ref name="Caption"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ImageObject"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
                         </content>
                     </elementSpec>
 
-                   
+                    <!--        
+<!ATTLIST ImageObject
+	%DCTMLinkAtts; 
+>-->
+                    <elementSpec ident="ImageObject">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Caption"/>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="FileRef" usage="req">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Format" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="GIF"/>
+                                    <valItem ident="TIFF"/>
+                                    <valItem ident="EPS"/>
+                                    <valItem ident="JPEG"/>
+                                    <valItem ident="PNG"/>
+                                    <valItem ident="SVG"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Color" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Color"/>
+                                    <valItem ident="BlackWhite"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Type">
+                                <valList type="closed">
+                                    <valItem ident="Linedraw"/>
+                                    <valItem ident="Halftone"/>
+                                    <valItem ident="LinedrawHalftone"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Rendition">
+                                <valList type="closed">
+                                    <valItem ident="Print"/>
+                                    <valItem ident="HTML"/>
+                                    <valItem ident="ProofPDF"/>
+                                    <valItem ident="Preview"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
                     <!-- Specification of the list elements -->
-                   
+
                     <elementSpec ident="OrderedList">
                         <classes>
                             <memberOf key="model.ListElements"/>
@@ -2539,7 +2600,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
 
                     <!-- <!ELEMENT DefinitionList (Heading?, DefinitionListEntry+)> -->
 
@@ -2590,10 +2651,7 @@
 	Category (Schema | Structure | Standard | Logo) #REQUIRED
 >
 <!ELEMENT InlineMediaObject ((VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
-<!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
-<!ATTLIST MediaObject
-	ID ID #IMPLIED
->
+
 <!ELEMENT VideoObject (Caption*)>
 <!ATTLIST VideoObject
 	FileRef CDATA #REQUIRED
