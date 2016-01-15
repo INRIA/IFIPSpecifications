@@ -2136,9 +2136,10 @@
                         </classes>
                         <content>
                             <rng:oneOrMore>
-                                <rng:choice/>
-                                <rng:ref name="InlineMediaObject"/>
-                                <rng:ref name="EquationSource"/>
+                                <rng:choice>
+                                    <rng:ref name="InlineMediaObject"/>
+                                    <rng:ref name="EquationSource"/>
+                                </rng:choice>
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
@@ -2557,10 +2558,10 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT InlineMediaObject ((VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
  -->
-                    
+
                     <elementSpec ident="InlineMediaObject">
                         <classes>
                             <memberOf key="model.simpleText"/>
