@@ -1141,7 +1141,7 @@
                             <memberOf key="att.language"/>
                         </classes>
                         <content>
-                            <rng:text/>
+                            <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
 

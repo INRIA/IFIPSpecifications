@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-15T06:20:30Z. .CC-BY
+DTD generated from ODD source 2016-01-15T06:23:39Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -420,7 +420,7 @@ Type CDATA #IMPLIED'>
 <!ATTLIST ArticleNote
  %att.Typed.attributes; >
 <!--doc: -->
-<!ELEMENT ArticleTitle  (#PCDATA)>
+<!ELEMENT ArticleTitle %macro.SimpleTextModel;>
 <!ATTLIST ArticleTitle
  %att.language.attributes; >
 <!--doc: -->
