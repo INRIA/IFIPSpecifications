@@ -2104,6 +2104,17 @@
                             <rng:text/>
                         </content>
                         <attList>
+                            <attDef ident="Format">
+                                <valList type="closed">
+                                    <valItem ident="TEX"/>
+                                    <valItem ident="MATHML"/>
+                                    <valItem ident="MATHTYPE"/>
+                                    <valItem ident="XML"/>
+                                </valList>
+                                <remarks>
+                                    <p>This attribute has been observed, even if it does not exist in the official SPringer DTD</p>
+                                </remarks>
+                            </attDef>
                             <attDef ident="NOTATION">
                                 <valList type="closed">
                                     <valItem ident="TEX"/>
@@ -2111,6 +2122,9 @@
                                     <valItem ident="MATHTYPE"/>
                                     <valItem ident="XML"/>
                                 </valList>
+                                <remarks>
+                                    <p>Official declaration in the Springer DTD (note should normally be a Required attribute)</p>
+                                </remarks>
                             </attDef>
                         </attList>
                     </elementSpec>
