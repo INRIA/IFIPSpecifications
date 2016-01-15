@@ -1768,9 +1768,16 @@
                                         <rng:ref name="BibComments"/>
                                         <rng:ref name="Eds"/>
                                         <rng:ref name="EditionNumber"/>
+                                        <rng:ref name="NoChapterTitle"/>
                                     </rng:choice>
                                 </rng:zeroOrMore>
                             </rng:group>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="NoChapterTitle">
+                        <content>
+                            <rng:empty/>
                         </content>
                     </elementSpec>
 
