@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-16T15:41:03Z. .CC-BY
+DTD generated from ODD source 2016-01-16T17:33:25Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -433,13 +433,13 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT AuthorName (%model.NamePart;)+>
 <!--doc: -->
-<!ELEMENT BibArticle ((BibAuthorName|InstitutionalAuthorName)*,Etal?,(Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI)*)>
+<!ELEMENT BibArticle (Etal|BibAuthorName|InstitutionalAuthorName|Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI)*>
 <!--doc: -->
 <!ELEMENT BibArticleDOI  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT BibAuthorName (%model.NamePart;)*>
 <!--doc: -->
-<!ELEMENT BibBook ((BibAuthorName|InstitutionalAuthorName)*,Etal?,(Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName)*)>
+<!ELEMENT BibBook (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName)*>
 <!--doc: -->
 <!ELEMENT BibChapter ((BibAuthorName|InstitutionalAuthorName)*,(Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|NoChapterTitle)*)>
 <!--doc: -->
@@ -769,6 +769,8 @@ Supplier CDATA #IMPLIED >
 <!ELEMENT MediaObject ((Caption)?,(ImageObject)+)>
 <!--doc: -->
 <!ELEMENT Month  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT NoArticleTitle EMPTY>
 <!--doc: -->
 <!ELEMENT NoBody  (#PCDATA)>
 <!--doc: -->

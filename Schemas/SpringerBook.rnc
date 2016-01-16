@@ -2,7 +2,7 @@ default namespace = ""
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-01-16T15:40:54Z. .
+# Schema generated from ODD source 2016-01-16T17:33:32Z. .
 # TEI Edition: Version 2.9.1. Last updated on
 #	15th October 2015, revision 46ac023
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -979,9 +979,10 @@ BibArticle =
   
   ##
   element BibArticle {
-    (BibAuthorName | InstitutionalAuthorName)*,
-    Etal?,
-    (Year
+    (Etal
+     | BibAuthorName
+     | InstitutionalAuthorName
+     | Year
      | ArticleTitle
      | JournalTitle
      | PublisherName
@@ -1004,9 +1005,10 @@ BibBook =
   
   ##
   element BibBook {
-    (BibAuthorName | InstitutionalAuthorName)*,
-    Etal?,
-    (Year
+    (BibAuthorName
+     | InstitutionalAuthorName
+     | Etal
+     | Year
      | ChapterTitle
      | ChapterSubTitle
      | BookTitle

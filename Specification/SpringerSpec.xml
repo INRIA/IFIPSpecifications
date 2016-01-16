@@ -1826,20 +1826,21 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="NoArticleTitle">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+                    
+
                     <elementSpec ident="BibArticle">
                         <content>
                             <rng:group>
                                 <rng:zeroOrMore>
                                     <rng:choice>
+                                        <rng:ref name="Etal"/>
                                         <rng:ref name="BibAuthorName"/>
                                         <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                                <rng:optional>
-                                    <rng:ref name="Etal"/>
-                                </rng:optional>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
                                         <rng:ref name="Year"/>
                                         <rng:ref name="ArticleTitle"/>
                                         <rng:ref name="JournalTitle"/>
@@ -1858,11 +1859,15 @@
                                         <rng:ref name="BibComments"/>
                                         <rng:ref name="Eds"/>
                                         <rng:ref name="BibArticleDOI"/>
+                                        <rng:ref name="NoArticleTitel"/>
                                     </rng:choice>
                                 </rng:zeroOrMore>
                             </rng:group>
                         </content>
                     </elementSpec>
+                    
+                    <!-- <!ELEMENT BibBook (((%EditorshipModel;) | (%AuthorshipModel;)), %YearModel;, BookTitle, (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, (ConfEventDate | (ConfEventDateStart, ConfEventDateEnd))?, ConfEventURL?)), SeriesTitle?, NumberInSeries?, (PublisherName, PublisherLocation)*, (FirstPage, LastPage?)?, BibBookDOI?, Occurrence*, ISBN?, BibComments?)>
+ -->
 
                     <elementSpec ident="BibBook">
                         <content>
@@ -1871,13 +1876,7 @@
                                     <rng:choice>
                                         <rng:ref name="BibAuthorName"/>
                                         <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                                <rng:optional>
-                                    <rng:ref name="Etal"/>
-                                </rng:optional>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
+                                        <rng:ref name="Etal"/>
                                         <rng:ref name="Year"/>
                                         <rng:ref name="ChapterTitle"/>
                                         <rng:ref name="ChapterSubTitle"/>
