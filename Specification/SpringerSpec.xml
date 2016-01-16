@@ -1620,12 +1620,12 @@
                             </rng:zeroOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT ChapterRelatedObject (RelatedObjectDOI)>
 <!ATTLIST ChapterRelatedObject
 	RelatedObjectType %RelatedObjectTypeAttrValues; #REQUIRED
 > -->
-                    
+
                     <elementSpec ident="ChapterRelatedObject">
                         <content>
                             <rng:ref name="RelatedObjectDOI"/>
@@ -1638,13 +1638,13 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <elementSpec ident="RelatedObjectDOI">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ChapterCategory">
                         <content>
                             <rng:text/>
@@ -1786,40 +1786,34 @@
 
                     <elementSpec ident="BibChapter">
                         <content>
-                            <rng:group>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="BibAuthorName"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="Etal"/>
-                                        <rng:ref name="Year"/>
-                                        <rng:ref name="ChapterTitle"/>
-                                        <rng:ref name="ChapterSubTitle"/>
-                                        <rng:ref name="BookTitle"/>
-                                        <rng:ref name="PublisherName"/>
-                                        <rng:ref name="PublisherLocation"/>
-                                        <rng:ref name="SeriesTitle"/>
-                                        <rng:ref name="BibEditorName"/>
-                                        <rng:ref name="ConfEventName"/>
-                                        <rng:ref name="ConfEventLocation"/>
-                                        <rng:ref name="ConfEventDate"/>
-                                        <rng:ref name="NumberInSeries"/>
-                                        <rng:ref name="FirstPage"/>
-                                        <rng:ref name="LastPage"/>
-                                        <rng:ref name="BibComments"/>
-                                        <rng:ref name="Eds"/>
-                                        <rng:ref name="EditionNumber"/>
-                                        <rng:ref name="NoChapterTitle"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                            </rng:group>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="BibAuthorName"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                    <rng:ref name="Etal"/>
+                                    <rng:ref name="Year"/>
+                                    <rng:ref name="ChapterTitle"/>
+                                    <rng:ref name="ChapterSubTitle"/>
+                                    <rng:ref name="BookTitle"/>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="BibEditorName"/>
+                                    <rng:ref name="ConfEventName"/>
+                                    <rng:ref name="ConfEventLocation"/>
+                                    <rng:ref name="ConfEventDate"/>
+                                    <rng:ref name="NumberInSeries"/>
+                                    <rng:ref name="FirstPage"/>
+                                    <rng:ref name="LastPage"/>
+                                    <rng:ref name="BibComments"/>
+                                    <rng:ref name="Eds"/>
+                                    <rng:ref name="EditionNumber"/>
+                                    <rng:ref name="NoChapterTitle"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="NoChapterTitle">
                         <content>
                             <rng:empty/>
@@ -1831,73 +1825,69 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
 
                     <elementSpec ident="BibArticle">
                         <content>
-                            <rng:group>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="Etal"/>
-                                        <rng:ref name="BibAuthorName"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                        <rng:ref name="Year"/>
-                                        <rng:ref name="ArticleTitle"/>
-                                        <rng:ref name="JournalTitle"/>
-                                        <rng:ref name="PublisherName"/>
-                                        <rng:ref name="PublisherLocation"/>
-                                        <rng:ref name="SeriesTitle"/>
-                                        <rng:ref name="BibEditorName"/>
-                                        <rng:ref name="ConfEventName"/>
-                                        <rng:ref name="ConfEventLocation"/>
-                                        <rng:ref name="ConfEventDate"/>
-                                        <rng:ref name="NumberInSeries"/>
-                                        <rng:ref name="FirstPage"/>
-                                        <rng:ref name="LastPage"/>
-                                        <rng:ref name="VolumeID"/>
-                                        <rng:ref name="IssueID"/>
-                                        <rng:ref name="BibComments"/>
-                                        <rng:ref name="Eds"/>
-                                        <rng:ref name="BibArticleDOI"/>
-                                        <rng:ref name="NoArticleTitel"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                            </rng:group>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="Etal"/>
+                                    <rng:ref name="BibAuthorName"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                    <rng:ref name="Year"/>
+                                    <rng:ref name="ArticleTitle"/>
+                                    <rng:ref name="JournalTitle"/>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="BibEditorName"/>
+                                    <rng:ref name="ConfEventName"/>
+                                    <rng:ref name="ConfEventLocation"/>
+                                    <rng:ref name="ConfEventDate"/>
+                                    <rng:ref name="NumberInSeries"/>
+                                    <rng:ref name="FirstPage"/>
+                                    <rng:ref name="LastPage"/>
+                                    <rng:ref name="VolumeID"/>
+                                    <rng:ref name="IssueID"/>
+                                    <rng:ref name="BibComments"/>
+                                    <rng:ref name="Eds"/>
+                                    <rng:ref name="BibArticleDOI"/>
+                                    <rng:ref name="NoArticleTitel"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT BibBook (((%EditorshipModel;) | (%AuthorshipModel;)), %YearModel;, BookTitle, (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, (ConfEventDate | (ConfEventDateStart, ConfEventDateEnd))?, ConfEventURL?)), SeriesTitle?, NumberInSeries?, (PublisherName, PublisherLocation)*, (FirstPage, LastPage?)?, BibBookDOI?, Occurrence*, ISBN?, BibComments?)>
  -->
 
                     <elementSpec ident="BibBook">
                         <content>
-                            <rng:group>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="BibAuthorName"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                        <rng:ref name="Etal"/>
-                                        <rng:ref name="Year"/>
-                                        <rng:ref name="ChapterTitle"/>
-                                        <rng:ref name="ChapterSubTitle"/>
-                                        <rng:ref name="BookTitle"/>
-                                        <rng:ref name="PublisherName"/>
-                                        <rng:ref name="PublisherLocation"/>
-                                        <rng:ref name="SeriesTitle"/>
-                                        <rng:ref name="BibEditorName"/>
-                                        <rng:ref name="ConfEventName"/>
-                                        <rng:ref name="ConfEventLocation"/>
-                                        <rng:ref name="ConfEventDate"/>
-                                        <rng:ref name="NumberInSeries"/>
-                                        <rng:ref name="FirstPage"/>
-                                        <rng:ref name="LastPage"/>
-                                        <rng:ref name="BibComments"/>
-                                        <rng:ref name="Eds"/>
-                                        <rng:ref name="EditionNumber"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                            </rng:group>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="BibAuthorName"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                    <rng:ref name="Etal"/>
+                                    <rng:ref name="Year"/>
+                                    <rng:ref name="ChapterTitle"/>
+                                    <rng:ref name="ChapterSubTitle"/>
+                                    <rng:ref name="BookTitle"/>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="BibEditorName"/>
+                                    <rng:ref name="ConfEventName"/>
+                                    <rng:ref name="ConfEventLocation"/>
+                                    <rng:ref name="ConfEventDate"/>
+                                    <rng:ref name="NumberInSeries"/>
+                                    <rng:ref name="FirstPage"/>
+                                    <rng:ref name="LastPage"/>
+                                    <rng:ref name="BibComments"/>
+                                    <rng:ref name="Eds"/>
+                                    <rng:ref name="EditionNumber"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
