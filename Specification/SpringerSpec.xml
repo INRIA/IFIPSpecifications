@@ -65,9 +65,10 @@
                         <attList>
                             <attDef ident="subline">
                                 <valList type="closed">
-                                    <valItem ident="StateOfTheArt"/>
+                                    <valItem ident="StateoftheArtSurvey"/>
                                     <valItem ident="Survey"/>
                                     <valItem ident="Tutorial"/>
+                                    <valItem ident="Festschrift"/>
                                 </valList>
                             </attDef>
                         </attList>

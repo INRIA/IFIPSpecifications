@@ -2,7 +2,7 @@ default namespace = ""
 namespace sch = "http://purl.oclc.org/dsdl/schematron"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2016-01-15T09:23:37Z. .
+# Schema generated from ODD source 2016-01-16T15:40:54Z. .
 # TEI Edition: Version 2.9.1. Last updated on
 #	15th October 2015, revision 46ac023
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -124,13 +124,16 @@ IFIPentity =
     attribute subline {
       
       ##
-      "StateOfTheArt"
+      "StateoftheArtSurvey"
       | 
         ##
         "Survey"
       | 
         ##
         "Tutorial"
+      | 
+        ##
+        "Festschrift"
     }?,
     empty
   }
