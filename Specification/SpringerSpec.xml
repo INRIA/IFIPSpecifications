@@ -1852,7 +1852,7 @@
                                     <rng:ref name="BibComments"/>
                                     <rng:ref name="Eds"/>
                                     <rng:ref name="BibArticleDOI"/>
-                                    <rng:ref name="NoArticleTitel"/>
+                                    <rng:ref name="NoArticleTitle"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
                         </content>
