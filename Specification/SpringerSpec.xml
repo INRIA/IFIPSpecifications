@@ -65,9 +65,10 @@
                         <attList>
                             <attDef ident="subline">
                                 <valList type="closed">
-                                    <valItem ident="StateOfTheArt"/>
+                                    <valItem ident="StateoftheArtSurvey"/>
                                     <valItem ident="Survey"/>
                                     <valItem ident="Tutorial"/>
+                                    <valItem ident="Festschrift"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -405,6 +406,8 @@
                                     <rng:ref name="ChapterCopyright"/>
                                     <rng:ref name="ChapterContext"/>
                                     <rng:ref name="ChapterHistory"/>
+                                    <rng:ref name="ChapterRelatedObject"/>
+                                    <rng:ref name="ChapterCategory"/>
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -1141,7 +1144,7 @@
                             <memberOf key="att.language"/>
                         </classes>
                         <content>
-                            <rng:text/>
+                            <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
 
@@ -1260,7 +1263,19 @@
 
                     <elementSpec ident="SimplePara">
                         <content>
-                            <rng:ref name="macro.SimpleTextModel"/>
+                            <!-- <!ELEMENT SimplePara (%SimpleTextModel; | Figure | Table | %ReferenceElements;)*>
+<!ATTLIST SimplePara
+	OutputMedium %OutputMediumAttrValues; #IMPLIED
+	Type %ParaTypeAttrValues; #IMPLIED
+> -->
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.simpleText"/>
+                                    <rng:ref name="Figure"/>
+                                    <rng:ref name="model.referenceElements"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
@@ -1289,7 +1304,7 @@
 
                     <elementSpec ident="Keyword">
                         <content>
-                            <rng:text/>
+                            <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
 
@@ -1606,6 +1621,36 @@
                         </content>
                     </elementSpec>
 
+                    <!-- <!ELEMENT ChapterRelatedObject (RelatedObjectDOI)>
+<!ATTLIST ChapterRelatedObject
+	RelatedObjectType %RelatedObjectTypeAttrValues; #REQUIRED
+> -->
+
+                    <elementSpec ident="ChapterRelatedObject">
+                        <content>
+                            <rng:ref name="RelatedObjectDOI"/>
+                        </content>
+                        <attList>
+                            <attDef ident="RelatedObjectType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="RelatedObjectDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ChapterCategory">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
                     <!-- BacMatter -->
 
                     <elementSpec ident="ChapterBackmatter">
@@ -1741,112 +1786,108 @@
 
                     <elementSpec ident="BibChapter">
                         <content>
-                            <rng:group>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="BibAuthorName"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="Etal"/>
-                                        <rng:ref name="Year"/>
-                                        <rng:ref name="ChapterTitle"/>
-                                        <rng:ref name="ChapterSubTitle"/>
-                                        <rng:ref name="BookTitle"/>
-                                        <rng:ref name="PublisherName"/>
-                                        <rng:ref name="PublisherLocation"/>
-                                        <rng:ref name="SeriesTitle"/>
-                                        <rng:ref name="BibEditorName"/>
-                                        <rng:ref name="ConfEventName"/>
-                                        <rng:ref name="ConfEventLocation"/>
-                                        <rng:ref name="ConfEventDate"/>
-                                        <rng:ref name="NumberInSeries"/>
-                                        <rng:ref name="FirstPage"/>
-                                        <rng:ref name="LastPage"/>
-                                        <rng:ref name="BibComments"/>
-                                        <rng:ref name="Eds"/>
-                                        <rng:ref name="EditionNumber"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                            </rng:group>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="BibAuthorName"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                    <rng:ref name="Etal"/>
+                                    <rng:ref name="Year"/>
+                                    <rng:ref name="ChapterTitle"/>
+                                    <rng:ref name="ChapterSubTitle"/>
+                                    <rng:ref name="BookTitle"/>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="BibEditorName"/>
+                                    <rng:ref name="ConfEventName"/>
+                                    <rng:ref name="ConfEventLocation"/>
+                                    <rng:ref name="ConfEventDate"/>
+                                    <rng:ref name="NumberInSeries"/>
+                                    <rng:ref name="FirstPage"/>
+                                    <rng:ref name="LastPage"/>
+                                    <rng:ref name="BibComments"/>
+                                    <rng:ref name="Eds"/>
+                                    <rng:ref name="EditionNumber"/>
+                                    <rng:ref name="NoChapterTitle"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
+
+                    <elementSpec ident="NoChapterTitle">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="NoArticleTitle">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
 
                     <elementSpec ident="BibArticle">
                         <content>
-                            <rng:group>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="BibAuthorName"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                                <rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:choice>
                                     <rng:ref name="Etal"/>
-                                </rng:optional>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="Year"/>
-                                        <rng:ref name="ArticleTitle"/>
-                                        <rng:ref name="JournalTitle"/>
-                                        <rng:ref name="PublisherName"/>
-                                        <rng:ref name="PublisherLocation"/>
-                                        <rng:ref name="SeriesTitle"/>
-                                        <rng:ref name="BibEditorName"/>
-                                        <rng:ref name="ConfEventName"/>
-                                        <rng:ref name="ConfEventLocation"/>
-                                        <rng:ref name="ConfEventDate"/>
-                                        <rng:ref name="NumberInSeries"/>
-                                        <rng:ref name="FirstPage"/>
-                                        <rng:ref name="LastPage"/>
-                                        <rng:ref name="VolumeID"/>
-                                        <rng:ref name="IssueID"/>
-                                        <rng:ref name="BibComments"/>
-                                        <rng:ref name="Eds"/>
-                                        <rng:ref name="BibArticleDOI"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                            </rng:group>
+                                    <rng:ref name="BibAuthorName"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                    <rng:ref name="Year"/>
+                                    <rng:ref name="ArticleTitle"/>
+                                    <rng:ref name="JournalTitle"/>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="BibEditorName"/>
+                                    <rng:ref name="ConfEventName"/>
+                                    <rng:ref name="ConfEventLocation"/>
+                                    <rng:ref name="ConfEventDate"/>
+                                    <rng:ref name="NumberInSeries"/>
+                                    <rng:ref name="FirstPage"/>
+                                    <rng:ref name="LastPage"/>
+                                    <rng:ref name="VolumeID"/>
+                                    <rng:ref name="IssueID"/>
+                                    <rng:ref name="BibComments"/>
+                                    <rng:ref name="Eds"/>
+                                    <rng:ref name="BibArticleDOI"/>
+                                    <rng:ref name="NoArticleTitle"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
+                    <!-- <!ELEMENT BibBook (((%EditorshipModel;) | (%AuthorshipModel;)), %YearModel;, BookTitle, (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, (ConfEventDate | (ConfEventDateStart, ConfEventDateEnd))?, ConfEventURL?)), SeriesTitle?, NumberInSeries?, (PublisherName, PublisherLocation)*, (FirstPage, LastPage?)?, BibBookDOI?, Occurrence*, ISBN?, BibComments?)>
+ -->
+
                     <elementSpec ident="BibBook">
                         <content>
-                            <rng:group>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="BibAuthorName"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                                <rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="BibAuthorName"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
                                     <rng:ref name="Etal"/>
-                                </rng:optional>
-                                <rng:zeroOrMore>
-                                    <rng:choice>
-                                        <rng:ref name="Year"/>
-                                        <rng:ref name="ChapterTitle"/>
-                                        <rng:ref name="ChapterSubTitle"/>
-                                        <rng:ref name="BookTitle"/>
-                                        <rng:ref name="PublisherName"/>
-                                        <rng:ref name="PublisherLocation"/>
-                                        <rng:ref name="SeriesTitle"/>
-                                        <rng:ref name="BibEditorName"/>
-                                        <rng:ref name="ConfEventName"/>
-                                        <rng:ref name="ConfEventLocation"/>
-                                        <rng:ref name="ConfEventDate"/>
-                                        <rng:ref name="NumberInSeries"/>
-                                        <rng:ref name="FirstPage"/>
-                                        <rng:ref name="LastPage"/>
-                                        <rng:ref name="BibComments"/>
-                                        <rng:ref name="Eds"/>
-                                        <rng:ref name="EditionNumber"/>
-                                        <rng:ref name="InstitutionalAuthorName"/>
-                                    </rng:choice>
-                                </rng:zeroOrMore>
-                            </rng:group>
+                                    <rng:ref name="Year"/>
+                                    <rng:ref name="ChapterTitle"/>
+                                    <rng:ref name="ChapterSubTitle"/>
+                                    <rng:ref name="BookTitle"/>
+                                    <rng:ref name="PublisherName"/>
+                                    <rng:ref name="PublisherLocation"/>
+                                    <rng:ref name="SeriesTitle"/>
+                                    <rng:ref name="BibEditorName"/>
+                                    <rng:ref name="ConfEventName"/>
+                                    <rng:ref name="ConfEventLocation"/>
+                                    <rng:ref name="ConfEventDate"/>
+                                    <rng:ref name="NumberInSeries"/>
+                                    <rng:ref name="FirstPage"/>
+                                    <rng:ref name="LastPage"/>
+                                    <rng:ref name="BibComments"/>
+                                    <rng:ref name="Eds"/>
+                                    <rng:ref name="EditionNumber"/>
+                                    <rng:ref name="InstitutionalAuthorName"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
@@ -2071,6 +2112,78 @@
                         </content>
                     </elementSpec>
 
+                    <!-- ....................................................................... -->
+                    <!-- Equations                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="Equation">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="EquationNumber"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:choice/>
+                                <rng:ref name="MediaObject"/>
+                                <rng:ref name="EquationSource"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="EquationNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- <!ELEMENT EquationSource (%EquationSourceModel;)*> -->
+                    <elementSpec ident="EquationSource">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Format">
+                                <valList type="closed">
+                                    <valItem ident="TEX"/>
+                                    <valItem ident="MATHML"/>
+                                    <valItem ident="MATHTYPE"/>
+                                    <valItem ident="XML"/>
+                                </valList>
+                                <remarks>
+                                    <p>This attribute has been observed, even if it does not exist in the official SPringer DTD</p>
+                                </remarks>
+                            </attDef>
+                            <attDef ident="NOTATION">
+                                <valList type="closed">
+                                    <valItem ident="TEX"/>
+                                    <valItem ident="MATHML"/>
+                                    <valItem ident="MATHTYPE"/>
+                                    <valItem ident="XML"/>
+                                </valList>
+                                <remarks>
+                                    <p>Official declaration in the Springer DTD (note should normally be a Required attribute)</p>
+                                </remarks>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="InlineEquation">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="InlineMediaObject"/>
+                                    <rng:ref name="EquationSource"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
 
                     <!-- Definition of attribute classes for the Springer specification -->
                     <classSpec ident="att.OutputMedium" type="atts">
@@ -2370,6 +2483,8 @@
                     </elementSpec>
 
 
+
+
                     <!--       
                     <!ELEMENT Stack (Subscript, Superscript)>
                     
@@ -2433,7 +2548,7 @@
                             <rng:ref name="MediaObject"/>
                         </content>
                     </elementSpec>
-                    
+
                     <classSpec ident="model.ListElements" type="model">
                         <desc>Réunit les différents éléments qui correspondent à des listes</desc>
                         <classes>
@@ -2443,7 +2558,7 @@
                             <p>"OrderedList | UnorderedList | DefinitionList"</p>
                         </remarks>
                     </classSpec>
-                    
+
 
                     <!-- <!ENTITY % FullTextModel "%SimpleTextModel; | %ListElements; | %ReferenceElements; | Figure | MediaObject | Table | BlockQuote | Equation | Quiz"> -->
 
@@ -2464,18 +2579,95 @@
                         </content>
                     </elementSpec>
 
+                    <!-- <!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
+<!ATTLIST MediaObject
+	ID ID #IMPLIED
+> -->
+
                     <elementSpec ident="MediaObject">
                         <classes>
                             <memberOf key="model.fullText"/>
                         </classes>
                         <content>
-                            <rng:text/>
+                            <rng:optional>
+                                <rng:ref name="Caption"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ImageObject"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
                         </content>
                     </elementSpec>
 
-                   
+                    <!-- <!ELEMENT InlineMediaObject ((VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
+ -->
+
+                    <elementSpec ident="InlineMediaObject">
+                        <classes>
+                            <memberOf key="model.simpleText"/>
+                        </classes>
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ImageObject"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!--        
+<!ATTLIST ImageObject
+	%DCTMLinkAtts; 
+>-->
+                    <elementSpec ident="ImageObject">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Caption"/>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="FileRef" usage="req">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Format" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="GIF"/>
+                                    <valItem ident="TIFF"/>
+                                    <valItem ident="EPS"/>
+                                    <valItem ident="JPEG"/>
+                                    <valItem ident="PNG"/>
+                                    <valItem ident="SVG"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Color" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Color"/>
+                                    <valItem ident="BlackWhite"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Type">
+                                <valList type="closed">
+                                    <valItem ident="Linedraw"/>
+                                    <valItem ident="Halftone"/>
+                                    <valItem ident="LinedrawHalftone"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Rendition">
+                                <valList type="closed">
+                                    <valItem ident="Print"/>
+                                    <valItem ident="HTML"/>
+                                    <valItem ident="ProofPDF"/>
+                                    <valItem ident="Preview"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
                     <!-- Specification of the list elements -->
-                   
+
                     <elementSpec ident="OrderedList">
                         <classes>
                             <memberOf key="model.ListElements"/>
@@ -2539,7 +2731,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
 
                     <!-- <!ELEMENT DefinitionList (Heading?, DefinitionListEntry+)> -->
 
@@ -2590,10 +2782,7 @@
 	Category (Schema | Structure | Standard | Logo) #REQUIRED
 >
 <!ELEMENT InlineMediaObject ((VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
-<!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
-<!ATTLIST MediaObject
-	ID ID #IMPLIED
->
+
 <!ELEMENT VideoObject (Caption*)>
 <!ATTLIST VideoObject
 	FileRef CDATA #REQUIRED

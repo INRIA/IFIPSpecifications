@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-13T19:04:01Z. .CC-BY
+DTD generated from ODD source 2016-01-16T17:41:24Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -92,21 +92,21 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.verySimpleText_sequenceOptional "Superscript?, Subscript?, Stack?, Emphasis?"> 
 <!ENTITY % model.verySimpleText_sequenceOptionalRepeatable "Superscript*, Subscript*, Stack*, Emphasis*"> 
 <!ENTITY % model.verySimpleText_sequenceRepeatable "Superscript+, Subscript+, Stack+, Emphasis+"> 
-<!ENTITY % model.simpleText "%model.verySimpleText; |Literal |Footnote |Sidebar"> 
-<!ENTITY % model.simpleText_sequence "%model.verySimpleText;, Literal, Footnote, Sidebar"> 
-<!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
-<!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
-<!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
+<!ENTITY % model.simpleText "InlineEquation |%model.verySimpleText; |Literal |Footnote |Sidebar |InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequence "InlineEquation, %model.verySimpleText;, Literal, Footnote, Sidebar, InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequenceOptional "InlineEquation?, %model.verySimpleText;?, Literal?, Footnote?, Sidebar?, InlineMediaObject?"> 
+<!ENTITY % model.simpleText_sequenceOptionalRepeatable "InlineEquation*, %model.verySimpleText;*, Literal*, Footnote*, Sidebar*, InlineMediaObject*"> 
+<!ENTITY % model.simpleText_sequenceRepeatable "InlineEquation+, %model.verySimpleText;+, Literal+, Footnote+, Sidebar+, InlineMediaObject+"> 
 <!ENTITY % model.ListElements "OrderedList |UnorderedList |DefinitionList"> 
 <!ENTITY % model.ListElements_sequence "OrderedList, UnorderedList, DefinitionList"> 
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Equation |%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -378,21 +378,21 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.verySimpleText_sequenceOptional "Superscript?, Subscript?, Stack?, Emphasis?"> 
 <!ENTITY % model.verySimpleText_sequenceOptionalRepeatable "Superscript*, Subscript*, Stack*, Emphasis*"> 
 <!ENTITY % model.verySimpleText_sequenceRepeatable "Superscript+, Subscript+, Stack+, Emphasis+"> 
-<!ENTITY % model.simpleText "%model.verySimpleText; |Literal |Footnote |Sidebar"> 
-<!ENTITY % model.simpleText_sequence "%model.verySimpleText;, Literal, Footnote, Sidebar"> 
-<!ENTITY % model.simpleText_sequenceOptional "%model.verySimpleText;?, Literal?, Footnote?, Sidebar?"> 
-<!ENTITY % model.simpleText_sequenceOptionalRepeatable "%model.verySimpleText;*, Literal*, Footnote*, Sidebar*"> 
-<!ENTITY % model.simpleText_sequenceRepeatable "%model.verySimpleText;+, Literal+, Footnote+, Sidebar+"> 
+<!ENTITY % model.simpleText "InlineEquation |%model.verySimpleText; |Literal |Footnote |Sidebar |InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequence "InlineEquation, %model.verySimpleText;, Literal, Footnote, Sidebar, InlineMediaObject"> 
+<!ENTITY % model.simpleText_sequenceOptional "InlineEquation?, %model.verySimpleText;?, Literal?, Footnote?, Sidebar?, InlineMediaObject?"> 
+<!ENTITY % model.simpleText_sequenceOptionalRepeatable "InlineEquation*, %model.verySimpleText;*, Literal*, Footnote*, Sidebar*, InlineMediaObject*"> 
+<!ENTITY % model.simpleText_sequenceRepeatable "InlineEquation+, %model.verySimpleText;+, Literal+, Footnote+, Sidebar+, InlineMediaObject+"> 
 <!ENTITY % model.ListElements "OrderedList |UnorderedList |DefinitionList"> 
 <!ENTITY % model.ListElements_sequence "OrderedList, UnorderedList, DefinitionList"> 
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "%model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "%model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "%model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "%model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Equation |%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
@@ -420,7 +420,7 @@ Type CDATA #IMPLIED'>
 <!ATTLIST ArticleNote
  %att.Typed.attributes; >
 <!--doc: -->
-<!ELEMENT ArticleTitle  (#PCDATA)>
+<!ELEMENT ArticleTitle %macro.SimpleTextModel;>
 <!ATTLIST ArticleTitle
  %att.language.attributes; >
 <!--doc: -->
@@ -433,15 +433,15 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT AuthorName (%model.NamePart;)+>
 <!--doc: -->
-<!ELEMENT BibArticle ((BibAuthorName|InstitutionalAuthorName)*,Etal?,(Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI)*)>
+<!ELEMENT BibArticle (Etal|BibAuthorName|InstitutionalAuthorName|Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI|NoArticleTitle)*>
 <!--doc: -->
 <!ELEMENT BibArticleDOI  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT BibAuthorName (%model.NamePart;)*>
 <!--doc: -->
-<!ELEMENT BibBook ((BibAuthorName|InstitutionalAuthorName)*,Etal?,(Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName)*)>
+<!ELEMENT BibBook (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName)*>
 <!--doc: -->
-<!ELEMENT BibChapter ((BibAuthorName|InstitutionalAuthorName)*,(Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber)*)>
+<!ELEMENT BibChapter (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|NoChapterTitle)*>
 <!--doc: -->
 <!ELEMENT BibComments  (#PCDATA)>
 <!--doc: -->
@@ -550,6 +550,8 @@ Priority CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterBackmatter ((Acknowledgments)?,(Bibliography)?)>
 <!--doc: -->
+<!ELEMENT ChapterCategory  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT ChapterContext (SeriesID|BookID|BookTitle|PartID)*>
 <!--doc: -->
 <!ELEMENT ChapterCopyright (CopyrightHolderName,CopyrightYear)>
@@ -564,7 +566,7 @@ Priority CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterID  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT ChapterInfo ((IFIPentity)*,(ChapterID|ChapterDOI|ChapterSequenceNumber|ChapterTitle|ChapterSubTitle|ChapterFirstPage|ChapterLastPage|ChapterCopyright|ChapterContext|ChapterHistory)+)>
+<!ELEMENT ChapterInfo ((IFIPentity)*,(ChapterID|ChapterDOI|ChapterSequenceNumber|ChapterTitle|ChapterSubTitle|ChapterFirstPage|ChapterLastPage|ChapterCopyright|ChapterContext|ChapterHistory|ChapterRelatedObject|ChapterCategory)+)>
 <!ATTLIST ChapterInfo
  %att.numbered.attributes;
  %att.OutputMedium.attributes;
@@ -574,6 +576,10 @@ TocLevels CDATA #IMPLIED
 ContainsESM CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterLastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ChapterRelatedObject (RelatedObjectDOI)>
+<!ATTLIST ChapterRelatedObject
+RelatedObjectType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ChapterSequenceNumber  (#PCDATA)>
 <!--doc: -->
@@ -673,6 +679,17 @@ AffiliationIDS CDATA #IMPLIED >
  %att.Typed.attributes;
 FontCategory CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT Equation ((EquationNumber)?,(MediaObject,EquationSource)+)>
+<!ATTLIST Equation
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT EquationNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT EquationSource  (#PCDATA)>
+<!ATTLIST EquationSource
+Format (TEX|MATHML|MATHTYPE|XML) #IMPLIED
+NOTATION (TEX|MATHML|MATHTYPE|XML) #IMPLIED >
+<!--doc: -->
 <!ELEMENT Etal EMPTY>
 <!--doc: -->
 <!ELEMENT ExternalRef (RefSource,RefTarget+)>
@@ -697,9 +714,23 @@ FontCategory CDATA #IMPLIED >
 <!--doc:groups together all IFIP specific descriptors (TC, SC, etc.) -->
 <!ELEMENT IFIPentity (TC|WG|SIG)*>
 <!ATTLIST IFIPentity
-subline (StateOfTheArt|Survey|Tutorial) #IMPLIED >
+subline (StateoftheArtSurvey|Survey|Tutorial|Festschrift) #IMPLIED >
+<!--doc: -->
+<!ELEMENT ImageObject (Caption)*>
+<!ATTLIST ImageObject
+FileRef CDATA #REQUIRED
+Format (GIF|TIFF|EPS|JPEG|PNG|SVG) #REQUIRED
+Color (Color|BlackWhite) #REQUIRED
+Type (Linedraw|Halftone|LinedrawHalftone) #IMPLIED
+Rendition (Print|HTML|ProofPDF|Preview) #IMPLIED >
 <!--doc: -->
 <!ELEMENT Initials  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT InlineEquation (InlineMediaObject|EquationSource)+>
+<!ATTLIST InlineEquation
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT InlineMediaObject (ImageObject)+>
 <!--doc: -->
 <!ELEMENT InstitutionalAuthorName (%model.NamePart;)*>
 <!--doc: -->
@@ -722,7 +753,7 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT JournalTitle  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT Keyword  (#PCDATA)>
+<!ELEMENT Keyword %macro.SimpleTextModel;>
 <!--doc: -->
 <!ELEMENT KeywordGroup (Heading?,Keyword+)>
 <!ATTLIST KeywordGroup
@@ -735,11 +766,15 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Literal (#PCDATA|Emphasis)*>
 <!--doc: -->
-<!ELEMENT MediaObject  (#PCDATA)>
+<!ELEMENT MediaObject ((Caption)?,(ImageObject)+)>
 <!--doc: -->
 <!ELEMENT Month  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT NoArticleTitle EMPTY>
+<!--doc: -->
 <!ELEMENT NoBody  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT NoChapterTitle EMPTY>
 <!--doc: -->
 <!ELEMENT NoInitials EMPTY>
 <!--doc: -->
@@ -823,6 +858,8 @@ Address CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT RegistrationDate (%model.DatePart;)+>
 <!--doc: -->
+<!ELEMENT RelatedObjectDOI  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT RunningAuthor  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RunningTitle %macro.SimpleTextModel;>
@@ -864,7 +901,7 @@ SeriesType CDATA #IMPLIED >
  %att.ID.attributes;
  %att.Typed.attributes; >
 <!--doc: -->
-<!ELEMENT SimplePara %macro.SimpleTextModel;>
+<!ELEMENT SimplePara (#PCDATA|%model.simpleText;|Figure|%model.referenceElements;)*>
 <!--doc: -->
 <!ELEMENT SpringerLocationsLine  (#PCDATA)>
 <!--doc: -->
