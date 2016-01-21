@@ -145,13 +145,13 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PublisherLogo">
                         <content>
                             <rng:ref name="Figure"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="CoPublisher">
                         <content>
                             <rng:text/>
@@ -1270,6 +1270,9 @@
                     </elementSpec>
 
                     <elementSpec ident="Para">
+                        <classes>
+                            <memberOf key="model.fullTextBlock"/>
+                        </classes>
                         <content>
                             <rng:ref name="macro.FullTextModel"/>
                         </content>
@@ -2423,6 +2426,21 @@
                         </attList>
                     </elementSpec>
 
+                    <elementSpec ident="BlockQuote">
+                        <classes>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.fullTextBlock"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+
                     <elementSpec ident="CitationRef">
                         <classes>
                             <memberOf key="model.referenceElements"/>
@@ -2582,6 +2600,7 @@
                         <classes>
                             <memberOf key="att.ID"/>
                             <memberOf key="model.fullText"/>
+                            <memberOf key="model.fullTextBlock"/>
                         </classes>
                         <content>
                             <rng:zeroOrMore>
@@ -2608,7 +2627,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                   
+
 
                     <!-- <!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
 <!ATTLIST MediaObject
@@ -2618,6 +2637,7 @@
                     <elementSpec ident="MediaObject">
                         <classes>
                             <memberOf key="model.fullText"/>
+                            <memberOf key="model.fullTextBlock"/>
                             <memberOf key="att.ID"/>
                         </classes>
                         <content>
@@ -2889,6 +2909,10 @@
                             </rng:zeroOrMore>
                         </content>
                     </macroSpec>
+
+                    <!-- Model classes - spread declarations to be gathered here... -->
+
+                    <classSpec ident="model.FullTextBlock" type="model"/>
 
 
                 </schemaSpec>
