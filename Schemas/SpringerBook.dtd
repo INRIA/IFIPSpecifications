@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T11:07:36Z. .CC-BY
+DTD generated from ODD source 2016-01-21T16:17:09Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -481,7 +481,7 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookContext ((SeriesID)?,(SubSeriesID)?,(BookSetID,BookSetTitle)*,(VolumePackageID)?)>
 <!--doc: -->
-<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine)+>
+<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine|CopyrightStandardText)+>
 <!--doc: -->
 <!ELEMENT BookDOI  (#PCDATA)>
 <!--doc: -->
@@ -653,6 +653,11 @@ AffiliationIDS CDATA #IMPLIED >
 <!ELEMENT Contact (%model.ContactPart;)+>
 <!--doc: -->
 <!ELEMENT CopyrightHolderName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CopyrightStandardText  (#PCDATA)>
+<!ATTLIST CopyrightStandardText
+Country CDATA #IMPLIED
+Language CDATA #REQUIRED >
 <!--doc: -->
 <!ELEMENT CopyrightYear  (#PCDATA)>
 <!--doc: -->

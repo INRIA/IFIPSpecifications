@@ -684,6 +684,7 @@
                                     <rng:ref name="CopyrightYear"/>
                                     <rng:ref name="SpringerReferenceLine"/>
                                     <rng:ref name="SpringerLocationsLine"/>
+                                    <rng:ref name="CopyrightStandardText"/>
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -717,6 +718,24 @@
                         <content>
                             <rng:text/>
                         </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="CopyrightStandardText">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Country" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Language" usage="req">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
 
                     <!-- End of Book Copyright information -->
