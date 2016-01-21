@@ -113,6 +113,8 @@
                                     <rng:ref name="PublisherLocation"/>
                                     <rng:ref name="PublisherImprintName"/>
                                     <rng:ref name="PublisherURL"/>
+                                    <rng:ref name="PublisherLogo"/>
+                                    <rng:ref name="CoPublisher"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
                         </content>
@@ -139,6 +141,18 @@
                     </elementSpec>
 
                     <elementSpec ident="PublisherURL">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="PublisherLogo">
+                        <content>
+                            <rng:ref name="Figure"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="CoPublisher">
                         <content>
                             <rng:text/>
                         </content>
