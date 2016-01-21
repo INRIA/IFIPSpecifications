@@ -1062,6 +1062,9 @@
                             <rng:zeroOrMore>
                                 <rng:ref name="Foreword"/>
                             </rng:zeroOrMore>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Preface"/>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
@@ -1129,7 +1132,55 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-
+                    
+                    <!-- ....................................................................... -->
+                    <!-- Preface                                                                 -->
+                    <!-- ....................................................................... -->
+                    
+                    <elementSpec ident="Preface">
+                        <content>
+                            <rng:ref name="PrefaceInfo"/>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:ref name="Body"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="PrefaceInfo">
+                        <content>
+                            <rng:ref name="PrefaceTitle"/>
+                            <rng:optional>
+                                <rng:ref name="PrefaceDate"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="PrefaceLocation"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+                    
+                    
+                    <elementSpec ident="PrefaceTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="PrefaceDate">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="PrefaceLocation">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
 
                     <!--
                     <!ELEMENT BookFrontmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>

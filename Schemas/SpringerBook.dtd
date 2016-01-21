@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T16:45:28Z. .CC-BY
+DTD generated from ODD source 2016-01-21T16:50:32Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -467,7 +467,7 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Body (Section1)+>
 <!--doc: -->
-<!ELEMENT BodyFrontmatter ((Frontispiece)?,(Dedication)?,(Foreword)*)>
+<!ELEMENT BodyFrontmatter ((Frontispiece)?,(Dedication)?,(Foreword)*,(Preface)*)>
 <!--doc: -->
 <!ELEMENT BodyRef EMPTY>
 <!ATTLIST BodyRef
@@ -879,6 +879,18 @@ TocLevels CDATA #IMPLIED >
 <!ELEMENT Postbox  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Postcode  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Preface (PrefaceInfo,(AuthorGroup)?,Body)>
+<!--doc: -->
+<!ELEMENT PrefaceDate  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PrefaceInfo (PrefaceTitle,(PrefaceDate)?,(PrefaceLocation)*)>
+<!--doc: -->
+<!ELEMENT PrefaceLocation  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PrefaceTitle %macro.SimpleTextModel;>
+<!ATTLIST PrefaceTitle
+ %att.language.attributes; >
 <!--doc: -->
 <!ELEMENT ProductLiability  (#PCDATA)>
 <!ATTLIST ProductLiability
