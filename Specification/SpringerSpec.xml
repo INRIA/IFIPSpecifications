@@ -1308,7 +1308,13 @@
                     <!-- <!ELEMENT TocEntry (%SimpleTextModel; | ExternalRef)*> -->
                     <elementSpec ident="TocEntry">
                         <content>
-                            <rng:ref name="macro.SimpleTextModel"/>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.simpleText"/>
+                                    <rng:ref name="ExternalRef"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                         <attList>
                             <attDef ident="PageNumber">

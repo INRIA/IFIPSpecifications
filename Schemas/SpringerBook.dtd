@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T17:38:33Z. .CC-BY
+DTD generated from ODD source 2016-01-21T17:42:40Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -1016,7 +1016,7 @@ PageNumber CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT TocChapter ((Heading)?,(SubHeading)?,(TocEntry,Author*)?)>
 <!--doc: -->
-<!ELEMENT TocEntry %macro.SimpleTextModel;>
+<!ELEMENT TocEntry (#PCDATA|%model.simpleText;|ExternalRef)*>
 <!ATTLIST TocEntry
 PageNumber CDATA #IMPLIED
 TargetID CDATA #IMPLIED >
