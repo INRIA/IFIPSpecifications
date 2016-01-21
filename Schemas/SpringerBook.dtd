@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T09:36:12Z. .CC-BY
+DTD generated from ODD source 2016-01-21T09:42:59Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -702,7 +702,9 @@ NOTATION (TEX|MATHML|MATHTYPE|XML) #IMPLIED >
 <!--doc: -->
 <!ELEMENT Figure ((Caption)*,(MediaObject)+)>
 <!ATTLIST Figure
- %att.ID.attributes; >
+ %att.ID.attributes;
+Float (Yes|No) #REQUIRED
+Category (Schema|Structure|Standard|Logo) #REQUIRED >
 <!--doc: -->
 <!ELEMENT FirstPage  (#PCDATA)>
 <!--doc: -->

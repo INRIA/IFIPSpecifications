@@ -2591,7 +2591,24 @@
                                 <rng:ref name="MediaObject"/>
                             </rng:oneOrMore>
                         </content>
+                        <attList>
+                            <attDef ident="Float" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Yes"/>
+                                    <valItem ident="No"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="Category" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Schema"/>
+                                    <valItem ident="Structure"/>
+                                    <valItem ident="Standard"/>
+                                    <valItem ident="Logo"/>
+                                </valList>
+                            </attDef>
+                        </attList>
                     </elementSpec>
+                   
 
                     <!-- <!ELEMENT MediaObject (Caption*, (VideoObject | AudioObject | ImageObject | DataObject), (VideoObject | AudioObject | ImageObject | DataObject | TextObject)*)>
 <!ATTLIST MediaObject
