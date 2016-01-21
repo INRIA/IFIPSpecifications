@@ -160,12 +160,22 @@
 
                     <!-- Series -->
 
+                    <!-- <!ELEMENT Series (SeriesInfo, BookOnlineFirst?, (SeriesHeader?, Toc?, (BookSet | Book | SubSeries)*, SeriesIndex?))>
+<!ATTLIST Series
+	OutputMedium %OutputMediumAttrValues; #IMPLIED
+> -->
+
                     <elementSpec ident="Series">
                         <desc>groups together all the Springer metadata associated to a book related publication (book or book chapter)</desc>
                         <content>
                             <rng:group>
                                 <rng:ref name="SeriesInfo"/>
-                                <rng:ref name="Book"/>
+                                <rng:group>
+                                    <rng:optional>
+                                        <rng:ref name="SeriesHeader"/>
+                                    </rng:optional>
+                                    <rng:ref name="Book"/>
+                                </rng:group>
                             </rng:group>
                         </content>
                     </elementSpec>
