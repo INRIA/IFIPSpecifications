@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T16:17:09Z. .CC-BY
+DTD generated from ODD source 2016-01-21T16:24:03Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -481,7 +481,7 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookContext ((SeriesID)?,(SubSeriesID)?,(BookSetID,BookSetTitle)*,(VolumePackageID)?)>
 <!--doc: -->
-<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine|CopyrightStandardText)+>
+<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine|CopyrightStandardText|TrademarkQualifierText|ProductLiability)+>
 <!--doc: -->
 <!ELEMENT BookDOI  (#PCDATA)>
 <!--doc: -->
@@ -656,8 +656,8 @@ AffiliationIDS CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CopyrightStandardText  (#PCDATA)>
 <!ATTLIST CopyrightStandardText
-Country CDATA #IMPLIED
-Language CDATA #REQUIRED >
+ %att.language.attributes;
+Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CopyrightYear  (#PCDATA)>
 <!--doc: -->
@@ -862,6 +862,11 @@ TocLevels CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Postcode  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT ProductLiability  (#PCDATA)>
+<!ATTLIST ProductLiability
+ %att.language.attributes;
+Country CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT ProductionInfo  (#PCDATA)>
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
@@ -936,7 +941,8 @@ SeriesType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT SpringerReferenceLine  (#PCDATA)>
 <!ATTLIST SpringerReferenceLine
- %att.language.attributes; >
+ %att.language.attributes;
+Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Stack  (#PCDATA)>
 <!--doc: -->
@@ -955,6 +961,11 @@ SeriesType CDATA #IMPLIED >
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Term %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT TrademarkQualifierText  (#PCDATA)>
+<!ATTLIST TrademarkQualifierText
+ %att.language.attributes;
+Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT URL  (#PCDATA)>
 <!--doc: -->

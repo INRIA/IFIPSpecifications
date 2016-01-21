@@ -685,6 +685,9 @@
                                     <rng:ref name="SpringerReferenceLine"/>
                                     <rng:ref name="SpringerLocationsLine"/>
                                     <rng:ref name="CopyrightStandardText"/>
+                                    <rng:ref name="TrademarkQualifierText"/>
+                                    <rng:ref name="ProductLiability"/>
+                                    
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -712,6 +715,13 @@
                         <content>
                             <rng:text/>
                         </content>
+                        <attList>
+                            <attDef ident="Country" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
 
                     <elementSpec ident="SpringerLocationsLine">
@@ -721,6 +731,9 @@
                     </elementSpec>
                     
                     <elementSpec ident="CopyrightStandardText">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
                         <content>
                             <rng:text/>
                         </content>
@@ -730,13 +743,42 @@
                                     <rng:text/>
                                 </datatype>
                             </attDef>
-                            <attDef ident="Language" usage="req">
+                        </attList>
+                    </elementSpec>
+                    
+                    
+                    <elementSpec ident="TrademarkQualifierText">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Country" usage="opt">
                                 <datatype>
                                     <rng:text/>
                                 </datatype>
                             </attDef>
                         </attList>
                     </elementSpec>
+                    
+                    <elementSpec ident="ProductLiability">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Country" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
 
                     <!-- End of Book Copyright information -->
 
