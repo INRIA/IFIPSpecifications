@@ -554,16 +554,54 @@
                         </attList>
                     </elementSpec>
 
+                    <!-- <!ELEMENT Section1 (Heading, SectionClassification?, AuthorGroup?, (%FullTextBlockModel;)*, Section2*)>-->
                     <elementSpec ident="Section1">
                         <classes>
                             <memberOf key="att.ID"/>
                         </classes>
                         <content>
+                            <rng:ref name="Heading"/>
                             <rng:optional>
-                                <rng:ref name="Heading"/>
+                                <rng:ref name="AuthorGroup"/>
                             </rng:optional>
                             <rng:zeroOrMore>
-                                <rng:ref name="Para"/>
+                                <rng:ref name="model.fullTextBlock"/>
+                            </rng:zeroOrMore>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Section2"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Section2">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="Heading"/>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.fullTextBlock"/>
+                            </rng:zeroOrMore>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Section3"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Section3">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="Heading"/>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.fullTextBlock"/>
                             </rng:zeroOrMore>
                         </content>
                     </elementSpec>
@@ -1187,7 +1225,7 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BookNotes">
                         <content>
                             <rng:ref name="BookNotesTitle"/>
@@ -1197,7 +1235,7 @@
                             <rng:ref name="Body"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BookNotesTitle">
                         <classes>
                             <memberOf key="att.language"/>

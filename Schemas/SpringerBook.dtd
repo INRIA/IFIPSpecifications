@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T17:12:54Z. .CC-BY
+DTD generated from ODD source 2016-01-21T17:20:07Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -936,8 +936,16 @@ Address CDATA #IMPLIED >
 <!--doc:provides a SIG number -->
 <!ELEMENT SIG  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT Section1 ((Heading)?,(Para)*)>
+<!ELEMENT Section1 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*,(Section2)*)>
 <!ATTLIST Section1
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT Section2 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*,(Section3)*)>
+<!ATTLIST Section2
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT Section3 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*)>
+<!ATTLIST Section3
  %att.ID.attributes; >
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Series (SeriesInfo,(SeriesHeader?,Book))>
