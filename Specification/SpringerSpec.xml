@@ -519,11 +519,15 @@
                         </content>
                     </elementSpec>
 
+                    <!-- <!ELEMENT Body (((%FullTextBlockModel;)*, Section1*) | PDFExtract)> -->
                     <elementSpec ident="Body">
                         <content>
-                            <rng:oneOrMore>
+                            <rng:zeroOrMore>
+                                <rng:ref name="model.fullTextBlock"/>
+                            </rng:zeroOrMore>
+                            <rng:zeroOrMore>
                                 <rng:ref name="Section1"/>
-                            </rng:oneOrMore>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
@@ -1098,7 +1102,7 @@
                             <rng:ref name="Body"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ForewordInfo">
                         <content>
                             <rng:ref name="ForewordTitle"/>
@@ -1110,7 +1114,7 @@
                             </rng:zeroOrMore>
                         </content>
                     </elementSpec>
-                    
+
 
                     <elementSpec ident="ForewordTitle">
                         <classes>
@@ -1132,11 +1136,11 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- Preface                                                                 -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="Preface">
                         <content>
                             <rng:ref name="PrefaceInfo"/>
@@ -1146,7 +1150,7 @@
                             <rng:ref name="Body"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PrefaceInfo">
                         <content>
                             <rng:ref name="PrefaceTitle"/>
@@ -1158,8 +1162,8 @@
                             </rng:zeroOrMore>
                         </content>
                     </elementSpec>
-                    
-                    
+
+
                     <elementSpec ident="PrefaceTitle">
                         <classes>
                             <memberOf key="att.language"/>
@@ -1168,19 +1172,19 @@
                             <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PrefaceDate">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PrefaceLocation">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
 
                     <!--
                     <!ELEMENT BookFrontmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
