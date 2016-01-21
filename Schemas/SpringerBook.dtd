@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T10:10:21Z. .CC-BY
+DTD generated from ODD source 2016-01-21T10:33:17Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -107,6 +107,11 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
 <!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
 <!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -393,6 +398,11 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
 <!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
 <!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
@@ -453,7 +463,7 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!ATTLIST Bibliography
  %att.ID.attributes; >
 <!--doc: -->
-<!ELEMENT BlockQuote ((Heading)?>
+<!ELEMENT BlockQuote ((Heading)?,(%model.fullTextBlock;)*)>
 <!--doc: -->
 <!ELEMENT Body (Section1)+>
 <!--doc: -->

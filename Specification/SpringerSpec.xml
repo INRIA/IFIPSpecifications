@@ -2636,9 +2636,9 @@
 
                     <elementSpec ident="MediaObject">
                         <classes>
+                            <memberOf key="att.ID"/>
                             <memberOf key="model.fullText"/>
                             <memberOf key="model.fullTextBlock"/>
-                            <memberOf key="att.ID"/>
                         </classes>
                         <content>
                             <rng:optional>
@@ -2912,7 +2912,7 @@
 
                     <!-- Model classes - spread declarations to be gathered here... -->
 
-                    <classSpec ident="model.FullTextBlock" type="model"/>
+                    <classSpec ident="model.fullTextBlock" type="model"/>
 
 
                 </schemaSpec>
