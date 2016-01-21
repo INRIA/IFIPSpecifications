@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T17:20:07Z. .CC-BY
+DTD generated from ODD source 2016-01-21T17:38:33Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -467,7 +467,7 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Body ((%model.fullTextBlock;)*,(Section1)*)>
 <!--doc: -->
-<!ELEMENT BodyFrontmatter ((Frontispiece)?,(Dedication)?,(Foreword)*,(Preface)*,(BookNotes)?)>
+<!ELEMENT BodyFrontmatter ((Frontispiece)?,(Dedication)?,(Foreword)*,(Preface)*,(BookNotes)?,(Toc)?)>
 <!--doc: -->
 <!ELEMENT BodyRef EMPTY>
 <!ATTLIST BodyRef
@@ -994,6 +994,8 @@ Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Street  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT SubHeading  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT SubSeriesID  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Subscript (#PCDATA|Emphasis)*>
@@ -1005,6 +1007,25 @@ Country CDATA #IMPLIED >
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Term %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT Toc (Heading,(SubHeading)?,(TocFront)*,(TocPart|TocChapter)*,(TocBack)*)>
+<!--doc: -->
+<!ELEMENT TocBack %macro.SimpleTextModel;>
+<!ATTLIST TocBack
+PageNumber CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TocChapter ((Heading)?,(SubHeading)?,(TocEntry,Author*)?)>
+<!--doc: -->
+<!ELEMENT TocEntry %macro.SimpleTextModel;>
+<!ATTLIST TocEntry
+PageNumber CDATA #IMPLIED
+TargetID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TocFront %macro.SimpleTextModel;>
+<!ATTLIST TocFront
+PageNumber CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TocPart (TocEntry,(Author)*,(TocChapter)*)>
 <!--doc: -->
 <!ELEMENT TrademarkQualifierText  (#PCDATA)>
 <!ATTLIST TrademarkQualifierText

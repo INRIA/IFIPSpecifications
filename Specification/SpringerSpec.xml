@@ -602,7 +602,7 @@
                             </rng:optional>
                             <rng:zeroOrMore>
                                 <rng:ref name="model.fullTextBlock"/>
-                            </rng:zeroOrMore>
+                            </rng:zeroOrMore>T
                         </content>
                     </elementSpec>
 
@@ -1110,6 +1110,9 @@
                             <rng:optional>
                                 <rng:ref name="BookNotes"/>
                             </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="Toc"/>
+                            </rng:optional>
                         </content>
                     </elementSpec>
 
@@ -1244,7 +1247,124 @@
                             <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
+                    
+                    <!-- ....................................................................... -->
+                    <!-- Table of content                                                        -->
+                    <!-- ....................................................................... -->
+                    
+                    <!-- <!ELEMENT Toc (Heading, SubHeading?, TocFront*, (TocPart | TocChapter)*, TocBack*)> -->
+                    <elementSpec ident="Toc">
+                        <content>
+                            <rng:ref name="Heading"/>
+                            <rng:optional>
+                                <rng:ref name="SubHeading"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="TocFront"/>
+                            </rng:zeroOrMore>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="TocPart"/>
+                                    <rng:ref name="TocChapter"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                            <rng:zeroOrMore>
+                                <rng:ref name="TocBack"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="TocFront">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                        <attList>
+                            <attDef ident="PageNumber">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+                    <elementSpec ident="TocPart">
+                        <content>
+                            <rng:ref name="TocEntry"/>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Author"/>
+                            </rng:zeroOrMore>
+                            <!--<rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="Author"/>
+                                    <rng:ref name="InstitutionalAuthor"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>-->
+                            <rng:zeroOrMore>
+                                <rng:ref name="TocChapter"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
 
+                    <!-- <!ELEMENT TocEntry (%SimpleTextModel; | ExternalRef)*> -->
+                    <elementSpec ident="TocEntry">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                        <attList>
+                            <attDef ident="PageNumber">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TargetID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+                    <!-- <!ELEMENT TocChapter (Heading?, SubHeading?, (TocEntry, (Author | InstitutionalAuthor)*)?, TocSection1*)> -->
+                    <elementSpec ident="TocChapter">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="SubHeading"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="TocEntry"/>
+                                <rng:zeroOrMore>
+                                    <rng:ref name="Author"/>
+                                </rng:zeroOrMore>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+                    
+                    
+                    <!--<!ELEMENT TocAppendix (Heading?, SubHeading?, (TocEntry, (Author | InstitutionalAuthor)*)?, TocSection1*)>
+                    <!ELEMENT TocSection1 (TocEntry, TocSection2*)>
+                    <!ELEMENT TocSection2 (TocEntry, TocSection3*)>
+                    <!ELEMENT TocSection3 (TocEntry, TocSection4*)>
+                    <!ELEMENT TocSection4 (TocEntry, TocSection5*)>
+                    <!ELEMENT TocSection5 (TocEntry, TocSection6*)>
+                    <!ELEMENT TocSection6 (TocEntry, TocSection7*)>
+                    <!ELEMENT TocSection7 (TocEntry)>
+                    -->
+
+                    <elementSpec ident="TocBack">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                        <attList>
+                            <attDef ident="PageNumber">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
 
                     <!--
                     <!ELEMENT BookFrontmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
@@ -1611,6 +1731,12 @@
                     </elementSpec>
 
                     <elementSpec ident="Heading">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="SubHeading">
                         <content>
                             <rng:text/>
                         </content>
