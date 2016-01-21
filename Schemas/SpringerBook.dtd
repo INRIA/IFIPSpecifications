@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T10:55:24Z. .CC-BY
+DTD generated from ODD source 2016-01-21T11:07:36Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -507,7 +507,7 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookID  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation)+)>
+<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation|CatalogingInformation)+)>
 <!ATTLIST BookInfo
  %att.language.attributes;
  %att.numbered.attributes;
@@ -553,6 +553,10 @@ Priority CDATA #IMPLIED >
 <!ELEMENT CaptionContent (SimplePara)+>
 <!--doc: -->
 <!ELEMENT CaptionNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CatalogingInformation (#PCDATA|%model.verySimpleText;|InlineEquation)*>
+<!ATTLIST CatalogingInformation
+Library CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Chapter (ChapterInfo,ChapterHeader,(NoBody|Body),BodyRef?,ChapterBackmatter?)>
 <!ATTLIST Chapter

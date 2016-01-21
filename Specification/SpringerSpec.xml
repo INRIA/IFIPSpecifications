@@ -344,6 +344,7 @@
                                     <rng:ref name="PaperInfo"/>
                                     <rng:ref name="BookSubjectGroup"/>
                                     <rng:ref name="BookstoreLocation"/>
+                                    <rng:ref name="CatalogingInformation"/>
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -378,6 +379,27 @@
                         <content>
                             <rng:text/>
                         </content>
+                    </elementSpec>
+                    
+                    <!-- <!ELEMENT CatalogingInformation (%VerySimpleTextModel; | InlineEquation)*>
+ -->
+                    <elementSpec ident="CatalogingInformation">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:text/>
+                                    <rng:ref name="model.verySimpleText"/>
+                                    <rng:ref name="InlineEquation"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="Library">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
 
 
