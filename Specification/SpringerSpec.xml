@@ -380,7 +380,7 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT CatalogingInformation (%VerySimpleTextModel; | InlineEquation)*>
  -->
                     <elementSpec ident="CatalogingInformation">
@@ -687,7 +687,7 @@
                                     <rng:ref name="CopyrightStandardText"/>
                                     <rng:ref name="TrademarkQualifierText"/>
                                     <rng:ref name="ProductLiability"/>
-                                    
+
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -729,7 +729,7 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="CopyrightStandardText">
                         <classes>
                             <memberOf key="att.language"/>
@@ -745,8 +745,8 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
-                    
+
+
                     <elementSpec ident="TrademarkQualifierText">
                         <classes>
                             <memberOf key="att.language"/>
@@ -762,7 +762,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ProductLiability">
                         <classes>
                             <memberOf key="att.language"/>
@@ -778,7 +778,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
 
                     <!-- End of Book Copyright information -->
 
@@ -979,6 +979,8 @@
                     <!-- ....................................................................... -->
                     <!-- BookFrontmatter / BookBackmatter                                        -->
                     <!-- ....................................................................... -->
+                    <!-- <!ELEMENT BookFrontmatter (BookFrontmatterInfo?, BookFrontmatterHeader?, (NoBody | BodyRef+ | (BodyFrontmatter, BodyRef*)))>
+                     -->
 
                     <elementSpec ident="BookFrontmatter">
                         <classes>
@@ -991,7 +993,19 @@
                             <rng:optional>
                                 <rng:ref name="BookFrontmatterHeader"/>
                             </rng:optional>
-                            <rng:ref name="NoBody"/>
+                            <rng:choice>
+                                <rng:ref name="NoBody"/>
+                                <rng:oneOrMore>
+                                    <rng:ref name="BodyRef"/>
+                                </rng:oneOrMore>
+                                <rng:group>
+                                    <rng:ref name="BodyFrontmatter"/>
+                                    <rng:zeroOrMore>
+                                        <rng:ref name="BodyRef"/>
+                                    </rng:zeroOrMore>
+                                </rng:group>
+                            </rng:choice>
+
                         </content>
                     </elementSpec>
 
@@ -1034,12 +1048,91 @@
                         </content>
                     </elementSpec>
 
+                    <!-- <!ELEMENT BodyFrontmatter ((Frontispiece?, Dedication?, Foreword*, Preface*, ArticleNote*, BookAcknowledgments?, BookNotes?, AbbreviationGroup?, Toc?, Loh*, Loc?) | PDFExtract)>
+                     -->
 
-                    <!--<!ELEMENT BookFrontmatter (BookFrontmatterInfo?, BookFrontmatterHeader?, (NoBody | BodyRef+ | (BodyFrontmatter, BodyRef*)))>
+                    <elementSpec ident="BodyFrontmatter">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Frontispiece"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="Dedication"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Foreword"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Frontispiece">
+                        <content>
+                            <rng:ref name="Figure"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Dedication">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="Heading"/>
+                            </rng:optional>
+                            <rng:oneOrMore>
+                                <rng:ref name="SimplePara"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- Foreword                                                                -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="Foreword">
+                        <content>
+                            <rng:ref name="ForewordInfo"/>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:ref name="Body"/>
+                        </content>
+                    </elementSpec>
                     
+                    <elementSpec ident="ForewordInfo">
+                        <content>
+                            <rng:ref name="ForewordTitle"/>
+                            <rng:optional>
+                                <rng:ref name="ForewordDate"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="ForewordLocation"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+                    
+
+                    <elementSpec ident="ForewordTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ForewordDate">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ForewordLocation">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!--
                     <!ELEMENT BookFrontmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
-                    <!ELEMENT BodyFrontmatter ((Frontispiece?, Dedication?, Foreword*, Preface*, ArticleNote*, BookAcknowledgments?, BookNotes?, AbbreviationGroup?, Toc?, Loh*, Loc?) | PDFExtract)>
-                    <!ELEMENT Frontispiece (Figure)>
                     <!ELEMENT BookNotes (BookNotesTitle, AuthorGroup?, Body)>
                     <!ELEMENT BookNotesTitle (%SimpleTextModel;)*>
                     <!ATTLIST BookNotesTitle
