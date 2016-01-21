@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T10:33:17Z. .CC-BY
+DTD generated from ODD source 2016-01-21T10:55:24Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -890,7 +890,7 @@ Address CDATA #IMPLIED >
 <!ATTLIST Section1
  %att.ID.attributes; >
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
-<!ELEMENT Series (SeriesInfo,Book)>
+<!ELEMENT Series (SeriesInfo,(SeriesHeader?,Book))>
 <!--doc: -->
 <!ELEMENT SeriesAbbreviatedTitle  (#PCDATA)>
 <!ATTLIST SeriesAbbreviatedTitle
