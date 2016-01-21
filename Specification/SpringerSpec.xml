@@ -1069,6 +1069,9 @@
                             <rng:zeroOrMore>
                                 <rng:ref name="Preface"/>
                             </rng:zeroOrMore>
+                            <rng:optional>
+                                <rng:ref name="BookNotes"/>
+                            </rng:optional>
                         </content>
                     </elementSpec>
 
@@ -1184,15 +1187,30 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
+                    
+                    <elementSpec ident="BookNotes">
+                        <content>
+                            <rng:ref name="BookNotesTitle"/>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:ref name="Body"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="BookNotesTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                    </elementSpec>
 
 
                     <!--
                     <!ELEMENT BookFrontmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
-                    <!ELEMENT BookNotes (BookNotesTitle, AuthorGroup?, Body)>
-                    <!ELEMENT BookNotesTitle (%SimpleTextModel;)*>
-                    <!ATTLIST BookNotesTitle
-                    Language %LanguageAttrValues; #REQUIRED
-                    >
+                    
                     <!ELEMENT BookAcknowledgments (AcknowledgmentTitle, AuthorGroup?, Body)>
                     <!ELEMENT AcknowledgmentTitle (%SimpleTextModel;)*>
                     <!ATTLIST AcknowledgmentTitle
