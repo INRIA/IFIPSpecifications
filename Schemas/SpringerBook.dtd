@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-22T06:24:47Z. .CC-BY
+DTD generated from ODD source 2016-01-22T21:23:59Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -77,11 +77,11 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.PartInfoPart_sequenceOptional "PartID?, PartNumber?, PartSequenceNumber?, PartTitle?, PartSubTitle?, PartChapterCount?, PartContext?"> 
 <!ENTITY % model.PartInfoPart_sequenceOptionalRepeatable "PartID*, PartNumber*, PartSequenceNumber*, PartTitle*, PartSubTitle*, PartChapterCount*, PartContext*"> 
 <!ENTITY % model.PartInfoPart_sequenceRepeatable "PartID+, PartNumber+, PartSequenceNumber+, PartTitle+, PartSubTitle+, PartChapterCount+, PartContext+"> 
-<!ENTITY % model.NamePart "GivenName |Initials |NoInitials |Particle |FamilyName |Suffix"> 
-<!ENTITY % model.NamePart_sequence "GivenName, Initials, NoInitials, Particle, FamilyName, Suffix"> 
-<!ENTITY % model.NamePart_sequenceOptional "GivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?"> 
-<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*"> 
-<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+"> 
+<!ENTITY % model.NamePart "GivenName |NoGivenName |Initials |NoInitials |Particle |FamilyName |Suffix |Prefix |Degrees |NativeName"> 
+<!ENTITY % model.NamePart_sequence "GivenName, NoGivenName, Initials, NoInitials, Particle, FamilyName, Suffix, Prefix, Degrees, NativeName"> 
+<!ENTITY % model.NamePart_sequenceOptional "GivenName?, NoGivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?, Prefix?, Degrees?, NativeName?"> 
+<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, NoGivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*, Prefix*, Degrees*, NativeName*"> 
+<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, NoGivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+, Prefix+, Degrees+, NativeName+"> 
 <!ENTITY % model.referenceElements "ExternalRef |InternalRef |CitationRef"> 
 <!ENTITY % model.referenceElements_sequence "ExternalRef, InternalRef, CitationRef"> 
 <!ENTITY % model.referenceElements_sequenceOptional "ExternalRef?, InternalRef?, CitationRef?"> 
@@ -368,11 +368,11 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.PartInfoPart_sequenceOptional "PartID?, PartNumber?, PartSequenceNumber?, PartTitle?, PartSubTitle?, PartChapterCount?, PartContext?"> 
 <!ENTITY % model.PartInfoPart_sequenceOptionalRepeatable "PartID*, PartNumber*, PartSequenceNumber*, PartTitle*, PartSubTitle*, PartChapterCount*, PartContext*"> 
 <!ENTITY % model.PartInfoPart_sequenceRepeatable "PartID+, PartNumber+, PartSequenceNumber+, PartTitle+, PartSubTitle+, PartChapterCount+, PartContext+"> 
-<!ENTITY % model.NamePart "GivenName |Initials |NoInitials |Particle |FamilyName |Suffix"> 
-<!ENTITY % model.NamePart_sequence "GivenName, Initials, NoInitials, Particle, FamilyName, Suffix"> 
-<!ENTITY % model.NamePart_sequenceOptional "GivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?"> 
-<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*"> 
-<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+"> 
+<!ENTITY % model.NamePart "GivenName |NoGivenName |Initials |NoInitials |Particle |FamilyName |Suffix |Prefix |Degrees |NativeName"> 
+<!ENTITY % model.NamePart_sequence "GivenName, NoGivenName, Initials, NoInitials, Particle, FamilyName, Suffix, Prefix, Degrees, NativeName"> 
+<!ENTITY % model.NamePart_sequenceOptional "GivenName?, NoGivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?, Prefix?, Degrees?, NativeName?"> 
+<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, NoGivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*, Prefix*, Degrees*, NativeName*"> 
+<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, NoGivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+, Prefix+, Degrees+, NativeName+"> 
 <!ENTITY % model.referenceElements "ExternalRef |InternalRef |CitationRef"> 
 <!ENTITY % model.referenceElements_sequence "ExternalRef, InternalRef, CitationRef"> 
 <!ENTITY % model.referenceElements_sequenceOptional "ExternalRef?, InternalRef?, CitationRef?"> 
@@ -699,6 +699,8 @@ Type CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT DefinitionListEntry (Term,Description)>
 <!--doc: -->
+<!ELEMENT Degrees  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT Description (Para)+>
 <!--doc: -->
 <!ELEMENT EditionNumber  (#PCDATA)>
@@ -829,11 +831,15 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Month  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT NativeName  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT NoArticleTitle EMPTY>
 <!--doc: -->
 <!ELEMENT NoBody  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT NoChapterTitle EMPTY>
+<!--doc: -->
+<!ELEMENT NoGivenName EMPTY>
 <!--doc: -->
 <!ELEMENT NoInitials EMPTY>
 <!--doc: -->
@@ -865,7 +871,7 @@ Category CDATA  #REQUIRED >
 <!--doc: -->
 <!ELEMENT Para %macro.FullTextModel;>
 <!--doc: -->
-<!ELEMENT Part (PartInfo,(Chapter)*,(BookFrontmatter)?)>
+<!ELEMENT Part (PartInfo,(BookFrontmatter)?,(BodyRef)*,(SubPart)*,(Chapter)*,(BookFrontmatter)?)>
 <!ATTLIST Part
  %att.ID.attributes; >
 <!--doc: -->
@@ -905,6 +911,8 @@ TocLevels CDATA #IMPLIED >
 <!ELEMENT PrefaceTitle %macro.SimpleTextModel;>
 <!ATTLIST PrefaceTitle
  %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Prefix  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ProductLiability  (#PCDATA)>
 <!ATTLIST ProductLiability
@@ -1005,6 +1013,29 @@ Country CDATA #IMPLIED >
 <!ELEMENT Street  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT SubHeading  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPart (SubPartInfo,(SubPartHeader)?,(BookFrontmatter)?,(Chapter)+)>
+<!ATTLIST SubPart
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT SubPartChapterCount  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartHeader ((AuthorGroup)?,(EditorGroup)?,(CollaboratorGroup)?,(Abstract)?,(KeywordGroup)*,(ArticleNote)*)>
+<!--doc: -->
+<!ELEMENT SubPartID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartInfo (SubPartID,(SubPartNumber)?,(SubPartSequenceNumber)?,SubPartTitle,(SubPartSubTitle)?,(SubPartChapterCount)?)>
+<!ATTLIST SubPartInfo
+ %att.OutputMedium.attributes;
+TocLevels CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT SubPartNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartSequenceNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartSubTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT SubPartTitle %macro.SimpleTextModel;>
 <!--doc: -->
 <!ELEMENT SubSeries (SubSeriesInfo,(BookOnlineFirst)?,(SubSeriesHeader)?,(Toc)?,(Book)*)>
 <!--doc: -->
