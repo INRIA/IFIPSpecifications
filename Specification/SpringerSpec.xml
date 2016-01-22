@@ -2664,14 +2664,30 @@
                             </rng:group>
                         </content>
                     </elementSpec>
+                    
+                    <!-- <!ELEMENT SeriesHeader (LegalNotice*, AuthorGroup?, 
+                        EditorGroup?, CollaboratorGroup?, SeriesInformationText?, Abstract?, KeywordGroup*, AbbreviationGroup?)>
+ -->
 
                     <elementSpec ident="SeriesHeader">
+                        <classes>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
                         <content>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="EditorGroup"/>
+                            </rng:optional>
                             <rng:optional>
                                 <rng:ref name="CollaboratorGroup"/>
                             </rng:optional>
                             <rng:optional>
                                 <rng:ref name="SeriesInformationText"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="Abstract"/>
                             </rng:optional>
                         </content>
                     </elementSpec>

@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-22T06:10:39Z. .CC-BY
+DTD generated from ODD source 2016-01-22T06:22:52Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -964,7 +964,9 @@ Address CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT SeriesElectronicISSN  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT SeriesHeader ((CollaboratorGroup)?,(SeriesInformationText)?)>
+<!ELEMENT SeriesHeader ((AuthorGroup)?,(EditorGroup)?,(CollaboratorGroup)?,(SeriesInformationText)?,(Abstract)?)>
+<!ATTLIST SeriesHeader
+ %att.OutputMedium.attributes; >
 <!--doc: -->
 <!ELEMENT SeriesID  (#PCDATA)>
 <!--doc: -->
