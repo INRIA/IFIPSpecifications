@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-21T17:42:40Z. .CC-BY
+DTD generated from ODD source 2016-01-22T05:56:28Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -948,7 +948,7 @@ Address CDATA #IMPLIED >
 <!ATTLIST Section3
  %att.ID.attributes; >
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
-<!ELEMENT Series (SeriesInfo,(SeriesHeader?,Book))>
+<!ELEMENT Series (SeriesInfo,(SeriesHeader?,(Book|SubSeries)*))>
 <!--doc: -->
 <!ELEMENT SeriesAbbreviatedTitle  (#PCDATA)>
 <!ATTLIST SeriesAbbreviatedTitle
@@ -996,7 +996,34 @@ Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT SubHeading  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT SubSeries (SubSeriesInfo,(BookOnlineFirst)?,(SubSeriesHeader)?,(Toc)?,(Book)*)>
+<!--doc: -->
+<!ELEMENT SubSeriesAbbreviatedTitle  (#PCDATA)>
+<!ATTLIST SubSeriesAbbreviatedTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT SubSeriesElectronicISSN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesHeader ((AuthorGroup)?,(EditorGroup)?,(CollaboratorGroup)?)>
+<!ATTLIST SubSeriesHeader
+ %att.OutputMedium.attributes; >
+<!--doc: -->
 <!ELEMENT SubSeriesID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesInfo (SubSeriesID,(SubSeriesPrintISSN)?,(SubSeriesElectronicISSN)?,SubSeriesTitle,(SubSeriesSubTitle)?,(SubSeriesAbbreviatedTitle)?)>
+<!ATTLIST SubSeriesInfo
+ %att.OutputMedium.attributes;
+SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
+<!--doc: -->
+<!ELEMENT SubSeriesPrintISSN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesSubTitle  (#PCDATA)>
+<!ATTLIST SubSeriesSubTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT SubSeriesTitle  (#PCDATA)>
+<!ATTLIST SubSeriesTitle
+ %att.language.attributes; >
 <!--doc: -->
 <!ELEMENT Subscript (#PCDATA|Emphasis)*>
 <!--doc: -->

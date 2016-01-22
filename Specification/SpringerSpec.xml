@@ -174,7 +174,12 @@
                                     <rng:optional>
                                         <rng:ref name="SeriesHeader"/>
                                     </rng:optional>
-                                    <rng:ref name="Book"/>
+                                    <rng:zeroOrMore>
+                                        <rng:choice>
+                                            <rng:ref name="Book"/>
+                                            <rng:ref name="SubSeries"/>
+                                        </rng:choice>
+                                    </rng:zeroOrMore>
                                 </rng:group>
                             </rng:group>
                         </content>
@@ -231,7 +236,19 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="SubSeriesPrintISSN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
                     <elementSpec ident="SeriesElectronicISSN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SubSeriesElectronicISSN">
                         <content>
                             <rng:text/>
                         </content>
@@ -246,7 +263,34 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="SubSeriesTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
                     <elementSpec ident="SeriesAbbreviatedTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SubSeriesAbbreviatedTitle">
+                        <classes>
+                            <memberOf key="att.language"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="SubSeriesSubTitle">
                         <classes>
                             <memberOf key="att.language"/>
                         </classes>
@@ -378,6 +422,84 @@
                     <elementSpec ident="BookEdition">
                         <content>
                             <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- SubSeries                                                               -->
+                    <!-- ....................................................................... -->
+                    <!-- 
+                        <!ELEMENT SubSeries (SubSeriesInfo, BookOnlineFirst?, 
+                        (SubSeriesHeader?, Toc?, (BookSet | Book)*, SubSeriesIndex?))>
+                    <!ATTLIST SubSeries
+                    OutputMedium %OutputMediumAttrValues; #IMPLIED
+                    > -->
+                    <elementSpec ident="SubSeries">
+                        <content>
+                            <rng:ref name="SubSeriesInfo"/>
+                            <rng:optional>
+                                <rng:ref name="BookOnlineFirst"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="SubSeriesHeader"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="Toc"/>
+                            </rng:optional>
+                            <rng:zeroOrMore>
+                                <rng:ref name="Book"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+
+                    <elementSpec ident="SubSeriesInfo">
+                        <classes>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="SubSeriesID"/>
+                            <rng:optional>
+                                <rng:ref name="SubSeriesPrintISSN"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="SubSeriesElectronicISSN"/>
+                            </rng:optional>
+                            <rng:ref name="SubSeriesTitle"/>
+                            <rng:optional>
+                                <rng:ref name="SubSeriesSubTitle"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="SubSeriesAbbreviatedTitle"/>
+                            </rng:optional>
+                        </content>
+                        <attList>
+                            <attDef ident="SeriesType">
+                                <valList type="closed">
+                                    <valItem ident="Series"/>
+                                    <valItem ident="Subseries"/>
+                                    <valItem ident="VirtualSeries"/>
+                                    <valItem ident="VolumePackage"/>
+                                    <valItem ident="Hierarchy"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="SubSeriesHeader">
+                        <classes>
+                            <memberOf key="att.OutputMedium"/>
+                        </classes>
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="AuthorGroup"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="EditorGroup"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="CollaboratorGroup"/>
+                            </rng:optional>
                         </content>
                     </elementSpec>
 
@@ -602,8 +724,7 @@
                             </rng:optional>
                             <rng:zeroOrMore>
                                 <rng:ref name="model.fullTextBlock"/>
-                            </rng:zeroOrMore>T
-                        </content>
+                            </rng:zeroOrMore>T </content>
                     </elementSpec>
 
 
@@ -1247,11 +1368,11 @@
                             <rng:ref name="macro.SimpleTextModel"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- Table of content                                                        -->
                     <!-- ....................................................................... -->
-                    
+
                     <!-- <!ELEMENT Toc (Heading, SubHeading?, TocFront*, (TocPart | TocChapter)*, TocBack*)> -->
                     <elementSpec ident="Toc">
                         <content>
@@ -1273,7 +1394,7 @@
                             </rng:zeroOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="TocFront">
                         <content>
                             <rng:ref name="macro.SimpleTextModel"/>
@@ -1286,7 +1407,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <elementSpec ident="TocPart">
                         <content>
                             <rng:ref name="TocEntry"/>
@@ -1329,7 +1450,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT TocChapter (Heading?, SubHeading?, (TocEntry, (Author | InstitutionalAuthor)*)?, TocSection1*)> -->
                     <elementSpec ident="TocChapter">
                         <content>
@@ -1347,8 +1468,8 @@
                             </rng:optional>
                         </content>
                     </elementSpec>
-                    
-                    
+
+
                     <!--<!ELEMENT TocAppendix (Heading?, SubHeading?, (TocEntry, (Author | InstitutionalAuthor)*)?, TocSection1*)>
                     <!ELEMENT TocSection1 (TocEntry, TocSection2*)>
                     <!ELEMENT TocSection2 (TocEntry, TocSection3*)>
@@ -1741,7 +1862,7 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="SubHeading">
                         <content>
                             <rng:text/>
