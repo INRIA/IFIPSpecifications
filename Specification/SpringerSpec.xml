@@ -389,6 +389,7 @@
                                     <rng:ref name="BookSubjectGroup"/>
                                     <rng:ref name="BookstoreLocation"/>
                                     <rng:ref name="CatalogingInformation"/>
+                                    <rng:ref name="BookClassification"/>
                                 </rng:choice>
                             </rng:oneOrMore>
                         </content>
@@ -836,6 +837,16 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="BookClassification">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:choice>
+                                    <rng:ref name="CharacteristicValue"/>
+                                    <rng:ref name="ClassificationGroup"/>
+                                </rng:choice>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
 
                     <!-- Start of Book Copyright informaiton -->
 
@@ -2751,6 +2762,61 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- ClassificationGroup                                                     -->
+                    <!-- ....................................................................... -->
+                    <elementSpec ident="ClassificationGroup">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="CharacteristicValue"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CharacteristicValue">
+                        <content>
+                            <rng:ref name="macro.SimpleTextModel"/>
+                        </content>
+                        <attList>
+                            <attDef ident="Characteristic">
+                                <valList>
+                                    <valItem ident="Substance"/>
+                                    <valItem ident="SubstanceID"/>
+                                    <valItem ident="SubstanceClass"/>
+                                    <valItem ident="Substrate"/>
+                                    <valItem ident="Property"/>
+                                    <valItem ident="PropertyID"/>
+                                    <valItem ident="PropertyClass"/>
+                                    <valItem ident="PropertyParameter"/>
+                                    <valItem ident="PropertyValue"/>
+                                    <valItem ident="PropertyUnit"/>
+                                    <valItem ident="MainSubject"/>
+                                    <valItem ident="SecondarySubject"/>
+                                    <valItem ident="GroupTitle"/>
+                                    <valItem ident="GroupSort"/>
+                                    <valItem ident="Discipline"/>
+                                    <valItem ident="SubDiscipline"/>
+                                    <valItem ident="PACS"/>
+                                    <valItem ident="MSC"/>
+                                    <valItem ident="JEL"/>
+                                    <valItem ident="ElementSystem"/>
+                                    <valItem ident="CASRegistryNumber"/>
+                                    <valItem ident="Keyword"/>
+                                    <valItem ident="Package"/>
+                                    <valItem ident="TopicalCollection"/>
+                                    <valItem ident="TitleSynonym"/>
+                                    <valItem ident="ContentClass"/>
+                                    <valItem ident="ImagesMD"/>
+                                    <valItem ident="EntityPrefix"/>
+                                    <valItem ident="Disease"/>
+                                    <valItem ident="DiseaseID"/>
+                                    <valItem ident="DBLPID"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
 
                     <!-- Definition of attribute classes for the Springer specification -->
                     <classSpec ident="att.OutputMedium" type="atts">

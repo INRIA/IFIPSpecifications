@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-22T05:56:28Z. .CC-BY
+DTD generated from ODD source 2016-01-22T06:10:39Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -481,6 +481,8 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookChapterCount  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT BookClassification (CharacteristicValue|ClassificationGroup)+>
+<!--doc: -->
 <!ELEMENT BookContext ((SeriesID)?,(SubSeriesID)?,(BookSetID,BookSetTitle)*,(VolumePackageID)?)>
 <!--doc: -->
 <!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine|CopyrightStandardText|TrademarkQualifierText|ProductLiability)+>
@@ -509,7 +511,7 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookID  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation|CatalogingInformation)+)>
+<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation|CatalogingInformation|BookClassification)+)>
 <!ATTLIST BookInfo
  %att.language.attributes;
  %att.numbered.attributes;
@@ -615,6 +617,10 @@ RelatedObjectType CDATA #IMPLIED >
 <!ATTLIST ChapterTitle
  %att.language.attributes; >
 <!--doc: -->
+<!ELEMENT CharacteristicValue %macro.SimpleTextModel;>
+<!ATTLIST CharacteristicValue
+Characteristic CDATA  #IMPLIED >
+<!--doc: -->
 <!ELEMENT Citation (CitationNumber?,(BibUnstructured|BibChapter|BibArticle|BibBook)*)>
 <!ATTLIST Citation
  %att.ID.attributes; >
@@ -626,6 +632,8 @@ RelatedObjectType CDATA #IMPLIED >
 CitationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT City  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ClassificationGroup (CharacteristicValue)+>
 <!--doc: -->
 <!ELEMENT CoPublisher  (#PCDATA)>
 <!--doc: -->
