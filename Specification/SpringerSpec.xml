@@ -2529,6 +2529,19 @@
                             </attDef>
                         </attList>
                     </elementSpec>
+                    
+                    <!-- <!ELEMENT BibChapter ((%AuthorshipModel;), %YearModel;, 
+                        ((NoChapterTitle, (%EditorshipModel;)?, BookTitle, 
+                        (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, 
+                        ConfNumber?, ConfEventLocation?, (ConfEventDate | (ConfEventDateStart, ConfEventDateEnd))?, 
+                        ConfEventURL?)), SeriesTitle?, NumberInSeries?, (PublisherName, PublisherLocation)*, 
+                        (FirstPage, LastPage?)?, (BibChapterDOI | BibBookDOI)?) | (ChapterTitle, (((SeriesTitle, NumberInSeries?)?, 
+                        (PublisherName, PublisherLocation)*, BibChapterDOI) | ((%EditorshipModel;)?, BookTitle, 
+                        (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, 
+                        ConfNumber?, ConfEventLocation?, (ConfEventDate | (ConfEventDateStart, ConfEventDateEnd))?, 
+                        ConfEventURL?)), SeriesTitle?, NumberInSeries?, (PublisherName, PublisherLocation)*, 
+                        (FirstPage, LastPage?)?, (BibChapterDOI | BibBookDOI)?)))), Occurrence*, ISBN?, BibComments?)>
+ -->
 
                     <elementSpec ident="BibChapter">
                         <content>
@@ -2555,6 +2568,8 @@
                                     <rng:ref name="Eds"/>
                                     <rng:ref name="EditionNumber"/>
                                     <rng:ref name="NoChapterTitle"/>
+                                    <rng:ref name="BibChapterDOI"/>
+                                    <rng:ref name="BibBookDOI"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
                         </content>
@@ -2632,6 +2647,7 @@
                                     <rng:ref name="Eds"/>
                                     <rng:ref name="EditionNumber"/>
                                     <rng:ref name="InstitutionalAuthorName"/>
+                                    <rng:ref name="BibBookDOI"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
                         </content>
@@ -2679,6 +2695,18 @@
                     </elementSpec>
 
                     <elementSpec ident="BibArticleDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="BibChapterDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="BibBookDOI">
                         <content>
                             <rng:text/>
                         </content>
