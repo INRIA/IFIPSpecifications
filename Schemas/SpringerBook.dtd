@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-01-16T17:41:24Z. .CC-BY
+DTD generated from ODD source 2016-01-26T09:02:29Z. .CC-BY
 TEI Edition: Version 2.9.1. Last updated on
 	15th October 2015, revision 46ac023
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
@@ -77,11 +77,11 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.PartInfoPart_sequenceOptional "PartID?, PartNumber?, PartSequenceNumber?, PartTitle?, PartSubTitle?, PartChapterCount?, PartContext?"> 
 <!ENTITY % model.PartInfoPart_sequenceOptionalRepeatable "PartID*, PartNumber*, PartSequenceNumber*, PartTitle*, PartSubTitle*, PartChapterCount*, PartContext*"> 
 <!ENTITY % model.PartInfoPart_sequenceRepeatable "PartID+, PartNumber+, PartSequenceNumber+, PartTitle+, PartSubTitle+, PartChapterCount+, PartContext+"> 
-<!ENTITY % model.NamePart "GivenName |Initials |NoInitials |Particle |FamilyName |Suffix"> 
-<!ENTITY % model.NamePart_sequence "GivenName, Initials, NoInitials, Particle, FamilyName, Suffix"> 
-<!ENTITY % model.NamePart_sequenceOptional "GivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?"> 
-<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*"> 
-<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+"> 
+<!ENTITY % model.NamePart "GivenName |NoGivenName |Initials |NoInitials |Particle |FamilyName |Suffix |Prefix |Degrees |NativeName"> 
+<!ENTITY % model.NamePart_sequence "GivenName, NoGivenName, Initials, NoInitials, Particle, FamilyName, Suffix, Prefix, Degrees, NativeName"> 
+<!ENTITY % model.NamePart_sequenceOptional "GivenName?, NoGivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?, Prefix?, Degrees?, NativeName?"> 
+<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, NoGivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*, Prefix*, Degrees*, NativeName*"> 
+<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, NoGivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+, Prefix+, Degrees+, NativeName+"> 
 <!ENTITY % model.referenceElements "ExternalRef |InternalRef |CitationRef"> 
 <!ENTITY % model.referenceElements_sequence "ExternalRef, InternalRef, CitationRef"> 
 <!ENTITY % model.referenceElements_sequenceOptional "ExternalRef?, InternalRef?, CitationRef?"> 
@@ -102,11 +102,16 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "Equation |%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -363,11 +368,11 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.PartInfoPart_sequenceOptional "PartID?, PartNumber?, PartSequenceNumber?, PartTitle?, PartSubTitle?, PartChapterCount?, PartContext?"> 
 <!ENTITY % model.PartInfoPart_sequenceOptionalRepeatable "PartID*, PartNumber*, PartSequenceNumber*, PartTitle*, PartSubTitle*, PartChapterCount*, PartContext*"> 
 <!ENTITY % model.PartInfoPart_sequenceRepeatable "PartID+, PartNumber+, PartSequenceNumber+, PartTitle+, PartSubTitle+, PartChapterCount+, PartContext+"> 
-<!ENTITY % model.NamePart "GivenName |Initials |NoInitials |Particle |FamilyName |Suffix"> 
-<!ENTITY % model.NamePart_sequence "GivenName, Initials, NoInitials, Particle, FamilyName, Suffix"> 
-<!ENTITY % model.NamePart_sequenceOptional "GivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?"> 
-<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*"> 
-<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+"> 
+<!ENTITY % model.NamePart "GivenName |NoGivenName |Initials |NoInitials |Particle |FamilyName |Suffix |Prefix |Degrees |NativeName"> 
+<!ENTITY % model.NamePart_sequence "GivenName, NoGivenName, Initials, NoInitials, Particle, FamilyName, Suffix, Prefix, Degrees, NativeName"> 
+<!ENTITY % model.NamePart_sequenceOptional "GivenName?, NoGivenName?, Initials?, NoInitials?, Particle?, FamilyName?, Suffix?, Prefix?, Degrees?, NativeName?"> 
+<!ENTITY % model.NamePart_sequenceOptionalRepeatable "GivenName*, NoGivenName*, Initials*, NoInitials*, Particle*, FamilyName*, Suffix*, Prefix*, Degrees*, NativeName*"> 
+<!ENTITY % model.NamePart_sequenceRepeatable "GivenName+, NoGivenName+, Initials+, NoInitials+, Particle+, FamilyName+, Suffix+, Prefix+, Degrees+, NativeName+"> 
 <!ENTITY % model.referenceElements "ExternalRef |InternalRef |CitationRef"> 
 <!ENTITY % model.referenceElements_sequence "ExternalRef, InternalRef, CitationRef"> 
 <!ENTITY % model.referenceElements_sequenceOptional "ExternalRef?, InternalRef?, CitationRef?"> 
@@ -388,11 +393,16 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "Equation |%model.referenceElements; |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
@@ -439,9 +449,13 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BibAuthorName (%model.NamePart;)*>
 <!--doc: -->
-<!ELEMENT BibBook (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName)*>
+<!ELEMENT BibBook (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|InstitutionalAuthorName|BibBookDOI)*>
 <!--doc: -->
-<!ELEMENT BibChapter (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|NoChapterTitle)*>
+<!ELEMENT BibBookDOI  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BibChapter (BibAuthorName|InstitutionalAuthorName|Etal|Year|ChapterTitle|ChapterSubTitle|BookTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|BibComments|Eds|EditionNumber|NoChapterTitle|BibChapterDOI|BibBookDOI)*>
+<!--doc: -->
+<!ELEMENT BibChapterDOI  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT BibComments  (#PCDATA)>
 <!--doc: -->
@@ -453,7 +467,11 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!ATTLIST Bibliography
  %att.ID.attributes; >
 <!--doc: -->
-<!ELEMENT Body (Section1)+>
+<!ELEMENT BlockQuote ((Heading)?,(%model.fullTextBlock;)*)>
+<!--doc: -->
+<!ELEMENT Body ((%model.fullTextBlock;)*,(Section1)*)>
+<!--doc: -->
+<!ELEMENT BodyFrontmatter ((Frontispiece)?,(Dedication)?,(Foreword)*,(Preface)*,(BookNotes)?,(Toc)?)>
 <!--doc: -->
 <!ELEMENT BodyRef EMPTY>
 <!ATTLIST BodyRef
@@ -467,9 +485,11 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookChapterCount  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT BookClassification (CharacteristicValue|ClassificationGroup)+>
+<!--doc: -->
 <!ELEMENT BookContext ((SeriesID)?,(SubSeriesID)?,(BookSetID,BookSetTitle)*,(VolumePackageID)?)>
 <!--doc: -->
-<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine)+>
+<!ELEMENT BookCopyright (CopyrightHolderName|CopyrightYear|SpringerReferenceLine|SpringerLocationsLine|CopyrightStandardText|TrademarkQualifierText|ProductLiability)+>
 <!--doc: -->
 <!ELEMENT BookDOI  (#PCDATA)>
 <!--doc: -->
@@ -477,7 +497,7 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookElectronicISBN  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT BookFrontmatter ((BookFrontmatterInfo)?,(BookFrontmatterHeader)?,NoBody)>
+<!ELEMENT BookFrontmatter ((BookFrontmatterInfo)?,(BookFrontmatterHeader)?,(NoBody|BodyRef+|(BodyFrontmatter,BodyRef*)))>
 <!ATTLIST BookFrontmatter
  %att.OutputMedium.attributes; >
 <!--doc: -->
@@ -495,7 +515,7 @@ PDFType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookID  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation)+)>
+<!ELEMENT BookInfo ((IFIPentity)*,(BookID|BookTitle|BookSubTitle|BookVolumeNumber|BookSequenceNumber|BookDOI|BookTitleID|BookPrintISBN|BookElectronicISBN|BookChapterCount|BookCopyright|BookContext|ConferenceInfo|EditionNumber|BookEdition|PaperInfo|BookSubjectGroup|BookstoreLocation|CatalogingInformation|BookClassification)+)>
 <!ATTLIST BookInfo
  %att.language.attributes;
  %att.numbered.attributes;
@@ -505,6 +525,12 @@ TocLevels CDATA #IMPLIED
 ContainsESM CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookJobSheet (PublisherInfo,SeriesInfo,SeriesHeader,BookInfo,EditorGroup,ProductionInfo)>
+<!--doc: -->
+<!ELEMENT BookNotes (BookNotesTitle,(AuthorGroup)?,Body)>
+<!--doc: -->
+<!ELEMENT BookNotesTitle %macro.SimpleTextModel;>
+<!ATTLIST BookNotesTitle
+ %att.language.attributes; >
 <!--doc: -->
 <!ELEMENT BookOnlineFirst (Part+|Chapter+)>
 <!--doc: -->
@@ -541,6 +567,10 @@ Priority CDATA #IMPLIED >
 <!ELEMENT CaptionContent (SimplePara)+>
 <!--doc: -->
 <!ELEMENT CaptionNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CatalogingInformation (#PCDATA|%model.verySimpleText;|InlineEquation)*>
+<!ATTLIST CatalogingInformation
+Library CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Chapter (ChapterInfo,ChapterHeader,(NoBody|Body),BodyRef?,ChapterBackmatter?)>
 <!ATTLIST Chapter
@@ -591,6 +621,10 @@ RelatedObjectType CDATA #IMPLIED >
 <!ATTLIST ChapterTitle
  %att.language.attributes; >
 <!--doc: -->
+<!ELEMENT CharacteristicValue %macro.SimpleTextModel;>
+<!ATTLIST CharacteristicValue
+Characteristic CDATA  #IMPLIED >
+<!--doc: -->
 <!ELEMENT Citation (CitationNumber?,(BibUnstructured|BibChapter|BibArticle|BibBook)*)>
 <!ATTLIST Citation
  %att.ID.attributes; >
@@ -602,6 +636,10 @@ RelatedObjectType CDATA #IMPLIED >
 CitationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT City  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ClassificationGroup (CharacteristicValue)+>
+<!--doc: -->
+<!ELEMENT CoPublisher  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Collaborator (CollaboratorName,Contact?)>
 <!ATTLIST Collaborator
@@ -636,6 +674,11 @@ AffiliationIDS CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CopyrightHolderName  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT CopyrightStandardText  (#PCDATA)>
+<!ATTLIST CopyrightStandardText
+ %att.language.attributes;
+Country CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT CopyrightYear  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Country  (#PCDATA)>
@@ -654,9 +697,13 @@ Type CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT Day  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Dedication ((Heading)?,(SimplePara)+)>
+<!--doc: -->
 <!ELEMENT DefinitionList ((Heading)?,(DefinitionListEntry)+)>
 <!--doc: -->
 <!ELEMENT DefinitionListEntry (Term,Description)>
+<!--doc: -->
+<!ELEMENT Degrees  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Description (Para)+>
 <!--doc: -->
@@ -700,13 +747,29 @@ NOTATION (TEX|MATHML|MATHTYPE|XML) #IMPLIED >
 <!--doc: -->
 <!ELEMENT Figure ((Caption)*,(MediaObject)+)>
 <!ATTLIST Figure
- %att.ID.attributes; >
+ %att.ID.attributes;
+Float (Yes|No) #REQUIRED
+Category (Schema|Structure|Standard|Logo) #REQUIRED >
 <!--doc: -->
 <!ELEMENT FirstPage  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Footnote (Para)*>
 <!ATTLIST Footnote
  %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT Foreword (ForewordInfo,(AuthorGroup)?,Body)>
+<!--doc: -->
+<!ELEMENT ForewordDate  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ForewordInfo (ForewordTitle,(ForewordDate)?,(ForewordLocation)*)>
+<!--doc: -->
+<!ELEMENT ForewordLocation  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ForewordTitle %macro.SimpleTextModel;>
+<!ATTLIST ForewordTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Frontispiece (Figure)>
 <!--doc: -->
 <!ELEMENT GivenName  (#PCDATA)>
 <!--doc: -->
@@ -767,14 +830,20 @@ Supplier CDATA #IMPLIED >
 <!ELEMENT Literal (#PCDATA|Emphasis)*>
 <!--doc: -->
 <!ELEMENT MediaObject ((Caption)?,(ImageObject)+)>
+<!ATTLIST MediaObject
+ %att.ID.attributes; >
 <!--doc: -->
 <!ELEMENT Month  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT NativeName  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT NoArticleTitle EMPTY>
 <!--doc: -->
 <!ELEMENT NoBody  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT NoChapterTitle EMPTY>
+<!--doc: -->
+<!ELEMENT NoGivenName EMPTY>
 <!--doc: -->
 <!ELEMENT NoInitials EMPTY>
 <!--doc: -->
@@ -806,7 +875,7 @@ Category CDATA  #REQUIRED >
 <!--doc: -->
 <!ELEMENT Para %macro.FullTextModel;>
 <!--doc: -->
-<!ELEMENT Part (PartInfo,(Chapter)*,(BookFrontmatter)?)>
+<!ELEMENT Part (PartInfo,(BookFrontmatter)?,(BodyRef)*,(SubPart)*,(Chapter)*,(BookFrontmatter)?)>
 <!ATTLIST Part
  %att.ID.attributes; >
 <!--doc: -->
@@ -835,15 +904,36 @@ TocLevels CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Postcode  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Preface (PrefaceInfo,(AuthorGroup)?,Body)>
+<!--doc: -->
+<!ELEMENT PrefaceDate  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PrefaceInfo (PrefaceTitle,(PrefaceDate)?,(PrefaceLocation)*)>
+<!--doc: -->
+<!ELEMENT PrefaceLocation  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PrefaceTitle %macro.SimpleTextModel;>
+<!ATTLIST PrefaceTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT Prefix  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ProductLiability  (#PCDATA)>
+<!ATTLIST ProductLiability
+ %att.language.attributes;
+Country CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT ProductionInfo  (#PCDATA)>
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
 <!--doc: -->
 <!ELEMENT PublisherImprintName  (#PCDATA)>
 <!--doc:basic publisher identification -->
-<!ELEMENT PublisherInfo (PublisherName|PublisherLocation|PublisherImprintName|PublisherURL)*>
+<!ELEMENT PublisherInfo (PublisherName|PublisherLocation|PublisherImprintName|PublisherURL|PublisherLogo|CoPublisher)*>
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT PublisherLocation  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PublisherLogo (Figure)>
 <!--doc:name of the publisher -->
 <!ELEMENT PublisherName  (#PCDATA)>
 <!--doc: -->
@@ -866,11 +956,19 @@ Address CDATA #IMPLIED >
 <!--doc:provides a SIG number -->
 <!ELEMENT SIG  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT Section1 ((Heading)?,(Para)*)>
+<!ELEMENT Section1 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*,(Section2)*)>
 <!ATTLIST Section1
  %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT Section2 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*,(Section3)*)>
+<!ATTLIST Section2
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT Section3 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*)>
+<!ATTLIST Section3
+ %att.ID.attributes; >
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
-<!ELEMENT Series (SeriesInfo,Book)>
+<!ELEMENT Series (SeriesInfo,(SeriesHeader?,(Book|SubSeries)*))>
 <!--doc: -->
 <!ELEMENT SeriesAbbreviatedTitle  (#PCDATA)>
 <!ATTLIST SeriesAbbreviatedTitle
@@ -878,7 +976,9 @@ Address CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT SeriesElectronicISSN  (#PCDATA)>
 <!--doc: -->
-<!ELEMENT SeriesHeader ((CollaboratorGroup)?,(SeriesInformationText)?)>
+<!ELEMENT SeriesHeader ((AuthorGroup)?,(EditorGroup)?,(CollaboratorGroup)?,(SeriesInformationText)?,(Abstract)?,(KeywordGroup)*)>
+<!ATTLIST SeriesHeader
+ %att.OutputMedium.attributes; >
 <!--doc: -->
 <!ELEMENT SeriesID  (#PCDATA)>
 <!--doc: -->
@@ -907,7 +1007,8 @@ SeriesType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT SpringerReferenceLine  (#PCDATA)>
 <!ATTLIST SpringerReferenceLine
- %att.language.attributes; >
+ %att.language.attributes;
+Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Stack  (#PCDATA)>
 <!--doc: -->
@@ -915,7 +1016,59 @@ SeriesType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Street  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT SubHeading  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPart (SubPartInfo,(SubPartHeader)?,(BookFrontmatter)?,(Chapter)+)>
+<!ATTLIST SubPart
+ %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT SubPartChapterCount  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartHeader ((AuthorGroup)?,(EditorGroup)?,(CollaboratorGroup)?,(Abstract)?,(KeywordGroup)*,(ArticleNote)*)>
+<!--doc: -->
+<!ELEMENT SubPartID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartInfo (SubPartID,(SubPartNumber)?,(SubPartSequenceNumber)?,SubPartTitle,(SubPartSubTitle)?,(SubPartChapterCount)?)>
+<!ATTLIST SubPartInfo
+ %att.OutputMedium.attributes;
+TocLevels CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT SubPartNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartSequenceNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubPartSubTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT SubPartTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT SubSeries (SubSeriesInfo,(BookOnlineFirst)?,(SubSeriesHeader)?,(Toc)?,(Book)*)>
+<!--doc: -->
+<!ELEMENT SubSeriesAbbreviatedTitle  (#PCDATA)>
+<!ATTLIST SubSeriesAbbreviatedTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT SubSeriesElectronicISSN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesHeader ((AuthorGroup)?,(EditorGroup)?,(CollaboratorGroup)?)>
+<!ATTLIST SubSeriesHeader
+ %att.OutputMedium.attributes; >
+<!--doc: -->
 <!ELEMENT SubSeriesID  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesInfo (SubSeriesID,(SubSeriesPrintISSN)?,(SubSeriesElectronicISSN)?,SubSeriesTitle,(SubSeriesSubTitle)?,(SubSeriesAbbreviatedTitle)?)>
+<!ATTLIST SubSeriesInfo
+ %att.OutputMedium.attributes;
+SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
+<!--doc: -->
+<!ELEMENT SubSeriesPrintISSN  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SubSeriesSubTitle  (#PCDATA)>
+<!ATTLIST SubSeriesSubTitle
+ %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT SubSeriesTitle  (#PCDATA)>
+<!ATTLIST SubSeriesTitle
+ %att.language.attributes; >
 <!--doc: -->
 <!ELEMENT Subscript (#PCDATA|Emphasis)*>
 <!--doc: -->
@@ -926,6 +1079,30 @@ SeriesType CDATA #IMPLIED >
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Term %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT Toc (Heading,(SubHeading)?,(TocFront)*,(TocPart|TocChapter)*,(TocBack)*)>
+<!--doc: -->
+<!ELEMENT TocBack %macro.SimpleTextModel;>
+<!ATTLIST TocBack
+PageNumber CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TocChapter ((Heading)?,(SubHeading)?,(TocEntry,Author*)?)>
+<!--doc: -->
+<!ELEMENT TocEntry (#PCDATA|%model.simpleText;|ExternalRef)*>
+<!ATTLIST TocEntry
+PageNumber CDATA #IMPLIED
+TargetID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TocFront %macro.SimpleTextModel;>
+<!ATTLIST TocFront
+PageNumber CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TocPart (TocEntry,(Author)*,(TocChapter)*)>
+<!--doc: -->
+<!ELEMENT TrademarkQualifierText  (#PCDATA)>
+<!ATTLIST TrademarkQualifierText
+ %att.language.attributes;
+Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT URL  (#PCDATA)>
 <!--doc: -->
