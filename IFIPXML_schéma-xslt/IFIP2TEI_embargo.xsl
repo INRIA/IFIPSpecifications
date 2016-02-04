@@ -10,6 +10,10 @@
     <xsl:variable name="path" select="@path" ></xsl:variable>
     <xsl:variable name="BookFrontMatterName" select="concat(substring-before(document-uri(.),tokenize(document-uri(.), '/')[last()]),'../BookFrontmatter/BookFrontmatter.xml')"/>
     <xsl:variable name="BookFrontMatter" select="document($BookFrontMatterName)"/>
+    <xsl:variable name="volumeNb">
+        <xsl:value-of
+            select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookVolumeNumber"/>
+    </xsl:variable>
     <xsl:template match="/">
         <!-- Ajouter test que le ficher  $FrontMatterName existe bien sinon ERREUR-->
 
@@ -65,11 +69,6 @@
                             </publicationStmt>
                             <seriesStmt>
                                 <idno type="stamp" n="IFIP">IFIP - International Federation for Information Processing</idno>
-
-                                <xsl:variable name="volumeNb">
-                                    <xsl:value-of
-                                        select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookVolumeNumber"/>
-                                </xsl:variable>
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection))}"/>
                                 <idno type="stamp"
@@ -81,10 +80,14 @@
                                 <xsl:variable name="entityWG">
                                     <xsl:value-of select="translate($BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/WG,'.','-')"/>
                                 </xsl:variable>
-                                <idno type="stamp"
-                                    n="{concat('IFIP-TC', normalize-space($entityTC))}"/>
-                                <idno type="stamp"
-                                    n="{concat('IFIP-WG', normalize-space($entityWG))}"/>
+                                <xsl:if test="string-length($entityTC)!=0">
+                                    <idno type="stamp"
+                                        n="{concat('IFIP-TC', normalize-space($entityTC))}"/>
+                                </xsl:if>
+                                <xsl:if test="string-length($entityWG)!=0">
+                                    <idno type="stamp"
+                                        n="{concat('IFIP-WG', normalize-space($entityWG))}"/>
+                                </xsl:if>
                             </seriesStmt>
                             <notesStmt>
                                 <note type="popular" n="0"/>
@@ -163,8 +166,9 @@
                 <xsl:apply-templates select="/Publisher/Series/SeriesInfo/SeriesTitle"/>
                 <!--xsl:apply-templates select="SeriesTitle"/-->
             </biblScope>
-
-
+            <biblScope unit="volume">
+                <xsl:value-of select="$volumeNb"/>
+            </biblScope>
 
             <date type="datePub">
                 <xsl:value-of select="Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"></xsl:value-of>
