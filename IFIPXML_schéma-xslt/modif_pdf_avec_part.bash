@@ -28,6 +28,7 @@ if [ -d $1 ]; then
 			eval "$Cde"
 			cp $NomPdfReplace $RepOuv/PDFFiles
 		fi
+		mv "$RepOuv/$Rep" $RepOuv
 	done
 else
 	echo "Erreur le dossier $1 n'existe pas";

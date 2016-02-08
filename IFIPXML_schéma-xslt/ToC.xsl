@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-    
+    <!-- A lancer suite à une requete API http://api.archives-ouvertes.fr/search/?q=collCode_s:IFIP-AICT-419&fl=title_s,authFullName_s,page_s,halId_s&rows=100&wt=xml   -->    
     <xsl:output method="html" version="5.0" encoding="UTF-8"/>
     
     <xsl:template match="/">
@@ -22,7 +22,7 @@
     <xsl:template match="doc">
         <tr style="valign='top';">
             <td style="align='left';">
-                <a href="{ str[@name = 'uri_s'] }"><xsl:value-of select="arr[@name = 'title_s']/str"/></a>
+                <a href="https://hal.inria.fr/IFIP-AICT-419/{ str[@name = 'halId_s'] }"><xsl:value-of select="arr[@name = 'title_s']/str"/></a>
                 <xsl:text disable-output-escaping="yes">&lt;br/&gt;</xsl:text>
                 <b><i><xsl:apply-templates select="arr[@name = 'authFullName_s']/str"/></i></b>
             </td>

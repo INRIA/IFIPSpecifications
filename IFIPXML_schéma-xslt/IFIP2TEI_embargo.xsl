@@ -26,9 +26,9 @@
                         <biblFull>
                             <titleStmt>
                                 <xsl:apply-templates 
-                                    select="/Publisher/Series/Book/Chapter/ChapterInfo/ChapterTitle"/>
+                                    select="//Chapter/ChapterInfo/ChapterTitle"/>
                                 <xsl:apply-templates
-                                    select="/Publisher/Series/Book/Chapter/ChapterHeader/AuthorGroup/Author"/>
+                                    select="//Chapter/ChapterHeader/AuthorGroup/Author"/>
                             </titleStmt>
                             <xsl:variable name="collection">
                                 <xsl:choose>
@@ -38,6 +38,9 @@
                                     <xsl:when
                                         test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
                                         >LNCS</xsl:when>
+                                    <xsl:when
+                                        test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
+                                        >LNBIP</xsl:when>
                                     <xsl:otherwise> CollectionInconnue </xsl:otherwise>
                                 </xsl:choose>
                             </xsl:variable>
@@ -74,37 +77,28 @@
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
                                 />
-                                <xsl:variable name="entityTC">
-                                    <xsl:value-of select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/TC"/>
-                                </xsl:variable>
-                                <xsl:variable name="entityWG">
-                                    <xsl:value-of select="translate($BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/WG,'.','-')"/>
-                                </xsl:variable>
-                                <xsl:if test="string-length($entityTC)!=0">
-                                    <idno type="stamp"
-                                        n="{concat('IFIP-TC', normalize-space($entityTC))}"/>
-                                </xsl:if>
-                                <xsl:if test="string-length($entityWG)!=0">
-                                    <idno type="stamp"
-                                        n="{concat('IFIP-WG', normalize-space($entityWG))}"/>
-                                </xsl:if>
-                            </seriesStmt>
+                                <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/TC"/>
+                                <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/WG"/>
+                           </seriesStmt>
                             <notesStmt>
                                 <note type="popular" n="0"/>
                                 <note type="peer" n="0"/>
                                 <note type="audience" n="2"/>
+                                <!-- car déjà dans le bookTitle
                                 <note type="commentary">
                                     <xsl:apply-templates
                                         select="Publisher/Series/Book/BookInfo/BookSubTitle"/>
                                 </note>
+                                -->
+                                <xsl:apply-templates select="/Publisher/Series/Book/Part/PartInfo"  />
                             </notesStmt>
                             <sourceDesc>
                                 <biblStruct>
                                     <analytic>
                                         <xsl:apply-templates
-                                            select="Publisher/Series/Book/Chapter/ChapterInfo/ChapterTitle"/>
+                                            select="//Chapter/ChapterInfo/ChapterTitle"/>
                                         <xsl:apply-templates
-                                            select="/Publisher/Series/Book/Chapter/ChapterHeader/AuthorGroup/Author"
+                                            select="//Chapter/ChapterHeader/AuthorGroup/Author"
                                         />
                                     </analytic>
                                     <monogr>
@@ -112,7 +106,7 @@
                                     </monogr>
                                     <xsl:apply-templates select="Publisher/Series/SeriesInfo"/>
                                     <xsl:apply-templates
-                                        select="Publisher/Series/Book/Chapter/ChapterInfo/ChapterDOI"
+                                        select="//Chapter/ChapterInfo/ChapterDOI"
                                     />
                                 </biblStruct>
                             </sourceDesc>
@@ -122,7 +116,7 @@
                                 </langUsage>
                                 <textClass>
                                     <xsl:apply-templates
-                                        select="Publisher/Series/Book/Chapter/ChapterHeader/KeywordGroup"/>
+                                        select="//Chapter/ChapterHeader/KeywordGroup"/>
                                     <xsl:call-template name="addDomain">
                                         <xsl:with-param name="dom">info</xsl:with-param>
                                     </xsl:call-template>
@@ -130,7 +124,7 @@
                                     <classCode scheme="halTypology" n="COUV"/>
                                 </textClass>
                                 <xsl:apply-templates
-                                    select="Publisher/Series/Book/Chapter/ChapterHeader/Abstract"/>
+                                    select="//Chapter/ChapterHeader/Abstract"/>
                             </profileDesc>
                         </biblFull>
                     </listBibl>
@@ -159,7 +153,7 @@
             <xsl:apply-templates select="/Publisher/PublisherInfo"/>
             <biblScope unit="pp">
                 <xsl:value-of
-                    select="concat(Chapter/ChapterInfo/ChapterFirstPage,'-',Chapter/ChapterInfo/ChapterLastPage)"
+                    select="concat(descendant::Chapter/ChapterInfo/ChapterFirstPage,'-',descendant::Chapter/ChapterInfo/ChapterLastPage)"
                 />
             </biblScope>
             <biblScope unit="serie">
@@ -171,7 +165,7 @@
             </biblScope>
 
             <date type="datePub">
-                <xsl:value-of select="Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"></xsl:value-of>
+                <xsl:value-of select="descendant::Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"></xsl:value-of>
             </date>
         </imprint>
     </xsl:template>
@@ -313,6 +307,11 @@
         </forename>
     </xsl:template>
     <xsl:template match="GivenName">
+        <forename type="middle">
+            <xsl:apply-templates/>
+        </forename>
+    </xsl:template>
+    <xsl:template match="Particle">
         <forename type="middle">
             <xsl:apply-templates/>
         </forename>
@@ -548,5 +547,20 @@
     </xsl:template>
     <xsl:template match="SeriesTitle">
         <xsl:value-of select="normalize-space(.)"></xsl:value-of>
+    </xsl:template>
+    <xsl:template match="TC">
+        <idno type="stamp"
+            n="{concat('IFIP-TC', normalize-space(.))}"/>
+        
+    </xsl:template>
+    <xsl:template match="WG">
+        <idno type="stamp"
+            n="{concat('IFIP-WG', translate(normalize-space(.),'.','-'))}"/>
+    </xsl:template>
+    <xsl:template match="PartInfo">
+        <note type="commentary">
+           <xsl:value-of select="concat('Part ',./PartID,': ',normalize-space(./PartTitle))"></xsl:value-of>
+        </note>
+        
     </xsl:template>
 </xsl:stylesheet>
