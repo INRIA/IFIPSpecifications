@@ -5,7 +5,7 @@
 
     <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
     <xsl:variable name="countryCodes" select="document('CountryCodes.xml')"/>
-
+   
     <!--xsl:variable name="IfipEntity" select="document('978-3-642-53344-9_BookFrontmatter.xml')"/-->
     <xsl:variable name="path" select="@path" ></xsl:variable>
     <xsl:variable name="BookFrontMatterName" select="concat(substring-before(document-uri(.),tokenize(document-uri(.), '/')[last()]),'../BookFrontmatter/BookFrontmatter.xml')"/>
@@ -14,8 +14,29 @@
         <xsl:value-of
             select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookVolumeNumber"/>
     </xsl:variable>
+    <xsl:variable name="collection">
+        <xsl:choose>
+            <xsl:when
+                test="contains(Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
+                >AICT</xsl:when>
+            <xsl:when
+                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
+                >LNCS</xsl:when>
+            <xsl:when
+                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
+                >LNBIP</xsl:when>
+            <xsl:otherwise> CollectionInconnue </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="CopyrightYear">
+       <xsl:value-of select="//Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"/>
+    </xsl:variable>
+    <xsl:variable name="Affiliations">
+        <xsl:copy-of select="//Affiliation"></xsl:copy-of>
+    </xsl:variable>
     <xsl:template match="/">
         <!-- Ajouter test que le ficher  $FrontMatterName existe bien sinon ERREUR-->
+
         <TEI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:hal="http://hal.archives-ouvertes.fr/"
             xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://api.archives-ouvertes.fr/documents/aofr-sword.xsd">
@@ -25,24 +46,10 @@
                         <biblFull>
                             <titleStmt>
                                 <xsl:apply-templates 
-                                    select="/Publisher/Series/Book/Chapter/ChapterInfo/ChapterTitle"/>
+                                    select="//Chapter/ChapterInfo/ChapterTitle"/>
                                 <xsl:apply-templates
-                                    select="/Publisher/Series/Book/Chapter/ChapterHeader/AuthorGroup/Author"/>
+                                    select="//Chapter/ChapterHeader/AuthorGroup/Author"/>
                             </titleStmt>
-                            <xsl:variable name="collection">
-                                <xsl:choose>
-                                    <xsl:when
-                                        test="contains(Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
-                                        >AICT</xsl:when>
-                                    <xsl:when
-                                        test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
-                                        >LNCS</xsl:when>
-                                    <xsl:when
-                                        test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
-                                        >LNBIP</xsl:when>
-                                    <xsl:otherwise> CollectionInconnue </xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:variable>
                             <editionStmt>
 
                                 <edition>
@@ -51,13 +58,17 @@
                                     <xsl:variable name="ChapterDOI">
                                         <xsl:value-of select="Publisher/Series/Book/Chapter/ChapterInfo/ChapterDOI"></xsl:value-of>
                                     </xsl:variable-->
-                                       
                                     
                                     <!-- POUR LR MOMENT, nom du fichier=nom du xml.pdf"/-->
                                     <ref type="file" subtype="author" n="1">
                                         <xsl:attribute name="target">
                                             <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',translate(tokenize(document-uri(.), '/')[last()],'.xml','.pdf'))"/>
                                         </xsl:attribute>
+                                        <date>
+                                            <xsl:attribute name="notBefore" >
+                                                <xsl:value-of select="concat(number($CopyrightYear) + 3,'-01-01')"></xsl:value-of>  
+                                            </xsl:attribute> 
+                                        </date>
                                     </ref>
 
                                 </edition>
@@ -71,7 +82,6 @@
                             </publicationStmt>
                             <seriesStmt>
                                 <idno type="stamp" n="IFIP">IFIP - International Federation for Information Processing</idno>
-
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection))}"/>
                                 <idno type="stamp"
@@ -79,24 +89,26 @@
                                 />
                                 <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/TC"/>
                                 <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity/WG"/>
-                            </seriesStmt>
+                           </seriesStmt>
                             <notesStmt>
                                 <note type="popular" n="0"/>
                                 <note type="peer" n="0"/>
                                 <note type="audience" n="2"/>
-                                <!-- car déjà dans le bookTitlenote type="commentary">
+                                <!-- car déjà dans le bookTitle
+                                <note type="commentary">
                                     <xsl:apply-templates
                                         select="Publisher/Series/Book/BookInfo/BookSubTitle"/>
-                                </note-->
+                                </note>
+                                -->
                                 <xsl:apply-templates select="/Publisher/Series/Book/Part/PartInfo"  />
                             </notesStmt>
                             <sourceDesc>
                                 <biblStruct>
                                     <analytic>
                                         <xsl:apply-templates
-                                            select="Publisher/Series/Book/Chapter/ChapterInfo/ChapterTitle"/>
+                                            select="//Chapter/ChapterInfo/ChapterTitle"/>
                                         <xsl:apply-templates
-                                            select="/Publisher/Series/Book/Chapter/ChapterHeader/AuthorGroup/Author"
+                                            select="//Chapter/ChapterHeader/AuthorGroup/Author"
                                         />
                                     </analytic>
                                     <monogr>
@@ -104,7 +116,7 @@
                                     </monogr>
                                     <xsl:apply-templates select="Publisher/Series/SeriesInfo"/>
                                     <xsl:apply-templates
-                                        select="Publisher/Series/Book/Chapter/ChapterInfo/ChapterDOI"
+                                        select="//Chapter/ChapterInfo/ChapterDOI"
                                     />
                                 </biblStruct>
                             </sourceDesc>
@@ -114,7 +126,7 @@
                                 </langUsage>
                                 <textClass>
                                     <xsl:apply-templates
-                                        select="Publisher/Series/Book/Chapter/ChapterHeader/KeywordGroup"/>
+                                        select="//Chapter/ChapterHeader/KeywordGroup"/>
                                     <xsl:call-template name="addDomain">
                                         <xsl:with-param name="dom">info</xsl:with-param>
                                     </xsl:call-template>
@@ -122,7 +134,7 @@
                                     <classCode scheme="halTypology" n="COUV"/>
                                 </textClass>
                                 <xsl:apply-templates
-                                    select="Publisher/Series/Book/Chapter/ChapterHeader/Abstract"/>
+                                    select="//Chapter/ChapterHeader/Abstract"/>
                             </profileDesc>
                         </biblFull>
                     </listBibl>
@@ -151,7 +163,7 @@
             <xsl:apply-templates select="/Publisher/PublisherInfo"/>
             <biblScope unit="pp">
                 <xsl:value-of
-                    select="concat(Chapter/ChapterInfo/ChapterFirstPage,'-',Chapter/ChapterInfo/ChapterLastPage)"
+                    select="concat(descendant::Chapter/ChapterInfo/ChapterFirstPage,'-',descendant::Chapter/ChapterInfo/ChapterLastPage)"
                 />
             </biblScope>
             <biblScope unit="serie">
@@ -162,10 +174,8 @@
                 <xsl:value-of select="$volumeNb"/>
             </biblScope>
 
-
-
             <date type="datePub">
-                <xsl:value-of select="Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"></xsl:value-of>
+                <xsl:value-of select="$CopyrightYear"/>
             </date>
         </imprint>
     </xsl:template>
@@ -180,19 +190,11 @@
         <author role="aut">
             <xsl:apply-templates/>
             <xsl:if test="@AffiliationIDS">
-                <!--xsl:for-each select="tokenize(@AffiliationIDS,' ')">
-                    <affiliation ref="#localStruct-{.}"/>
-                  </xsl:for-each-->  
-                <xsl:variable name="idAff"><xsl:value-of select="normalize-space(@AffiliationIDS)"/></xsl:variable>   
-                    <xsl:choose>
-                        <xsl:when test="//Affiliation[@ID=$idAff]/OrgDivision">
-                            <affiliation ref="#localStruct-{$idAff}"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <affiliation ref="#localStruct-{$idAff}Institution"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-
+                <xsl:for-each select="tokenize(@AffiliationIDS,' ')">
+                    <xsl:call-template name="Affiche_affi">
+                        <xsl:with-param name="idAff"><xsl:value-of select="normalize-space(.)" /></xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:for-each>  
             </xsl:if>
         </author>
     </xsl:template>
@@ -290,7 +292,7 @@
 
 
     <xsl:template match="BookElectronicISBN">
-        <idno type="isbn">
+        <idno type="eisbn">
             <xsl:apply-templates/>
         </idno>
     </xsl:template>
@@ -307,6 +309,11 @@
         </forename>
     </xsl:template>
     <xsl:template match="GivenName">
+        <forename type="middle">
+            <xsl:apply-templates/>
+        </forename>
+    </xsl:template>
+    <xsl:template match="Particle">
         <forename type="middle">
             <xsl:apply-templates/>
         </forename>
@@ -554,8 +561,20 @@
     </xsl:template>
     <xsl:template match="PartInfo">
         <note type="commentary">
-            <xsl:value-of select="concat(./PartID,': ',normalize-space(./PartTitle))"></xsl:value-of>
+           <xsl:value-of select="concat('Part ',./PartID,': ',normalize-space(./PartTitle))"></xsl:value-of>
         </note>
         
+    </xsl:template>
+    <!-- affiche une affiliation -->
+    <xsl:template name="Affiche_affi">
+        <xsl:param name="idAff"/>
+        <xsl:choose>
+            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
+                <affiliation ref="#localStruct-{$idAff}"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <affiliation ref="#localStruct-{$idAff}Institution"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>

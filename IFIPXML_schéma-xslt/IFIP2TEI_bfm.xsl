@@ -24,6 +24,9 @@
             <xsl:otherwise> CollectionInconnue </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>   
+    <xsl:variable name="Affiliations">
+        <xsl:copy-of select="//Affiliation"></xsl:copy-of>
+    </xsl:variable>
     <xsl:template match="/">
         <!-- Ajouter test que le ficher  $FrontMatterName existe bien sinon ERREUR-->
 
@@ -159,19 +162,11 @@
         <author role="aut">
             <xsl:apply-templates/>
             <xsl:if test="@AffiliationIDS">
-                <!--xsl:for-each select="tokenize(@AffiliationIDS,' ')">
-                    <affiliation ref="#localStruct-{.}"/>
-                  </xsl:for-each-->  
-                <xsl:variable name="idAff"><xsl:value-of select="normalize-space(@AffiliationIDS)"/></xsl:variable>   
-                    <xsl:choose>
-                        <xsl:when test="//Affiliation[@ID=$idAff]/OrgDivision">
-                            <affiliation ref="#localStruct-{$idAff}"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <affiliation ref="#localStruct-{$idAff}Institution"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-
+                <xsl:for-each select="tokenize(@AffiliationIDS,' ')">
+                    <xsl:call-template name="Affiche_affi">
+                        <xsl:with-param name="idAff"><xsl:value-of select="normalize-space(.)" /></xsl:with-param>
+                    </xsl:call-template>
+                </xsl:for-each>  
             </xsl:if>
         </author>
     </xsl:template>
@@ -516,5 +511,17 @@
            <xsl:value-of select="concat('Part ',./PartID,': ',normalize-space(./PartTitle))"></xsl:value-of>
         </note>
         
+    </xsl:template>
+    <!-- affiche une affiliation -->
+    <xsl:template name="Affiche_affi">
+        <xsl:param name="idAff"/>
+        <xsl:choose>
+            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
+                <affiliation ref="#localStruct-{$idAff}"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <affiliation ref="#localStruct-{$idAff}Institution"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
