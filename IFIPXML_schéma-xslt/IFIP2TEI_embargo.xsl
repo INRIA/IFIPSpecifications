@@ -14,6 +14,26 @@
         <xsl:value-of
             select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookVolumeNumber"/>
     </xsl:variable>
+    <xsl:variable name="collection">
+        <xsl:choose>
+            <xsl:when
+                test="contains(Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
+                >AICT</xsl:when>
+            <xsl:when
+                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
+                >LNCS</xsl:when>
+            <xsl:when
+                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
+                >LNBIP</xsl:when>
+            <xsl:otherwise> CollectionInconnue </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="CopyrightYear">
+       <xsl:value-of select="//Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"/>
+    </xsl:variable>
+    <xsl:variable name="Affiliations">
+        <xsl:copy-of select="//Affiliation"></xsl:copy-of>
+    </xsl:variable>
     <xsl:template match="/">
         <!-- Ajouter test que le ficher  $FrontMatterName existe bien sinon ERREUR-->
 
@@ -30,20 +50,6 @@
                                 <xsl:apply-templates
                                     select="//Chapter/ChapterHeader/AuthorGroup/Author"/>
                             </titleStmt>
-                            <xsl:variable name="collection">
-                                <xsl:choose>
-                                    <xsl:when
-                                        test="contains(Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
-                                        >AICT</xsl:when>
-                                    <xsl:when
-                                        test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
-                                        >LNCS</xsl:when>
-                                    <xsl:when
-                                        test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
-                                        >LNBIP</xsl:when>
-                                    <xsl:otherwise> CollectionInconnue </xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:variable>
                             <editionStmt>
 
                                 <edition>
@@ -58,7 +64,11 @@
                                         <xsl:attribute name="target">
                                             <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',translate(tokenize(document-uri(.), '/')[last()],'.xml','.pdf'))"/>
                                         </xsl:attribute>
-                                        <date notBefore="2017-01-01"/>
+                                        <date>
+                                            <xsl:attribute name="notBefore" >
+                                                <xsl:value-of select="concat(number($CopyrightYear) + 3,'-01-01')"></xsl:value-of>  
+                                            </xsl:attribute> 
+                                        </date>
                                     </ref>
 
                                 </edition>
@@ -165,7 +175,7 @@
             </biblScope>
 
             <date type="datePub">
-                <xsl:value-of select="descendant::Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"></xsl:value-of>
+                <xsl:value-of select="$CopyrightYear"/>
             </date>
         </imprint>
     </xsl:template>
@@ -180,19 +190,11 @@
         <author role="aut">
             <xsl:apply-templates/>
             <xsl:if test="@AffiliationIDS">
-                <!--xsl:for-each select="tokenize(@AffiliationIDS,' ')">
-                    <affiliation ref="#localStruct-{.}"/>
-                  </xsl:for-each-->  
-                <xsl:variable name="idAff"><xsl:value-of select="normalize-space(@AffiliationIDS)"/></xsl:variable>   
-                    <xsl:choose>
-                        <xsl:when test="//Affiliation[@ID=$idAff]/OrgDivision">
-                            <affiliation ref="#localStruct-{$idAff}"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <affiliation ref="#localStruct-{$idAff}Institution"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-
+                <xsl:for-each select="tokenize(@AffiliationIDS,' ')">
+                    <xsl:call-template name="Affiche_affi">
+                        <xsl:with-param name="idAff"><xsl:value-of select="normalize-space(.)" /></xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:for-each>  
             </xsl:if>
         </author>
     </xsl:template>
@@ -290,7 +292,7 @@
 
 
     <xsl:template match="BookElectronicISBN">
-        <idno type="isbn">
+        <idno type="eisbn">
             <xsl:apply-templates/>
         </idno>
     </xsl:template>
@@ -562,5 +564,17 @@
            <xsl:value-of select="concat('Part ',./PartID,': ',normalize-space(./PartTitle))"></xsl:value-of>
         </note>
         
+    </xsl:template>
+    <!-- affiche une affiliation -->
+    <xsl:template name="Affiche_affi">
+        <xsl:param name="idAff"/>
+        <xsl:choose>
+            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
+                <affiliation ref="#localStruct-{$idAff}"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <affiliation ref="#localStruct-{$idAff}Institution"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
