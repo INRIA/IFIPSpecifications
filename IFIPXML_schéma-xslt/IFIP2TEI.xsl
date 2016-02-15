@@ -343,7 +343,9 @@
     </xsl:template>-->
     <xsl:template match="Editor">
         <editor>
-            <xsl:value-of select="concat(EditorName/GivenName,' ',EditorName/FamilyName)"/>
+            <xsl:variable name="GivenName"><xsl:value-of select="EditorName/GivenName" separator=" "/></xsl:variable>
+            <xsl:variable name="FamilyName"><xsl:value-of select="EditorName/FamilyName" separator=" "/></xsl:variable>
+            <xsl:value-of select="concat($GivenName,' ',$FamilyName)"/>
         </editor>
     </xsl:template>
 

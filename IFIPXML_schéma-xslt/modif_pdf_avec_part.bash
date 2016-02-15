@@ -30,6 +30,10 @@ if [ -d $1 ]; then
 		fi
 		mv "$RepOuv/$Rep" $RepOuv
 	done
+	#on supprime à la fin les répertoire qui contenaient les parties et qui sont vides
+	rm -rf $RepOuv/*Part
+	#copie du pdf du BookFrontmatter
+	cp $RepOuv/*BookFrontmatter/*.pdf $RepOuv/PDFFiles
 else
 	echo "Erreur le dossier $1 n'existe pas";
 fi
