@@ -2022,9 +2022,9 @@
                                 <rng:oneOrMore>
                                     <rng:ref name="Editor"/>
                                 </rng:oneOrMore>
-                                <rng:oneOrMore>
+                                <rng:zeroOrMore>
                                     <rng:ref name="Affiliation"/>
-                                </rng:oneOrMore>
+                                </rng:zeroOrMore>
                             </rng:group>
                         </content>
 
