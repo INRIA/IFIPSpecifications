@@ -17,7 +17,7 @@
     <xsl:variable name="collection">
         <xsl:choose>
             <xsl:when
-                test="contains(Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
+                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
                 >AICT</xsl:when>
             <xsl:when
                 test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
