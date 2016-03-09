@@ -17,13 +17,13 @@
     <xsl:variable name="collection">
         <xsl:choose>
             <xsl:when
-                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
+                test="contains($BookFrontMatter/Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
                 >AICT</xsl:when>
             <xsl:when
-                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
+                test="contains($BookFrontMatter/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
                 >LNCS</xsl:when>
             <xsl:when
-                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
+                test="contains($BookFrontMatter/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
                 >LNBIP</xsl:when>
             <xsl:otherwise> CollectionInconnue </xsl:otherwise>
         </xsl:choose>
@@ -62,7 +62,10 @@
                                     <!-- POUR LR MOMENT, nom du fichier=nom du xml.pdf"/-->
                                     <ref type="file" subtype="author" n="1">
                                         <xsl:attribute name="target">
-                                            <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',translate(tokenize(document-uri(.), '/')[last()],'.xml','.pdf'))"/>
+                                            <xsl:variable name="filename">
+                                                <xsl:value-of select="tokenize(document-uri(.), '/')[last()]"></xsl:value-of>
+                                            </xsl:variable>
+                                            <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',substring-before($filename, '.'),'.pdf')"/>
                                         </xsl:attribute>
                                         <date>
                                             <xsl:attribute name="notBefore" >
@@ -94,13 +97,7 @@
                                 <note type="popular" n="0"/>
                                 <note type="peer" n="0"/>
                                 <note type="audience" n="2"/>
-                                <!-- car déjà dans le bookTitle
-                                <note type="commentary">
-                                    <xsl:apply-templates
-                                        select="Publisher/Series/Book/BookInfo/BookSubTitle"/>
-                                </note>
-                                -->
-                                <xsl:apply-templates select="/Publisher/Series/Book/Part/PartInfo"  />
+                                <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/Part/PartInfo"  />
                             </notesStmt>
                             <sourceDesc>
                                 <biblStruct>
@@ -112,9 +109,34 @@
                                         />
                                     </analytic>
                                     <monogr>
-                                        <xsl:apply-templates select="Publisher/Series/Book"/>
+                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookElectronicISBN"/>
+                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/BookInfo/BookPrintISBN"/>
+                                        <title level="m" type="main">
+                                            <xsl:value-of select="concat($BookFrontMatter/Publisher/Series/BookInfo/BookTitle/normalize-space(),' : ',$BookFrontMatter/Publisher/Series/BookInfo/BookSubTitle/normalize-space())"/>
+                                        </title>
+                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/BookHeader/EditorGroup/Editor"/>
+                                        
+                                        <imprint>
+                                            <xsl:apply-templates select="$BookFrontMatter/Publisher/PublisherInfo"/>
+                                            <biblScope unit="pp">
+                                                <xsl:value-of
+                                                    select="concat(//Chapter/ChapterInfo/ChapterFirstPage,'-',//Chapter/ChapterInfo/ChapterLastPage)"
+                                                />
+                                            </biblScope>
+                                            <biblScope unit="serie">
+                                                <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/SeriesInfo/SeriesTitle"/>
+                                                <!--xsl:apply-templates select="SeriesTitle"/-->
+                                            </biblScope>
+                                            <biblScope unit="volume">
+                                                <xsl:value-of select="$volumeNb"/>
+                                            </biblScope>
+                                            
+                                            <date type="datePub">
+                                                <xsl:value-of select="$CopyrightYear"/>
+                                            </date>
+                                        </imprint>
                                     </monogr>
-                                    <xsl:apply-templates select="Publisher/Series/SeriesInfo"/>
+                                    <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/SeriesInfo"/>
                                     <xsl:apply-templates
                                         select="//Chapter/ChapterInfo/ChapterDOI"
                                     />
@@ -147,37 +169,6 @@
             </text>
         </TEI>
 
-    </xsl:template>
-
-    <xsl:template match="Book">
-        <xsl:apply-templates select="BookInfo/BookElectronicISBN"/>
-        <xsl:apply-templates select="BookInfo/BookPrintISBN"/>
-        <title level="m" type="main">
-            <xsl:value-of select="concat(BookInfo/BookTitle/normalize-space(),' : ',BookInfo/BookSubTitle/normalize-space())"/>
-        </title>
-        <!--xsl:apply-templates select="BookInfo/BookTitle"/>
-        <xsl:apply-templates select="BookInfo/BookSubTitle"/-->
-        <xsl:apply-templates select="BookHeader/EditorGroup/Editor"/>
-
-        <imprint>
-            <xsl:apply-templates select="/Publisher/PublisherInfo"/>
-            <biblScope unit="pp">
-                <xsl:value-of
-                    select="concat(descendant::Chapter/ChapterInfo/ChapterFirstPage,'-',descendant::Chapter/ChapterInfo/ChapterLastPage)"
-                />
-            </biblScope>
-            <biblScope unit="serie">
-                <xsl:apply-templates select="/Publisher/Series/SeriesInfo/SeriesTitle"/>
-                <!--xsl:apply-templates select="SeriesTitle"/-->
-            </biblScope>
-            <biblScope unit="volume">
-                <xsl:value-of select="$volumeNb"/>
-            </biblScope>
-
-            <date type="datePub">
-                <xsl:value-of select="$CopyrightYear"/>
-            </date>
-        </imprint>
     </xsl:template>
 
     <xsl:template match="ChapterTitle">
@@ -250,24 +241,7 @@
     <xsl:template match="PublisherLocation"/>
 
 
-    <xsl:template match="SeriesInfo">
-        <!--<series>
-            <xsl:apply-templates select="SeriesTitle"/>
-            <!-\- SeriesID, SeriesPrintISSN, SeriesElectronicISSN: on n'a rien dans le schéma SWORD HAL pour caser cela-\->
-        </series>-->
-    </xsl:template>
-
-    <!-- <xsl:template match="SeriesTitle">
-        <biblScope unit="serie">
-            <xsl:apply-templates/>
-        </biblScope>
-    </xsl:template>-->
-
-    <!-- <xsl:template match="SeriesTitle">
-        <title level="s">
-            <xsl:apply-templates/>
-        </title>
-    </xsl:template>-->
+    <xsl:template match="SeriesInfo"/>
 
     <xsl:template match="SeriesElectronicISSN">
         <idno type="eISSN">
@@ -331,16 +305,6 @@
         </surname>
     </xsl:template>
 
-    <!--    <xsl:template match="Editor">
-        <editor>
-            <xsl:apply-templates/>
-            <xsl:if test="@AffiliationIDS">
-                <xsl:for-each select="tokenize(@AffiliationIDS,' ')">
-                    <affiliation ref="#localStruct-{.}"/>
-                </xsl:for-each>
-            </xsl:if>
-        </editor>
-    </xsl:template>-->
     <xsl:template match="Editor">
         <editor>
             <xsl:variable name="GivenName"><xsl:value-of select="EditorName/GivenName" separator=" "/></xsl:variable>
@@ -527,7 +491,7 @@
         <xsl:choose>
             <xsl:when test="./TC=6">
                 <xsl:call-template name="addDomain">
-                    <xsl:with-param name="dom">info.ni</xsl:with-param>
+                    <xsl:with-param name="dom">info.info-ni</xsl:with-param>
                 </xsl:call-template>	
             </xsl:when>
             <xsl:when test="./TC=8">
