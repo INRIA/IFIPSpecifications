@@ -110,11 +110,11 @@
                                     </analytic>
                                     <monogr>
                                         <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookElectronicISBN"/>
-                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/BookInfo/BookPrintISBN"/>
+                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/BookPrintISBN"/>
                                         <title level="m" type="main">
-                                            <xsl:value-of select="concat($BookFrontMatter/Publisher/Series/BookInfo/BookTitle/normalize-space(),' : ',$BookFrontMatter/Publisher/Series/BookInfo/BookSubTitle/normalize-space())"/>
+                                            <xsl:value-of select="concat($BookFrontMatter/Publisher/Series/Book/BookInfo/BookTitle/normalize-space(),' : ',$BookFrontMatter/Publisher/Series/Book/BookInfo/BookSubTitle/normalize-space())"/>
                                         </title>
-                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/BookHeader/EditorGroup/Editor"/>
+                                        <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookHeader/EditorGroup/Editor"/>
                                         
                                         <imprint>
                                             <xsl:apply-templates select="$BookFrontMatter/Publisher/PublisherInfo"/>
@@ -128,7 +128,7 @@
                                                 <!--xsl:apply-templates select="SeriesTitle"/-->
                                             </biblScope>
                                             <biblScope unit="volume">
-                                                <xsl:value-of select="$volumeNb"/>
+                                                <xsl:value-of select="concat(normalize-space($collection),'-',normalize-space($volumeNb))"/>
                                             </biblScope>
                                             
                                             <date type="datePub">
@@ -222,7 +222,8 @@
    
 
     <xsl:template match="PublisherInfo">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="./PublisherName"/>
+        <!--xsl:apply-templates select="./PublisherLocation"/-->
     </xsl:template>
 
     <xsl:template match="PublisherName">
@@ -238,7 +239,7 @@
         </pubPlace>
     </xsl:template>-->
 
-    <xsl:template match="PublisherLocation"/>
+    <!--xsl:template match="PublisherLocation"/-->
 
 
     <xsl:template match="SeriesInfo"/>
