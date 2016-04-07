@@ -9,7 +9,7 @@ if [ -d $1 ]; then
     then
 		mkdir PDFFiles
 	fi
-    ListeChapter="$(find */*_Chapter -type d -prune)"   # liste des repertoires sans leurs sous-repertoires
+    ListeChapter="$(find . -name '*_Chapter' -type d -prune)"   # liste des repertoires sans leurs sous-repertoires
 	for Rep in ${ListeChapter}; do
 		echo "Chapter $Rep";
 		cd "$RepOuv/$Rep";
