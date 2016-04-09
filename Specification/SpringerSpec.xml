@@ -2917,10 +2917,31 @@
 
                     <elementSpec ident="ProductionInfo">
                         <content>
-                            <rng:text/>
+                            <rng:optional>
+                                <rng:ref name="SPACEInfo"/>
+                            </rng:optional>
                         </content>
                     </elementSpec>
-
+                    
+                    
+                    <elementSpec ident="SPACEInfo">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="PublicationObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="SupplierSPACEID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
                     <!-- ....................................................................... -->

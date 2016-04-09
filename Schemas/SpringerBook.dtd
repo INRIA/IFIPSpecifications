@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-09T17:29:35Z. .CC-BY
+DTD generated from ODD source 2016-04-09T17:35:10Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -931,7 +931,7 @@ TocLevels CDATA #IMPLIED >
  %att.language.attributes;
 Country CDATA #IMPLIED >
 <!--doc: -->
-<!ELEMENT ProductionInfo  (#PCDATA)>
+<!ELEMENT ProductionInfo (SPACEInfo)?>
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
 <!--doc: -->
@@ -963,6 +963,11 @@ Address CDATA #IMPLIED >
 <!ELEMENT RunningTitle %macro.SimpleTextModel;>
 <!--doc:provides a SIG number -->
 <!ELEMENT SIG  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SPACEInfo EMPTY>
+<!ATTLIST SPACEInfo
+PublicationObjectID CDATA #IMPLIED
+SupplierSPACEID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Section1 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*,(Section2)*)>
 <!ATTLIST Section1
