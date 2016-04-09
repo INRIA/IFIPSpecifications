@@ -2148,13 +2148,29 @@
                         </content>
                     </elementSpec>
 
-
-
                     <elementSpec ident="Contact">
                         <content>
                             <rng:oneOrMore>
                                 <rng:ref name="model.ContactPart"/>
                             </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="Phone">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="Fax">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
                         </content>
                     </elementSpec>
 
