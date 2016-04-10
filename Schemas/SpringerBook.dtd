@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T13:32:34Z. .CC-BY
+DTD generated from ODD source 2016-04-10T13:39:36Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -784,6 +784,13 @@ CompoundObjectID CDATA #IMPLIED >
 <!ELEMENT Description (Para)+>
 <!--doc: -->
 <!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
+<!ATTLIST DiscreteBookObjectInfo
+ %att.ID.attributes;
+CompoundObjectID ID #IMPLIED >
+<!--doc: -->
+<!ELEMENT DiscreteObjectTechnicalInfo (ProductionClassificationProductionClassification)?>
+<!ATTLIST DiscreteObjectTechnicalInfo
+ContainsColorImages CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT EAN  (#PCDATA)>
 <!--doc: -->
@@ -1049,6 +1056,10 @@ Total CDATA #IMPLIED >
 <!ATTLIST ProductLiability
  %att.language.attributes;
 Country CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT ProductionClassification EMPTY>
+<!ATTLIST ProductionClassification
+ %att.Typed.attributes; >
 <!--doc: -->
 <!ELEMENT ProductionClassification EMPTY>
 <!ATTLIST ProductionClassification

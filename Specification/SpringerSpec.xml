@@ -3606,11 +3606,45 @@
                     <!-- ....................................................................... -->
 
                     <elementSpec ident="DiscreteBookObjectInfo">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:data type="ID"/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
-
+                    
+                    <elementSpec ident="DiscreteObjectTechnicalInfo">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="ProductionClassification"/>
+                            </rng:optional>
+                        </content>
+                        <attList>
+                            <attDef ident="ContainsColorImages">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+                    <elementSpec ident="ProductionClassification">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+  
 
                     <!-- ....................................................................... -->
                     <!-- PartInfoGroup                                                               -->
