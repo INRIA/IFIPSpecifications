@@ -1161,7 +1161,7 @@
                     <!-- ....................................................................... -->
                     <!-- SubPart                                                                 -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="SubPart">
                         <classes>
                             <memberOf key="att.ID"/>
@@ -2155,7 +2155,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="Phone">
                         <classes>
                             <memberOf key="model.ContactPart"/>
@@ -2164,7 +2164,7 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="Fax">
                         <classes>
                             <memberOf key="model.ContactPart"/>
@@ -2545,7 +2545,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT BibChapter ((%AuthorshipModel;), %YearModel;, 
                         ((NoChapterTitle, (%EditorshipModel;)?, BookTitle, 
                         (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, 
@@ -2715,13 +2715,13 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BibChapterDOI">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BibBookDOI">
                         <content>
                             <rng:text/>
@@ -2917,20 +2917,14 @@
 
                     <elementSpec ident="ProductionInfo">
                         <content>
-                            <rng:optional>
-                                <rng:ref name="SPACEInfo"/>
-                            </rng:optional>
-                            <rng:optional>
-                                <rng:ref name="ManuscriptInfo"/>
-                            </rng:optional>
-                            <rng:ref name="ProductionEditor"/>
+                            <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- SPACEInfo                                                               -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="SPACEInfo">
                         <content>
                             <rng:empty/>
@@ -2948,55 +2942,55 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- ManuscriptInfo elements                                                 -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="ManuscriptInfo">
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PeerReviewSystem">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- under construction: might use attribute with pre-defined names and versions -->
-                    
+
                     <elementSpec ident="EditorialManuscriptNumber">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ManuscriptNumberOfPages">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ManuscriptNumberOfGraphics">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ManuscriptNumberOfTables">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="RemarkByEditor">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ElectronicDelivery">
                         <content>
                             <rng:empty/>
@@ -3011,7 +3005,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PostalDelivery">
                         <content>
                             <rng:empty/>
@@ -3026,18 +3020,18 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- ProductionEditor elements                                               -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="ProductionEditor">
                         <content>
                             <rng:ref name="ProductionEditorName"/>
                             <rng:ref name="Contact"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ProductionEditorName">
                         <content>
                             <rng:oneOrMore>
@@ -3045,8 +3039,24 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
-                    
+
+                    <elementSpec ident="ContactPerson">
+                        <content>
+                            <rng:ref name="ContactPersonName"/>
+                            <rng:ref name="Contact"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ContactPersonName">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+
+
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
                     <!-- ....................................................................... -->
