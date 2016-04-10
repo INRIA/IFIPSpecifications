@@ -1650,7 +1650,7 @@
                     <!ELEMENT BookBackmatterHeader (PageHeaders?, AuthorGroup?, TocChapter?, Abstract?, KeywordGroup*, AbbreviationGroup?, ArticleNote*)>
                     <!ELEMENT BodyBackmatter ((Appendix*, Glossary?, Bibliography?, Index*, Colophon?) | PDFExtract)>
 -->
-                    
+
                     <elementSpec ident="BookBackmatterInfo">
                         <content>
                             <rng:optional>
@@ -1660,26 +1660,26 @@
                             <rng:ref name="BookBackmatterLastPage"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BookBackmatterDOI">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BookBackmatterFirstPage">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BookBackmatterLastPage">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
-                   
+
+
                     <!-- ....................................................................... -->
                     <!-- Page Headers                                                            -->
                     <!-- ....................................................................... -->
@@ -3070,8 +3070,12 @@
 
                     <elementSpec ident="ContactPerson">
                         <content>
-                            <rng:ref name="ContactPersonName"/>
-                            <rng:ref name="Contact"/>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ContactPersonName"/>
+                                    <rng:ref name="Contact"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
                         </content>
                     </elementSpec>
 
@@ -3594,10 +3598,10 @@
                         </content>
                         <attList>
                             <attDef ident="SeriesID">
-                               <datatype>
-                                   <rng:text/>
-                               </datatype>
-                           </attDef>
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
                             <attDef ident="MediaType">
                                 <datatype>
                                     <rng:text/>
@@ -3649,7 +3653,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <elementSpec ident="DiscreteObjectTechnicalInfo">
                         <content>
                             <rng:optional>
@@ -3664,8 +3668,8 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
-                    
+
+
 
                     <!-- ....................................................................... -->
                     <!-- PartInfoGroup                                                               -->
@@ -3676,23 +3680,43 @@
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- WorkflowInfo                                                               -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="WorkflowInfo">
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
+                        <attList>
+                            <attDef ident="TaskType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
-                    
+
+                    <elementSpec ident="Priority">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Level">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
                     <elementSpec ident="Deadline">
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S50TypesetterDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3700,7 +3724,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S600TypesetterDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3708,8 +3732,8 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
-                   
+
+
                     <elementSpec ident="S650TypesetterDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3717,7 +3741,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S700PrinterDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3725,7 +3749,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S800PrintDistributionDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3733,7 +3757,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S900ElectronicDistributionDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3741,7 +3765,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="PlannedPublicationDate">
                         <content>
                             <rng:oneOrMore>
@@ -3756,17 +3780,30 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- ....................................................................... -->
                     <!-- Supplier                                                               -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="Supplier">
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                   
+
+                    <elementSpec ident="FullServiceVendor">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CompanyName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
 
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->

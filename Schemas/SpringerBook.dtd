@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T14:06:04Z. .CC-BY
+DTD generated from ODD source 2016-04-10T14:11:05Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -684,6 +684,8 @@ CompoundObjectID CDATA #IMPLIED
 LayoutColorCount CDATA #IMPLIED
 PrintingColorCount CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT CompanyName  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT CompoundBookObjectInfo %macro.anyXML;>
 <!ATTLIST CompoundBookObjectInfo
  %att.ID.attributes;
@@ -733,7 +735,7 @@ CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Contact (%model.ContactPart;)+>
 <!--doc: -->
-<!ELEMENT ContactPerson (ContactPersonName,Contact)>
+<!ELEMENT ContactPerson (ContactPersonName|Contact)*>
 <!--doc: -->
 <!ELEMENT ContactPersonName (%model.NamePart;)+>
 <!--doc: -->
@@ -885,6 +887,8 @@ TrimHeightInch CDATA #IMPLIED
 TrimWidthInch CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Frontispiece (Figure)>
+<!--doc: -->
+<!ELEMENT FullServiceVendor %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT GivenName  (#PCDATA)>
 <!--doc: -->
@@ -1065,6 +1069,10 @@ CompoundObjectID CDATA #IMPLIED
 Total CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT PrintingColorName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Priority EMPTY>
+<!ATTLIST Priority
+Level CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ProductLiability  (#PCDATA)>
 <!ATTLIST ProductLiability
@@ -1348,6 +1356,8 @@ Mark CDATA  #REQUIRED >
 <!ELEMENT WG  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT WorkflowInfo %macro.anyXML;>
+<!ATTLIST WorkflowInfo
+TaskType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Year  (#PCDATA)>
 <!-- end elements -->
