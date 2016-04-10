@@ -3802,7 +3802,7 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ProofInfo">
                         <content>
                             <rng:empty/>
@@ -3821,25 +3821,35 @@
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="FilesToPublisher">
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
-                    <elementSpec ident="Deliverables">
+
+                    <elementSpec ident="NoFiles">
                         <content>
-                            <rng:optional name="DeliverablesForCompoundBookObjects"/>
+                            <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
+
+
+                    <elementSpec ident="Deliverables">
+                        <content>
+                            <rng:optional>
+                                <rng:ref key="DeliverablesForCompoundBookObjects"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
                     <elementSpec ident="DeliverablesForCompoundBookObjects">
                         <content>
                             <rng:empty/>
                         </content>
                         <attList>
-                            
+
                             <attDef ident="BackmatterElectronicPDF">
                                 <datatype>
                                     <rng:text/>
@@ -3981,13 +3991,13 @@
                     <!-- ....................................................................... -->
                     <!-- ContentFiles and File                                                               -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="ContentFiles">
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="File">
                         <content>
                             <rng:ref name="macro.anyXML"/>
@@ -3998,9 +4008,15 @@
                                     <rng:text/>
                                 </datatype>
                             </attDef>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
                         </attList>
+
                     </elementSpec>
-                    
+
                     <elementSpec ident="RenditionItem">
                         <classes>
                             <memberOf key="att.FileChildrenQualifiers"/>
@@ -4009,7 +4025,7 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="WorkItem">
                         <classes>
                             <memberOf key="att.FileChildrenQualifiers"/>
@@ -4018,7 +4034,7 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="AplusplusRootFile">
                         <classes>
                             <memberOf key="att.FileChildrenQualifiers"/>
@@ -4027,18 +4043,36 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="APageFile">
                         <classes>
                             <memberOf key="att.FileChildrenQualifiers"/>
+                            <memberOf key="att.Typed"/>
                         </classes>
                         <content>
                             <rng:empty/>
                         </content>
+                        <attList>
+                            <attDef ident="Position">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="FirstPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LastPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
-                    
-                    
-                    
+
+
+
 
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
@@ -4245,9 +4279,9 @@
                             </attDef>
                         </attList>
                     </classSpec>
-                    
+
                     <!-- Attributes for the File sub-elements -->
-                    
+
                     <classSpec ident="att.FileChildrenQualifiers" type="atts">
                         <attList>
                             <attDef ident="FileRef" usage="opt">
@@ -4264,7 +4298,7 @@
                                 <datatype>
                                     <rng:text/>
                                 </datatype>
-                            </attDef>  
+                            </attDef>
                         </attList>
                     </classSpec>
 

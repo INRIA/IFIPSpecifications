@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T14:30:51Z. .CC-BY
+DTD generated from ODD source 2016-04-10T14:36:14Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -434,7 +434,11 @@ ItemType CDATA #IMPLIED'>
 <!--doc: -->
 <!ELEMENT APageFile EMPTY>
 <!ATTLIST APageFile
- %att.FileChildrenQualifiers.attributes; >
+ %att.FileChildrenQualifiers.attributes;
+ %att.Typed.attributes;
+Position CDATA #IMPLIED
+FirstPage CDATA #IMPLIED
+LastPage CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Abstract (Heading?,Para*)>
 <!ATTLIST Abstract
@@ -916,7 +920,8 @@ Category (Schema|Structure|Standard|Logo) #REQUIRED >
 <!--doc: -->
 <!ELEMENT File %macro.anyXML;>
 <!ATTLIST File
-DiscreteObjectID CDATA #IMPLIED >
+DiscreteObjectID CDATA #IMPLIED
+CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT FilesToPublisher %macro.anyXML;>
 <!--doc: -->
@@ -1035,6 +1040,8 @@ Supplier CDATA #IMPLIED >
 <!ELEMENT NoBody  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT NoChapterTitle EMPTY>
+<!--doc: -->
+<!ELEMENT NoFiles EMPTY>
 <!--doc: -->
 <!ELEMENT NoGivenName EMPTY>
 <!--doc: -->
