@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T08:00:32Z. .CC-BY
+DTD generated from ODD source 2016-04-10T08:15:43Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -664,6 +664,10 @@ AffiliationIDS CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CollaboratorName (%model.NamePart;)+>
 <!--doc: -->
+<!ELEMENT ColorImagesOnPage  (#PCDATA)>
+<!ATTLIST ColorImagesOnPage
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT ColorSpecifications (LayoutColorName|PrintingColorName)*>
 <!ATTLIST ColorSpecifications
 CompoundObjectID CDATA #IMPLIED
@@ -672,7 +676,23 @@ PrintingColorCount CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CompoundBookObjectInfo %macro.anyXML;>
 <!--doc: -->
+<!ELEMENT CompoundObjectNumberOfArabicPages  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CompoundObjectNumberOfColorPages  (#PCDATA)>
+<!ATTLIST CompoundObjectNumberOfColorPages
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT CompoundObjectNumberOfImages  (#PCDATA)>
+<!ATTLIST CompoundObjectNumberOfImages
+Illustrations CDATA #IMPLIED
+PrintImagesColor CDATA #IMPLIED
+PrintImagesBlackWhite CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT CompoundObjectTechnicalInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT CompoundObjectTotalNumberOfPages  (#PCDATA)>
+<!ATTLIST CompoundObjectTotalNumberOfPages
+CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ConfEventAbbreviation  (#PCDATA)>
 <!--doc: -->
@@ -699,6 +719,10 @@ PrintingColorCount CDATA #IMPLIED >
 <!ELEMENT ContactPerson (ContactPersonName,Contact)>
 <!--doc: -->
 <!ELEMENT ContactPersonName (%model.NamePart;)+>
+<!--doc: -->
+<!ELEMENT CopyEditing EMPTY>
+<!ATTLIST CopyEditing
+Category CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CopyrightHolderName  (#PCDATA)>
 <!--doc: -->
@@ -749,8 +773,6 @@ CompoundObjectID CDATA #IMPLIED >
 <!ELEMENT Degrees  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Description (Para)+>
-<!--doc: -->
-<!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
 <!--doc: -->
@@ -825,6 +847,14 @@ Category (Schema|Structure|Standard|Logo) #REQUIRED >
 <!ELEMENT ForewordTitle %macro.SimpleTextModel;>
 <!ATTLIST ForewordTitle
  %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT FormatTrimSize  (#PCDATA)>
+<!ATTLIST FormatTrimSize
+CompoundObjectID CDATA #IMPLIED
+TrimHeightMm CDATA #IMPLIED
+TrimWidthMm CDATA #IMPLIED
+TrimHeightInch CDATA #IMPLIED
+TrimWidthInch CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Frontispiece (Figure)>
 <!--doc: -->
@@ -995,12 +1025,21 @@ Delivery (Complete|Incomplete|None) #REQUIRED >
 <!--doc: -->
 <!ELEMENT Prefix  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT PrintRun EMPTY>
+<!ATTLIST PrintRun
+CompoundObjectID CDATA #IMPLIED
+Total CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT PrintingColorName  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ProductLiability  (#PCDATA)>
 <!ATTLIST ProductLiability
  %att.language.attributes;
 Country CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT ProductionClassification EMPTY>
+<!ATTLIST ProductionClassification
+Type CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ProductionEditor (ProductionEditorName,Contact)>
 <!--doc: -->
@@ -1236,6 +1275,15 @@ PageNumber CDATA #IMPLIED >
 <!ATTLIST TrademarkQualifierText
  %att.language.attributes;
 Country CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT Typesetting EMPTY>
+<!ATTLIST Typesetting
+Layout CDATA #IMPLIED
+StartPage CDATA #IMPLIED
+RunningHead CDATA #IMPLIED
+LogoOnFirstPage CDATA #IMPLIED
+EndsheetsContent CDATA #IMPLIED
+StandardFrontmatter CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Typesetting EMPTY>
 <!ATTLIST Typesetting

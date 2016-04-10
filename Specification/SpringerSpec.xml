@@ -3406,6 +3406,190 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="CompoundObjectTotalNumberOfPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfArabicPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfColorPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ColorImagesOnPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfImages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Illustrations">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PrintImagesColor">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PrintImagesBlackWhite">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ProductionClassification">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Type">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="PrintRun">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Total">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="FormatTrimSize">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimHeightMm">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimWidthMm">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimHeightInch">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimWidthInch">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CopyEditing">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Category">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="Typesetting">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Layout">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="StartPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="RunningHead">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LogoOnFirstPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="EndsheetsContent">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="StandardFrontmatter">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+
                     <!-- ....................................................................... -->
                     <!-- CompoundBookObjectInfo                                                               -->
                     <!-- ....................................................................... -->
@@ -3426,15 +3610,6 @@
                         </content>
                     </elementSpec>
 
-                    <!-- ....................................................................... -->
-                    <!-- DiscreteBookObjectInfo                                                               -->
-                    <!-- ....................................................................... -->
-
-                    <elementSpec ident="DiscreteBookObjectInfo">
-                        <content>
-                            <rng:ref name="macro.anyXML"/>
-                        </content>
-                    </elementSpec>
 
                     <!-- ....................................................................... -->
                     <!-- PartInfoGroup                                                               -->
