@@ -3802,7 +3802,181 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
+                    
+                    <elementSpec ident="ProofInfo">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="ProofStage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
 
+                    <elementSpec ident="FilesToSupplier">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="FilesToPublisher">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="Deliverables">
+                        <content>
+                            <rng:optional name="DeliverablesForCompoundBookObjects"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="DeliverablesForCompoundBookObjects">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            
+                            <attDef ident="BackmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BackmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookDeltaPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookEpsilonPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookPrintPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookProofFeedbackPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterOnlineMediaObjects">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterPrintMediaObjects">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterTEX">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterXMLWithBody">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterXMLWithBodyRefsOnly">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverFigure">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverPrintPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="DustJacketPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="FrontmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="FrontmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Manuscript">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartBackmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartBackmatterManuscripts">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartBackmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartFrontmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartFrontmatterManuscripts">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartFrontmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Pit-Stop-Reports">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TocElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
 
 
                     <!-- ....................................................................... -->

@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T14:11:05Z. .CC-BY
+DTD generated from ODD source 2016-04-10T14:21:23Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -793,6 +793,38 @@ CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Degrees  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Deliverables  EMPTY>
+<!--doc: -->
+<!ELEMENT DeliverablesForCompoundBookObjects EMPTY>
+<!ATTLIST DeliverablesForCompoundBookObjects
+BackmatterElectronicPDF CDATA #IMPLIED
+BackmatterXML CDATA #IMPLIED
+BookDeltaPDF CDATA #IMPLIED
+BookElectronicPDF CDATA #IMPLIED
+BookEpsilonPDF CDATA #IMPLIED
+BookPrintPDF CDATA #IMPLIED
+BookProofFeedbackPDF CDATA #IMPLIED
+ChapterElectronicPDF CDATA #IMPLIED
+ChapterOnlineMediaObjects CDATA #IMPLIED
+ChapterPrintMediaObjects CDATA #IMPLIED
+ChapterTEX CDATA #IMPLIED
+ChapterXMLWithBody CDATA #IMPLIED
+ChapterXMLWithBodyRefsOnly CDATA #IMPLIED
+CoverFigure CDATA #IMPLIED
+CoverPrintPDF CDATA #IMPLIED
+DustJacketPDF CDATA #IMPLIED
+FrontmatterElectronicPDF CDATA #IMPLIED
+FrontmatterXML CDATA #IMPLIED
+Manuscript CDATA #IMPLIED
+PartBackmatterElectronicPDF CDATA #IMPLIED
+PartBackmatterManuscripts CDATA #IMPLIED
+PartBackmatterXML CDATA #IMPLIED
+PartFrontmatterElectronicPDF CDATA #IMPLIED
+PartFrontmatterManuscripts CDATA #IMPLIED
+PartFrontmatterXML CDATA #IMPLIED
+Pit-Stop-Reports CDATA #IMPLIED
+TocElectronicPDF CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT Description (Para)+>
 <!--doc: -->
 <!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
@@ -859,6 +891,10 @@ NOTATION (TEX|MATHML|MATHTYPE|XML) #IMPLIED >
  %att.ID.attributes;
 Float (Yes|No) #REQUIRED
 Category (Schema|Structure|Standard|Logo) #REQUIRED >
+<!--doc: -->
+<!ELEMENT FilesToPublisher %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT FilesToSupplier %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT FirstPage  (#PCDATA)>
 <!--doc: -->
@@ -1088,6 +1124,10 @@ Country CDATA #IMPLIED >
 <!ELEMENT ProductionEditorName (%model.NamePart;)+>
 <!--doc: -->
 <!ELEMENT ProductionInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT ProofInfo EMPTY>
+<!ATTLIST ProofInfo
+ProofStage CDATA #IMPLIED >
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
 <!--doc: -->
