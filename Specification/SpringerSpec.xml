@@ -2958,6 +2958,36 @@
                         </content>
                     </elementSpec>
                     
+                    <elementSpec ident="ElectronicDelivery">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Delivery" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Complete"/>
+                                    <valItem ident="Incomplete"/>
+                                    <valItem ident="None"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+                    <elementSpec ident="PostalDelivery">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Delivery" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Complete"/>
+                                    <valItem ident="Incomplete"/>
+                                    <valItem ident="None"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
                     <!-- ....................................................................... -->
