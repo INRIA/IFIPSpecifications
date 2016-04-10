@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-09T17:35:10Z. .CC-BY
+DTD generated from ODD source 2016-04-10T06:15:39Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -408,6 +408,8 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
 <!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
 <!-- start rest of patterns -->
+
+<!ENTITY % macro.anyXML ' ANY' >
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
 
@@ -835,6 +837,8 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Literal (#PCDATA|Emphasis)*>
 <!--doc: -->
+<!ELEMENT ManuscriptInfo %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT MediaObject ((Caption)?,(ImageObject)+)>
 <!ATTLIST MediaObject
  %att.ID.attributes; >
@@ -931,7 +935,7 @@ TocLevels CDATA #IMPLIED >
  %att.language.attributes;
 Country CDATA #IMPLIED >
 <!--doc: -->
-<!ELEMENT ProductionInfo (SPACEInfo)?>
+<!ELEMENT ProductionInfo ((SPACEInfo)?,(ManuscriptInfo)?)>
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
 <!--doc: -->
