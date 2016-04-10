@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T08:22:57Z. .CC-BY
+DTD generated from ODD source 2016-04-10T13:32:34Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -475,7 +475,7 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Binding  (#PCDATA)>
 <!ATTLIST Binding
-Type CDATA #IMPLIED
+ %att.Typed.attributes;
 EndsheetsPaper CDATA #IMPLIED
 BookBackType CDATA #IMPLIED
 BookmarkRibbonCount CDATA #IMPLIED
@@ -677,6 +677,11 @@ LayoutColorCount CDATA #IMPLIED
 PrintingColorCount CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CompoundBookObjectInfo %macro.anyXML;>
+<!ATTLIST CompoundBookObjectInfo
+ %att.ID.attributes;
+ %att.Typed.attributes;
+SeriesID CDATA #IMPLIED
+MediaType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CompoundObjectNumberOfArabicPages  (#PCDATA)>
 <!--doc: -->
@@ -1047,7 +1052,7 @@ Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ProductionClassification EMPTY>
 <!ATTLIST ProductionClassification
-Type CDATA #IMPLIED >
+ %att.Typed.attributes; >
 <!--doc: -->
 <!ELEMENT ProductionEditor (ProductionEditorName,Contact)>
 <!--doc: -->

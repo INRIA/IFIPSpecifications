@@ -725,10 +725,9 @@
                             </rng:optional>
                             <rng:zeroOrMore>
                                 <rng:ref name="model.fullTextBlock"/>
-                            </rng:zeroOrMore>T </content>
+                            </rng:zeroOrMore>
+                        </content>
                     </elementSpec>
-
-
 
 
                     <!-- BookInfo sub-elements -->
@@ -3364,15 +3363,13 @@
                     </elementSpec>
 
                     <elementSpec ident="Binding">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
                         <content>
                             <rng:text/>
                         </content>
                         <attList>
-                            <attDef ident="Type">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
                             <attDef ident="EndsheetsPaper">
                                 <datatype>
                                     <rng:text/>
@@ -3481,16 +3478,12 @@
                     </elementSpec>
 
                     <elementSpec ident="ProductionClassification">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
                         <content>
                             <rng:empty/>
                         </content>
-                        <attList>
-                            <attDef ident="Type">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                        </attList>
                     </elementSpec>
 
                     <elementSpec ident="PrintRun">
@@ -3563,9 +3556,25 @@
                     <!-- ....................................................................... -->
 
                     <elementSpec ident="CompoundBookObjectInfo">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="att.Typed"/>
+                        </classes>
                         <content>
                             <rng:ref name="macro.anyXML"/>
                         </content>
+                        <attList>
+                            <attDef ident="SeriesID">
+                               <datatype>
+                                   <rng:text/>
+                               </datatype>
+                           </attDef>
+                            <attDef ident="MediaType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
 
                     <elementSpec ident="ISBN">
@@ -3760,7 +3769,7 @@
                         <attList>
                             <attDef ident="ID" usage="opt">
                                 <datatype>
-                                    <data xmlns="http://relaxng.org/ns/structure/1.0" type="ID"/>
+                                    <rng:data type="ID"/>
                                 </datatype>
                             </attDef>
                         </attList>
