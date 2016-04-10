@@ -3082,85 +3082,320 @@
                             <rng:ref name="macro.anyXML"/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesAds">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesCdDvdEsm">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesComplimentaryCopies">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesCopyEditing">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesFrontmatter">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesIndex">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesProductionClassification">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesSpringerDotCom">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesMiscellaneous">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesManuscriptMaterial">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesLayout">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesProof">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="QualifyingProductionNotesColorFigures">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-            
+
+                    <!-- ....................................................................... -->
+                    <!-- TechnicalInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="TechnicalInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Typesetting">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Layout">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="StartPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="RunningHead">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LogoOnFirstPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="EndsheetsContent">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="StandardFrontmatter">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="TextSpecifications">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="GutterMargin">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="HeadMargin">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Bleeds">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TypeareaHeight">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TypeareaWidth">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PaperStock">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ColorSpecifications">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="LayoutColorName"/>
+                                    <rng:ref name="PrintingColorName"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LayoutColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PrintingColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="LayoutColorName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PrintingColorName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CoverProductionInfo">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="SpineWidth"/>
+                            </rng:optional>
+                        </content>
+                        <attList>
+                            <attDef ident="Style">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PaperStock">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Printing">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Stamping">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BinderBoards">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Finishing">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChangingImages">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Creases">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverExteriorColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverInteriorColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Dustjacket">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="SpineWidth">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Binding">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Type">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="EndsheetsPaper">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookBackType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookmarkRibbonCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
                     <!-- ....................................................................... -->

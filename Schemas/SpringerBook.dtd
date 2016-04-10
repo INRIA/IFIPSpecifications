@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T06:53:00Z. .CC-BY
+DTD generated from ODD source 2016-04-10T07:13:00Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -473,6 +473,14 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!ATTLIST Bibliography
  %att.ID.attributes; >
 <!--doc: -->
+<!ELEMENT Binding  (#PCDATA)>
+<!ATTLIST Binding
+Type CDATA #IMPLIED
+EndsheetsPaper CDATA #IMPLIED
+BookBackType CDATA #IMPLIED
+BookmarkRibbonCount CDATA #IMPLIED
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT BlockQuote ((Heading)?,(%model.fullTextBlock;)*)>
 <!--doc: -->
 <!ELEMENT Body ((%model.fullTextBlock;)*,(Section1)*)>
@@ -656,6 +664,12 @@ AffiliationIDS CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CollaboratorName (%model.NamePart;)+>
 <!--doc: -->
+<!ELEMENT ColorSpecifications (LayoutColorName|PrintingColorName)*>
+<!ATTLIST ColorSpecifications
+CompoundObjectID CDATA #IMPLIED
+LayoutColorCount CDATA #IMPLIED
+PrintingColorCount CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT ConfEventAbbreviation  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ConfEventDate  (#PCDATA)>
@@ -704,6 +718,21 @@ Type CDATA  #IMPLIED >
 <!ELEMENT CoverInfo (CoverFirstPage,CoverLastPage)>
 <!--doc: -->
 <!ELEMENT CoverLastPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CoverProductionInfo (SpineWidth)?>
+<!ATTLIST CoverProductionInfo
+Style CDATA #IMPLIED
+PaperStock CDATA #IMPLIED
+Printing CDATA #IMPLIED
+Stamping CDATA #IMPLIED
+BinderBoards CDATA #IMPLIED
+Finishing CDATA #IMPLIED
+ChangingImages CDATA #IMPLIED
+Creases CDATA #IMPLIED
+CoverExteriorColorCount CDATA #IMPLIED
+CoverInteriorColorCount CDATA #IMPLIED
+Dustjacket CDATA #IMPLIED
+CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Day  (#PCDATA)>
 <!--doc: -->
@@ -845,6 +874,8 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT LastPage  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT LayoutColorName  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT ListItem (ItemNumber,ItemContent)>
 <!--doc: -->
 <!ELEMENT Literal (#PCDATA|Emphasis)*>
@@ -953,6 +984,8 @@ Delivery (Complete|Incomplete|None) #REQUIRED >
  %att.language.attributes; >
 <!--doc: -->
 <!ELEMENT Prefix  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PrintingColorName  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ProductLiability  (#PCDATA)>
 <!ATTLIST ProductLiability
@@ -1080,6 +1113,8 @@ SeriesType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT SimplePara (#PCDATA|%model.simpleText;|Figure|%model.referenceElements;)*>
 <!--doc: -->
+<!ELEMENT SpineWidth  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT SpringerLocationsLine  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT SpringerReferenceLine  (#PCDATA)>
@@ -1155,7 +1190,18 @@ SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
 <!--doc:provides a technical committee number -->
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT TechnicalInfo %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT Term %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT TextSpecifications EMPTY>
+<!ATTLIST TextSpecifications
+GutterMargin CDATA #IMPLIED
+HeadMargin CDATA #IMPLIED
+Bleeds CDATA #IMPLIED
+TypeareaHeight CDATA #IMPLIED
+TypeareaWidth CDATA #IMPLIED
+PaperStock CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Toc (Heading,(SubHeading)?,(TocFront)*,(TocPart|TocChapter)*,(TocBack)*)>
 <!--doc: -->
@@ -1180,6 +1226,15 @@ PageNumber CDATA #IMPLIED >
 <!ATTLIST TrademarkQualifierText
  %att.language.attributes;
 Country CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT Typesetting EMPTY>
+<!ATTLIST Typesetting
+Layout CDATA #IMPLIED
+StartPage CDATA #IMPLIED
+RunningHead CDATA #IMPLIED
+LogoOnFirstPage CDATA #IMPLIED
+EndsheetsContent CDATA #IMPLIED
+StandardFrontmatter CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT URL  (#PCDATA)>
 <!--doc: -->
