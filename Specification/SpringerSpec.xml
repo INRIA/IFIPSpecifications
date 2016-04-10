@@ -3615,7 +3615,7 @@
                         <attList>
                             <attDef ident="CompoundObjectID">
                                 <datatype>
-                                    <rng:data type="ID"/>
+                                    <rng:text/>
                                 </datatype>
                             </attDef>
                         </attList>
@@ -3636,15 +3636,7 @@
                         </attList>
                     </elementSpec>
                     
-                    <elementSpec ident="ProductionClassification">
-                        <classes>
-                            <memberOf key="att.Typed"/>
-                        </classes>
-                        <content>
-                            <rng:empty/>
-                        </content>
-                    </elementSpec>
-  
+                    
 
                     <!-- ....................................................................... -->
                     <!-- PartInfoGroup                                                               -->
