@@ -3055,8 +3055,112 @@
                         </content>
                     </elementSpec>
 
+                    <!-- ....................................................................... -->
+                    <!-- EditorialInfo                                                               -->
+                    <!-- ....................................................................... -->
 
+                    <elementSpec ident="EditorialInfo">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="PublishingSegment"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
 
+                    <elementSpec ident="PublishingSegment">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- QualifyingProductionNotes                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="QualifyingProductionNotes">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesAds">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesCdDvdEsm">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesComplimentaryCopies">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesCopyEditing">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesFrontmatter">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesIndex">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesProductionClassification">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesSpringerDotCom">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesMiscellaneous">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesManuscriptMaterial">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesLayout">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesProof">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="QualifyingProductionNotesColorFigures">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+            
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
                     <!-- ....................................................................... -->

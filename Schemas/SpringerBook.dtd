@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T06:43:49Z. .CC-BY
+DTD generated from ODD source 2016-04-10T06:53:00Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -727,6 +727,8 @@ AffiliationIDS CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT EditorName (%model.NamePart;)*>
 <!--doc: -->
+<!ELEMENT EditorialInfo (PublishingSegment)*>
+<!--doc: -->
 <!ELEMENT EditorialManuscriptNumber  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Eds EMPTY>
@@ -976,6 +978,36 @@ Country CDATA #IMPLIED >
 <!ELEMENT PublisherName  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT PublisherURL  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PublishingSegment  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotes %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesAds  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesCdDvdEsm  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesColorFigures  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesComplimentaryCopies  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesCopyEditing  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesFrontmatter  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesIndex  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesLayout  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesManuscriptMaterial  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesMiscellaneous  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesProductionClassification  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesProof  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesSpringerDotCom  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RefSource %macro.SimpleTextModel;>
 <!--doc: -->
