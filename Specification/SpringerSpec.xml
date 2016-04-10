@@ -3978,6 +3978,67 @@
                         </attList>
                     </elementSpec>
 
+                    <!-- ....................................................................... -->
+                    <!-- ContentFiles and File                                                               -->
+                    <!-- ....................................................................... -->
+                    
+                    <elementSpec ident="ContentFiles">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="File">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="DiscreteObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    
+                    <elementSpec ident="RenditionItem">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="WorkItem">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="AplusplusRootFile">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="APageFile">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+                    
+                    
+                    
 
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
@@ -4182,6 +4243,28 @@
                                     <rng:text/>
                                 </datatype>
                             </attDef>
+                        </attList>
+                    </classSpec>
+                    
+                    <!-- Attributes for the File sub-elements -->
+                    
+                    <classSpec ident="att.FileChildrenQualifiers" type="atts">
+                        <attList>
+                            <attDef ident="FileRef" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TargetType" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ItemType" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>  
                         </attList>
                     </classSpec>
 

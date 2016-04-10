@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T14:21:23Z. .CC-BY
+DTD generated from ODD source 2016-04-10T14:30:51Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -352,6 +352,18 @@ NumberingDepth CDATA #IMPLIED'>
 Type CDATA #IMPLIED'>
 <!ENTITY % att.Typed.attributes '
  %att.Typed.attribute.Type;'> 
+<!ENTITY % att.FileChildrenQualifiers.attribute.FileRef '
+FileRef CDATA #IMPLIED'>
+
+<!ENTITY % att.FileChildrenQualifiers.attribute.TargetType '
+TargetType CDATA #IMPLIED'>
+
+<!ENTITY % att.FileChildrenQualifiers.attribute.ItemType '
+ItemType CDATA #IMPLIED'>
+<!ENTITY % att.FileChildrenQualifiers.attributes '
+ %att.FileChildrenQualifiers.attribute.FileRef;
+ %att.FileChildrenQualifiers.attribute.TargetType;
+ %att.FileChildrenQualifiers.attribute.ItemType;'> 
 <!ENTITY % model.ConferenceInfoPart "ConfSeriesName |ConfEventAbbreviation |ConfNumber |ConfEventLocation |ConfEventDateStart |ConfEventDateEnd"> 
 <!ENTITY % model.ConferenceInfoPart_sequence "ConfSeriesName, ConfEventAbbreviation, ConfNumber, ConfEventLocation, ConfEventDateStart, ConfEventDateEnd"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceOptional "ConfSeriesName?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, ConfEventDateStart?, ConfEventDateEnd?"> 
@@ -420,6 +432,10 @@ Type CDATA #IMPLIED'>
 <!-- start elements -->
 
 <!--doc: -->
+<!ELEMENT APageFile EMPTY>
+<!ATTLIST APageFile
+ %att.FileChildrenQualifiers.attributes; >
+<!--doc: -->
 <!ELEMENT Abstract (Heading?,Para*)>
 <!ATTLIST Abstract
  %att.language.attributes;
@@ -431,6 +447,10 @@ Type CDATA #IMPLIED'>
 <!ELEMENT Affiliation (OrgDivision|OrgName|OrgAddress)+>
 <!ATTLIST Affiliation
  %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT AplusplusRootFile EMPTY>
+<!ATTLIST AplusplusRootFile
+ %att.FileChildrenQualifiers.attributes; >
 <!--doc: -->
 <!ELEMENT ArticleNote (Heading?,SimplePara+)>
 <!ATTLIST ArticleNote
@@ -739,6 +759,8 @@ CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ContactPersonName (%model.NamePart;)+>
 <!--doc: -->
+<!ELEMENT ContentFiles %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT CopyEditing EMPTY>
 <!ATTLIST CopyEditing
 Category CDATA #IMPLIED >
@@ -891,6 +913,10 @@ NOTATION (TEX|MATHML|MATHTYPE|XML) #IMPLIED >
  %att.ID.attributes;
 Float (Yes|No) #REQUIRED
 Category (Schema|Structure|Standard|Logo) #REQUIRED >
+<!--doc: -->
+<!ELEMENT File %macro.anyXML;>
+<!ATTLIST File
+DiscreteObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT FilesToPublisher %macro.anyXML;>
 <!--doc: -->
@@ -1188,6 +1214,10 @@ Address CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT RemarkByEditor  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT RenditionItem EMPTY>
+<!ATTLIST RenditionItem
+ %att.FileChildrenQualifiers.attributes; >
+<!--doc: -->
 <!ELEMENT RunningAuthor  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RunningTitle %macro.SimpleTextModel;>
@@ -1394,6 +1424,10 @@ Mark CDATA  #REQUIRED >
 <!ELEMENT VolumePackageID  (#PCDATA)>
 <!--doc:provides a working group number -->
 <!ELEMENT WG  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT WorkItem EMPTY>
+<!ATTLIST WorkItem
+ %att.FileChildrenQualifiers.attributes; >
 <!--doc: -->
 <!ELEMENT WorkflowInfo %macro.anyXML;>
 <!ATTLIST WorkflowInfo
