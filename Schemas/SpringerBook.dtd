@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T08:15:43Z. .CC-BY
+DTD generated from ODD source 2016-04-10T08:22:57Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -540,6 +540,8 @@ ContainsESM CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookJobSheet (PublisherInfo,SeriesInfo,SeriesHeader,BookInfo,EditorGroup,ProductionInfo)>
 <!--doc: -->
+<!ELEMENT BookMultiVolumeCount  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT BookNotes (BookNotesTitle,(AuthorGroup)?,Body)>
 <!--doc: -->
 <!ELEMENT BookNotesTitle %macro.SimpleTextModel;>
@@ -688,6 +690,8 @@ Illustrations CDATA #IMPLIED
 PrintImagesColor CDATA #IMPLIED
 PrintImagesBlackWhite CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT CompoundObjectNumberOfRomanPages  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT CompoundObjectTechnicalInfo %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT CompoundObjectTotalNumberOfPages  (#PCDATA)>
@@ -775,6 +779,8 @@ CompoundObjectID CDATA #IMPLIED >
 <!ELEMENT Description (Para)+>
 <!--doc: -->
 <!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT EAN  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT EditionNumber  (#PCDATA)>
 <!--doc: -->
@@ -865,6 +871,8 @@ TrimWidthInch CDATA #IMPLIED >
 <!ELEMENT IFIPentity (TC|WG|SIG)*>
 <!ATTLIST IFIPentity
 subline (StateoftheArtSurvey|Survey|Tutorial|Festschrift) #IMPLIED >
+<!--doc: -->
+<!ELEMENT ISBN  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ImageObject (Caption)*>
 <!ATTLIST ImageObject
@@ -1062,6 +1070,8 @@ Type CDATA #IMPLIED >
 <!ELEMENT PublisherURL  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT PublishingSegment  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PurchaseOrderNumber  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT QualifyingProductionNotes %macro.anyXML;>
 <!--doc: -->
@@ -1275,15 +1285,6 @@ PageNumber CDATA #IMPLIED >
 <!ATTLIST TrademarkQualifierText
  %att.language.attributes;
 Country CDATA #IMPLIED >
-<!--doc: -->
-<!ELEMENT Typesetting EMPTY>
-<!ATTLIST Typesetting
-Layout CDATA #IMPLIED
-StartPage CDATA #IMPLIED
-RunningHead CDATA #IMPLIED
-LogoOnFirstPage CDATA #IMPLIED
-EndsheetsContent CDATA #IMPLIED
-StandardFrontmatter CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Typesetting EMPTY>
 <!ATTLIST Typesetting

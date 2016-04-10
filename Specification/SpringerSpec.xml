@@ -3425,6 +3425,12 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="CompoundObjectNumberOfRomanPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
                     <elementSpec ident="CompoundObjectNumberOfColorPages">
                         <content>
                             <rng:text/>
@@ -3551,44 +3557,6 @@
                         </attList>
                     </elementSpec>
 
-                    <elementSpec ident="Typesetting">
-                        <content>
-                            <rng:empty/>
-                        </content>
-                        <attList>
-                            <attDef ident="Layout">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                            <attDef ident="StartPage">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                            <attDef ident="RunningHead">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                            <attDef ident="LogoOnFirstPage">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                            <attDef ident="EndsheetsContent">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                            <attDef ident="StandardFrontmatter">
-                                <datatype>
-                                    <rng:text/>
-                                </datatype>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-
 
                     <!-- ....................................................................... -->
                     <!-- CompoundBookObjectInfo                                                               -->
@@ -3597,6 +3565,30 @@
                     <elementSpec ident="CompoundBookObjectInfo">
                         <content>
                             <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ISBN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="EAN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookMultiVolumeCount">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PurchaseOrderNumber">
+                        <content>
+                            <rng:text/>
                         </content>
                     </elementSpec>
 
