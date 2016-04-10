@@ -3397,6 +3397,57 @@
                     </elementSpec>
 
                     <!-- ....................................................................... -->
+                    <!-- CompoundObjectTechnicalInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="CompoundObjectTechnicalInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- CompoundBookObjectInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="CompoundBookObjectInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- DiscreteBookObjectInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="DiscreteBookObjectInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- DiscreteBookObjectInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="DiscreteBookObjectInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- PartInfoGroup                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="PartInfoGroup">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+
+                    <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
                     <!-- ....................................................................... -->
 

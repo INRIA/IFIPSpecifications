@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T07:13:00Z. .CC-BY
+DTD generated from ODD source 2016-04-10T08:00:32Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -670,6 +670,10 @@ CompoundObjectID CDATA #IMPLIED
 LayoutColorCount CDATA #IMPLIED
 PrintingColorCount CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT CompoundBookObjectInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT CompoundObjectTechnicalInfo %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT ConfEventAbbreviation  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ConfEventDate  (#PCDATA)>
@@ -745,6 +749,10 @@ CompoundObjectID CDATA #IMPLIED >
 <!ELEMENT Degrees  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Description (Para)+>
+<!--doc: -->
+<!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT EditionNumber  (#PCDATA)>
 <!--doc: -->
@@ -948,6 +956,8 @@ Category CDATA  #REQUIRED >
 <!ATTLIST PartInfo
  %att.OutputMedium.attributes;
 TocLevels CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT PartInfoGroup %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT PartNumber  (#PCDATA)>
 <!--doc: -->
