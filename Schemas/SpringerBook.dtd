@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T13:52:26Z. .CC-BY
+DTD generated from ODD source 2016-04-10T14:06:04Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -781,6 +781,8 @@ CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Day  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Deadline %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT Dedication ((Heading)?,(SimplePara)+)>
 <!--doc: -->
 <!ELEMENT DefinitionList ((Heading)?,(DefinitionListEntry)+)>
@@ -1031,6 +1033,10 @@ TocLevels CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Phone  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT PlannedPublicationDate (%model.DatePart;)+>
+<!ATTLIST PlannedPublicationDate
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT PostalDelivery EMPTY>
 <!ATTLIST PostalDelivery
 Delivery (Complete|Incomplete|None) #REQUIRED >
@@ -1137,6 +1143,18 @@ Address CDATA #IMPLIED >
 <!ELEMENT RunningAuthor  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RunningTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT S50TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S600TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S650TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S700PrinterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S800PrintDistributionDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S900ElectronicDistributionDeadline (%model.DatePart;)+>
 <!--doc:provides a SIG number -->
 <!ELEMENT SIG  (#PCDATA)>
 <!--doc: -->
@@ -1266,6 +1284,8 @@ SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
 <!ELEMENT Suffix  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Superscript (#PCDATA|Emphasis)*>
+<!--doc: -->
+<!ELEMENT Supplier %macro.anyXML;>
 <!--doc:provides a technical committee number -->
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
@@ -1326,6 +1346,8 @@ Mark CDATA  #REQUIRED >
 <!ELEMENT VolumePackageID  (#PCDATA)>
 <!--doc:provides a working group number -->
 <!ELEMENT WG  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT WorkflowInfo %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT Year  (#PCDATA)>
 <!-- end elements -->
