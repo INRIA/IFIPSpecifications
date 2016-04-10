@@ -3839,7 +3839,7 @@
                     <elementSpec ident="Deliverables">
                         <content>
                             <rng:optional>
-                                <rng:ref key="DeliverablesForCompoundBookObjects"/>
+                                <rng:ref name="DeliverablesForCompoundBookObjects"/>
                             </rng:optional>
                         </content>
                     </elementSpec>
@@ -4024,6 +4024,18 @@
                         <content>
                             <rng:empty/>
                         </content>
+                        <attList>
+                            <attDef ident="colorProfile">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="grayscaleProfile">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
                     </elementSpec>
 
                     <elementSpec ident="WorkItem">
