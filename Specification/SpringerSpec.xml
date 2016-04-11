@@ -122,6 +122,9 @@
 
                     <elementSpec ident="PublisherName">
                         <desc>name of the publisher</desc>
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:text/>
                         </content>
@@ -1913,6 +1916,9 @@
                     </elementSpec>
 
                     <elementSpec ident="AuthorName">
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:oneOrMore>
                                 <rng:ref name="model.NamePart"/>
@@ -1955,6 +1961,9 @@
                     </elementSpec>
 
                     <elementSpec ident="CollaboratorName">
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:oneOrMore>
                                 <rng:ref name="model.NamePart"/>
@@ -2078,6 +2087,9 @@
                     </elementSpec>
 
                     <elementSpec ident="EditorName">
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:zeroOrMore>
                                 <rng:ref name="model.NamePart"/>
@@ -3731,7 +3743,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S200TypesetterDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3739,7 +3751,7 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="S300TypesetterDeadline">
                         <content>
                             <rng:oneOrMore>
@@ -3840,7 +3852,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <elementSpec ident="ProofRecipient">
                         <content>
                             <rng:ref name="macro.anyXML"/>
@@ -4089,7 +4101,7 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="Archive">
                         <classes>
                             <memberOf key="att.FileChildrenQualifiers"/>
@@ -5118,7 +5130,20 @@
 
                     <classSpec ident="model.fullTextBlock" type="model"/>
 
+                    <!-- Attributes classe (to me all moved here) -->
 
+                    <!-- For all name laike objects -->
+
+                    <classSpec ident="att.DisplayOrder" type="atts">
+                        <attList>
+                            <attDef ident="DisplayOrder" usage="opt">
+                                <valList type="closed">
+                                    <valItem ident="Western"/>
+                                    <valItem ident="Eastern"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </classSpec>
                 </schemaSpec>
             </div>
         </body>

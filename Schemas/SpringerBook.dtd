@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-11T06:06:06Z. .CC-BY
+DTD generated from ODD source 2016-04-11T07:13:15Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -435,6 +435,10 @@ Content CDATA #IMPLIED'>
 <!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Table?, Figure?, MediaObject?"> 
 <!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Table*, Figure*, MediaObject*"> 
 <!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Table+, Figure+, MediaObject+"> 
+<!ENTITY % att.DisplayOrder.attribute.DisplayOrder '
+DisplayOrder (Western|Eastern) #IMPLIED'>
+<!ENTITY % att.DisplayOrder.attributes '
+ %att.DisplayOrder.attribute.DisplayOrder;'> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.anyXML ' ANY' >
@@ -492,6 +496,8 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!ELEMENT AuthorGroup (Author+,Affiliation*)>
 <!--doc: -->
 <!ELEMENT AuthorName (%model.NamePart;)+>
+<!ATTLIST AuthorName
+ %att.DisplayOrder.attributes; >
 <!--doc: -->
 <!ELEMENT BibArticle (Etal|BibAuthorName|InstitutionalAuthorName|Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI|NoArticleTitle)*>
 <!--doc: -->
@@ -717,6 +723,8 @@ AffiliationIDS CDATA #IMPLIED >
 <!ELEMENT CollaboratorGroup (Collaborator+,Affiliation*)>
 <!--doc: -->
 <!ELEMENT CollaboratorName (%model.NamePart;)+>
+<!ATTLIST CollaboratorName
+ %att.DisplayOrder.attributes; >
 <!--doc: -->
 <!ELEMENT ColorImagesInPrint  (#PCDATA)>
 <!--doc: -->
@@ -895,6 +903,8 @@ AffiliationIDS CDATA #IMPLIED >
 <!ELEMENT EditorGroup (Editor+,Affiliation*)>
 <!--doc: -->
 <!ELEMENT EditorName (%model.NamePart;)*>
+<!ATTLIST EditorName
+ %att.DisplayOrder.attributes; >
 <!--doc: -->
 <!ELEMENT EditorialInfo (PublishingSegment)*>
 <!--doc: -->
@@ -1200,6 +1210,8 @@ CorrectionsRequired CDATA #IMPLIED >
 <!ELEMENT PublisherLogo (Figure)>
 <!--doc:name of the publisher -->
 <!ELEMENT PublisherName  (#PCDATA)>
+<!ATTLIST PublisherName
+ %att.DisplayOrder.attributes; >
 <!--doc: -->
 <!ELEMENT PublisherURL  (#PCDATA)>
 <!--doc: -->
