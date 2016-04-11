@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-11T05:32:55Z. .CC-BY
+DTD generated from ODD source 2016-04-11T05:50:16Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -106,16 +106,16 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
-<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Table |Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Table, Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Table?, Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Table*, Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Table+, Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Table |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Table, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Table?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Table*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Table+, Figure+, MediaObject+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -421,16 +421,16 @@ ItemType CDATA #IMPLIED'>
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
-<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Table |Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Table, Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Table?, Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Table*, Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Table+, Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Table |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Table, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Table?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Table*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Table+, Figure+, MediaObject+"> 
 <!-- start rest of patterns -->
 
 <!ENTITY % macro.anyXML ' ANY' >
@@ -1307,7 +1307,7 @@ SeriesType CDATA #IMPLIED >
  %att.ID.attributes;
  %att.Typed.attributes; >
 <!--doc: -->
-<!ELEMENT SimplePara (#PCDATA|%model.simpleText;|Figure|%model.referenceElements;)*>
+<!ELEMENT SimplePara (#PCDATA|%model.simpleText;|Figure|Table|%model.referenceElements;)*>
 <!--doc: -->
 <!ELEMENT SpineWidth  (#PCDATA)>
 <!--doc: -->

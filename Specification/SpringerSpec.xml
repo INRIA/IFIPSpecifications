@@ -2001,6 +2001,7 @@
                                     <rng:text/>
                                     <rng:ref name="model.simpleText"/>
                                     <rng:ref name="Figure"/>
+                                    <rng:ref name="Table"/>
                                     <rng:ref name="model.referenceElements"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
@@ -4090,6 +4091,8 @@
                     <elementSpec ident="Table">
                         <classes>
                             <memberOf key="att.ID"/>
+                            <memberOf key="model.fullTextBlock"/>
+                            <memberOf key="model.fullText"/>
                         </classes>
                         <content>
                             <rng:ref name="macro.anyXML"/>
