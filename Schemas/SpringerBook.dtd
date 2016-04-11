@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-10T14:39:18Z. .CC-BY
+DTD generated from ODD source 2016-04-11T05:22:36Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -1376,6 +1376,8 @@ SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
 <!--doc:provides a technical committee number -->
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Table %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT TechnicalInfo %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT Term %macro.SimpleTextModel;>
@@ -1443,4 +1445,14 @@ Mark CDATA  #REQUIRED >
 TaskType CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Year  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT colspec %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT entry %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT tbody %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT tbody %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT tgroup %macro.anyXML;>
 <!-- end elements -->

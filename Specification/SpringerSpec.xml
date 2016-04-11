@@ -4083,8 +4083,47 @@
                         </attList>
                     </elementSpec>
 
-
-
+                    <!-- ....................................................................... -->
+                    <!-- Tables                                                     -->
+                    <!-- ....................................................................... -->
+                    
+                    <elementSpec ident="Table">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="tgroup">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="colspec">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="tbody">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="tbody">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="entry">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+                    
+                    
 
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
