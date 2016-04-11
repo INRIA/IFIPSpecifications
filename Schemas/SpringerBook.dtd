@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-11T05:50:16Z. .CC-BY
+DTD generated from ODD source 2016-04-11T05:58:16Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -710,6 +710,8 @@ AffiliationIDS CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CollaboratorName (%model.NamePart;)+>
 <!--doc: -->
+<!ELEMENT ColorImagesInPrint  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT ColorImagesOnPage  (#PCDATA)>
 <!ATTLIST ColorImagesOnPage
 CompoundObjectID CDATA #IMPLIED >
@@ -1170,9 +1172,11 @@ Country CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ProductionInfo %macro.anyXML;>
 <!--doc: -->
-<!ELEMENT ProofInfo EMPTY>
+<!ELEMENT ProofInfo (ProofRecipient)*>
 <!ATTLIST ProofInfo
 ProofStage CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT ProofRecipient %macro.anyXML;>
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
 <!--doc: -->
@@ -1242,6 +1246,10 @@ grayscaleProfile CDATA #IMPLIED >
 <!ELEMENT RunningAuthor  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RunningTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT S200TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S300TypesetterDeadline (%model.DatePart;)+>
 <!--doc: -->
 <!ELEMENT S50TypesetterDeadline (%model.DatePart;)+>
 <!--doc: -->

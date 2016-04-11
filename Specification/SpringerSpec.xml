@@ -3462,6 +3462,12 @@
                         </content>
                     </elementSpec>
 
+                    <elementSpec ident="ColorImagesInPrint">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
                     <elementSpec ident="CompoundObjectNumberOfColorPages">
                         <content>
                             <rng:text/>
@@ -3725,6 +3731,22 @@
                             </rng:oneOrMore>
                         </content>
                     </elementSpec>
+                    
+                    <elementSpec ident="S200TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+                    
+                    <elementSpec ident="S300TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
 
                     <elementSpec ident="S600TypesetterDeadline">
                         <content>
@@ -3806,7 +3828,9 @@
 
                     <elementSpec ident="ProofInfo">
                         <content>
-                            <rng:empty/>
+                            <rng:zeroOrMore>
+                                <rng:ref name="ProofRecipient"/>
+                            </rng:zeroOrMore>
                         </content>
                         <attList>
                             <attDef ident="ProofStage">
@@ -3815,6 +3839,12 @@
                                 </datatype>
                             </attDef>
                         </attList>
+                    </elementSpec>
+                    
+                    <elementSpec ident="ProofRecipient">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
                     </elementSpec>
 
                     <elementSpec ident="FilesToSupplier">
