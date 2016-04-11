@@ -1,47 +1,51 @@
 
 <!--
-DTD generated from ODD source 2016-03-07T18:49:19Z. .CC-BY
-TEI Edition: Version 2.9.1. Last updated on
-	15th October 2015, revision 46ac023
-TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
+DTD generated from ODD source 2016-04-11T07:13:15Z. .CC-BY
+TEI Edition: Version 3.0.0. Last updated on
+	29th March 2016, revision 89ba24e
+TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
 
 -->
 
 <!-- start datatypes -->
 
-<!ENTITY % data.certainty '(high|medium|low|unknown)' >
+<!ENTITY % teidata.certainty '(high|medium|low|unknown)' >
 
-<!ENTITY % data.probability ' CDATA ' >
+<!ENTITY % teidata.probability ' CDATA ' >
 
-<!ENTITY % data.numeric ' CDATA' >
+<!ENTITY % teidata.numeric ' CDATA ' >
 
-<!ENTITY % data.count ' CDATA ' >
+<!ENTITY % teidata.count ' CDATA ' >
 
-<!ENTITY % data.temporal.w3c ' CDATA' >
+<!ENTITY % teidata.temporal.w3c ' CDATA ' >
 
-<!ENTITY % data.duration.w3c ' CDATA ' >
+<!ENTITY % teidata.duration.iso ' CDATA ' >
 
-<!ENTITY % data.truthValue ' CDATA ' >
+<!ENTITY % teidata.duration.w3c ' CDATA ' >
 
-<!ENTITY % data.xTruthValue ' CDATA' >
+<!ENTITY % teidata.truthValue ' CDATA ' >
 
-<!ENTITY % data.language ' CDATA' >
+<!ENTITY % teidata.xTruthValue ' CDATA ' >
 
-<!ENTITY % data.outputMeasurement ' CDATA ' >
+<!ENTITY % teidata.language ' CDATA ' >
 
-<!ENTITY % data.pointer ' CDATA ' >
+<!ENTITY % teidata.outputMeasurement ' CDATA ' >
 
-<!ENTITY % data.versionNumber ' CDATA ' >
+<!ENTITY % teidata.pointer ' CDATA ' >
+
+<!ENTITY % teidata.versionNumber ' CDATA ' >
+
+<!ENTITY % teidata.word ' CDATA ' >
+
+<!ENTITY % teidata.text ' CDATA ' >
+
+<!ENTITY % teidata.name ' CDATA ' >
+
+<!ENTITY % teidata.enumerated '%teidata.word;' >
+
+<!ENTITY % teidata.probCert ' CDATA ' >
 
 <!ENTITY % data.word ' CDATA ' >
-
-<!ENTITY % data.text ' CDATA ' >
-
-<!ENTITY % data.name ' CDATA ' >
-
-<!ENTITY % data.enumerated '%data.word;' >
-
-<!ENTITY % data.duration.iso ' CDATA ' >
 
 <!-- end datatypes -->
 
@@ -62,11 +66,11 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.ConferenceInfoPart_sequenceOptional "ConfSeriesName?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, ConfEventDateStart?, ConfEventDateEnd?"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceOptionalRepeatable "ConfSeriesName*, ConfEventAbbreviation*, ConfNumber*, ConfEventLocation*, ConfEventDateStart*, ConfEventDateEnd*"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceRepeatable "ConfSeriesName+, ConfEventAbbreviation+, ConfNumber+, ConfEventLocation+, ConfEventDateStart+, ConfEventDateEnd+"> 
-<!ENTITY % model.ContactPart "Email |URL |Street |Postbox |Postcode |City |State |Country"> 
-<!ENTITY % model.ContactPart_sequence "Email, URL, Street, Postbox, Postcode, City, State, Country"> 
-<!ENTITY % model.ContactPart_sequenceOptional "Email?, URL?, Street?, Postbox?, Postcode?, City?, State?, Country?"> 
-<!ENTITY % model.ContactPart_sequenceOptionalRepeatable "Email*, URL*, Street*, Postbox*, Postcode*, City*, State*, Country*"> 
-<!ENTITY % model.ContactPart_sequenceRepeatable "Email+, URL+, Street+, Postbox+, Postcode+, City+, State+, Country+"> 
+<!ENTITY % model.ContactPart "Phone |Fax |Email |URL |Street |Postbox |Postcode |City |State |Country"> 
+<!ENTITY % model.ContactPart_sequence "Phone, Fax, Email, URL, Street, Postbox, Postcode, City, State, Country"> 
+<!ENTITY % model.ContactPart_sequenceOptional "Phone?, Fax?, Email?, URL?, Street?, Postbox?, Postcode?, City?, State?, Country?"> 
+<!ENTITY % model.ContactPart_sequenceOptionalRepeatable "Phone*, Fax*, Email*, URL*, Street*, Postbox*, Postcode*, City*, State*, Country*"> 
+<!ENTITY % model.ContactPart_sequenceRepeatable "Phone+, Fax+, Email+, URL+, Street+, Postbox+, Postcode+, City+, State+, Country+"> 
 <!ENTITY % model.DatePart "Year |Month |Day"> 
 <!ENTITY % model.DatePart_sequence "Year, Month, Day"> 
 <!ENTITY % model.DatePart_sequenceOptional "Year?, Month?, Day?"> 
@@ -102,16 +106,16 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
-<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Table |Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Table, Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Table?, Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Table*, Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Table+, Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Table |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Table, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Table?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Table*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Table+, Figure+, MediaObject+"> 
 <!-- end of predeclared classes -->
 
 <!ENTITY % model.nameLike.agent ""> 
@@ -324,6 +328,18 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.9.1/
 <!ENTITY % model.limitedPhrase_sequenceOptional ""> 
 <!ENTITY % model.limitedPhrase_sequenceOptionalRepeatable ""> 
 <!ENTITY % model.limitedPhrase_sequenceRepeatable ""> 
+<!ENTITY % att.TableQualifiers.attribute.colnum '
+colnum CDATA #IMPLIED'>
+
+<!ENTITY % att.TableQualifiers.attribute.colname '
+colname CDATA #IMPLIED'>
+
+<!ENTITY % att.TableQualifiers.attribute.align '
+align CDATA #IMPLIED'>
+<!ENTITY % att.TableQualifiers.attributes '
+ %att.TableQualifiers.attribute.colnum;
+ %att.TableQualifiers.attribute.colname;
+ %att.TableQualifiers.attribute.align;'> 
 <!ENTITY % att.OutputMedium.attribute.OutputMedium '
 OutputMedium CDATA #IMPLIED'>
 <!ENTITY % att.OutputMedium.attributes '
@@ -348,16 +364,32 @@ NumberingDepth CDATA #IMPLIED'>
 Type CDATA #IMPLIED'>
 <!ENTITY % att.Typed.attributes '
  %att.Typed.attribute.Type;'> 
+<!ENTITY % att.FileChildrenQualifiers.attribute.FileRef '
+FileRef CDATA #IMPLIED'>
+
+<!ENTITY % att.FileChildrenQualifiers.attribute.TargetType '
+TargetType CDATA #IMPLIED'>
+
+<!ENTITY % att.FileChildrenQualifiers.attribute.ItemType '
+ItemType CDATA #IMPLIED'>
+
+<!ENTITY % att.FileChildrenQualifiers.attribute.Content '
+Content CDATA #IMPLIED'>
+<!ENTITY % att.FileChildrenQualifiers.attributes '
+ %att.FileChildrenQualifiers.attribute.FileRef;
+ %att.FileChildrenQualifiers.attribute.TargetType;
+ %att.FileChildrenQualifiers.attribute.ItemType;
+ %att.FileChildrenQualifiers.attribute.Content;'> 
 <!ENTITY % model.ConferenceInfoPart "ConfSeriesName |ConfEventAbbreviation |ConfNumber |ConfEventLocation |ConfEventDateStart |ConfEventDateEnd"> 
 <!ENTITY % model.ConferenceInfoPart_sequence "ConfSeriesName, ConfEventAbbreviation, ConfNumber, ConfEventLocation, ConfEventDateStart, ConfEventDateEnd"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceOptional "ConfSeriesName?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, ConfEventDateStart?, ConfEventDateEnd?"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceOptionalRepeatable "ConfSeriesName*, ConfEventAbbreviation*, ConfNumber*, ConfEventLocation*, ConfEventDateStart*, ConfEventDateEnd*"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceRepeatable "ConfSeriesName+, ConfEventAbbreviation+, ConfNumber+, ConfEventLocation+, ConfEventDateStart+, ConfEventDateEnd+"> 
-<!ENTITY % model.ContactPart "Email |URL |Street |Postbox |Postcode |City |State |Country"> 
-<!ENTITY % model.ContactPart_sequence "Email, URL, Street, Postbox, Postcode, City, State, Country"> 
-<!ENTITY % model.ContactPart_sequenceOptional "Email?, URL?, Street?, Postbox?, Postcode?, City?, State?, Country?"> 
-<!ENTITY % model.ContactPart_sequenceOptionalRepeatable "Email*, URL*, Street*, Postbox*, Postcode*, City*, State*, Country*"> 
-<!ENTITY % model.ContactPart_sequenceRepeatable "Email+, URL+, Street+, Postbox+, Postcode+, City+, State+, Country+"> 
+<!ENTITY % model.ContactPart "Phone |Fax |Email |URL |Street |Postbox |Postcode |City |State |Country"> 
+<!ENTITY % model.ContactPart_sequence "Phone, Fax, Email, URL, Street, Postbox, Postcode, City, State, Country"> 
+<!ENTITY % model.ContactPart_sequenceOptional "Phone?, Fax?, Email?, URL?, Street?, Postbox?, Postcode?, City?, State?, Country?"> 
+<!ENTITY % model.ContactPart_sequenceOptionalRepeatable "Phone*, Fax*, Email*, URL*, Street*, Postbox*, Postcode*, City*, State*, Country*"> 
+<!ENTITY % model.ContactPart_sequenceRepeatable "Phone+, Fax+, Email+, URL+, Street+, Postbox+, Postcode+, City+, State+, Country+"> 
 <!ENTITY % model.DatePart "Year |Month |Day"> 
 <!ENTITY % model.DatePart_sequence "Year, Month, Day"> 
 <!ENTITY % model.DatePart_sequenceOptional "Year?, Month?, Day?"> 
@@ -393,17 +425,23 @@ Type CDATA #IMPLIED'>
 <!ENTITY % model.ListElements_sequenceOptional "OrderedList?, UnorderedList?, DefinitionList?"> 
 <!ENTITY % model.ListElements_sequenceOptionalRepeatable "OrderedList*, UnorderedList*, DefinitionList*"> 
 <!ENTITY % model.ListElements_sequenceRepeatable "OrderedList+, UnorderedList+, DefinitionList+"> 
-<!ENTITY % model.fullText "Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
-<!ENTITY % model.fullText_sequence "Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
-<!ENTITY % model.fullText_sequenceOptional "Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullText_sequenceOptionalRepeatable "Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullText_sequenceRepeatable "Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
-<!ENTITY % model.fullTextBlock "Para |Figure |MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequence "Para, Figure, MediaObject"> 
-<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Figure?, MediaObject?"> 
-<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Figure*, MediaObject*"> 
-<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullText "Table |Equation |%model.referenceElements; |BlockQuote |%model.simpleText; |%model.ListElements; |Figure |MediaObject"> 
+<!ENTITY % model.fullText_sequence "Table, Equation, %model.referenceElements;, BlockQuote, %model.simpleText;, %model.ListElements;, Figure, MediaObject"> 
+<!ENTITY % model.fullText_sequenceOptional "Table?, Equation?, %model.referenceElements;?, BlockQuote?, %model.simpleText;?, %model.ListElements;?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullText_sequenceOptionalRepeatable "Table*, Equation*, %model.referenceElements;*, BlockQuote*, %model.simpleText;*, %model.ListElements;*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullText_sequenceRepeatable "Table+, Equation+, %model.referenceElements;+, BlockQuote+, %model.simpleText;+, %model.ListElements;+, Figure+, MediaObject+"> 
+<!ENTITY % model.fullTextBlock "Para |Table |Figure |MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequence "Para, Table, Figure, MediaObject"> 
+<!ENTITY % model.fullTextBlock_sequenceOptional "Para?, Table?, Figure?, MediaObject?"> 
+<!ENTITY % model.fullTextBlock_sequenceOptionalRepeatable "Para*, Table*, Figure*, MediaObject*"> 
+<!ENTITY % model.fullTextBlock_sequenceRepeatable "Para+, Table+, Figure+, MediaObject+"> 
+<!ENTITY % att.DisplayOrder.attribute.DisplayOrder '
+DisplayOrder (Western|Eastern) #IMPLIED'>
+<!ENTITY % att.DisplayOrder.attributes '
+ %att.DisplayOrder.attribute.DisplayOrder;'> 
 <!-- start rest of patterns -->
+
+<!ENTITY % macro.anyXML ' ANY' >
 
 <!ENTITY % macro.SimpleTextModel '(#PCDATA|%model.simpleText;)*' >
 
@@ -413,6 +451,14 @@ Type CDATA #IMPLIED'>
 
 <!-- start elements -->
 
+<!--doc: -->
+<!ELEMENT APageFile EMPTY>
+<!ATTLIST APageFile
+ %att.FileChildrenQualifiers.attributes;
+ %att.Typed.attributes;
+Position CDATA #IMPLIED
+FirstPage CDATA #IMPLIED
+LastPage CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Abstract (Heading?,Para*)>
 <!ATTLIST Abstract
@@ -425,6 +471,14 @@ Type CDATA #IMPLIED'>
 <!ELEMENT Affiliation (OrgDivision|OrgName|OrgAddress)+>
 <!ATTLIST Affiliation
  %att.ID.attributes; >
+<!--doc: -->
+<!ELEMENT AplusplusRootFile EMPTY>
+<!ATTLIST AplusplusRootFile
+ %att.FileChildrenQualifiers.attributes; >
+<!--doc: -->
+<!ELEMENT Archive EMPTY>
+<!ATTLIST Archive
+ %att.FileChildrenQualifiers.attributes; >
 <!--doc: -->
 <!ELEMENT ArticleNote (Heading?,SimplePara+)>
 <!ATTLIST ArticleNote
@@ -442,6 +496,8 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!ELEMENT AuthorGroup (Author+,Affiliation*)>
 <!--doc: -->
 <!ELEMENT AuthorName (%model.NamePart;)+>
+<!ATTLIST AuthorName
+ %att.DisplayOrder.attributes; >
 <!--doc: -->
 <!ELEMENT BibArticle (Etal|BibAuthorName|InstitutionalAuthorName|Year|ArticleTitle|JournalTitle|PublisherName|PublisherLocation|SeriesTitle|BibEditorName|ConfEventName|ConfEventLocation|ConfEventDate|NumberInSeries|FirstPage|LastPage|VolumeID|IssueID|BibComments|Eds|BibArticleDOI|NoArticleTitle)*>
 <!--doc: -->
@@ -467,6 +523,14 @@ CorrespondingAffiliationID CDATA #IMPLIED >
 <!ATTLIST Bibliography
  %att.ID.attributes; >
 <!--doc: -->
+<!ELEMENT Binding  (#PCDATA)>
+<!ATTLIST Binding
+ %att.Typed.attributes;
+EndsheetsPaper CDATA #IMPLIED
+BookBackType CDATA #IMPLIED
+BookmarkRibbonCount CDATA #IMPLIED
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT BlockQuote ((Heading)?,(%model.fullTextBlock;)*)>
 <!--doc: -->
 <!ELEMENT Body ((%model.fullTextBlock;)*,(Section1)*)>
@@ -482,6 +546,14 @@ PDFType CDATA #IMPLIED >
 <!ELEMENT Book (BookInfo,Cover?,BookHeader?,(NoBody|(BodyRef*,BookFrontmatter?,(Part+|Chapter+)?)|BookOnlineFirst))>
 <!ATTLIST Book
  %att.language.attributes; >
+<!--doc: -->
+<!ELEMENT BookBackmatterDOI  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookBackmatterFirstPage  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT BookBackmatterInfo ((BookBackmatterDOI)?,BookBackmatterFirstPage,BookBackmatterLastPage)>
+<!--doc: -->
+<!ELEMENT BookBackmatterLastPage  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT BookChapterCount  (#PCDATA)>
 <!--doc: -->
@@ -525,6 +597,8 @@ TocLevels CDATA #IMPLIED
 ContainsESM CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT BookJobSheet (PublisherInfo,SeriesInfo,SeriesHeader,BookInfo,EditorGroup,ProductionInfo)>
+<!--doc: -->
+<!ELEMENT BookMultiVolumeCount  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT BookNotes (BookNotesTitle,(AuthorGroup)?,Body)>
 <!--doc: -->
@@ -649,6 +723,49 @@ AffiliationIDS CDATA #IMPLIED >
 <!ELEMENT CollaboratorGroup (Collaborator+,Affiliation*)>
 <!--doc: -->
 <!ELEMENT CollaboratorName (%model.NamePart;)+>
+<!ATTLIST CollaboratorName
+ %att.DisplayOrder.attributes; >
+<!--doc: -->
+<!ELEMENT ColorImagesInPrint  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ColorImagesOnPage  (#PCDATA)>
+<!ATTLIST ColorImagesOnPage
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT ColorSpecifications (LayoutColorName|PrintingColorName)*>
+<!ATTLIST ColorSpecifications
+CompoundObjectID CDATA #IMPLIED
+LayoutColorCount CDATA #IMPLIED
+PrintingColorCount CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT CompanyName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CompoundBookObjectInfo %macro.anyXML;>
+<!ATTLIST CompoundBookObjectInfo
+ %att.ID.attributes;
+ %att.Typed.attributes;
+SeriesID CDATA #IMPLIED
+MediaType CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT CompoundObjectNumberOfArabicPages  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CompoundObjectNumberOfColorPages  (#PCDATA)>
+<!ATTLIST CompoundObjectNumberOfColorPages
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT CompoundObjectNumberOfImages  (#PCDATA)>
+<!ATTLIST CompoundObjectNumberOfImages
+Illustrations CDATA #IMPLIED
+PrintImagesColor CDATA #IMPLIED
+PrintImagesBlackWhite CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT CompoundObjectNumberOfRomanPages  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT CompoundObjectTechnicalInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT CompoundObjectTotalNumberOfPages  (#PCDATA)>
+<!ATTLIST CompoundObjectTotalNumberOfPages
+CompoundObjectID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT ConfEventAbbreviation  (#PCDATA)>
 <!--doc: -->
@@ -671,6 +788,16 @@ AffiliationIDS CDATA #IMPLIED >
 <!ELEMENT ConferenceInfo (%model.ConferenceInfoPart;)+>
 <!--doc: -->
 <!ELEMENT Contact (%model.ContactPart;)+>
+<!--doc: -->
+<!ELEMENT ContactPerson (ContactPersonName|Contact)*>
+<!--doc: -->
+<!ELEMENT ContactPersonName (%model.NamePart;)+>
+<!--doc: -->
+<!ELEMENT ContentFiles %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT CopyEditing EMPTY>
+<!ATTLIST CopyEditing
+Category CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT CopyrightHolderName  (#PCDATA)>
 <!--doc: -->
@@ -695,7 +822,24 @@ Type CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT CoverLastPage  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT CoverProductionInfo (SpineWidth)?>
+<!ATTLIST CoverProductionInfo
+Style CDATA #IMPLIED
+PaperStock CDATA #IMPLIED
+Printing CDATA #IMPLIED
+Stamping CDATA #IMPLIED
+BinderBoards CDATA #IMPLIED
+Finishing CDATA #IMPLIED
+ChangingImages CDATA #IMPLIED
+Creases CDATA #IMPLIED
+CoverExteriorColorCount CDATA #IMPLIED
+CoverInteriorColorCount CDATA #IMPLIED
+Dustjacket CDATA #IMPLIED
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT Day  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Deadline %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT Dedication ((Heading)?,(SimplePara)+)>
 <!--doc: -->
@@ -705,7 +849,50 @@ Type CDATA  #IMPLIED >
 <!--doc: -->
 <!ELEMENT Degrees  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Deliverables (DeliverablesForCompoundBookObjects)?>
+<!--doc: -->
+<!ELEMENT DeliverablesForCompoundBookObjects EMPTY>
+<!ATTLIST DeliverablesForCompoundBookObjects
+BackmatterElectronicPDF CDATA #IMPLIED
+BackmatterXML CDATA #IMPLIED
+BookDeltaPDF CDATA #IMPLIED
+BookElectronicPDF CDATA #IMPLIED
+BookEpsilonPDF CDATA #IMPLIED
+BookPrintPDF CDATA #IMPLIED
+BookProofFeedbackPDF CDATA #IMPLIED
+ChapterElectronicPDF CDATA #IMPLIED
+ChapterOnlineMediaObjects CDATA #IMPLIED
+ChapterPrintMediaObjects CDATA #IMPLIED
+ChapterTEX CDATA #IMPLIED
+ChapterXMLWithBody CDATA #IMPLIED
+ChapterXMLWithBodyRefsOnly CDATA #IMPLIED
+CoverFigure CDATA #IMPLIED
+CoverPrintPDF CDATA #IMPLIED
+DustJacketPDF CDATA #IMPLIED
+FrontmatterElectronicPDF CDATA #IMPLIED
+FrontmatterXML CDATA #IMPLIED
+Manuscript CDATA #IMPLIED
+PartBackmatterElectronicPDF CDATA #IMPLIED
+PartBackmatterManuscripts CDATA #IMPLIED
+PartBackmatterXML CDATA #IMPLIED
+PartFrontmatterElectronicPDF CDATA #IMPLIED
+PartFrontmatterManuscripts CDATA #IMPLIED
+PartFrontmatterXML CDATA #IMPLIED
+Pit-Stop-Reports CDATA #IMPLIED
+TocElectronicPDF CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT Description (Para)+>
+<!--doc: -->
+<!ELEMENT DiscreteBookObjectInfo %macro.anyXML;>
+<!ATTLIST DiscreteBookObjectInfo
+ %att.ID.attributes;
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT DiscreteObjectTechnicalInfo (ProductionClassification)?>
+<!ATTLIST DiscreteObjectTechnicalInfo
+ContainsColorImages CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT EAN  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT EditionNumber  (#PCDATA)>
 <!--doc: -->
@@ -716,8 +903,18 @@ AffiliationIDS CDATA #IMPLIED >
 <!ELEMENT EditorGroup (Editor+,Affiliation*)>
 <!--doc: -->
 <!ELEMENT EditorName (%model.NamePart;)*>
+<!ATTLIST EditorName
+ %att.DisplayOrder.attributes; >
+<!--doc: -->
+<!ELEMENT EditorialInfo (PublishingSegment)*>
+<!--doc: -->
+<!ELEMENT EditorialManuscriptNumber  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Eds EMPTY>
+<!--doc: -->
+<!ELEMENT ElectronicDelivery EMPTY>
+<!ATTLIST ElectronicDelivery
+Delivery (Complete|Incomplete|None) #REQUIRED >
 <!--doc: -->
 <!ELEMENT Email  (#PCDATA)>
 <!--doc: -->
@@ -745,11 +942,22 @@ NOTATION (TEX|MATHML|MATHTYPE|XML) #IMPLIED >
 <!--doc: -->
 <!ELEMENT FamilyName  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Fax  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT Figure ((Caption)*,(MediaObject)+)>
 <!ATTLIST Figure
  %att.ID.attributes;
 Float (Yes|No) #REQUIRED
 Category (Schema|Structure|Standard|Logo) #REQUIRED >
+<!--doc: -->
+<!ELEMENT File %macro.anyXML;>
+<!ATTLIST File
+DiscreteObjectID CDATA #IMPLIED
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT FilesToPublisher %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT FilesToSupplier %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT FirstPage  (#PCDATA)>
 <!--doc: -->
@@ -769,7 +977,17 @@ Category (Schema|Structure|Standard|Logo) #REQUIRED >
 <!ATTLIST ForewordTitle
  %att.language.attributes; >
 <!--doc: -->
+<!ELEMENT FormatTrimSize  (#PCDATA)>
+<!ATTLIST FormatTrimSize
+CompoundObjectID CDATA #IMPLIED
+TrimHeightMm CDATA #IMPLIED
+TrimWidthMm CDATA #IMPLIED
+TrimHeightInch CDATA #IMPLIED
+TrimWidthInch CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT Frontispiece (Figure)>
+<!--doc: -->
+<!ELEMENT FullServiceVendor %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT GivenName  (#PCDATA)>
 <!--doc: -->
@@ -778,6 +996,8 @@ Category (Schema|Structure|Standard|Logo) #REQUIRED >
 <!ELEMENT IFIPentity (TC|WG|SIG)*>
 <!ATTLIST IFIPentity
 subline (StateoftheArtSurvey|Survey|Tutorial|Festschrift) #IMPLIED >
+<!--doc: -->
+<!ELEMENT ISBN  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT ImageObject (Caption)*>
 <!ATTLIST ImageObject
@@ -825,9 +1045,19 @@ Supplier CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT LastPage  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT LayoutColorName  (#PCDATA)>
+<!--doc: -->
 <!ELEMENT ListItem (ItemNumber,ItemContent)>
 <!--doc: -->
 <!ELEMENT Literal (#PCDATA|Emphasis)*>
+<!--doc: -->
+<!ELEMENT ManuscriptInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT ManuscriptNumberOfGraphics  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ManuscriptNumberOfPages  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT ManuscriptNumberOfTables  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT MediaObject ((Caption)?,(ImageObject)+)>
 <!ATTLIST MediaObject
@@ -842,6 +1072,8 @@ Supplier CDATA #IMPLIED >
 <!ELEMENT NoBody  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT NoChapterTitle EMPTY>
+<!--doc: -->
+<!ELEMENT NoFiles EMPTY>
 <!--doc: -->
 <!ELEMENT NoGivenName EMPTY>
 <!--doc: -->
@@ -890,6 +1122,8 @@ Category CDATA  #REQUIRED >
  %att.OutputMedium.attributes;
 TocLevels CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT PartInfoGroup %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT PartNumber  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT PartSequenceNumber  (#PCDATA)>
@@ -899,6 +1133,18 @@ TocLevels CDATA #IMPLIED >
 <!ELEMENT PartTitle %macro.SimpleTextModel;>
 <!--doc: -->
 <!ELEMENT Particle  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PeerReviewSystem  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Phone  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PlannedPublicationDate (%model.DatePart;)+>
+<!ATTLIST PlannedPublicationDate
+CompoundObjectID CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT PostalDelivery EMPTY>
+<!ATTLIST PostalDelivery
+Delivery (Complete|Incomplete|None) #REQUIRED >
 <!--doc: -->
 <!ELEMENT Postbox  (#PCDATA)>
 <!--doc: -->
@@ -918,12 +1164,40 @@ TocLevels CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Prefix  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT PrintRun EMPTY>
+<!ATTLIST PrintRun
+CompoundObjectID CDATA #IMPLIED
+Total CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT PrintingColorName  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT Priority EMPTY>
+<!ATTLIST Priority
+Level CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT ProductLiability  (#PCDATA)>
 <!ATTLIST ProductLiability
  %att.language.attributes;
 Country CDATA #IMPLIED >
 <!--doc: -->
-<!ELEMENT ProductionInfo  (#PCDATA)>
+<!ELEMENT ProductionClassification EMPTY>
+<!ATTLIST ProductionClassification
+ %att.Typed.attributes; >
+<!--doc: -->
+<!ELEMENT ProductionEditor (ProductionEditorName,Contact)>
+<!--doc: -->
+<!ELEMENT ProductionEditorName (%model.NamePart;)+>
+<!--doc: -->
+<!ELEMENT ProductionInfo %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT ProofInfo (ProofRecipient)*>
+<!ATTLIST ProofInfo
+ProofStage CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT ProofRecipient %macro.anyXML;>
+<!ATTLIST ProofRecipient
+ProofType CDATA #IMPLIED
+CorrectionsRequired CDATA #IMPLIED >
 <!--doc:groups together all the Springer metadata associated to a book related publication (book or book chapter) -->
 <!ELEMENT Publisher (PublisherInfo,Series)>
 <!--doc: -->
@@ -936,8 +1210,42 @@ Country CDATA #IMPLIED >
 <!ELEMENT PublisherLogo (Figure)>
 <!--doc:name of the publisher -->
 <!ELEMENT PublisherName  (#PCDATA)>
+<!ATTLIST PublisherName
+ %att.DisplayOrder.attributes; >
 <!--doc: -->
 <!ELEMENT PublisherURL  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PublishingSegment  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT PurchaseOrderNumber  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotes %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesAds  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesCdDvdEsm  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesColorFigures  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesComplimentaryCopies  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesCopyEditing  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesFrontmatter  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesIndex  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesLayout  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesManuscriptMaterial  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesMiscellaneous  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesProductionClassification  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesProof  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT QualifyingProductionNotesSpringerDotCom  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RefSource %macro.SimpleTextModel;>
 <!--doc: -->
@@ -950,11 +1258,40 @@ Address CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT RelatedObjectDOI  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT RemarkByEditor  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT RenditionItem EMPTY>
+<!ATTLIST RenditionItem
+ %att.FileChildrenQualifiers.attributes;
+colorProfile CDATA #IMPLIED
+grayscaleProfile CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT RunningAuthor  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT RunningTitle %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT S200TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S300TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S50TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S600TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S650TypesetterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S700PrinterDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S800PrintDistributionDeadline (%model.DatePart;)+>
+<!--doc: -->
+<!ELEMENT S900ElectronicDistributionDeadline (%model.DatePart;)+>
 <!--doc:provides a SIG number -->
 <!ELEMENT SIG  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT SPACEInfo EMPTY>
+<!ATTLIST SPACEInfo
+PublicationObjectID CDATA #IMPLIED
+SupplierSPACEID CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Section1 (Heading,(AuthorGroup)?,(%model.fullTextBlock;)*,(Section2)*)>
 <!ATTLIST Section1
@@ -1001,7 +1338,9 @@ SeriesType CDATA #IMPLIED >
  %att.ID.attributes;
  %att.Typed.attributes; >
 <!--doc: -->
-<!ELEMENT SimplePara (#PCDATA|%model.simpleText;|Figure|%model.referenceElements;)*>
+<!ELEMENT SimplePara (#PCDATA|%model.simpleText;|Figure|Table|%model.referenceElements;)*>
+<!--doc: -->
+<!ELEMENT SpineWidth  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT SpringerLocationsLine  (#PCDATA)>
 <!--doc: -->
@@ -1075,10 +1414,28 @@ SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
 <!ELEMENT Suffix  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Superscript (#PCDATA|Emphasis)*>
+<!--doc: -->
+<!ELEMENT Supplier %macro.anyXML;>
 <!--doc:provides a technical committee number -->
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT Table %macro.anyXML;>
+<!ATTLIST Table
+ %att.ID.attributes;
+Float CDATA #IMPLIED >
+<!--doc: -->
+<!ELEMENT TechnicalInfo %macro.anyXML;>
+<!--doc: -->
 <!ELEMENT Term %macro.SimpleTextModel;>
+<!--doc: -->
+<!ELEMENT TextSpecifications EMPTY>
+<!ATTLIST TextSpecifications
+GutterMargin CDATA #IMPLIED
+HeadMargin CDATA #IMPLIED
+Bleeds CDATA #IMPLIED
+TypeareaHeight CDATA #IMPLIED
+TypeareaWidth CDATA #IMPLIED
+PaperStock CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT Toc (Heading,(SubHeading)?,(TocFront)*,(TocPart|TocChapter)*,(TocBack)*)>
 <!--doc: -->
@@ -1104,6 +1461,15 @@ PageNumber CDATA #IMPLIED >
  %att.language.attributes;
 Country CDATA #IMPLIED >
 <!--doc: -->
+<!ELEMENT Typesetting EMPTY>
+<!ATTLIST Typesetting
+Layout CDATA #IMPLIED
+StartPage CDATA #IMPLIED
+RunningHead CDATA #IMPLIED
+LogoOnFirstPage CDATA #IMPLIED
+EndsheetsContent CDATA #IMPLIED
+StandardFrontmatter CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT URL  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT UnorderedList ((Heading)?,(ItemContent)+)>
@@ -1116,5 +1482,29 @@ Mark CDATA  #REQUIRED >
 <!--doc:provides a working group number -->
 <!ELEMENT WG  (#PCDATA)>
 <!--doc: -->
+<!ELEMENT WorkItem EMPTY>
+<!ATTLIST WorkItem
+ %att.FileChildrenQualifiers.attributes; >
+<!--doc: -->
+<!ELEMENT WorkflowInfo %macro.anyXML;>
+<!ATTLIST WorkflowInfo
+TaskType CDATA #IMPLIED >
+<!--doc: -->
 <!ELEMENT Year  (#PCDATA)>
+<!--doc: -->
+<!ELEMENT colspec %macro.anyXML;>
+<!ATTLIST colspec
+ %att.TableQualifiers.attributes; >
+<!--doc: -->
+<!ELEMENT entry %macro.anyXML;>
+<!ATTLIST entry
+ %att.TableQualifiers.attributes; >
+<!--doc: -->
+<!ELEMENT row %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT tbody %macro.anyXML;>
+<!--doc: -->
+<!ELEMENT tgroup %macro.anyXML;>
+<!ATTLIST tgroup
+cols CDATA #IMPLIED >
 <!-- end elements -->

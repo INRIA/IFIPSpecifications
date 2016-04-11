@@ -122,6 +122,9 @@
 
                     <elementSpec ident="PublisherName">
                         <desc>name of the publisher</desc>
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:text/>
                         </content>
@@ -725,10 +728,9 @@
                             </rng:optional>
                             <rng:zeroOrMore>
                                 <rng:ref name="model.fullTextBlock"/>
-                            </rng:zeroOrMore>T </content>
+                            </rng:zeroOrMore>
+                        </content>
                     </elementSpec>
-
-
 
 
                     <!-- BookInfo sub-elements -->
@@ -1161,7 +1163,7 @@
                     <!-- ....................................................................... -->
                     <!-- SubPart                                                                 -->
                     <!-- ....................................................................... -->
-                    
+
                     <elementSpec ident="SubPart">
                         <classes>
                             <memberOf key="att.ID"/>
@@ -1652,6 +1654,35 @@
                     <!ELEMENT BodyBackmatter ((Appendix*, Glossary?, Bibliography?, Index*, Colophon?) | PDFExtract)>
 -->
 
+                    <elementSpec ident="BookBackmatterInfo">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="BookBackmatterDOI"/>
+                            </rng:optional>
+                            <rng:ref name="BookBackmatterFirstPage"/>
+                            <rng:ref name="BookBackmatterLastPage"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookBackmatterDOI">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookBackmatterFirstPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookBackmatterLastPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+
                     <!-- ....................................................................... -->
                     <!-- Page Headers                                                            -->
                     <!-- ....................................................................... -->
@@ -1885,6 +1916,9 @@
                     </elementSpec>
 
                     <elementSpec ident="AuthorName">
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:oneOrMore>
                                 <rng:ref name="model.NamePart"/>
@@ -1927,6 +1961,9 @@
                     </elementSpec>
 
                     <elementSpec ident="CollaboratorName">
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:oneOrMore>
                                 <rng:ref name="model.NamePart"/>
@@ -1973,6 +2010,7 @@
                                     <rng:text/>
                                     <rng:ref name="model.simpleText"/>
                                     <rng:ref name="Figure"/>
+                                    <rng:ref name="Table"/>
                                     <rng:ref name="model.referenceElements"/>
                                 </rng:choice>
                             </rng:zeroOrMore>
@@ -2049,6 +2087,9 @@
                     </elementSpec>
 
                     <elementSpec ident="EditorName">
+                        <classes>
+                            <memberOf key="att.DisplayOrder"/>
+                        </classes>
                         <content>
                             <rng:zeroOrMore>
                                 <rng:ref name="model.NamePart"/>
@@ -2148,13 +2189,29 @@
                         </content>
                     </elementSpec>
 
-
-
                     <elementSpec ident="Contact">
                         <content>
                             <rng:oneOrMore>
                                 <rng:ref name="model.ContactPart"/>
                             </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Phone">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Fax">
+                        <classes>
+                            <memberOf key="model.ContactPart"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
                         </content>
                     </elementSpec>
 
@@ -2529,7 +2586,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- <!ELEMENT BibChapter ((%AuthorshipModel;), %YearModel;, 
                         ((NoChapterTitle, (%EditorshipModel;)?, BookTitle, 
                         (EditionNumber? | ((ConfEventName | ConfSeriesName)?, ConfEventAbbreviation?, 
@@ -2699,13 +2756,13 @@
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BibChapterDOI">
                         <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
-                    
+
                     <elementSpec ident="BibBookDOI">
                         <content>
                             <rng:text/>
@@ -2901,9 +2958,1282 @@
 
                     <elementSpec ident="ProductionInfo">
                         <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- SPACEInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="SPACEInfo">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="PublicationObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="SupplierSPACEID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- ManuscriptInfo elements                                                 -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="ManuscriptInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PeerReviewSystem">
+                        <content>
                             <rng:text/>
                         </content>
                     </elementSpec>
+
+                    <!-- under construction: might use attribute with pre-defined names and versions -->
+
+                    <elementSpec ident="EditorialManuscriptNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ManuscriptNumberOfPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ManuscriptNumberOfGraphics">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ManuscriptNumberOfTables">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="RemarkByEditor">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ElectronicDelivery">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Delivery" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Complete"/>
+                                    <valItem ident="Incomplete"/>
+                                    <valItem ident="None"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="PostalDelivery">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Delivery" usage="req">
+                                <valList type="closed">
+                                    <valItem ident="Complete"/>
+                                    <valItem ident="Incomplete"/>
+                                    <valItem ident="None"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- ProductionEditor elements                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="ProductionEditor">
+                        <content>
+                            <rng:ref name="ProductionEditorName"/>
+                            <rng:ref name="Contact"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ProductionEditorName">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ContactPerson">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="ContactPersonName"/>
+                                    <rng:ref name="Contact"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ContactPersonName">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.NamePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- EditorialInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="EditorialInfo">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="PublishingSegment"/>
+                            </rng:zeroOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PublishingSegment">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- QualifyingProductionNotes                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="QualifyingProductionNotes">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesAds">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesCdDvdEsm">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesComplimentaryCopies">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesCopyEditing">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesFrontmatter">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesIndex">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesProductionClassification">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesSpringerDotCom">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesMiscellaneous">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesManuscriptMaterial">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesLayout">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesProof">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="QualifyingProductionNotesColorFigures">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- TechnicalInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="TechnicalInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Typesetting">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Layout">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="StartPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="RunningHead">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LogoOnFirstPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="EndsheetsContent">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="StandardFrontmatter">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="TextSpecifications">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="GutterMargin">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="HeadMargin">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Bleeds">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TypeareaHeight">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TypeareaWidth">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PaperStock">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ColorSpecifications">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:choice>
+                                    <rng:ref name="LayoutColorName"/>
+                                    <rng:ref name="PrintingColorName"/>
+                                </rng:choice>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LayoutColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PrintingColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="LayoutColorName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PrintingColorName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CoverProductionInfo">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="SpineWidth"/>
+                            </rng:optional>
+                        </content>
+                        <attList>
+                            <attDef ident="Style">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PaperStock">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Printing">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Stamping">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BinderBoards">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Finishing">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChangingImages">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Creases">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverExteriorColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverInteriorColorCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Dustjacket">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="SpineWidth">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Binding">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="EndsheetsPaper">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookBackType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookmarkRibbonCount">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- CompoundObjectTechnicalInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="CompoundObjectTechnicalInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectTotalNumberOfPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfArabicPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfRomanPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ColorImagesInPrint">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfColorPages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ColorImagesOnPage">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CompoundObjectNumberOfImages">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="Illustrations">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PrintImagesColor">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PrintImagesBlackWhite">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ProductionClassification">
+                        <classes>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PrintRun">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Total">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="FormatTrimSize">
+                        <content>
+                            <rng:text/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimHeightMm">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimWidthMm">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimHeightInch">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TrimWidthInch">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="CopyEditing">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Category">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+
+                    <!-- ....................................................................... -->
+                    <!-- CompoundBookObjectInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="CompoundBookObjectInfo">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="SeriesID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="MediaType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ISBN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="EAN">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="BookMultiVolumeCount">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PurchaseOrderNumber">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- DiscreteBookObjectInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="DiscreteBookObjectInfo">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="DiscreteObjectTechnicalInfo">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="ProductionClassification"/>
+                            </rng:optional>
+                        </content>
+                        <attList>
+                            <attDef ident="ContainsColorImages">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+
+
+                    <!-- ....................................................................... -->
+                    <!-- PartInfoGroup                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="PartInfoGroup">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- WorkflowInfo                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="WorkflowInfo">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="TaskType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="Priority">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Level">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="Deadline">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S50TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S200TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S300TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S600TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+
+                    <elementSpec ident="S650TypesetterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S700PrinterDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S800PrintDistributionDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="S900ElectronicDistributionDeadline">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="PlannedPublicationDate">
+                        <content>
+                            <rng:oneOrMore>
+                                <rng:ref name="model.DatePart"/>
+                            </rng:oneOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- Supplier                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="Supplier">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="FullServiceVendor">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="CompanyName">
+                        <content>
+                            <rng:text/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="ProofInfo">
+                        <content>
+                            <rng:zeroOrMore>
+                                <rng:ref name="ProofRecipient"/>
+                            </rng:zeroOrMore>
+                        </content>
+                        <attList>
+                            <attDef ident="ProofStage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="ProofRecipient">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="ProofType">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CorrectionsRequired">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="FilesToSupplier">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="FilesToPublisher">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="NoFiles">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+
+
+                    <elementSpec ident="Deliverables">
+                        <content>
+                            <rng:optional>
+                                <rng:ref name="DeliverablesForCompoundBookObjects"/>
+                            </rng:optional>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="DeliverablesForCompoundBookObjects">
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+
+                            <attDef ident="BackmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BackmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookDeltaPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookEpsilonPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookPrintPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="BookProofFeedbackPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterOnlineMediaObjects">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterPrintMediaObjects">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterTEX">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterXMLWithBody">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ChapterXMLWithBodyRefsOnly">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverFigure">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CoverPrintPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="DustJacketPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="FrontmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="FrontmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Manuscript">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartBackmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartBackmatterManuscripts">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartBackmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartFrontmatterElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartFrontmatterManuscripts">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="PartFrontmatterXML">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Pit-Stop-Reports">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TocElectronicPDF">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- ContentFiles and File                                                               -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="ContentFiles">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="File">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="DiscreteObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="CompoundObjectID">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+
+                    </elementSpec>
+
+                    <elementSpec ident="RenditionItem">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="colorProfile">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="grayscaleProfile">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="WorkItem">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="Archive">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="AplusplusRootFile">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="APageFile">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                            <memberOf key="att.Typed"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                        <attList>
+                            <attDef ident="Position">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="FirstPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="LastPage">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <!-- ....................................................................... -->
+                    <!-- Tables                                                     -->
+                    <!-- ....................................................................... -->
+
+                    <elementSpec ident="Table">
+                        <classes>
+                            <memberOf key="att.ID"/>
+                            <memberOf key="model.fullTextBlock"/>
+                            <memberOf key="model.fullText"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="Float">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="tgroup">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                        <attList>
+                            <attDef ident="cols">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+
+                    <elementSpec ident="colspec">
+                        <classes>
+                            <memberOf key="att.TableQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="tbody">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="entry">
+                        <classes>
+                            <memberOf key="att.TableQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <elementSpec ident="row">
+                        <content>
+                            <rng:ref name="macro.anyXML"/>
+                        </content>
+                    </elementSpec>
+
+                    <!-- Table attributes -->
+
+                    <classSpec ident="att.TableQualifiers" type="atts">
+                        <attList>
+                            <attDef ident="colnum" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="colname" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="align" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
 
                     <!-- ....................................................................... -->
                     <!-- Equations                                                               -->
@@ -3051,7 +4381,7 @@
                         <attList>
                             <attDef ident="ID" usage="opt">
                                 <datatype>
-                                    <data xmlns="http://relaxng.org/ns/structure/1.0" type="ID"/>
+                                    <rng:data type="ID"/>
                                 </datatype>
                             </attDef>
                         </attList>
@@ -3104,6 +4434,33 @@
                             <attDef ident="role">
                                 <desc>A contextual role or relationship for the person, family, corporate body, or geographic location. In linking elements such as <gi>ptr</gi>, information that
                                     explains to application software the part that a remote resource plays in a link.</desc>
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                        </attList>
+                    </classSpec>
+
+                    <!-- Attributes for the File sub-elements -->
+
+                    <classSpec ident="att.FileChildrenQualifiers" type="atts">
+                        <attList>
+                            <attDef ident="FileRef" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="TargetType" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="ItemType" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Content" usage="opt">
                                 <datatype>
                                     <rng:text/>
                                 </datatype>
@@ -3773,7 +5130,20 @@
 
                     <classSpec ident="model.fullTextBlock" type="model"/>
 
+                    <!-- Attributes classe (to me all moved here) -->
 
+                    <!-- For all name laike objects -->
+
+                    <classSpec ident="att.DisplayOrder" type="atts">
+                        <attList>
+                            <attDef ident="DisplayOrder" usage="opt">
+                                <valList type="closed">
+                                    <valItem ident="Western"/>
+                                    <valItem ident="Eastern"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </classSpec>
                 </schemaSpec>
             </div>
         </body>
