@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-11T05:22:36Z. .CC-BY
+DTD generated from ODD source 2016-04-11T05:27:11Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -328,6 +328,18 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
 <!ENTITY % model.limitedPhrase_sequenceOptional ""> 
 <!ENTITY % model.limitedPhrase_sequenceOptionalRepeatable ""> 
 <!ENTITY % model.limitedPhrase_sequenceRepeatable ""> 
+<!ENTITY % att.TableQualifiers.attribute.colnum '
+colnum CDATA #IMPLIED'>
+
+<!ENTITY % att.TableQualifiers.attribute.colname '
+colname CDATA #IMPLIED'>
+
+<!ENTITY % att.TableQualifiers.attribute.align '
+align CDATA #IMPLIED'>
+<!ENTITY % att.TableQualifiers.attributes '
+ %att.TableQualifiers.attribute.colnum;
+ %att.TableQualifiers.attribute.colname;
+ %att.TableQualifiers.attribute.align;'> 
 <!ENTITY % att.OutputMedium.attribute.OutputMedium '
 OutputMedium CDATA #IMPLIED'>
 <!ENTITY % att.OutputMedium.attributes '
@@ -1447,10 +1459,14 @@ TaskType CDATA #IMPLIED >
 <!ELEMENT Year  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT colspec %macro.anyXML;>
+<!ATTLIST colspec
+ %att.TableQualifiers.attributes; >
 <!--doc: -->
 <!ELEMENT entry %macro.anyXML;>
+<!ATTLIST entry
+ %att.TableQualifiers.attributes; >
 <!--doc: -->
-<!ELEMENT tbody %macro.anyXML;>
+<!ELEMENT row %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT tbody %macro.anyXML;>
 <!--doc: -->
