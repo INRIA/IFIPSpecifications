@@ -4089,6 +4089,15 @@
                             <rng:empty/>
                         </content>
                     </elementSpec>
+                    
+                    <elementSpec ident="Archive">
+                        <classes>
+                            <memberOf key="att.FileChildrenQualifiers"/>
+                        </classes>
+                        <content>
+                            <rng:empty/>
+                        </content>
+                    </elementSpec>
 
                     <elementSpec ident="AplusplusRootFile">
                         <classes>
@@ -4435,6 +4444,11 @@
                                 </datatype>
                             </attDef>
                             <attDef ident="ItemType" usage="opt">
+                                <datatype>
+                                    <rng:text/>
+                                </datatype>
+                            </attDef>
+                            <attDef ident="Content" usage="opt">
                                 <datatype>
                                     <rng:text/>
                                 </datatype>

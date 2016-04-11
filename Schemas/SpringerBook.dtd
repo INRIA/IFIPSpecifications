@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-11T06:00:31Z. .CC-BY
+DTD generated from ODD source 2016-04-11T06:06:06Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -372,10 +372,14 @@ TargetType CDATA #IMPLIED'>
 
 <!ENTITY % att.FileChildrenQualifiers.attribute.ItemType '
 ItemType CDATA #IMPLIED'>
+
+<!ENTITY % att.FileChildrenQualifiers.attribute.Content '
+Content CDATA #IMPLIED'>
 <!ENTITY % att.FileChildrenQualifiers.attributes '
  %att.FileChildrenQualifiers.attribute.FileRef;
  %att.FileChildrenQualifiers.attribute.TargetType;
- %att.FileChildrenQualifiers.attribute.ItemType;'> 
+ %att.FileChildrenQualifiers.attribute.ItemType;
+ %att.FileChildrenQualifiers.attribute.Content;'> 
 <!ENTITY % model.ConferenceInfoPart "ConfSeriesName |ConfEventAbbreviation |ConfNumber |ConfEventLocation |ConfEventDateStart |ConfEventDateEnd"> 
 <!ENTITY % model.ConferenceInfoPart_sequence "ConfSeriesName, ConfEventAbbreviation, ConfNumber, ConfEventLocation, ConfEventDateStart, ConfEventDateEnd"> 
 <!ENTITY % model.ConferenceInfoPart_sequenceOptional "ConfSeriesName?, ConfEventAbbreviation?, ConfNumber?, ConfEventLocation?, ConfEventDateStart?, ConfEventDateEnd?"> 
@@ -466,6 +470,10 @@ LastPage CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT AplusplusRootFile EMPTY>
 <!ATTLIST AplusplusRootFile
+ %att.FileChildrenQualifiers.attributes; >
+<!--doc: -->
+<!ELEMENT Archive EMPTY>
+<!ATTLIST Archive
  %att.FileChildrenQualifiers.attributes; >
 <!--doc: -->
 <!ELEMENT ArticleNote (Heading?,SimplePara+)>
