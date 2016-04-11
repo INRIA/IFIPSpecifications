@@ -1,6 +1,6 @@
 
 <!--
-DTD generated from ODD source 2016-04-11T05:27:11Z. .CC-BY
+DTD generated from ODD source 2016-04-11T05:32:55Z. .CC-BY
 TEI Edition: Version 3.0.0. Last updated on
 	29th March 2016, revision 89ba24e
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.0.0/
@@ -1389,6 +1389,9 @@ SeriesType (Series|Subseries|VirtualSeries|VolumePackage|Hierarchy) #IMPLIED >
 <!ELEMENT TC  (#PCDATA)>
 <!--doc: -->
 <!ELEMENT Table %macro.anyXML;>
+<!ATTLIST Table
+ %att.ID.attributes;
+Float CDATA #IMPLIED >
 <!--doc: -->
 <!ELEMENT TechnicalInfo %macro.anyXML;>
 <!--doc: -->
@@ -1471,4 +1474,6 @@ TaskType CDATA #IMPLIED >
 <!ELEMENT tbody %macro.anyXML;>
 <!--doc: -->
 <!ELEMENT tgroup %macro.anyXML;>
+<!ATTLIST tgroup
+cols CDATA #IMPLIED >
 <!-- end elements -->
