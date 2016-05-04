@@ -37,14 +37,14 @@
                  <body>
                     <listBibl>
                         <biblFull>
-                            <!--titleStmt>
+                            <titleStmt>
                                 <title xml:lang="en">
                                     <xsl:value-of select="concat($collection,' ',$volumeNb)"/>
                                 </title>
                             
                                 <xsl:apply-templates
                                     select="//Editor"/>
-                            </titleStmt-->
+                            </titleStmt>
                
                             <editionStmt>
 
