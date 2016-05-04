@@ -44,12 +44,12 @@
                  <body>
                     <listBibl>
                         <biblFull>
-                            <titleStmt>
+                            <!--titleStmt>
                                 <xsl:apply-templates 
                                     select="//Chapter/ChapterInfo/ChapterTitle"/>
                                 <xsl:apply-templates
                                     select="//Chapter/ChapterHeader/AuthorGroup/Author"/>
-                            </titleStmt>
+                            </titleStmt-->
                             <editionStmt>
 
                                 <edition>
