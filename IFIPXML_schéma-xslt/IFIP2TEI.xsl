@@ -97,7 +97,18 @@
                                 <note type="popular" n="0"/>
                                 <note type="peer" n="0"/>
                                 <note type="audience" n="2"/>
-                                <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/Part/PartInfo"  />
+                                <xsl:choose>
+                                    <xsl:when test="//PartInfo">
+                                        <xsl:apply-templates select="//PartInfo"  />
+                                    </xsl:when>
+                                    <xsl:when test="//PartID" >
+                                        <xsl:variable name="partId" select="//PartID"></xsl:variable>
+                                        <xsl:apply-templates select="$BookFrontMatter//PartInfo[PartID=$partId]"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        
+                                    </xsl:otherwise>
+                                </xsl:choose>
                             </notesStmt>
                             <sourceDesc>
                                 <biblStruct>
