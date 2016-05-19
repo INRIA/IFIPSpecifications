@@ -107,10 +107,8 @@
                                         <xsl:variable name="partId" select="//PartID"></xsl:variable>
                                         <xsl:apply-templates select="$BookFrontMatter//PartInfo[PartID=$partId]"/>
                                     </xsl:when>
-                                    <xsl:otherwise>
-                                        
-                                    </xsl:otherwise>
-                                </xsl:choose>
+                                    <xsl:otherwise/>
+                               </xsl:choose>
                             </notesStmt>
                             <sourceDesc>
                                 <biblStruct>
@@ -170,10 +168,12 @@
                                     <classCode scheme="halTypology" n="COMM"/>
                                 </textClass>
                                 <xsl:apply-templates select="//Chapter/ChapterHeader/Abstract"/>
-                                <particDesc>
-                                    <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity/TC" mode="collab"/>
-                                    <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity/WG" mode="collab"/>
-                                </particDesc>
+                                <xsl:if test="$BookFrontMatter//BookInfo/IFIPentity">
+                                    <particDesc>
+                                        <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity/TC" mode="collab"/>
+                                        <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity/WG" mode="collab"/>
+                                    </particDesc>
+                                </xsl:if>
                             </profileDesc>
                         </biblFull>
                     </listBibl>

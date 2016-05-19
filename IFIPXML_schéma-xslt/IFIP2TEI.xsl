@@ -105,9 +105,7 @@
                                         <xsl:variable name="partId" select="//PartID"></xsl:variable>
                                         <xsl:apply-templates select="$BookFrontMatter//PartInfo[PartID=$partId]"/>
                                     </xsl:when>
-                                    <xsl:otherwise>
-                                        
-                                    </xsl:otherwise>
+                                    <xsl:otherwise/>
                                 </xsl:choose>
                             </notesStmt>
                             <sourceDesc>
@@ -163,7 +161,7 @@
                                     <xsl:call-template name="addDomain">
                                         <xsl:with-param name="dom">info</xsl:with-param>
                                     </xsl:call-template>
-                                    <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity"></xsl:apply-templates>
+                                    <xsl:apply-templates select="$BookFrontMatter/Publisher/Series/Book/BookInfo/IFIPentity"/>
                                     <classCode scheme="halTypology" n="COUV"/>
                                 </textClass>
                                 <xsl:apply-templates
