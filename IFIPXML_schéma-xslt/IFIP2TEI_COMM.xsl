@@ -14,6 +14,10 @@
         <xsl:value-of
             select="$BookFrontMatter//BookInfo/BookVolumeNumber"/>
     </xsl:variable>
+    <xsl:variable name="ConfEventAbbrev">
+        <xsl:value-of
+            select="normalize-space($BookFrontMatter//BookInfo/ConferenceInfo/ConfEventAbbreviation)"/>
+    </xsl:variable>
     <xsl:variable name="collection">
         <xsl:choose>
             <xsl:when
@@ -90,6 +94,14 @@
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
                                 />
+                                <idno type="stamp"
+                                    n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
+                                />
+                                <xsl:if test="string-length($ConfEventAbbrev)!=0">
+                                    <idno type="stamp"
+                                        n="{concat('IFIP-', upper-case($ConfEventAbbrev))}"
+                                    />
+                                </xsl:if>
                                 <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity/TC" mode="stamp"/>
                                 <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity/WG" mode="stamp"/>
                            </seriesStmt>
