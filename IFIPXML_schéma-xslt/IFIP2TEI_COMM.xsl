@@ -94,10 +94,7 @@
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
                                 />
-                                <idno type="stamp"
-                                    n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
-                                />
-                                <xsl:if test="string-length($ConfEventAbbrev)!=0">
+                               <xsl:if test="string-length($ConfEventAbbrev)!=0">
                                     <idno type="stamp"
                                         n="{concat('IFIP-', upper-case($ConfEventAbbrev))}"
                                     />
