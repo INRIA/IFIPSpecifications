@@ -95,7 +95,7 @@
                                             <xsl:value-of select="concat($collection,' ',$volumeNb)"/>
                                         </title>
                                         <xsl:apply-templates
-                                            select="//Editor"
+                                            select="//EditorGroup/Editor"
                                         />
                                     </analytic>
                                     <monogr>
@@ -151,7 +151,6 @@
             <biblScope unit="volume">
                 <xsl:value-of select="$volumeNb"/>
             </biblScope>
-
             <date type="datePub">
                 <xsl:value-of select="BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate"></xsl:value-of>
             </date>
