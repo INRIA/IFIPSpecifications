@@ -151,7 +151,14 @@
                                             <biblScope unit="volume">
                                                 <xsl:value-of select="concat(normalize-space($collection),'-',normalize-space($volumeNb))"/>
                                             </biblScope>
-                                            
+                                            <xsl:variable name="PartNumber">
+                                                <xsl:value-of select="substring-after($BookFrontMatter//BookInfo/BookSubTitle,', Part ')"/>
+                                            </xsl:variable>
+                                            <xsl:if test="string-length($PartNumber)!=0">
+                                                <biblScope unit="issue">
+                                                    <xsl:value-of select="concat('Part ',$PartNumber)"/>
+                                                </biblScope>
+                                            </xsl:if>
                                             <date type="datePub">
                                                 <xsl:value-of select="$CopyrightYear"/>
                                             </date>
@@ -188,7 +195,7 @@
                     </listBibl>
                 </body>
                 <back>
-                    <listOrg type="laboratories">
+                    <listOrg type="structures">
                         <xsl:apply-templates select="/descendant::Affiliation"/>
                     </listOrg>
                 </back>
