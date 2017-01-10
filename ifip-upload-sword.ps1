@@ -3,8 +3,8 @@ $LOGDIR='.\ifip-log'
 $LOGFILE=".\ifip.log"
 $ZIPFILE='.\ifip-log.zip'
 $CURL='ifip-curl.exe'
-$PATHCURL="$env:HOMEPATH\$CURL"
-$URLDEPOT='https://api-preprod.archives-ouvertes.fr/sword/inria'
+$PATHCURL=".\$CURL"
+$URLDEPOT='https://api.archives-ouvertes.fr/sword/inria'
 $WEBCURL="https://files.inria.fr/IFIP/ifip-curl.exe"
 $IFIP='ifip'
 $PWD="halifip"
@@ -44,7 +44,7 @@ if (test-path $PATHCURL) {
 
 mkdir $TMPDIR
 Get-ChildItem -recurse -filter "*-Sword.xml" -file | ForEach-Object  { copy-item $_.fullname $TMPDIR }
-#copy-item $CURL $TMPDIR
+copy-item $CURL $TMPDIR
 Push-Location -Path $TMPDIR
 Get-ChildItem -filter "*-Sword.xml" -file | ForEach-Object  {
  Write-Host $_
@@ -80,5 +80,7 @@ Get-ChildItem -filter "*.log.xml" -file | ForEach-Object  {
 }
 pop-location
 move-item $LOGDIR\$LOGFILE .\
-Compress-Archive -path $LOGDIR -DestinationPath $ZIPFILE
-remove-item -recurse $LOGDIR
+# compress-archive n'est pas présent sur le pc d'estelle
+#Compress-Archive -path $LOGDIR -DestinationPath $ZIPFILE
+#remove-item -recurse $LOGDIR
+Remove-Item $PATHCURL
