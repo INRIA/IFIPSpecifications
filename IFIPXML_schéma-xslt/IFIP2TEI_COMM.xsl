@@ -623,8 +623,8 @@
     <!-- affiche une affiliation -->
     <xsl:template name="Affiche_affi">
         <xsl:param name="idAff"/>
-       <xsl:choose>
-            <xsl:when test="$Affiliations/Affiliation[@ID=$idAff]/OrgDivision">
+        <xsl:choose>
+            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
                 <affiliation ref="#localStruct-{$idAff}"/>
             </xsl:when>
             <xsl:otherwise>
