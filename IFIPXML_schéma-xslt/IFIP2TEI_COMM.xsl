@@ -135,7 +135,7 @@
                                             <xsl:apply-templates select="$BookFrontMatter//SeriesInfo/SeriesTitle"/>
                                         </title>
                                         <xsl:apply-templates select="$BookFrontMatter//BookInfo/ConferenceInfo"/>
-                                        <xsl:apply-templates select="$BookFrontMatter//EditorGroup/Editor"/>
+                                        <xsl:apply-templates select="$BookFrontMatter//BookHeader/EditorGroup/Editor"/>
                                         
                                         <imprint>
                                             <xsl:apply-templates select="$BookFrontMatter/Publisher/PublisherInfo"/>
