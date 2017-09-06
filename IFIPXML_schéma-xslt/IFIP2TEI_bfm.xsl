@@ -471,7 +471,7 @@
         <xsl:choose>
             <xsl:when test="./TC=6">
                 <xsl:call-template name="addDomain">
-                    <xsl:with-param name="dom">info.ni</xsl:with-param>
+                    <xsl:with-param name="dom">info</xsl:with-param>
                 </xsl:call-template>	
             </xsl:when>
             <xsl:when test="./TC=8">
