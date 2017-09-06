@@ -152,7 +152,14 @@
                 <xsl:value-of select="$volumeNb"/>
             </biblScope>
             <date type="datePub">
-                <xsl:value-of select="BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate"></xsl:value-of>
+                <xsl:choose>
+                    <xsl:when test="string-length(/Publisher/Series/Book/BookInfo/BookCopyright/CopyrightYear)!=0">
+                        <xsl:value-of select="/Publisher/Series/Book/BookInfo/BookCopyright/CopyrightYear"></xsl:value-of>
+                    </xsl:when>
+                    <xsl:when test="string-length(BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate)!=0">
+                        <xsl:value-of select="BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate"></xsl:value-of>
+                    </xsl:when>
+                </xsl:choose>
             </date>
         </imprint>
     </xsl:template>
@@ -515,7 +522,7 @@
     <xsl:template name="Affiche_affi">
         <xsl:param name="idAff"/>
         <xsl:choose>
-            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
+            <xsl:when test="$Affiliations/AAffiliation[@ID=$idAff]/OrgDivision">
                 <affiliation ref="#localStruct-{$idAff}"/>
             </xsl:when>
             <xsl:otherwise>
