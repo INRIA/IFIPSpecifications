@@ -74,9 +74,10 @@
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
                                 />
-                                <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/TC"/>
-                                <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/WG"/>
-                           </seriesStmt>
+                                <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/TC"  mode="stamp"/>
+                                <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/WG"  mode="stamp"/>
+                                <xsl:apply-templates select="Publisher/Series/Book/BookInfo/ConferenceInfo/ConfEventAbbreviation"/>
+                                          </seriesStmt>
                             <notesStmt>
                                 <note type="popular" n="0"/>             
                                 <note type="audience" n="2"/>
@@ -91,9 +92,8 @@
                             <sourceDesc>
                                 <biblStruct>
                                     <analytic>
-                                        <title xml:lang="en">
-                                            <xsl:value-of select="concat($collection,' ',$volumeNb)"/>
-                                        </title>
+                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/BookTitle"  />
+                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/BookSubTitle"  />
                                         <xsl:apply-templates
                                             select="//EditorGroup/Editor"
                                         />
@@ -117,10 +117,18 @@
                                     <xsl:call-template name="addDomain">
                                         <xsl:with-param name="dom">info</xsl:with-param>
                                     </xsl:call-template>
-                                    <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity"></xsl:apply-templates>
+                                    <!--xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity"></xsl:apply-templates-->
                                     <classCode scheme="halTypology" n="OUV"/>
                                 </textClass>
-                                <abstract xml:lang="en">Book Front Matter</abstract>                                
+                                <abstract xml:lang="en">
+                                    <xsl:value-of select="concat('Book Front Matter of ',$collection,' ',$volumeNb)"/> 
+                                </abstract>                                
+                                <xsl:if test="/Publisher/Series/Book/BookInfo/IFIPentity">
+                                    <particDesc>
+                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/TC" mode="collab"/>
+                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/WG" mode="collab"/>
+                                    </particDesc>
+                                </xsl:if>
                             </profileDesc>
                         </biblFull>
                     </listBibl>
@@ -149,7 +157,7 @@
                 <!--xsl:apply-templates select="SeriesTitle"/-->
             </biblScope>
             <biblScope unit="volume">
-                <xsl:value-of select="$volumeNb"/>
+                <xsl:value-of select="concat($collection,'-',$volumeNb)"/>
             </biblScope>
             <date type="datePub">
                 <xsl:choose>
@@ -474,13 +482,8 @@
           </address>
         </desc>        
     </xsl:template>
-    <xsl:template  match="IFIPentity">
+    <!--xsl:template  match="IFIPentity">
         <xsl:choose>
-            <xsl:when test="./TC=6">
-                <xsl:call-template name="addDomain">
-                    <xsl:with-param name="dom">info</xsl:with-param>
-                </xsl:call-template>	
-            </xsl:when>
             <xsl:when test="./TC=8">
                 <xsl:call-template name="addDomain">
                     <xsl:with-param name="dom">shs.info</xsl:with-param>
@@ -488,7 +491,7 @@
             </xsl:when>
             <xsl:otherwise/>
         </xsl:choose>
-    </xsl:template>
+    </xsl:template-->
     <!-- ajoute un domaine -->
     <xsl:template name="addDomain">
         <xsl:param name="dom"/>
@@ -497,20 +500,43 @@
         </classCode>
         
     </xsl:template>
-    <xsl:template match="OrgName|OrgDivision|BookSubTitle|OrgDivision">
+    <xsl:template match="OrgName|OrgDivision|OrgDivision">
         <xsl:value-of select="normalize-space(.)"/>
     </xsl:template>
     <xsl:template match="SeriesTitle">
         <xsl:value-of select="normalize-space(.)"></xsl:value-of>
     </xsl:template>
-    <xsl:template match="TC">
+    <xsl:template match="BookTitle">       
+        <title xml:lang="en">
+            <xsl:value-of select="normalize-space(.)"></xsl:value-of>
+        </title>
+    </xsl:template>
+    <xsl:template match="BookSubTitle">       
+        <title type="sub" xml:lang="en">
+            <xsl:value-of select="normalize-space(.)"></xsl:value-of>
+        </title>
+    </xsl:template>
+    <xsl:template match="TC" mode="stamp">
         <idno type="stamp"
             n="{concat('IFIP-TC', normalize-space(.))}"/>
         
     </xsl:template>
-    <xsl:template match="WG">
+    <xsl:template match="WG" mode="stamp">
         <idno type="stamp"
             n="{concat('IFIP-WG', translate(normalize-space(.),'.','-'))}"/>
+    </xsl:template>
+    <xsl:template match="TC" mode="collab">
+        <org type="consortium">
+            <xsl:value-of select="concat('TC ', normalize-space(.))"></xsl:value-of>
+        </org>
+    </xsl:template>
+    <xsl:template match="WG" mode="collab">
+        <org type="consortium">
+            <xsl:value-of select="concat('WG ', normalize-space(.))"></xsl:value-of>
+        </org>
+    </xsl:template>    <xsl:template match="ConfEventAbbreviation">
+        <idno type="stamp"
+            n="{concat('IFIP-', normalize-space(.))}"/>
     </xsl:template>
     <xsl:template match="PartInfo">
         <note type="commentary">
@@ -522,7 +548,7 @@
     <xsl:template name="Affiche_affi">
         <xsl:param name="idAff"/>
         <xsl:choose>
-            <xsl:when test="$Affiliations/AAffiliation[@ID=$idAff]/OrgDivision">
+            <xsl:when test="$Affiliations/Affiliation[@ID=$idAff]/OrgDivision">
                 <affiliation ref="#localStruct-{$idAff}"/>
             </xsl:when>
             <xsl:otherwise>
