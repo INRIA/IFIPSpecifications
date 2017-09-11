@@ -32,11 +32,11 @@
     <xsl:template match="doc">
         <tr style="valign='top';">
             <td style="align='left';">
-                <a href="https://hal.inria.fr/IFIP-AICT-419/{ str[@name = 'halId_s'] }"><xsl:value-of select="arr[@name = 'title_s']/str"/></a>
+                <a href="https://hal.inria.fr/IFIP-LNCS-4980/{ str[@name = 'halId_s'] }"><xsl:value-of select="arr[@name = 'title_s']/str"/></a>
                 <xsl:text disable-output-escaping="yes">&lt;br/&gt;</xsl:text>
                 <b><i><xsl:apply-templates select="arr[@name = 'authFullName_s']/str"/></i></b>
             </td>
-            <td class="page" style="align='right';"><xsl:value-of select="str[@name = 'page_s']"/></td>
+            <td class="page" style="text-align: right;" valign="top"><xsl:value-of select="str[@name = 'page_s']"/></td>
         </tr>
     </xsl:template>
     
@@ -50,10 +50,10 @@
     </xsl:template>
     <xsl:template name="addPart">
         <xsl:param name="partName"/>
-        <tr style="valign='top';"><td style="align='left';">
-            <h2>
+        <tr style="valign='top';"><td style="align='left';" colspan="2">
+            <hr /><h2 style="text-align: left;">
             <xsl:value-of select="$partName"></xsl:value-of>
-        </h2>
+                <hr /></h2>
         </td></tr>
         <xsl:for-each select="$document//doc/str[@name='comment_s'][.= $partName ]/parent::node()">
             <!--xsl:copy-of select="."></xsl:copy-of-->

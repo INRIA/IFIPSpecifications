@@ -35,9 +35,7 @@
     <xsl:variable name="CopyrightYear">
        <xsl:value-of select="//Chapter/ChapterInfo/ChapterCopyright/CopyrightYear"/>
     </xsl:variable>
-    <xsl:variable name="Affiliations">
-        <xsl:copy-of select="//Affiliation"></xsl:copy-of>
-    </xsl:variable>
+    <xsl:variable name="Affiliations" select="//Affiliation" />
     <xsl:template match="/">
         <!-- Ajouter test que le ficher  $FrontMatterName existe bien sinon ERREUR-->
 
@@ -135,7 +133,7 @@
                                             <xsl:apply-templates select="$BookFrontMatter//SeriesInfo/SeriesTitle"/>
                                         </title>
                                         <xsl:apply-templates select="$BookFrontMatter//BookInfo/ConferenceInfo"/>
-                                        <xsl:apply-templates select="$BookFrontMatter//EditorGroup/Editor"/>
+                                        <xsl:apply-templates select="$BookFrontMatter//BookHeader/EditorGroup/Editor"/>
                                         
                                         <imprint>
                                             <xsl:apply-templates select="$BookFrontMatter/Publisher/PublisherInfo"/>
@@ -624,7 +622,7 @@
     <xsl:template name="Affiche_affi">
         <xsl:param name="idAff"/>
         <xsl:choose>
-            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
+            <xsl:when test="$Affiliations/Affiliation[@ID=$idAff]/OrgDivision">
                 <affiliation ref="#localStruct-{$idAff}"/>
             </xsl:when>
             <xsl:otherwise>
