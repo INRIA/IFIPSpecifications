@@ -8,18 +8,18 @@
    
     <xsl:variable name="volumeNb">
         <xsl:value-of
-            select="/Publisher/Series/Book/BookInfo/BookVolumeNumber"/>
+            select="//BookInfo/BookVolumeNumber"/>
     </xsl:variable>
     <xsl:variable name="collection">
         <xsl:choose>
             <xsl:when
-                test="contains(Publisher/Series/SeriesInfo/SeriesTitle, 'IFIP Advances')"
+                test="contains(//SeriesInfo/SeriesTitle, 'IFIP Advances')"
                 >AICT</xsl:when>
             <xsl:when
-                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
+                test="contains(//SeriesInfo/SeriesTitle, 'Lecture Notes in Computer Science')"
                 >LNCS</xsl:when>
             <xsl:when
-                test="contains(/Publisher/Series/SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
+                test="contains(//SeriesInfo/SeriesTitle, 'Lecture Notes in Business Information')"
                 >LNBIP</xsl:when>
             <xsl:otherwise> CollectionInconnue </xsl:otherwise>
         </xsl:choose>
@@ -51,11 +51,16 @@
                                 <edition>
                                   
                                     
-                                    <!-- POUR LR MOMENT, nom du fichier=nom du xml.pdf"/-->
+                                    <!-- POUR LE MOMENT, nom du fichier=nom du xml.pdf"/-->
                                     <ref type="annex" subtype="" n="0">
-                                        <xsl:attribute name="target">
+                                        <!--xsl:attribute name="target">
                                             <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/','BookFrontmatter.pdf')"/>
-                                        </xsl:attribute>                                  
+                                        </xsl:attribute-->                
+                                        <xsl:variable name="filename">
+                                            <xsl:value-of select="tokenize(document-uri(.), '/')[last()]"></xsl:value-of>
+                                        </xsl:variable>
+                                        <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',substring-before($filename, '.'),'.pdf')"/>
+                                        
                                     </ref>
 
                                 </edition>
@@ -74,9 +79,9 @@
                                 <idno type="stamp"
                                     n="{concat('IFIP-', normalize-space($collection),'-',normalize-space($volumeNb))}"
                                 />
-                                <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/TC"  mode="stamp"/>
-                                <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/WG"  mode="stamp"/>
-                                <xsl:apply-templates select="Publisher/Series/Book/BookInfo/ConferenceInfo/ConfEventAbbreviation"/>
+                                <xsl:apply-templates select="//BookInfo/IFIPentity/TC"  mode="stamp"/>
+                                <xsl:apply-templates select="//BookInfo/IFIPentity/WG"  mode="stamp"/>
+                                <xsl:apply-templates select="//BookInfo/ConferenceInfo/ConfEventAbbreviation"/>
                                           </seriesStmt>
                             <notesStmt>
                                 <note type="popular" n="0"/>             
@@ -87,23 +92,48 @@
                                         select="Publisher/Series/Book/BookInfo/BookSubTitle"/>
                                 </note>
                                 -->
-                                <xsl:apply-templates select="/Publisher/Series/Book/Part/PartInfo"  />
+                                <xsl:apply-templates select="//Part/PartInfo"  />
                             </notesStmt>
                             <sourceDesc>
                                 <biblStruct>
                                     <analytic>
-                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/BookTitle"  />
-                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/BookSubTitle"  />
+                                        <xsl:apply-templates select="//BookInfo/BookTitle"  />
+                                        <xsl:apply-templates select="//BookInfo/BookSubTitle"  />
                                         <xsl:apply-templates
                                             select="//EditorGroup/Editor"
                                         />
                                     </analytic>
                                     <monogr>
-                                        <xsl:apply-templates select="Publisher/Series/Book"/>
+                                        <xsl:apply-templates select="//BookInfo/BookElectronicISBN"/>
+                                        <xsl:apply-templates select="//BookInfo/BookPrintISBN"/>
+                                        
+                                        
+                                        
+                                        <imprint>
+                                            <xsl:apply-templates select="/Publisher/PublisherInfo/PublisherName"/>
+                                            <!--facultatif biblScope unit="pp">-</biblScope-->
+                                            <biblScope unit="serie">
+                                                <xsl:apply-templates select="//SeriesInfo/SeriesTitle"/>
+                                                <!--xsl:apply-templates select="SeriesTitle"/-->
+                                            </biblScope>
+                                            <biblScope unit="volume">
+                                                <xsl:value-of select="concat($collection,'-',$volumeNb)"/>
+                                            </biblScope>
+                                            <date type="datePub">
+                                                <xsl:choose>
+                                                    <xsl:when test="string-length(//BookInfo/BookCopyright/CopyrightYear)!=0">
+                                                        <xsl:value-of select="//BookInfo/BookCopyright/CopyrightYear"></xsl:value-of>
+                                                    </xsl:when>
+                                                    <xsl:when test="string-length(BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate)!=0">
+                                                        <xsl:value-of select="BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate"></xsl:value-of>
+                                                    </xsl:when>
+                                                </xsl:choose>
+                                            </date>
+                                        </imprint>                                    
                                     </monogr>
-                                    <xsl:apply-templates select="Publisher/Series/SeriesInfo"/>
+                                    <xsl:apply-templates select="//SeriesInfo"/>
                                     <xsl:apply-templates
-                                        select="/Publisher/Series/Book/BookInfo/BookDOI"
+                                        select="//BookInfo/BookDOI"
                                     />
                                 </biblStruct>
                             </sourceDesc>
@@ -123,10 +153,10 @@
                                 <abstract xml:lang="en">
                                     <xsl:value-of select="concat('Book Front Matter of ',$collection,' ',$volumeNb)"/> 
                                 </abstract>                                
-                                <xsl:if test="/Publisher/Series/Book/BookInfo/IFIPentity">
+                                <xsl:if test="//BookInfo/IFIPentity">
                                     <particDesc>
-                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/TC" mode="collab"/>
-                                        <xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity/WG" mode="collab"/>
+                                        <xsl:apply-templates select="//BookInfo/IFIPentity/TC" mode="collab"/>
+                                        <xsl:apply-templates select="//BookInfo/IFIPentity/WG" mode="collab"/>
                                     </particDesc>
                                 </xsl:if>
                             </profileDesc>
@@ -144,32 +174,7 @@
     </xsl:template>
 
     <xsl:template match="Book">
-        <xsl:apply-templates select="BookInfo/BookElectronicISBN"/>
-        <xsl:apply-templates select="BookInfo/BookPrintISBN"/>
-      
-       
 
-        <imprint>
-            <xsl:apply-templates select="/Publisher/PublisherInfo/PublisherName"/>
-            <!--facultatif biblScope unit="pp">-</biblScope-->
-            <biblScope unit="serie">
-                <xsl:apply-templates select="/Publisher/Series/SeriesInfo/SeriesTitle"/>
-                <!--xsl:apply-templates select="SeriesTitle"/-->
-            </biblScope>
-            <biblScope unit="volume">
-                <xsl:value-of select="concat($collection,'-',$volumeNb)"/>
-            </biblScope>
-            <date type="datePub">
-                <xsl:choose>
-                    <xsl:when test="string-length(/Publisher/Series/Book/BookInfo/BookCopyright/CopyrightYear)!=0">
-                        <xsl:value-of select="/Publisher/Series/Book/BookInfo/BookCopyright/CopyrightYear"></xsl:value-of>
-                    </xsl:when>
-                    <xsl:when test="string-length(BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate)!=0">
-                        <xsl:value-of select="BookFrontmatter/BodyFrontmatter/Preface/PrefaceInfo/PrefaceDate"></xsl:value-of>
-                    </xsl:when>
-                </xsl:choose>
-            </date>
-        </imprint>
     </xsl:template>
 
     <xsl:template match="Editor">
