@@ -1,4 +1,10 @@
 #!/bin/bash
+# test il y a bien un argument
+if [[ $# -ne 1 ]]; then
+ echo "Erreur, il faut donner un dossier en argument"
+ exit
+fi
+
 #récupération de tous les pdf de l'ouvrage et copie dans un répertoire PDFFiles
 if [ -d $1 ]; then
 	echo "Dossier : $1"
@@ -8,6 +14,10 @@ if [ -d $1 ]; then
     if ! [ -d "PDFFiles" ]
     then
 		mkdir PDFFiles
+	fi
+    if ! [ -d "XMLChapterFiles" ]
+    then
+		mkdir XMLChapterFiles
 	fi
     ListeChapter="$(find . -name '*_Chapter' -type d -prune)"   # liste des repertoires sans leurs sous-repertoires
 	for Rep in ${ListeChapter}; do
@@ -27,13 +37,27 @@ if [ -d $1 ]; then
 			Cde="mv \"$NomFicPdf\" $NomPdfReplace"
 			eval "$Cde"
 			cp $NomPdfReplace $RepOuv/PDFFiles
+			cp $NomXml $RepOuv/XMLChapterFiles
 		fi
 		mv "$RepOuv/$Rep" $RepOuv
 	done
 	#on supprime à la fin les répertoire qui contenaient les parties et qui sont vides
 	rm -rf $RepOuv/*Part
-	#copie du pdf du BookFrontmatter
-	cp $RepOuv/*BookFrontmatter/*.pdf $RepOuv/PDFFiles
+	#ajout du pdf du BookFrontmatter et renommage du pdf
+	if [ -f $RepOuv/BookFrontmatter/BookFrontmatter.pdf ]
+	then
+		cp $RepOuv/BookFrontmatter/BookFrontmatter.pdf $RepOuv/PDFFiles/$1_BookFrontmatter.pdf
+		mv $RepOuv/BookFrontmatter/BookFrontmatter.pdf $RepOuv/BookFrontmatter/$1_BookFrontmatter.pdf
+	else
+		echo "Erreur : le fichier BookFrontmatter/BookFrontmatter.pdf n'existe pas";
+	fi
+	#renommage du xml du BookFrontmatter (Attention, il faut garder les deux pour l'inclusion depuis la xslt)
+	if [ -f $RepOuv/BookFrontmatter/BookFrontmatter.xml ]
+	then
+		cp $RepOuv/BookFrontmatter/BookFrontmatter.xml $RepOuv/BookFrontmatter/$1_BookFrontmatter.xml
+	else
+		echo "Erreur : le fichier BookFrontmatter/BookFrontmatter.xml n'existe pas";
+	fi
 else
 	echo "Erreur le dossier $1 n'existe pas";
 fi
