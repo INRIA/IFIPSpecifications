@@ -59,7 +59,9 @@
                                         <xsl:variable name="filename">
                                             <xsl:value-of select="tokenize(document-uri(.), '/')[last()]"></xsl:value-of>
                                         </xsl:variable>
-                                        <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',substring-before($filename, '.'),'.pdf')"/>
+                                        <xsl:attribute name="target">
+                                            <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',substring-before($filename, '.'),'.pdf')"/>
+                                        </xsl:attribute>
                                         
                                     </ref>
 
