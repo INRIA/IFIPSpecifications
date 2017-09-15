@@ -101,9 +101,17 @@
                                     <analytic>
                                         <xsl:apply-templates select="//BookInfo/BookTitle"  />
                                         <xsl:apply-templates select="//BookInfo/BookSubTitle"  />
-                                        <xsl:apply-templates
+                                        <!--xsl:apply-templates
                                             select="//EditorGroup/Editor"
-                                        />
+                                        /-->
+                                        <xsl:choose>
+                                            <xsl:when test="//BookHeader/EditorGroup/Editor">
+                                                <xsl:apply-templates select="//BookHeader/EditorGroup/Editor"/>                                        
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:apply-templates select="//EditorGroup/Editor"/>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
                                     </analytic>
                                     <monogr>
                                         <xsl:apply-templates select="//BookInfo/BookElectronicISBN"/>
