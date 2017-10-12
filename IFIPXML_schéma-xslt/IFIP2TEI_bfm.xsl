@@ -189,7 +189,8 @@
 
     <xsl:template match="Editor">
         <author role="aut">
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="EditorName"/>
+            <xsl:apply-templates select=".//Email"/>
             <xsl:if test="@AffiliationIDS">
                 <xsl:for-each select="tokenize(@AffiliationIDS,' ')">
                     <xsl:call-template name="Affiche_affi">
