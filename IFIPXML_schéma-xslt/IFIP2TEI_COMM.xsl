@@ -38,7 +38,6 @@
     <xsl:variable name="Affiliations" select="//Affiliation" />
     <xsl:template match="/">
         <!-- Ajouter test que le ficher  $FrontMatterName existe bien sinon ERREUR-->
-
         <TEI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:hal="http://hal.archives-ouvertes.fr/"
             xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://api.archives-ouvertes.fr/documents/aofr-sword.xsd">
@@ -178,7 +177,7 @@
                                     <xsl:call-template name="addDomain">
                                         <xsl:with-param name="dom">info</xsl:with-param>
                                     </xsl:call-template>
-                                    <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity"></xsl:apply-templates>
+                                    <xsl:apply-templates select="$BookFrontMatter//BookInfo/IFIPentity"/>
                                     <classCode scheme="halTypology" n="COMM"/>
                                 </textClass>
                                 <xsl:apply-templates select="//Chapter/ChapterHeader/Abstract"/>
