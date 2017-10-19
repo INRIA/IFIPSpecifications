@@ -105,8 +105,8 @@
                                             select="//EditorGroup/Editor"
                                         /-->
                                         <xsl:choose>
-                                            <xsl:when test="//BookHeader/EditorGroup/Editor">
-                                                <xsl:apply-templates select="//BookHeader/EditorGroup/Editor"/>                                        
+                                            <xsl:when test="//EditorGroup/Editor">
+                                                <xsl:apply-templates select="//EditorGroup/Editor"/>                                        
                                             </xsl:when>
                                             <xsl:otherwise>
                                                 <xsl:apply-templates select="//EditorGroup/Editor"/>
@@ -120,7 +120,7 @@
                                         
                                         
                                         <imprint>
-                                            <xsl:apply-templates select="/Publisher/PublisherInfo/PublisherName"/>
+                                            <xsl:apply-templates select="//PublisherInfo/PublisherName"/>
                                             <!--facultatif biblScope unit="pp">-</biblScope-->
                                             <biblScope unit="serie">
                                                 <xsl:apply-templates select="//SeriesInfo/SeriesTitle"/>

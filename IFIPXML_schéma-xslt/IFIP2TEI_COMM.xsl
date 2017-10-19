@@ -132,10 +132,10 @@
                                             <xsl:apply-templates select="$BookFrontMatter//SeriesInfo/SeriesTitle"/>
                                         </title>
                                         <xsl:apply-templates select="$BookFrontMatter//BookInfo/ConferenceInfo"/>
-                                        <xsl:apply-templates select="$BookFrontMatter//BookHeader/EditorGroup/Editor"/>
+                                        <xsl:apply-templates select="$BookFrontMatter//EditorGroup/Editor"/>
                                         
                                         <imprint>
-                                            <xsl:apply-templates select="$BookFrontMatter/Publisher/PublisherInfo"/>
+                                            <xsl:apply-templates select="$BookFrontMatter//PublisherInfo"/>
                                             <biblScope unit="pp">
                                                 <xsl:value-of
                                                     select="concat(//Chapter/ChapterInfo/ChapterFirstPage,'-',//Chapter/ChapterInfo/ChapterLastPage)"
