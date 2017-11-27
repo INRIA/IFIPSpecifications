@@ -7,7 +7,7 @@ fi
 
 #récupération de tous les pdf de l'ouvrage et copie dans un répertoire PDFFiles
 if [ -d $1 ]; then
-	echo "Dossier : $1"
+#	echo "Dossier : $1"
 	CurRep=`pwd`;
 	RepOuv="$CurRep/$1";
     cd $RepOuv;
@@ -21,7 +21,7 @@ if [ -d $1 ]; then
 	fi
     ListeChapter="$(find . -name '*_Chapter' -type d -prune)"   # liste des repertoires sans leurs sous-repertoires
 	for Rep in ${ListeChapter}; do
-		echo "Chapter $Rep";
+		#echo "Chapter $Rep";
 		cd "$RepOuv/$Rep";
 		NBXml=`find . -name "*Chapter.xml" | wc -l`; 
 		if [ $NBXml != 1 ]
