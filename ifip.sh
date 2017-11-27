@@ -11,7 +11,10 @@ grep '^From:' $TMP | grep -i 'inria.fr' > /dev/null || {
     cat $TMP >> $LOG/error.txt
     exit 1
 }
-grep '^IFIPAICT' $TMP > $FILES
+grep '^IFIP' $TMP > $FILES
+grep '^LNCS' $TMP >> $FILES
+grep '^AICT' $TMP >> $FILES
+grep '^LNBIP' $TMP >> $FILES
 sed 's|\.zip||g' $FILES > $FILES.tmp
 sed 's|=20||g' $FILES.tmp > $FILES
 cd $TRAVAIL
