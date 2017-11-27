@@ -59,7 +59,9 @@
                                         <xsl:variable name="filename">
                                             <xsl:value-of select="tokenize(document-uri(.), '/')[last()]"></xsl:value-of>
                                         </xsl:variable>
-                                        <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',substring-before($filename, '.'),'.pdf')"/>
+                                        <xsl:attribute name="target">
+                                            <xsl:value-of select="concat('ftp://ftp.ccsd.cnrs.fr/',substring-before($filename, '.'),'.pdf')"/>
+                                        </xsl:attribute>
                                         
                                     </ref>
 
@@ -99,9 +101,17 @@
                                     <analytic>
                                         <xsl:apply-templates select="//BookInfo/BookTitle"  />
                                         <xsl:apply-templates select="//BookInfo/BookSubTitle"  />
-                                        <xsl:apply-templates
+                                        <!--xsl:apply-templates
                                             select="//EditorGroup/Editor"
-                                        />
+                                        /-->
+                                        <xsl:choose>
+                                            <xsl:when test="//EditorGroup/Editor">
+                                                <xsl:apply-templates select="//EditorGroup/Editor"/>                                        
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:apply-templates select="//EditorGroup/Editor"/>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
                                     </analytic>
                                     <monogr>
                                         <xsl:apply-templates select="//BookInfo/BookElectronicISBN"/>
@@ -110,7 +120,7 @@
                                         
                                         
                                         <imprint>
-                                            <xsl:apply-templates select="/Publisher/PublisherInfo/PublisherName"/>
+                                            <xsl:apply-templates select="//PublisherInfo/PublisherName"/>
                                             <!--facultatif biblScope unit="pp">-</biblScope-->
                                             <biblScope unit="serie">
                                                 <xsl:apply-templates select="//SeriesInfo/SeriesTitle"/>
@@ -179,7 +189,8 @@
 
     <xsl:template match="Editor">
         <author role="aut">
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="EditorName"/>
+            <xsl:apply-templates select=".//Email"/>
             <xsl:if test="@AffiliationIDS">
                 <xsl:for-each select="tokenize(@AffiliationIDS,' ')">
                     <xsl:call-template name="Affiche_affi">
