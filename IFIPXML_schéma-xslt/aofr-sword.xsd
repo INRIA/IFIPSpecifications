@@ -68,7 +68,7 @@
     </xs:element>
     <xs:element name="titleStmt">
         <xs:complexType>
-            <xs:sequence> 
+            <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:title"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:author"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:editor"/>
@@ -135,7 +135,7 @@
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:numeric"/>
             </xs:sequence>
             <xs:attribute name="name" use="required" type="xs:string"/>
-            <xs:attribute name="notation"> 
+            <xs:attribute name="notation">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="string"/>
@@ -179,7 +179,7 @@
     <xs:element name="availability">
         <xs:complexType mixed="true">
             <xs:sequence>
-                <xs:element ref="ns1:licence"/>
+                <xs:element  maxOccurs="unbounded" ref="ns1:licence"/>
             </xs:sequence>
             <xs:attribute name="status" type="xs:string"/>
         </xs:complexType>
@@ -209,31 +209,40 @@
             <xs:attribute name="type" use="required">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
+                        <!-- %comment (Commentaire) -->
                         <xs:enumeration value="commentary"/>
-                        <!-- %%comment -->
+                        <!-- %description (Description) -->
                         <xs:enumeration value="description"/>
-                        <!-- %%description -->
+                        <!-- %audience (Audience), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:audience -->
                         <xs:enumeration value="audience"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:audience&wt=xml -->
+                        <!-- %invitedCommunication (Communication invitée), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:invitedCommunication -->
                         <xs:enumeration value="invited"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:invitedCommunication&wt=xml -->
+                        <!-- %popularLevel (Vulgarisation), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:popularLevel -->
                         <xs:enumeration value="popular"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:popularLevel&wt=xml -->
+                        <!-- %peerReviewing (Relecture), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:peerReviewing -->
                         <xs:enumeration value="peer"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:peerReviewing&wt=xml -->
+                        <!-- %proceedings (Actes), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:proceedings -->
                         <xs:enumeration value="proceedings"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:proceedings&wt=xml -->
+                        <!-- %reportType (Type de rapport), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:reportType -->
                         <xs:enumeration value="report"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:reportType&wt=xml -->
+                        <!-- %otherType (Type d'autre publication), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:otherType -->
+                        <xs:enumeration value="other"/>
+                        <!-- %imageType (Type d'image), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:imageType -->
                         <xs:enumeration value="image"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:imageType&wt=xml -->
+                        <!-- %lectureType (Niveau du cours), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:lectureType -->
                         <xs:enumeration value="lecture"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:lectureType&wt=xml -->
+                        <!-- %*_degreeType (Niveau du mémoire), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:dumas_degreeType -->
                         <xs:enumeration value="degree"/>
+                        <!-- %pastel_thematique (Sujet), @n = https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:pastel_thematique -->
                         <xs:enumeration value="pastel_thematique"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:pastel_thematique&wt=xml -->
+                        <!-- %pastel_library (Fonds), https://api.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:pastel_library -->
                         <xs:enumeration value="pastel_library"/>
-                        <!-- valeur possible de l'attribut n : http://api-preprod.archives-ouvertes.fr/ref/metadataList/?q=metaName_s:pastel_library&wt=xml -->
+                        <!-- %programmingLanguage (Langage de programmation, type = SOFTWARE) -->
+                        <xs:enumeration value="programmingLanguage"/>
+                        <!-- %platform (Plateforme, type = SOFTWARE) -->
+                        <xs:enumeration value="platform"/>
+                        <!-- %version (version du logiciel, type = SOFTWARE) -->
+                        <xs:enumeration value="version"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
@@ -241,10 +250,10 @@
     </xs:element>
     <xs:element name="sourceDesc">
         <xs:complexType>
-            <xs:sequence> 
-                <xs:element minOccurs="0" ref="ns1:p"/> 
-                <xs:element minOccurs="0" ref="ns1:biblStruct"/> 
-                <xs:element minOccurs="0" ref="ns1:listPlace"/> 
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="ns1:p"/>
+                <xs:element minOccurs="0" ref="ns1:biblStruct"/>
+                <xs:element minOccurs="0" ref="ns1:listPlace"/>
                 <xs:element minOccurs="0" ref="ns1:recordingStmt"/>
             </xs:sequence>
         </xs:complexType>
@@ -270,7 +279,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="ns1:title"/>
-                <!-- %%title et %%subTitle -->
+                <!-- %title et %subTitle -->
                 <xs:element maxOccurs="unbounded" ref="ns1:author"/>
             </xs:sequence>
         </xs:complexType>
@@ -280,15 +289,15 @@
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:idno"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:title"/>
-                <!-- %%journal, %%bookTitle et %%source -->
+                <!-- %journal, %bookTitle et %source -->
                 <xs:element minOccurs="0" ref="ns1:meeting"/>
                 <xs:element minOccurs="0" ref="ns1:respStmt"/>
                 <xs:element minOccurs="0" ref="ns1:settlement"/>
-                <!-- %%city [type in PATENT,IMG,MAP,LECTURE] -->
+                <!-- %city [type in PATENT,IMG,MAP,LECTURE] -->
                 <xs:element minOccurs="0" ref="ns1:country"/>
-                <!-- %%country  [type not in PATENT,IMG,MAP,LECTURE] -->
+                <!-- %country  [type not in PATENT,IMG,MAP,LECTURE] -->
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:editor"/>
-                <!-- %%scientificEditor -->
+                <!-- %scientificEditor -->
                 <xs:element minOccurs="0" ref="ns1:imprint"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:authority"/>
             </xs:sequence>
@@ -298,13 +307,13 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" ref="ns1:title"/>
-                <!-- %%conferenceTitle -->
+                <!-- %conferenceTitle -->
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:date"/>
-                <!-- %%conferenceStartDate et %%conferenceEndDate -->
+                <!-- %conferenceStartDate et %conferenceEndDate -->
                 <xs:element minOccurs="0" ref="ns1:settlement"/>
-                <!-- %%city  [type not in PATENT,IMG,MAP,LECTURE] -->
-                <xs:element minOccurs="0" ref="ns1:country"/> 
-                <!-- %%country  [type not in PATENT,IMG,MAP,LECTURE] -->
+                <!-- %city  [type not in PATENT,IMG,MAP,LECTURE] -->
+                <xs:element minOccurs="0" ref="ns1:country"/>
+                <!-- %country  [type not in PATENT,IMG,MAP,LECTURE] -->
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -312,9 +321,9 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:publisher"/>
-                <!-- %%publisher -->
+                <!-- %publisher -->
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:pubPlace"/>
-                <!-- %%publicationLocation -->
+                <!-- %publicationLocation -->
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:biblScope"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:date"/>
             </xs:sequence>
@@ -328,13 +337,13 @@
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="serie"/>
-                        <!-- %%serie -->
+                        <!-- %serie -->
                         <xs:enumeration value="volume"/>
-                        <!-- %%volume -->
+                        <!-- %volume -->
                         <xs:enumeration value="issue"/>
-                        <!-- %%issue -->
+                        <!-- %issue -->
                         <xs:enumeration value="pp"/>
-                        <!-- %%page -->
+                        <!-- %page -->
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
@@ -346,15 +355,15 @@
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="institution"/>
-                        <!-- %%authorityInstitution -->
+                        <!-- %authorityInstitution -->
                         <xs:enumeration value="school"/>
-                        <!-- %%thesisSchool -->
+                        <!-- %thesisSchool -->
                         <xs:enumeration value="supervisor"/>
-                        <!-- %%director -->
+                        <!-- %director -->
                         <xs:enumeration value="jury"/>
-                        <!-- %%committee -->
+                        <!-- %committee -->
                         <xs:enumeration value="supervisorEmail"/>
-                        <!-- %%mail director -->
+                        <!-- %mail director -->
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
@@ -364,9 +373,9 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:editor"/>
-                <!-- %%seriesEditor -->
+                <!-- %seriesEditor -->
                 <xs:element minOccurs="0" ref="ns1:title"/>
-                <!-- %%lectureName -->
+                <!-- %lectureName -->
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -378,7 +387,7 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="listPlace">
-        <xs:complexType> 
+        <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:place"/>
             </xs:sequence>
@@ -400,14 +409,14 @@
     </xs:element>
     <xs:element name="geo" type="xs:string"/>
     <xs:element name="recordingStmt">
-        <xs:complexType> 
+        <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:recording"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="recording">
-        <xs:complexType> 
+        <xs:complexType>
             <xs:attribute name="type" default="video">
                 <xs:simpleType>
                     <xs:restriction base="xs:token">
@@ -416,7 +425,8 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="dur" type="xs:string"/> <!-- To Be replaced by the attribute below, but not for know -->
+            <xs:attribute name="dur" type="xs:string"/>
+            <!-- To Be replaced by the attribute below, but not for know -->
             <!--<xs:attribute name="dur">
                 <xs:simpleType>
                     <xs:restriction base='xs:duration'> 
@@ -433,7 +443,7 @@
                 <xs:element minOccurs="0" ref="ns1:textClass"/>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns1:abstract"/>
                 <xs:element minOccurs="0" ref="ns1:particDesc"/>
-                <xs:element minOccurs="0" ref="ns1:creation" />
+                <xs:element minOccurs="0" ref="ns1:creation"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -447,7 +457,7 @@
     <xs:element name="language">
         <xs:complexType mixed="true">
             <xs:attribute name="ident" use="required" type="xs:string"/>
-            <!-- %%language -->
+            <!-- %language -->
         </xs:complexType>
     </xs:element>
     <xs:element name="textClass">
@@ -462,7 +472,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="ns1:term"/>
-                <!-- %%keyword -->
+                <!-- %keyword -->
             </xs:sequence>
             <xs:attribute name="scheme" use="required">
                 <xs:simpleType>
@@ -485,24 +495,24 @@
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="classification"/>
-                        <!-- %%classification -->
+                        <!-- %classification -->
                         <xs:enumeration value="acm"/>
-                        <!-- %%classification ACM -->
+                        <!-- %classification ACM -->
                         <xs:enumeration value="mesh"/>
-                        <!-- %%classification MESH -->
+                        <!-- %classification MESH -->
                         <xs:enumeration value="jel"/>
-                        <!-- %%classification JEL -->
+                        <!-- %classification JEL -->
                         <xs:enumeration value="halDomain"/>
-                        <!-- %%domain HAL : http://api-preprod.archives-ouvertes.fr/ref/domain/?wt=wml -->
+                        <!-- %domain HAL : http://api-preprod.archives-ouvertes.fr/ref/domain/?wt=wml -->
                         <xs:enumeration value="halTypology"/>
-                        <!-- %%type HAL : http://api-preprod.archives-ouvertes.fr/ref/typdoc/?wt=xml -->
+                        <!-- %type HAL : http://api-preprod.archives-ouvertes.fr/ref/typdoc/?wt=xml -->
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
         </xs:complexType>
     </xs:element>
     <xs:element name="abstract">
-        <!-- %%abstract -->
+        <!-- %abstract -->
         <xs:complexType mixed="true">
             <xs:attribute ref="xml:lang" use="required"/>
         </xs:complexType>
@@ -511,7 +521,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="ns1:org"/>
-                <!-- %%collaboration -->
+                <!-- %collaboration -->
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -525,7 +535,7 @@
     </xs:element>
     <xs:element name="measure">
         <xs:complexType>
-            <xs:attribute name="quantity" use="optional" type="xs:string"/> 
+            <xs:attribute name="quantity" use="optional" type="xs:string"/>
             <xs:attribute name="unit" use="optional" type="xs:string"/>
             <xs:attribute name="commodity" use="optional" type="xs:string"/>
         </xs:complexType>
@@ -608,18 +618,18 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="ptr">
-         <xs:complexType>
-             <xs:attribute name="type" use="required">
-                 <xs:simpleType>
-                     <xs:restriction base="xs:string">
-                         <xs:enumeration value="url"/>
-                         <xs:enumeration value="query"/>
-                     </xs:restriction>
-                 </xs:simpleType>
-             </xs:attribute>
-             <xs:attribute name="target" use="required" type="xs:string"/>
-         </xs:complexType>
-     </xs:element>
+        <xs:complexType>
+            <xs:attribute name="type" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="url"/>
+                        <xs:enumeration value="query"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="target" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="affiliation">
         <xs:complexType>
             <xs:attribute name="ref" use="required"/>
@@ -627,22 +637,32 @@
     </xs:element>
     <xs:element name="date">
         <xs:complexType mixed="true">
+            <!-- %embargo sur chaque fichier -->
             <xs:attribute name="notBefore" type="xs:date"/>
-            <!-- %%embargo sur chaque fichier -->
             <xs:attribute name="type">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
+                        <!-- %writingDate (Date d'écriture) -->
                         <xs:enumeration value="whenWritten"/>
-                        <!-- %%writingDate -->
+                        <!-- -->
                         <xs:enumeration value="start"/>
+                        <!-- -->
                         <xs:enumeration value="end"/>
+                        <!-- %date (Date de publication) -->
                         <xs:enumeration value="datePub"/>
+                        <!-- -->
                         <xs:enumeration value="dateDefended"/>
+                        <!-- -->
                         <xs:enumeration value="dateEpub"/>
+                        <!-- -->
                         <xs:enumeration value="whenSubmitted"/>
+                        <!-- -->
                         <xs:enumeration value="whenModified"/>
+                        <!-- -->
                         <xs:enumeration value="whenReleased"/>
+                        <!-- -->
                         <xs:enumeration value="whenProduced"/>
+                        <!-- -->
                         <xs:enumeration value="whenEndEmbargoed"/>
                     </xs:restriction>
                 </xs:simpleType>
@@ -652,6 +672,14 @@
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="unknown"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute use="optional" name="subtype">
+                <!-- %inPress (A paraitre) : attribut à ajouter pour %datePub -->
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="inPress"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
