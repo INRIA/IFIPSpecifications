@@ -625,6 +625,7 @@
                 <affiliation ref="#localStruct-{$idAff}"/>
             </xsl:when>
             <xsl:otherwise>
+                <affiliation ref="#localStruct-{$idAff}"/>
                 <affiliation ref="#localStruct-{$idAff}Institution"/>
             </xsl:otherwise>
         </xsl:choose>
