@@ -621,11 +621,10 @@
     <xsl:template name="Affiche_affi">
         <xsl:param name="idAff"/>
         <xsl:choose>
-            <xsl:when test="$Affiliations/Affiliation[@ID=$idAff]/OrgDivision">
+            <xsl:when test="$Affiliations[@ID=$idAff]/OrgDivision">
                 <affiliation ref="#localStruct-{$idAff}"/>
             </xsl:when>
             <xsl:otherwise>
-                <affiliation ref="#localStruct-{$idAff}"/>
                 <affiliation ref="#localStruct-{$idAff}Institution"/>
             </xsl:otherwise>
         </xsl:choose>
