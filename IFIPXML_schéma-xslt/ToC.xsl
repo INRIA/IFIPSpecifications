@@ -27,7 +27,7 @@
     <xsl:template match="doc">
         <tr style="valign='top';">
             <td style="align='left';">
-                <a href="https://hal.inria.fr/{$CollName}/{ str[@name = 'halId_s'] }"><xsl:value-of select="arr[@name = 'title_s']/str"/></a>
+                <a href="https://ifip.hal.science/{$CollName}/{ str[@name = 'halId_s'] }"><xsl:value-of select="arr[@name = 'title_s']/str"/></a>
                 <xsl:text disable-output-escaping="yes">&lt;br/&gt;</xsl:text>
                 <b><i><xsl:apply-templates select="arr[@name = 'authFullName_s']/str"/></i></b>
             </td>
