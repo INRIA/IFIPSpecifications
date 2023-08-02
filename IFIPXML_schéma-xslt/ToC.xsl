@@ -5,7 +5,7 @@
     <!-- Calcul du nom de la collection pour les liens href -->
     <xsl:variable name="CollName">
         <xsl:text>IFIP-</xsl:text>
-        <xsl:value-of select="//doc/str[@name='docType_s'][.='PROCEEDINGS' or 'OUV']/parent::node()/str[@name='volume_s']"/>
+        <xsl:value-of select="//doc/str[@name='docType_s'][.='PROCEEDINGS' or .='OUV']/parent::node()/str[@name='volume_s']"/>
     </xsl:variable>
     
     <xsl:template match="/">
@@ -34,7 +34,7 @@
             <!--td class="page" style="text-align: right;" valign="top"><xsl:value-of select="str[@name = 'page_s']"/></td-->
             
             <xsl:choose>
-                <xsl:when test="./str[@name='docType_s'] = 'OUV'">
+                <xsl:when test="./str[@name='docType_s'] = 'OUV' or ./str[@name='docType_s'] = 'PROCEEDINGS'">
                     <td class="page" style="text-align: right;" valign="top">Front Matter</td>
                 </xsl:when>
                 <xsl:otherwise>
