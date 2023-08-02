@@ -5,7 +5,7 @@
     <!-- Calcul du nom de la collection pour les liens href -->
     <xsl:variable name="CollName">
         <xsl:text>IFIP-</xsl:text>
-        <xsl:value-of select="//doc/str[@name='docType_s'][.='PROCEEDINGS' or 'OUV']/parent::node()/str[@name='volume_s']"/>
+        <xsl:value-of select="//doc/str[@name='docType_s'][.='PROCEEDINGS' or .='OUV']/parent::node()/str[@name='volume_s']"/>
     </xsl:variable>
     <xsl:variable name="document">
         <xsl:copy-of select="/"></xsl:copy-of>
@@ -17,7 +17,7 @@
             <xsl:text disable-output-escaping="yes">&lt;hr/&gt;</xsl:text>
             <table style="width='63%';border='0'; cellspacing='20';cellpadding='20';">
                 <!--xsl:apply-templates select="//doc" mode='affOUV'/-->
-                <xsl:apply-templates select="//doc/str[@name='docType_s'][.='PROCEEDINGS' or 'OUV']/parent::node()" />
+                <xsl:apply-templates select="//doc/str[@name='docType_s'][.='PROCEEDINGS']/parent::node() or //doc/str[@name='docType_s'][.='OUV']/parent::node()" />
                 <xsl:for-each select="distinct-values(//doc/str[@name='comment_s'])">
                     <xsl:sort select="number(substring-after(substring-before(.,':'),'Part '))"  order="ascending"></xsl:sort>
                     <xsl:call-template name="addPart">
@@ -46,7 +46,7 @@
                 <b><i><xsl:apply-templates select="arr[@name = 'authFullName_s']/str"/></i></b>
             </td>
             <xsl:choose>
-                <xsl:when test="./str[@name='docType_s'] = 'PROCEEDINGS' or 'OUV'">
+                <xsl:when test="./str[@name='docType_s'] = 'PROCEEDINGS' or ./str[@name='docType_s'] ='OUV'">
                     <td class="page" style="text-align: right;" valign="top">Front Matter</td>
                 </xsl:when>
                 <xsl:otherwise>
