@@ -46,7 +46,10 @@
                 <b><i><xsl:apply-templates select="arr[@name = 'authFullName_s']/str"/></i></b>
             </td>
             <xsl:choose>
-                <xsl:when test="./str[@name='docType_s'] = 'PROCEEDINGS' or ./str[@name='docType_s'] ='OUV'">
+                <xsl:when test="./str[@name='docType_s'] = 'PROCEEDINGS'">
+                    <td class="page" style="text-align: right;" valign="top">Front Matter</td>
+                </xsl:when>
+                <xsl:when test="./str[@name='docType_s'] ='OUV'">
                     <td class="page" style="text-align: right;" valign="top">Front Matter</td>
                 </xsl:when>
                 <xsl:otherwise>
