@@ -17,7 +17,8 @@
             <xsl:text disable-output-escaping="yes">&lt;hr/&gt;</xsl:text>
             <table style="width='63%';border='0'; cellspacing='20';cellpadding='20';">
                 <!--xsl:apply-templates select="//doc" mode='affOUV'/-->
-                <xsl:apply-templates select="//doc/str[@name='docType_s'][.='PROCEEDINGS']/parent::node() or //doc/str[@name='docType_s'][.='OUV']/parent::node()" />
+                <xsl:apply-templates select="//doc/str[@name='docType_s'][.='PROCEEDINGS']/parent::node()" />
+                <xsl:apply-templates select="//doc/str[@name='docType_s'][.='OUV']/parent::node()" />
                 <xsl:for-each select="distinct-values(//doc/str[@name='comment_s'])">
                     <xsl:sort select="number(substring-after(substring-before(.,':'),'Part '))"  order="ascending"></xsl:sort>
                     <xsl:call-template name="addPart">
