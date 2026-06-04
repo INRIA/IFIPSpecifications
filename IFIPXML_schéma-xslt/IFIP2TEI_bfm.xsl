@@ -158,7 +158,7 @@
                                         <xsl:with-param name="dom">info</xsl:with-param>
                                     </xsl:call-template>
                                     <!--xsl:apply-templates select="/Publisher/Series/Book/BookInfo/IFIPentity"></xsl:apply-templates-->
-                                    <classCode scheme="halTypology" n="OUV"/>
+                                    <classCode scheme="halTypology" n="PROCEEDINGS"/>
                                 </textClass>
                                 <abstract xml:lang="en">
                                     <xsl:value-of select="concat('Book Front Matter of ',$collection,' ',$volumeNb)"/> 
