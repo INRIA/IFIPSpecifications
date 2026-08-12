@@ -538,29 +538,29 @@
         <meeting>
             <!-- Titre de la conférence -->
             <title>
-                <xsl:value-of select="normalize-space(concat(ConfEventNumber, ' ', ConfEventTitle, ' (', ConfEventAbbreviation, ')'))"/>
+                <xsl:value-of select="concat(ConfNumber, ' ', ConfSeriesName, ' (', ConfEventAbbreviation, ')')"/>
             </title>
     
             <!-- Date de début de la conférence -->
-            <xsl:if test="ConfStartDate != ''">
+            <xsl:if test="ConfEventDateStart">
                 <date type="start">
-                    <xsl:value-of select="format-date(ConfStartDate, '[Y0001]-[M01]-[D01]')"/>
+                    <xsl:value-of select="format-date(concat(ConfEventDateStart/Year, '-', ConfEventDateStart/Month, '-', ConfEventDateStart/Day), '[Y0001]-[M01]-[D01]')"/>
                 </date>
             </xsl:if>
     
             <!-- Lieu de la conférence (ville) -->
-            <xsl:if test="ConfLocation/City != ''">
+            <xsl:if test="ConfEventLocation/City">
                 <settlement>
-                    <xsl:value-of select="normalize-space(ConfLocation/City)"/>
+                    <xsl:value-of select="normalize-space(ConfEventLocation/City)"/>
                 </settlement>
             </xsl:if>
     
             <!-- Pays de la conférence -->
-            <xsl:if test="ConfLocation/Country != ''">
+            <xsl:if test="ConfEventLocation/Country">
                 <country>
                     <xsl:attribute name="key">
                         <xsl:call-template name="normalizeISOCountry">
-                            <xsl:with-param name="country" select="normalize-space(ConfLocation/Country)"/>
+                            <xsl:with-param name="country" select="normalize-space(ConfEventLocation/Country/@Code)"/>
                         </xsl:call-template>
                     </xsl:attribute>
                 </country>
