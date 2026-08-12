@@ -542,9 +542,9 @@
             </title>
     
             <!-- Date de début de la conférence -->
-            <xsl:if test="ConfEventDateStart">
+            <xsl:if test="ConfEventDateStart/Year and ConfEventDateStart/Month and ConfEventDateStart/Day">
                 <date type="start">
-                    <xsl:value-of select="format-date(concat(ConfEventDateStart/Year, '-', ConfEventDateStart/Month, '-', ConfEventDateStart/Day), '[Y0001]-[M01]-[D01]')"/>
+                    <xsl:value-of select="concat(ConfEventDateStart/Year, '-', format-number(ConfEventDateStart/Month, '00'), '-', format-number(ConfEventDateStart/Day, '00'))"/>
                 </date>
             </xsl:if>
     
