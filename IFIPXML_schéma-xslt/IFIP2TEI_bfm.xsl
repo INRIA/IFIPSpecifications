@@ -162,7 +162,10 @@
                                 </textClass>
                                 <abstract xml:lang="en">
                                     <xsl:value-of select="concat('Book Front Matter of ',$collection,' ',$volumeNb)"/> 
-                                </abstract>                                
+                                </abstract>  
+                                <xsl:if test="//BookInfo/ConferenceInfo">
+                                    <xsl:apply-templates select="//BookInfo/ConferenceInfo"/>
+                                </xsl:if>
                                 <xsl:if test="//BookInfo/IFIPentity">
                                     <particDesc>
                                         <xsl:apply-templates select="//BookInfo/IFIPentity/TC" mode="collab"/>
@@ -531,6 +534,39 @@
         <title type="sub" xml:lang="en">
             <xsl:value-of select="normalize-space(.)"></xsl:value-of>
         </title>
+    </xsl:template>
+    <xsl:template match="ConferenceInfo">
+        <meeting>
+            <!-- Titre de la conférence -->
+            <title>
+                <xsl:value-of select="normalize-space(concat(ConfEventNumber, ' ', ConfEventTitle, ' (', ConfEventAbbreviation, ')'))"/>
+            </title>
+    
+            <!-- Date de début de la conférence -->
+            <xsl:if test="ConfStartDate != ''">
+                <date type="start">
+                    <xsl:value-of select="format-date(ConfStartDate, '[Y0001]-[M01]-[D01]')"/>
+                </date>
+            </xsl:if>
+    
+            <!-- Lieu de la conférence (ville) -->
+            <xsl:if test="ConfLocation/City != ''">
+                <settlement>
+                    <xsl:value-of select="normalize-space(ConfLocation/City)"/>
+                </settlement>
+            </xsl:if>
+    
+            <!-- Pays de la conférence -->
+            <xsl:if test="ConfLocation/Country != ''">
+                <country>
+                    <xsl:attribute name="key">
+                        <xsl:call-template name="normalizeISOCountry">
+                            <xsl:with-param name="country" select="normalize-space(ConfLocation/Country)"/>
+                        </xsl:call-template>
+                    </xsl:attribute>
+                </country>
+            </xsl:if>
+        </meeting>
     </xsl:template>
     <xsl:template match="TC" mode="stamp">
         <idno type="stamp"
