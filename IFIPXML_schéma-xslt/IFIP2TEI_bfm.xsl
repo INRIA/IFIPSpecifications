@@ -116,8 +116,9 @@
                                     <monogr>
                                         <xsl:apply-templates select="//BookInfo/BookElectronicISBN"/>
                                         <xsl:apply-templates select="//BookInfo/BookPrintISBN"/>
-                                        
-                                        
+                                        <xsl:if test="//BookInfo/ConferenceInfo">
+                                            <xsl:apply-templates select="//BookInfo/ConferenceInfo"/>
+                                        </xsl:if> 
                                         
                                         <imprint>
                                             <xsl:apply-templates select="//PublisherInfo/PublisherName"/>
@@ -163,9 +164,7 @@
                                 <abstract xml:lang="en">
                                     <xsl:value-of select="concat('Book Front Matter of ',$collection,' ',$volumeNb)"/> 
                                 </abstract>  
-                                <xsl:if test="//BookInfo/ConferenceInfo">
-                                    <xsl:apply-templates select="//BookInfo/ConferenceInfo"/>
-                                </xsl:if>
+
                                 <xsl:if test="//BookInfo/IFIPentity">
                                     <particDesc>
                                         <xsl:apply-templates select="//BookInfo/IFIPentity/TC" mode="collab"/>
